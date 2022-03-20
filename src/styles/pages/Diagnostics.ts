@@ -3,12 +3,21 @@ import image from "images/footer.png";
 
 export const DiagHtml = styled.div`
     width: 100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 `
 export const DiagHeader = styled.div`
     display:flex;
+    flex-direction:row;
+    width: 75%;
     padding-top:30px;
     padding-bottom:30px;
     align-items:center;
+    @media (max-width:800px) {
+        width: 90%;
+  }
 `
 
 export const DiagBody = styled.div`
@@ -17,7 +26,8 @@ export const DiagBody = styled.div`
     flex-direction:column;
 `
 export const DiagFooter = styled.div`
-    display:flex;
+    display:flex;    
+    width: 100%;
     flex-direction:row;
     background-image:url(${image});
     background-repeat: no-repeat; 
@@ -25,7 +35,17 @@ export const DiagFooter = styled.div`
     background-position: center; 
     height:250px;
     margin-top:50px;
-    padding-left:5%;
+    @media (max-width:600px) {
+        flex-direction:column;
+  }
+    
+`
+export const DiagFooterItems = styled.div`
+    display:flex;    
+    width: 100%;
+    flex-direction:row;
+    height:100%;
+    
 `
 export const FooterItems = styled.div`
     display:flex;
@@ -35,21 +55,33 @@ export const FooterItems = styled.div`
     margin-left:10%;
     align-items:flex-start;
     gap:20px;
+    @media (max-width:600px) {  
+        margin-top:30px;
+  }
 `
 export const FooterItemsKGU = styled.div` 
-    margin-top:150px;
-    width: 25%;
+    display:flex;
+    margin-top:10%;
+    margin-right:10%;
     text-align: right;
-    margin-left:30%;
+    @media (max-width:600px) {
+        margin-top:0px;
+        margin-right:0px;
+        width:90%;
+        height:100px;
+        justify-self:flex-end;
+        align-items:center;
+        align-self:center;
+  }
 `
 
 export const DiagnMenu = styled.div`
     display:flex;
     flex-direction:row;
-    width: 35%;
-    justify-content:flex-start;
+    width: 50%;
+    justify-content:center;
     align-items:center;
-    gap:40px;
+    gap:20px;
 `
 export const DiagnText = styled.text`
     color: #C4C4C4;
@@ -63,16 +95,22 @@ export const DiagnCP = styled.div`
     display:flex;
     flex-direction:row;
     width: 25%;
-    justify-content:flex-start;
+    justify-content:flex-end;
     align-items:center;
-    gap:40px;
+    gap:20px;
+    @media (max-width:600px) {
+        width: 50%;
+    }
 `
 export const DiagnIcon = styled.div`
     display:flex;
     flex-direction:row;
-    width: 40%;
-    justify-content:center;
+    width: 25%;
+    justify-content:flex-start;
     align-items:center;
+    @media (max-width:600px) {
+        width: 50%;
+    }
 `
 export const DiagnTextDiagn = styled.div`
     display:flex;       
@@ -80,8 +118,10 @@ export const DiagnTextDiagn = styled.div`
     padding-top:20px;
     padding-bottom:40px;
     font-size:26px;
-    margin-left:15%;
-    align-items:center;
+    align-self:flex-start;
+    @media (max-width:600px) {
+        padding-bottom:0px;
+    }
 `
 export const DiagnTextProf = styled.text`
     display:flex;       
@@ -91,11 +131,15 @@ export const DiagnTextProf = styled.text`
 export const DiagnImg = styled.div`
     display:flex;
     flex-direction:column;
-    width: 70%;
+    width: 75%;
     justify-content:center;
     align-self:center;
     align-items:center;
     gap:50px;
+    @media (max-width:600px) {
+        width: 90%;
+        gap:20px;
+    }
 `
 export const DiagnBlock = styled.div`
     display:flex;
@@ -104,12 +148,19 @@ export const DiagnBlock = styled.div`
     justify-content:flex-start;
     align-self:center;
     align-items:center;
+    @media (max-width:600px) {
+        flex-direction:column;
+    }
 `
 export const DiagnBlockText = styled.div`
     display:flex;
     flex-direction:column;
     width: 60%;
     row-gap:20px;
+    @media (max-width:600px) {
+        width: 100%;
+        row-gap:10px;
+    }
 `
 export const DiagnBlockImg = styled.div`
     display:flex;
@@ -117,6 +168,10 @@ export const DiagnBlockImg = styled.div`
     width: 40%;
     height:100%;
     row-gap:5px;
+    @media (max-width:600px) {
+        width: 100%;
+    }
+    
 `
 
 export default DiagHtml;
