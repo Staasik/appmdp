@@ -97,6 +97,9 @@ export const DiagnTextBlackBold = styled(DiagnText)`
     color:black;
     font-weight : bold;
     height:50px;
+    @media (max-width:600px) {
+    font-size:12px;
+    }
 `
 export const DiagnCP = styled.div`
     display:flex;
@@ -131,13 +134,46 @@ export const DiagnTextProf = styled.text`
 
 export const DiagnBlock = styled.div`
     display:flex;
-    flex-direction:row;
-    flex-wrap:wrap;
+    flex-direction:column;
     width: 90%;
     row-gap:50px;
     padding-top: 50px;
-    justify-content:center;
+    justify-content:center;  
+    align-items:center; 
 
+`
+export const BlockFive = styled.div`
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start; 
+    padding-left:5%;
+    align-items:center; 
+    flex-wrap:wrap;
+    width: 80%;
+    row-gap:50px;
+    background: #FBFBFB;
+    border: 2px solid #F2F2F2;
+    box-sizing: border-box;
+    box-shadow: 0px 20px 40px -15px rgba(0, 0, 0, 0.05);
+    border-radius: 19px;
+    @media (max-width:600px) {
+    padding-left:0;
+    width: 100%;
+    row-gap:0px;
+    }
+
+`
+export const TextFive = styled.div`
+    display:flex;       
+    color: black;
+    margin-top:30px;
+    width: 100%;
+    padding-left:3%;
+    font-size:26px;
+    @media (max-width:600px) {
+    font-size:20px;
+    padding-left:10%;
+    }
 `
 export const DiagnBlockText = styled.div`
     display:flex;
@@ -150,6 +186,7 @@ export const DiagnBlockText = styled.div`
         margin-left:5%;
     }
 `
+
 export const DiagnBlockImg = styled.div`
     display:flex;
     flex-direction:column;
@@ -184,7 +221,6 @@ export const Button = styled.button`
     justify-content:center;
     align-items:center;
     @media (max-width:430px) {
-        margin-top: 10px;
         width: 90%;  
     }
 `

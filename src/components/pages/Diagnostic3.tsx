@@ -1,11 +1,11 @@
-import {DiagHtml,DiagHeader,DiagBody,DiagFooter,DiagnMenu,DiagnText,DiagnTextBlackBold,DiagFooterItems,Button,DiagnTextBlack,DiagnBlockImg,FooterItems,FooterItemsKGU,DiagnIcon,DiagnCP,DiagnBlock,DiagnTextProf,DiagnBlockText} from 'styles/pages/Diagnostic3'
+import {DiagHtml,DiagHeader,DiagBody,DiagFooter,DiagnMenu,TextFive,DiagnText,BlockFive,DiagnTextBlackBold,DiagFooterItems,Button,DiagnTextBlack,DiagnBlockImg,FooterItems,FooterItemsKGU,DiagnIcon,DiagnCP,DiagnBlock,DiagnTextProf,DiagnBlockText} from 'styles/pages/Diagnostic3'
 import {ReactComponent as Chat} from 'images/Chat_Conversation_Circle.svg';
 import {ReactComponent as Prof} from 'images/UserCircle.svg';
 
 import Icon from 'images/icon.png';
 
-import {data} from 'mockdata/mocktest3'
-import Quest from 'components/pages/Quest'
+import {data,blockdata} from 'mockdata/mocktest3'
+import QuestFive from 'components/pages/QuestFive'
 
 import { useMediaQuery } from "react-responsive";
 import {Menu} from "components/pages/Menu";
@@ -50,11 +50,20 @@ const Diagnostic3 = () => {
                     </DiagnBlockText>
             </DiagnBlockImg>
             <DiagnBlock>
-                    {data.map((value,index)=>{ 
-                        return(
-                            <Quest text={value.text} options={value.options} index={index}/>
+                {
+                    blockdata.map((value,idx)=> {
+                        return (     
+                            <BlockFive>
+                                <TextFive>{value.text}</TextFive>
+                                {data.slice(idx*5,idx*5+5).map((value,index)=>{ 
+                                    return(
+                                        <QuestFive text={value.text} options={value.options} index={index}/>
+                                    )
+                                })}
+                            </BlockFive>
                         )
-                    })}
+                    }   )       
+                }
             </DiagnBlock>
                     <Button>Завершить</Button>        
         </DiagBody>

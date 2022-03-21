@@ -131,14 +131,29 @@ export const DiagnTextProf = styled.text`
 
 export const DiagnBlock = styled.div`
     display:flex;
-    flex-direction:row;
-    flex-wrap:wrap;
-    width: 90%;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    width: 80%;
     row-gap:50px;
     padding-top: 50px;
-    justify-content:center;
-
+    justify-content:center;  
+    @media (max-width:600px) {
+        width: 90%;
+    }  
 `
+export const BlockTwo = styled.div`
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    width: 100%;
+    row-gap:10px;
+    box-sizing: border-box;box-shadow: 0px -20px 40px -15px rgba(0, 0, 0, 0.05), 0px 20px 40px -15px rgba(0, 0, 0, 0.05);
+    border-radius: 19px;
+`
+
 export const DiagnBlockText = styled.div`
     display:flex;
     flex-direction:column;
@@ -184,7 +199,6 @@ export const Button = styled.button`
     justify-content:center;
     align-items:center;
     @media (max-width:430px) {
-        margin-top: 10px;
         width: 90%;  
     }
 `

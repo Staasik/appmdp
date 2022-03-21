@@ -184,7 +184,6 @@ export const Button = styled.button`
     justify-content:center;
     align-items:center;
     @media (max-width:430px) {
-        margin-top: 10px;
         width: 90%;  
     }
 `

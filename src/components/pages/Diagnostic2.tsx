@@ -1,4 +1,4 @@
-import { DiagHtml, DiagHeader, DiagBody, DiagFooter, DiagnMenu, DiagnText, DiagnTextBlackBold, Button, DiagFooterItems, DiagnTextBlack, DiagnBlockImg, FooterItems, FooterItemsKGU, DiagnIcon, DiagnCP, DiagnBlock, DiagnTextProf, DiagnBlockText } from 'styles/pages/Diagnostic2'
+import { DiagHtml, DiagHeader, DiagBody, DiagFooter, DiagnMenu, DiagnText,BlockTwo, DiagnTextBlackBold, Button, DiagFooterItems, DiagnTextBlack, DiagnBlockImg, FooterItems, FooterItemsKGU, DiagnIcon, DiagnCP, DiagnBlock, DiagnTextProf, DiagnBlockText } from 'styles/pages/Diagnostic2'
 import { ReactComponent as Chat } from 'images/Chat_Conversation_Circle.svg';
 import { ReactComponent as Prof } from 'images/UserCircle.svg';
 
@@ -50,11 +50,19 @@ const Diagnostic2 = () => {
                     </DiagnBlockText>
                 </DiagnBlockImg>
                 <DiagnBlock>
-                    {data.map((value, index) => {
-                        return (
-                            <QuestImg text={value.text} options={value.options} index={index} />
+                {
+                    [0,1,2,3,4,5,6,7,8,9,10,11].map((idx)=> {
+                        return (     
+                            <BlockTwo>
+                                {data.slice(idx*2,idx*2+2).map((value,index)=>{ 
+                                    return(
+                                        <QuestImg text={value.text} options={value.options} index={index}/>
+                                    )
+                                })}
+                            </BlockTwo>
                         )
-                    })}
+                    }   )       
+                }
                 </DiagnBlock>
                 <Button>Завершить</Button>
             </DiagBody>

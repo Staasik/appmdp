@@ -2,6 +2,7 @@ interface ITest {
     text:string,
     options:string,
 }
+
 export const data : ITest[] = [
     {
         text:'а. Анализирую проблему, прежде чем реагировать на нее ',
