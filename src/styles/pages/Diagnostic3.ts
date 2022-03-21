@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import image from "images/footer.png"; 
-import imagefoot from "images/diagn1.png"; 
-import image600 from "images/diagn1_600.png"; 
+import imagefoot from "images/diagn3.png"; 
+import image600 from "images/diagn3_600.png"; 
 
 export const DiagHtml = styled.div`
     width: 100%;

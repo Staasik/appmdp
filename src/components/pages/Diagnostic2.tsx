@@ -1,16 +1,16 @@
-import {DiagHtml,DiagHeader,DiagBody,DiagFooter,DiagnMenu,DiagnText,DiagnTextBlackBold,Button,DiagnTextBlack,DiagnBlockImg,FooterItems,FooterItemsKGU,DiagFooterItems,DiagnIcon,DiagnCP,DiagnBlock,DiagnTextProf,DiagnBlockText} from 'styles/pages/Diagnostic1'
+import {DiagHtml,DiagHeader,DiagBody,DiagFooter,DiagnMenu,DiagnText,DiagnTextBlackBold,Button,DiagFooterItems,DiagnTextBlack,DiagnBlockImg,FooterItems,FooterItemsKGU,DiagnIcon,DiagnCP,DiagnBlock,DiagnTextProf,DiagnBlockText} from 'styles/pages/Diagnostic2'
 import {ReactComponent as Chat} from 'images/Chat_Conversation_Circle.svg';
 import {ReactComponent as Prof} from 'images/UserCircle.svg';
 
 import Icon from 'images/icon.png';
 
-import {data} from 'mockdata/mocktest1'
-import Quest from 'components/pages/Quest'
+import {data} from 'mockdata/mocktest2'
+import QuestImg from 'components/pages/QuestImg'
 
 import { useMediaQuery } from "react-responsive";
 import {Menu} from "components/pages/Menu";
 
-const Diagnostic1 = () => {
+const Diagnostic2 = () => {
     const isDesktop = useMediaQuery({
         query: "(max-width: 600px)"
       });
@@ -44,18 +44,18 @@ const Diagnostic1 = () => {
         <DiagBody>
             <DiagnBlockImg>
                     <DiagnBlockText>
-                        <DiagnTextProf>Профессиональное выгорание</DiagnTextProf>
-                        <DiagnTextBlack>Вам предлагается 22 утверждения о чувствах и переживаниях, связанных с работой. Пожалуйста, прочитайте внимательно каждое утверждение и решите, чувствуете ли вы себя таким образом на вашей работе.</DiagnTextBlack>
-                        <DiagnTextBlackBold>Варианты ответов: от 0 – никогда до 6 – ежедневно</DiagnTextBlackBold>
+                        <DiagnTextProf>Копинг–поведение в стрессовых ситуациях</DiagnTextProf>
+                        <DiagnTextBlack>Перед вами будут появляться изображения с возможными реакциями человека на различные трудные, огорчающие или стрессовые ситуации. </DiagnTextBlack>
+                        <DiagnTextBlackBold>Выберите одну реакцию из двух, которая в большей степени отображает Ваше поведение в трудной стрессовой ситуации нажатием на изображение.</DiagnTextBlackBold>
                     </DiagnBlockText>
             </DiagnBlockImg>
             <DiagnBlock>
                     {data.map((value,index)=>{ 
                         return(
-                            <Quest text={value.text} options={value.options} index={index}/>
+                            <QuestImg text={value.text} options={value.options} index={index}/>
                         )
                     })}
-            </DiagnBlock>
+            </DiagnBlock> 
             <Button>Завершить</Button>
         </DiagBody>
         <DiagFooter>
@@ -80,4 +80,4 @@ const Diagnostic1 = () => {
   );
 }
 
-export default Diagnostic1;
+export default Diagnostic2;

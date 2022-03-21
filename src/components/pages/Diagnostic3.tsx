@@ -1,16 +1,16 @@
-import {DiagHtml,DiagHeader,DiagBody,DiagFooter,DiagnMenu,DiagnText,DiagnTextBlackBold,Button,DiagnTextBlack,DiagnBlockImg,FooterItems,FooterItemsKGU,DiagFooterItems,DiagnIcon,DiagnCP,DiagnBlock,DiagnTextProf,DiagnBlockText} from 'styles/pages/Diagnostic1'
+import {DiagHtml,DiagHeader,DiagBody,DiagFooter,DiagnMenu,DiagnText,DiagnTextBlackBold,DiagFooterItems,Button,DiagnTextBlack,DiagnBlockImg,FooterItems,FooterItemsKGU,DiagnIcon,DiagnCP,DiagnBlock,DiagnTextProf,DiagnBlockText} from 'styles/pages/Diagnostic3'
 import {ReactComponent as Chat} from 'images/Chat_Conversation_Circle.svg';
 import {ReactComponent as Prof} from 'images/UserCircle.svg';
 
 import Icon from 'images/icon.png';
 
-import {data} from 'mockdata/mocktest1'
+import {data} from 'mockdata/mocktest3'
 import Quest from 'components/pages/Quest'
 
 import { useMediaQuery } from "react-responsive";
 import {Menu} from "components/pages/Menu";
 
-const Diagnostic1 = () => {
+const Diagnostic3 = () => {
     const isDesktop = useMediaQuery({
         query: "(max-width: 600px)"
       });
@@ -44,8 +44,8 @@ const Diagnostic1 = () => {
         <DiagBody>
             <DiagnBlockImg>
                     <DiagnBlockText>
-                        <DiagnTextProf>Профессиональное выгорание</DiagnTextProf>
-                        <DiagnTextBlack>Вам предлагается 22 утверждения о чувствах и переживаниях, связанных с работой. Пожалуйста, прочитайте внимательно каждое утверждение и решите, чувствуете ли вы себя таким образом на вашей работе.</DiagnTextBlack>
+                        <DiagnTextProf>Оценка признаков эмоционального выгорания</DiagnTextProf>
+                        <DiagnTextBlack>Вам предлагается по 5 утверждений из каждого блока: поведение, мышление, чувства и здоровье. Пожалуйста, прочитайте следующие утверждения и выберите тот вариант ответа, который наилучшим образом отражает Ваше мнение.</DiagnTextBlack>
                         <DiagnTextBlackBold>Варианты ответов: от 0 – никогда до 6 – ежедневно</DiagnTextBlackBold>
                     </DiagnBlockText>
             </DiagnBlockImg>
@@ -56,7 +56,7 @@ const Diagnostic1 = () => {
                         )
                     })}
             </DiagnBlock>
-            <Button>Завершить</Button>
+                    <Button>Завершить</Button>        
         </DiagBody>
         <DiagFooter>
             <DiagFooterItems>
@@ -80,4 +80,4 @@ const Diagnostic1 = () => {
   );
 }
 
-export default Diagnostic1;
+export default Diagnostic3;

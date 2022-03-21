@@ -9,7 +9,6 @@ import Diag3 from 'images/diag3.png';
 
 import { useMediaQuery } from "react-responsive";
 
-import { createGlobalStyle } from "styled-components";
 import {Menu} from "components/pages/Menu";
 
 const Diagnostics = () => {
@@ -75,7 +74,7 @@ const Diagnostics = () => {
                     </DiagnBlockImg>
                     <DiagnBlockText>
                         <DiagnTextProf>Оценка признаков эмоционального выгорания</DiagnTextProf>
-                        <DiagnTextBlack>Синдром эмоционального выгорания представляет собой состояние эмоционального, умственного истощения, физического утомления, возникающее в результате хронического стресса на работе.</DiagnTextBlack>
+                        <DiagnTextBlack>Синдром эмоционального выгорания представляет собой состояние эмоционального, умственного истощения, физического утомления, возникающее в результате хронического стресса на работе.</DiagnTextBlack>
                         <Start />
                     </DiagnBlockText>
                 </DiagnBlock>

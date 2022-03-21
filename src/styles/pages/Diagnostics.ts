@@ -170,8 +170,7 @@ export const DiagnBlockImg = styled.div`
     row-gap:5px;
     @media (max-width:600px) {
         width: 100%;
-    }
-    
+    }  
 `
 
 export default DiagHtml;

@@ -2,12 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 export const StyledHamburger = styled.button<{ open: boolean }>`
-
   left: 5vw;
   top: 7vw;
   width: 2rem;
   height: 2rem;
-  padding: 0;
   background: transparent;
   
   display: flex;
