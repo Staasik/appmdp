@@ -134,7 +134,7 @@ export const DiagnBlock = styled.div`
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    width: 80%;
+    width: 70%;
     row-gap:50px;
     padding-top: 50px;
     justify-content:center;  
