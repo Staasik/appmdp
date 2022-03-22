@@ -1,15 +1,10 @@
-import {DiagHtml,DiagHeader,DiagBody,DiagFooter,DiagnMenu,DiagnText,DiagFooterItems,DiagnTextBlack,DiagnBlockImg,FooterItems,FooterItemsKGU,DiagnIcon,DiagnCP,DiagnTextDiagn,DiagnImg,DiagnBlock,DiagnTextProf,DiagnBlockText} from 'styles/pages/Diagnostics'
-import {ReactComponent as Chat} from 'images/Chat_Conversation_Circle.svg';
-import {ReactComponent as Prof} from 'images/UserCircle.svg';
-import {ReactComponent as Start} from 'images/start.svg';
-import Icon from 'images/icon.png';
 import Diag1 from 'images/diag1.png';
 import Diag2 from 'images/diag2.png';
 import Diag3 from 'images/diag3.png';
-
+import { ReactComponent as Start } from 'images/start.svg';
 import { useMediaQuery } from "react-responsive";
+import { DiagBody, DiagFooter, DiagFooterItems, DiagHtml, DiagnBlock, DiagnBlockImg, DiagnBlockText, DiagnImg, DiagnText, DiagnTextBlack, DiagnTextDiagn, DiagnTextProf, FooterItems, FooterItemsKGU } from 'styles/pages/Diagnostics';
 
-import {Menu} from "components/pages/Menu";
 
 const Diagnostics = () => {
     const isDesktop = useMediaQuery({
@@ -17,31 +12,6 @@ const Diagnostics = () => {
       });
   return (
     <DiagHtml>
-                {isDesktop ?
-                <DiagHeader>
-                    <DiagnIcon>
-                        <img src={Icon} style={{"height" : "30px", "width" : "110px"}}/>
-                    </DiagnIcon>
-                    <DiagnCP> 
-                        <Menu />
-                    </DiagnCP>
-                </DiagHeader>
-                :
-                <DiagHeader>
-                    <DiagnIcon>
-                        <img src={Icon} style={{"height" : "30px", "width" : "110px"}}/>
-                    </DiagnIcon>
-                    <DiagnMenu>
-                        <DiagnText>Главная</DiagnText>
-                        <DiagnTextBlack>Диагностика</DiagnTextBlack>
-                        <DiagnText>Рекомендации</DiagnText>
-                    </DiagnMenu>
-                    <DiagnCP>
-                        <Chat style={{"height" : "30px", "width" : "30px"}}/>
-                        <Prof style={{"height" : "30px", "width" : "30px"}}/>
-                    </DiagnCP>
-            </DiagHeader>
-                }
         <DiagBody>       
             <DiagnImg>
             <DiagnTextDiagn>Диагностика</DiagnTextDiagn>

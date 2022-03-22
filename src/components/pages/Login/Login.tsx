@@ -1,4 +1,4 @@
-import {LoginWrapper,LoginContainer,LoginInput,LoginText,LoginButton} from 'styles/pages/Login'
+import {LoginWrapper,LoginContainer,LoginInput,LoginText,LoginButton} from 'styles/pages/Login/Login'
 
 const Login = () => {
   return (
@@ -6,7 +6,7 @@ const Login = () => {
       <LoginContainer>
         <LoginText>LOGIN</LoginText>
         <LoginInput></LoginInput>
-        <LoginButton>LOG</LoginButton>
+        <LoginButton>Войти</LoginButton>
       </LoginContainer>
     </LoginWrapper>
 
