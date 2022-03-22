@@ -16,7 +16,7 @@ interface QuestNumProps {
 export const QuestNum = styled.div<QuestNumProps>`
   display:flex;
   flex-direction:column;
-  width: 400px;
+  width: 44%;
   gap:30px;    
   justify-content:flex-start;
   align-items:flex-start;
