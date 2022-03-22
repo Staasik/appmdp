@@ -6,7 +6,7 @@ const Login = () => {
       <LoginContainer>
         <LoginText>LOGIN</LoginText>
         <LoginInput></LoginInput>
-        <LoginButton>Войти</LoginButton>
+        <LoginButton to="/main">Войти</LoginButton>
       </LoginContainer>
     </LoginWrapper>
 

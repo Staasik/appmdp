@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import image from "images/footer.png"; 
+import { Link } from 'react-router-dom'
 
 export const HtmlContainer = styled.div`
     width: 100%;
@@ -88,7 +89,8 @@ export const DiagnText = styled.text`
     font-size:14px;
 `
 export const DiagnTextBlack = styled(DiagnText)`
-    color:black;
+    color: #C4C4C4;
+    font-size:14px;
 `
 
 export const DiagnCP = styled.div`
@@ -140,6 +142,13 @@ export const DiagnImg = styled.div`
         width: 90%;
         gap:20px;
     }
+`
+export const DiagnLink = styled(Link)`
+    text-decoration: none;
+`
+export const DiagnImage = styled.img`
+    width: 100%;
+    height: 100%;
 `
 export const DiagnBlock = styled.div`
     display:flex;

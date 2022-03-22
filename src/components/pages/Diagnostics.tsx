@@ -1,35 +1,33 @@
 import { ReactComponent as Start } from 'images/start.svg';
-import diagnMock from 'mockdata/diagnBlocksMock';
-import { useMediaQuery } from "react-responsive";
-import { DiagBody, DiagnBlock, DiagnBlockImg, DiagnBlockText, DiagnImg, DiagnText, DiagnTextBlack, DiagnTextDiagn, DiagnTextProf } from 'styles/pages/Diagnostics';
+import diagnMock, { IdiagnMock } from 'mockdata/diagnBlocksMock';
+import { useState } from 'react';
+import { DiagBody, DiagnBlock, DiagnBlockImg, DiagnBlockText, DiagnImage, DiagnImg, DiagnLink, DiagnText, DiagnTextBlack, DiagnTextDiagn, DiagnTextProf } from 'styles/pages/Diagnostics';
 
 const Diagnostics = () => {
-    const isDesktop = useMediaQuery({
-        query: "(max-width: 600px)"
-    });
+
+    const [blocks, setBlocks] = useState<IdiagnMock[]>(diagnMock)
+
     return (
-            <DiagBody>
-                <DiagnImg>
-                    <DiagnTextDiagn>Диагностика</DiagnTextDiagn>
-                    {
-                        diagnMock.map((value) => {
-                            return (
-                                <DiagnBlock>
-                                    <DiagnBlockImg>
-                                        <DiagnText>{value.averageTime}</DiagnText>
-                                        <img src={value.image} />
-                                    </DiagnBlockImg>
-                                    <DiagnBlockText>
-                                        <DiagnTextProf>{value.name}</DiagnTextProf>
-                                        <DiagnTextBlack>{value.description}</DiagnTextBlack>
-                                        <Start />
-                                    </DiagnBlockText>
-                                </DiagnBlock>
-                            )
-                        })
-                    }
-                </DiagnImg>
-            </DiagBody>
+        <DiagBody>
+            <DiagnImg>
+                <DiagnTextDiagn>Диагностика</DiagnTextDiagn>
+                {
+                    blocks.map((value, index) =>
+                        <DiagnBlock key={index}>
+                            <DiagnBlockImg>
+                                <DiagnText>{value.averageTime}</DiagnText>
+                                <DiagnImage src={value.image} />
+                            </DiagnBlockImg>
+                            <DiagnBlockText>
+                                <DiagnTextProf>{value.name}</DiagnTextProf>
+                                <DiagnTextBlack>{value.description}</DiagnTextBlack>
+                                <DiagnLink to={"diagnostic" + (index + 1)}><Start /></DiagnLink>
+                            </DiagnBlockText>
+                        </DiagnBlock>
+                    )
+                }
+            </DiagnImg>
+        </DiagBody>
     );
 }
 

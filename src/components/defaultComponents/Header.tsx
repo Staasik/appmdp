@@ -1,7 +1,7 @@
 import { ReactComponent as Chat } from 'images/Chat_Conversation_Circle.svg';
 import { ReactComponent as Prof } from 'images/UserCircle.svg';
 import { useMediaQuery } from "react-responsive";
-import { DiagHeader, DiagnCP, DiagnIcon, DiagnMenu, DiagnText, DiagnTextBlack } from 'styles/pages/Diagnostics';
+import { DiagHeader, DiagnCP, DiagnIcon, DiagnMenu, DiagnText, DiagnTextBlack, DiagnLink } from 'styles/pages/Diagnostics';
 import { Menu } from "components/pages/Menu";
 import Icon from 'images/icon.png';
 
@@ -27,9 +27,9 @@ export const Header = () => {
                         <img src={Icon} style={{ "height": "30px", "width": "110px" }} />
                     </DiagnIcon>
                     <DiagnMenu>
-                        <DiagnText>Главная</DiagnText>
-                        <DiagnTextBlack>Диагностика</DiagnTextBlack>
-                        <DiagnText>Рекомендации</DiagnText>
+                        <DiagnLink to="/main"><DiagnText>Главная</DiagnText></DiagnLink>
+                        <DiagnLink to="/main/diagnostics"><DiagnTextBlack>Диагностика</DiagnTextBlack></DiagnLink>
+                        <DiagnLink to="/main/rec"><DiagnText>Рекомендации</DiagnText></DiagnLink>
                     </DiagnMenu>
                     <DiagnCP>
                         <Chat style={{ "height": "30px", "width": "30px" }} />

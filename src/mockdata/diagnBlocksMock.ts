@@ -1,25 +1,28 @@
-import Diag1 from 'images/diag1.png';
-import Diag2 from 'images/diag2.png';
-import Diag3 from 'images/diag3.png';
+export interface IdiagnMock {
+    image: string,
+    averageTime: string,
+    name: string,
+    description: string,
+}
 
-export const diagnMock = [
+export const diagnMock: IdiagnMock[] = [
     {
-        image: require(Diag1),
+        image: require('images/diag1.png'),
         averageTime: '5 минут',
         name: 'Профессиональное выгорание',
         description: 'Проблему профессионального выгорания начали исследовать ещё в 70-х годах XX века. Психологи и медики, пришли к открытию «особой формы „стресса общения“», которую американский психиатр Х.Дж. Фрейденберг предложил называть «burnout» («выгорание»).'
     },
     {
-        image: require(Diag2),
+        image: require('images/diag2.png'),
         averageTime: '6-8 минут',
         name: 'Копинг–поведение в стрессовых ситуациях',
         description: 'Жизнь человека в современном обществе предполагает его существование и развитие в условиях крайней неопределенности. Особую актуальность приобретают вопросы, связанные с функционированием и выработкой личностью эффективных стратегий преодоления стрессовых ситуаций.'
     },
     {
-        image: require(Diag3),
+        image: require('images/diag3.png'),
         averageTime: '4 минуты',
         name: 'Оценка признаков эмоционального выгорания',
         description: 'Синдром эмоционального выгорания представляет собой состояние эмоционального, умственного истощения, физического утомления, возникающее в результате хронического стресса на работе.'
-    },
+    }
 ]
 export default diagnMock
