@@ -1,7 +1,7 @@
 import { ReactComponent as Start } from 'images/start.svg';
+import diagnMock from 'mockdata/diagnBlocksMock';
 import { useMediaQuery } from "react-responsive";
-import { DiagBody, DiagFooter, DiagFooterItems, DiagHtml, DiagnBlock, DiagnBlockImg, DiagnBlockText, DiagnImg, DiagnText, DiagnTextBlack, DiagnTextDiagn, DiagnTextProf, FooterItems, FooterItemsKGU } from 'styles/pages/Diagnostics';
-import diagnMock from 'mockdata/diagnBlocksMock'
+import { DiagBody, DiagnBlock, DiagnBlockImg, DiagnBlockText, DiagnImg, DiagnText, DiagnTextBlack, DiagnTextDiagn, DiagnTextProf } from 'styles/pages/Diagnostics';
 
 const Diagnostics = () => {
     const isDesktop = useMediaQuery({

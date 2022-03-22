@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import image from "images/footer.png"; 
 
-export const DiagHtml = styled.div`
+export const HtmlContainer = styled.div`
     width: 100%;
     display:flex;
     flex-direction:column;
@@ -173,4 +173,4 @@ export const DiagnBlockImg = styled.div`
     }  
 `
 
-export default DiagHtml;
+export default DiagnBlockText;

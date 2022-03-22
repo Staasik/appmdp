@@ -5,23 +5,27 @@ import Diagnostic3 from './components/pages/Diagnostic3';
 import Footer from './components/defaultComponents/Footer'
 import Header from './components/defaultComponents/Header'
 import Login from './components/pages/Login/Login'
-
+import Htmlcontainer from './App'
 import {
   BrowserRouter,
   Routes,
   Route,
-  Link
+  Navigate
 } from "react-router-dom";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Routes>
-          <Route path="login"><Login/></Route>
-          <Route path="main">
-            
+      <Htmlcontainer>
+      <Login/> 
+        <Routes>
+          <Route path="/login" element={<Login />}/>
+          <Route path="/main">
+
           </Route>
-      </Routes>
+          <Route path="/" element={<Navigate to="/login" replace />} />
+        </Routes>
+      </Htmlcontainer>
     </BrowserRouter>
   );
 }
