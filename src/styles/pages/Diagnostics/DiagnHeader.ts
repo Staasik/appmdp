@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import image from "images/footer.png"; 
-import imagefoot from "images/diagn2.png"; 
-import image600 from "images/diagn2_600.png"; 
+import imagefoot from "images/diagn1.png"; 
+import image600 from "images/diagn1_600.png"; 
+import { Link } from 'react-router-dom'
 
 export const DiagHtml = styled.div`
     width: 100%;
@@ -20,14 +21,6 @@ export const DiagHeader = styled.div`
     @media (max-width:800px) {
         width: 90%;
   }
-`
-export const DiagBody = styled.div`
-    width: 100%;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
 `
 export const DiagFooter = styled.div`
     display:flex;    
@@ -55,6 +48,34 @@ export const FooterItems = styled.div`
     @media (max-width:600px) {  
         margin-top:30px;
   }
+`
+export const DiagnImage = styled.img`
+    width: 100%;
+    height: 100%;
+`
+export const DiagnImg = styled.div`
+    display:flex;
+    flex-direction:column;
+    width: 75%;
+    justify-content:center;
+    align-self:center;
+    align-items:center;
+    gap:50px;
+    @media (max-width:600px) {
+        width: 90%;
+        gap:20px;
+    }
+`
+export const DiagnTextDiagn = styled.div`
+    display:flex;       
+    color: black;  
+    padding-top:20px;
+    padding-bottom:40px;
+    font-size:26px;
+    align-self:flex-start;
+    @media (max-width:600px) {
+        padding-bottom:0px;
+    }
 `
 export const FooterItemsKGU = styled.div` 
     display:flex;
@@ -128,17 +149,6 @@ export const DiagnTextProf = styled.text`
     font-size:20px;
     }
 `
-
-export const DiagnBlock = styled.div`
-    display:flex;
-    flex-direction:row;
-    flex-wrap:wrap;
-    width: 90%;
-    row-gap:50px;
-    padding-top: 50px;
-    justify-content:center;
-
-`
 export const DiagnBlockText = styled.div`
     display:flex;
     flex-direction:column;
@@ -172,20 +182,18 @@ export const DiagnBlockImg = styled.div`
         height:500px;
     }
 `
-export const Button = styled.button`
+export const DiagnLink = styled(Link)`
+    text-decoration: none;
+`
+export const DiagnBlock = styled.div`
     display:flex;
-    width: 200px;    
-    height: 50px;
-    background: #FF9254;
-    border-radius: 8px; 
-    border:0;
-    margin-top: 50px;
-    color:white;
-    justify-content:center;
+    flex-direction:row;
+    width: 100%;
+    justify-content:flex-start;
+    align-self:center;
     align-items:center;
-    @media (max-width:430px) {
-        margin-top: 10px;
-        width: 90%;  
+    @media (max-width:600px) {
+        flex-direction:column;
     }
 `
 export default DiagHtml;

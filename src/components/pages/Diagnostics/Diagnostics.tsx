@@ -1,7 +1,8 @@
 import { ReactComponent as Start } from 'images/start.svg';
 import diagnMock, { IdiagnMock } from 'mockdata/diagnBlocksMock';
 import { useState } from 'react';
-import { DiagBody, DiagnBlock, DiagnBlockImg, DiagnBlockText, DiagnImage, DiagnImg, DiagnLink, DiagnText, DiagnTextBlack, DiagnTextDiagn, DiagnTextProf } from 'styles/pages/Diagnostics';
+import { DiagBody, DiagnBlockImg } from 'styles/pages/Diagnostics/Diagnostic';
+import { DiagnBlockText, DiagnBlock, DiagnImage, DiagnImg, DiagnLink, DiagnText, DiagnTextBlack, DiagnTextDiagn, DiagnTextProf } from 'styles/pages/Diagnostics/DiagnHeader'
 
 const Diagnostics = () => {
 
