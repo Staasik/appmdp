@@ -1,4 +1,6 @@
 import Login from './components/pages/Login/Login'
+import Registration from './components/pages/Login/Registration'
+import Modal from './components/pages/Login/Modal'
 import Htmlcontainer from 'styles/App'
 import Main from 'components/pages/Main/Main'
 import Diagnostics from 'components/pages/Diagnostics';
@@ -16,8 +18,9 @@ const App = () => {
     <Htmlcontainer>
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace/> } />
-        <Route path="login" element={<Login />} />
+        <Route path="login" element={<Registration />} />
         <Route path="main/*" element={<Main />} />
+        <Route path="modal/*" element={<Modal />} />
       </Routes>
     </Htmlcontainer>
   );

@@ -1,7 +1,7 @@
 import React from "react" ;
 import { useMediaQuery } from "react-responsive";
 
-import {LoginWrapper,LoginContainer,LoginInput,LoginRegistr,LoginRegistrText,LoginBlock,PasswordInput,LoginImage,LoginText,LoginButton} from 'styles/pages/Login/Login'
+import {LoginWrapper,LoginContainer,LoginInput,LoginRegistr,NameInput,LoginRegistrText,LoginBlock,PasswordInput,LoginImage,LoginText,LoginButton} from 'styles/pages/Login/Registration'
 import Footer from 'components/defaultComponents/Footer'
 import Header from 'components/defaultComponents/Header'
 
@@ -21,13 +21,14 @@ const Login = () => {
                 <LoginRegistrText>Вход</LoginRegistrText>  
                 <LoginRegistrText>Регистрация</LoginRegistrText>
               </LoginRegistr>
-              <LoginText>Мы скучали!</LoginText>
-              <LoginRegistr>Войдите, чтобы продолжить</LoginRegistr>
+              <LoginText>Будем рады!</LoginText>
+              <LoginRegistr>Зарегистрируйтесь, чтобы продолжить</LoginRegistr>
+              <NameInput placeholder='Имя'></NameInput>
               <LoginInput placeholder='Логин'></LoginInput>
               <PasswordInput 
               placeholder='Пароль'
               ></PasswordInput>
-              <LoginButton to="/modal">Войти</LoginButton>
+              <LoginButton to="/main">Войти</LoginButton>
             </LoginContainer>     
             <LoginImage></LoginImage>
             </LoginBlock>
@@ -38,8 +39,9 @@ const Login = () => {
                 <LoginRegistrText>Вход</LoginRegistrText>  
                 <LoginRegistrText>Регистрация</LoginRegistrText>
               </LoginRegistr>
-              <LoginText>Мы скучали!</LoginText>
-              <LoginRegistr>Войдите, чтобы продолжить</LoginRegistr>
+              <LoginText>Будем рады!</LoginText>
+              <LoginRegistr>Зарегистрируйтесь, чтобы продолжить</LoginRegistr>
+              <NameInput placeholder='Имя'></NameInput>
               <LoginInput placeholder='Логин'></LoginInput>
               <PasswordInput 
               placeholder='Пароль'

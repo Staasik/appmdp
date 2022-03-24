@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from 'react-router-dom'
-import image from "images/loginImg.png"; 
-import image600 from "images/loginImg_600.png"; 
+import image from "images/regImg.png"; 
+import image600 from "images/regImg_600.png"; 
 
 export const LoginWrapper = styled.div`
     display:flex;
@@ -30,8 +30,8 @@ export const LoginBlock = styled.div`
     @media (max-width:800px) {
         width: 90%;
         height: 80vh;
-        min-height:600px;
-        background-image:url(${image600});   
+        min-height:700px;
+        background-image:url(${image600});
         background-repeat: no-repeat; 
         background-size: cover;
         background-position: center; 
@@ -52,6 +52,7 @@ export const LoginContainer = styled.div`
     display:flex;
     flex:1;
     flex-direction:column;
+    padding-top:30px;
     justify-content: center;
     gap:15px;
     align-items: flex-start;
@@ -71,6 +72,24 @@ export const LoginImage = styled.div`
     border-radius: 0px 19px 19px 0px;
 `
 export const LoginInput = styled.input`
+    width: 50%;
+    height: 45px;
+    font-size: 14px;
+    margin-left:10%;
+    padding-left:2%;
+    background-color: rgba(150, 150, 150, 0.1);
+    border:0;
+    border-radius: 8px;
+    @media (max-width:1200px) {
+        width: 60%;
+    }
+    @media (max-width:800px) {
+        width: 78%;
+        margin-left:10%;
+        margin-right:10%;
+    }
+`
+export const NameInput = styled.input`
     width: 50%;
     height: 45px;
     font-size: 14px;
@@ -111,7 +130,7 @@ export const PasswordInput = styled.input`
 export const LoginText = styled.text`
     font-size: 36px;
     margin-left:10%;
-    margin-top:50px;    
+    margin-top:20px;    
     @media (max-width:800px) {
         margin-top:20px;  
         font-size: 30px;
