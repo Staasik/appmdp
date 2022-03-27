@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 export const ModalWrapper = styled.div`
     display:flex;
-    width: 100vw;
-    height:100vh;
-    justify-content: center;
-    align-items:center;
+    width: 100%;
+    position: absolute;
+    height:100%;
+    top: 0;
     background-color:rgba(98, 98, 98, 0.4);
 `
 export const ModalContainer = styled.div`
@@ -14,6 +14,7 @@ export const ModalContainer = styled.div`
     flex-direction:column;
     gap:15px;
     width: 25%;
+    position:fixed;
     height:40%;
     justify-content: center;
     align-items:center;
@@ -63,4 +64,12 @@ export const ModalButton = styled(Link)`
     @media (max-width:900px) {
         width: 80%;
     } 
+`
+export const ModalCont = styled.div`
+    height: 100vh;
+    width: 100%;
+    position: sticky;
+    justify-content: center;
+    align-items:center;
+    display: flex;
 `

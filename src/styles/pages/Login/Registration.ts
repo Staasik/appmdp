@@ -34,7 +34,6 @@ export const LoginBlock = styled.div`
         background-image:url(${image600});
         background-repeat: no-repeat; 
         background-size: cover;
-        background-position: center; 
         flex-direction:column;
     }
 `

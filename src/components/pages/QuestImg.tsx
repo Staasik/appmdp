@@ -32,7 +32,7 @@ export const QuestNum = styled.div<QuestNumProps>`
     border-radius: ${({ index }: QuestNumProps) => index % 2 != 0 ? '0' : '0'};
   }
 `
-const Quest = ({ text, options, index }: IProps) => {
+const QuestImg = ({ text, options, index }: IProps) => {
 
   return (
     <QuestNum index={index}>
@@ -44,4 +44,4 @@ const Quest = ({ text, options, index }: IProps) => {
 }
 
 
-export default Quest;
+export default QuestImg;

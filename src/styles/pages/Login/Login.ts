@@ -34,7 +34,6 @@ export const LoginBlock = styled.div`
         background-image:url(${image600});   
         background-repeat: no-repeat; 
         background-size: cover;
-        background-position: center; 
         flex-direction:column;
     }
 `
@@ -123,7 +122,7 @@ export const LoginRegistrText = styled.text`
         font-size: 14px; 
     }
 `
-export const LoginButton = styled(Link)`
+export const LoginButton = styled.button`
     width: 52%;
     margin-left:10%;
     height: 45px;
