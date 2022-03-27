@@ -171,15 +171,5 @@ export const DiagnBlockText = styled.div`
         row-gap:10px;
     }
 `
-export const DiagnBlockImg = styled.div`
-    display:flex;
-    flex-direction:column;
-    width: 40%;
-    height:100%;
-    row-gap:5px;
-    @media (max-width:600px) {
-        width: 100%;
-    }  
-`
 
 export default DiagnBlockText;

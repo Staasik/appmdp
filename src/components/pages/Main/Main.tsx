@@ -1,7 +1,7 @@
-import Diagnostic1 from 'components/pages/Diagnostic1';
-import Diagnostic2 from 'components/pages/Diagnostic2';
-import Diagnostic3 from 'components/pages/Diagnostic3';
-import Diagnostics from 'components/pages/Diagnostics';
+import Diagnostic1 from 'components/pages/Diagnostics/Diagnostic1';
+import Diagnostic2 from 'components/pages/Diagnostics/Diagnostic2';
+import Diagnostic3 from 'components/pages/Diagnostics/Diagnostic3';
+import Diagnostics from 'components/pages/Diagnostics/Diagnostics';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 export const Main = () => {

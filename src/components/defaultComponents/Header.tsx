@@ -1,7 +1,7 @@
 import { ReactComponent as Chat } from 'images/Chat_Conversation_Circle.svg';
 import { ReactComponent as Prof } from 'images/UserCircle.svg';
 import { useMediaQuery } from "react-responsive";
-import { DiagHeader, DiagnCP, DiagnIcon, DiagnMenu, DiagnText, DiagnTextBlack, DiagnLink } from 'styles/pages/Diagnostics';
+import { DiagHeader, DiagnCP, DiagnIcon, DiagnMenu, DiagnText, DiagnTextBlack, DiagnLink } from 'styles/pages/Diagnostics/DiagnHeader';
 import { Menu } from "components/pages/Menu";
 import Icon from 'images/icon.png';
 
