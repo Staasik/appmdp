@@ -12,7 +12,20 @@ export const targets : IOptions[] = [
     { value: 6, label: '6' },
   ];
 
-  
+  interface IText {
+    text:string,
+}
+export const blockdata : IText[] = [
+    {
+        text:'1 блок: Поведение',
+    },{
+        text:'2 блок: Мышление',
+    },{
+        text:'3 блок: Чувства',
+    },{
+        text:'4 блок: Здоровье',
+    },
+]
 interface ITest {
     text:string,
     options:IOptions[],

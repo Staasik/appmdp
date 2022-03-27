@@ -16,28 +16,22 @@ interface QuestNumProps {
 export const QuestNum = styled.div<QuestNumProps>`
   display:flex;
   flex-direction:column;
-  width: 44%;
-  gap:30px;    
+  width: 300px;
+  gap:20px;    
   justify-content:flex-start;
   align-items:flex-start;
-  padding:30px;
-  box-shadow: ${({ index }: QuestNumProps) => index % 5 == 0 ? '0px 20px 40px -15px rgba(0, 0, 0, 0.05)' : '0px 20px 40px -15px rgba(0, 0, 0, 0.05)'};
-  border-radius: ${({ index }: QuestNumProps) => index % 5 != 0 ? '0 19px 19px 0' : '19px 0 0 19px'};
+  padding:50px;
   @media (max-width:1024px) {
-    width: 300px;
+  padding:20px;
   }
-  @media (max-width:800px) {
-    width: 80%;
-    box-shadow: ${({ index }: QuestNumProps) => index % 2 == 0 ? '0px' : '0px'};
-    border-radius: ${({ index }: QuestNumProps) => index % 2 != 0 ? '0' : '0'};
-  }
+
 `
 const QuestImg = ({ text, options, index }: IProps) => {
 
   return (
     <QuestNum index={index}>
       <DiagnTextBlackBold>{text}</DiagnTextBlackBold>
-      <img src={options} style={{ "height": "50%", "width": "50%" }} />
+      <img src={options} style={{ "height": "100%", "width": "100%" }} />
     </QuestNum>
 
   );
