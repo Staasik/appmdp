@@ -159,6 +159,17 @@ export const DiagnBlockText = styled.div`
         row-gap:10px;
     }
 `
+export const DiagnAllBlockText = styled.div`
+    display:flex;
+    flex-direction:column;
+    margin-left:15%;
+    width: 50%;
+    row-gap:20px;
+    @media (max-width:700px) {
+        width: 90%;
+        margin-left:5%;
+    }
+`
 export const DiagnBlockImg = styled.div`
     display:flex;
     flex-direction:column;
