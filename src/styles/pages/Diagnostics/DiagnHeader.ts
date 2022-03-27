@@ -61,7 +61,7 @@ export const DiagnImg = styled.div`
     align-self:center;
     align-items:center;
     gap:50px;
-    @media (max-width:600px) {
+    @media (max-width:700px) {
         width: 90%;
         gap:20px;
     }
@@ -73,7 +73,7 @@ export const DiagnTextDiagn = styled.div`
     padding-bottom:40px;
     font-size:26px;
     align-self:flex-start;
-    @media (max-width:600px) {
+    @media (max-width:700px) {
         padding-bottom:0px;
     }
 `
@@ -117,7 +117,7 @@ export const DiagnTextBlack = styled(DiagnText)`
 export const DiagnTextBlackBold = styled(DiagnText)`
     color:black;
     font-weight : bold;
-    height:50px;
+    height:70px;
 `
 export const DiagnCP = styled.div`
     display:flex;
@@ -145,19 +145,18 @@ export const DiagnTextProf = styled.text`
     display:flex;       
     color: black;
     font-size:26px;
-    @media (max-width:600px) {
+    @media (max-width:700px) {
     font-size:20px;
     }
 `
 export const DiagnBlockText = styled.div`
     display:flex;
     flex-direction:column;
-    margin-left:15%;
-    width: 50%;
+    width: 60%;
     row-gap:20px;
-    @media (max-width:800px) {
-        width: 90%;
-        margin-left:5%;
+    @media (max-width:700px) {
+        width: 100%;
+        row-gap:10px;
     }
 `
 export const DiagnBlockImg = styled.div`
@@ -194,6 +193,17 @@ export const DiagnBlock = styled.div`
     align-items:center;
     @media (max-width:430px) {
         width: 90%;  
+    }
+`
+export const DiagnAllBlock = styled.div`
+    display:flex;
+    flex-direction:row;
+    width: 100%;
+    justify-content:flex-start;
+    align-self:center;
+    align-items:center;
+    @media (max-width:700px) {
+        flex-direction:column;
     }
 `
 export default DiagHtml;

@@ -1,7 +1,6 @@
 import React from "react";
 import { DiagnTextBlackBold } from 'styles/pages/Diagnostics/DiagnHeader';
-import { QuestNum } from 'styles/defaultComponents/Quest'
-
+import { QuestNumImg } from 'styles/defaultComponents/Quest'
 interface IProps {
   text: string,
   options: string,
@@ -11,10 +10,10 @@ interface IProps {
 const Quest = ({ text, options, index }: IProps) => {
 
   return (
-    <QuestNum index={index}>
+    <QuestNumImg index={index}>
       <DiagnTextBlackBold>{text}</DiagnTextBlackBold>
-      <img src={options} style={{ "height": "50%", "width": "50%" }} />
-    </QuestNum>
+      <img src={options} style={{ "height": "100%", "width": "100%" }} />
+    </QuestNumImg>
 
   );
 }

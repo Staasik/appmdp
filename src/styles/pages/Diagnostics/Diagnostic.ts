@@ -18,8 +18,7 @@ export const Button = styled.button`
     color:white;
     justify-content:center;
     align-items:center;
-    @media (max-width:430px) {
-        margin-top: 10px;
+    @media (max-width:600px) {
         width: 90%;  
     }
 `
@@ -27,10 +26,16 @@ export const DiagnBlock = styled.div`
     display:flex;
     flex-direction:row;
     flex-wrap:wrap;
-    width: 90%;
+    width: 70%;
     row-gap:50px;
     padding-top: 50px;
     justify-content:center;
+    @media (max-width:1400px) {
+        width: 90%;  
+    }
+`
+export const Diagn3Block = styled(DiagnBlock)`
+    width: 90%;
 `
 export const BlockTwo = styled.div`
     display:flex;
@@ -40,17 +45,21 @@ export const BlockTwo = styled.div`
     align-items:center;
     width: 100%;
     row-gap:10px;
-    box-sizing: border-box;box-shadow: 0px -20px 40px -15px rgba(0, 0, 0, 0.05), 0px 20px 40px -15px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    box-shadow: 0px -20px 40px -15px rgba(0, 0, 0, 0.05), 0px 20px 40px -15px rgba(0, 0, 0, 0.05);
     border-radius: 19px;
 `
 
 export const DiagnBlockImg = styled.div`
     display:flex;
     flex-direction:column;
-    width: 40%;
+    width: 50%;
     height:100%;
     row-gap:5px;
-    @media (max-width:600px) {
+    @media (max-width:1000px) {
+        width: 70%;
+    } 
+    @media (max-width:700px) {
         width: 100%;
     }  
 `
