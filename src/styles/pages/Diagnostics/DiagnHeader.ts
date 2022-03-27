@@ -114,6 +114,9 @@ export const DiagnText = styled.text`
 export const DiagnTextBlack = styled(DiagnText)`
     color:black;
 `
+export const DiagnTextWhite = styled(DiagnText)`
+    color:white;
+`
 export const DiagnTextBlackBold = styled(DiagnText)`
     color:black;
     font-weight : bold;
@@ -148,6 +151,9 @@ export const DiagnTextProf = styled.text`
     @media (max-width:700px) {
     font-size:20px;
     }
+`
+export const DiagnTextProfWhite = styled(DiagnTextProf)`
+    color:white;
 `
 export const DiagnBlockText = styled.div`
     display:flex;
