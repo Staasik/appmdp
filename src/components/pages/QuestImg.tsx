@@ -1,4 +1,4 @@
-import { DiagnTextBlackBold } from 'styles/pages/Diagnostic2'
+import { DiagnTextBlackBold } from 'styles/pages/Diagnostics/DiagnHeader'
 
 import React, { useState, useEffect } from "react";
 import Select from 'react-select';
