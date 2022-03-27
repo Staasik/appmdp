@@ -1,7 +1,8 @@
 import Quest from 'components/defaultComponents/Quest';
-import { data } from 'mockdata/mocktest3';
-import { Button, DiagBody, DiagnBlock } from 'styles/pages/Diagnostics/Diagnostic';
+import { Button, DiagBody, DiagnBlock, BlockFive, TextFive} from 'styles/pages/Diagnostics/Diagnostic';
 import DiagnHeader from './DiagnHeader';
+import { data, blockdata } from 'mockdata/mocktest3'
+import QuestFive from 'components/pages/QuestFive'
 
 const mockdata = {
     title: 'Оценка признаков эмоционального выгорания',
@@ -12,13 +13,22 @@ const mockdata = {
 const Diagnostic3 = () => {
     return (
         <DiagBody>
-            <DiagnHeader title={mockdata.title} regulations={mockdata.regulations} condition={mockdata.condition}/>
+            <DiagnHeader title={mockdata.title} regulations={mockdata.regulations} condition={mockdata.condition} />
             <DiagnBlock>
-                {data.map((value, index) => {
-                    return (
-                        <Quest text={value.text} options={value.options} index={index} />
-                    )
-                })}
+                {
+                    blockdata.map((value, idx) => {
+                        return (
+                            <BlockFive>
+                                <TextFive>{value.text}</TextFive>
+                                {data.slice(idx * 5, idx * 5 + 5).map((value, index) => {
+                                    return (
+                                        <QuestFive text={value.text} options={value.options} index={index} />
+                                    )
+                                })}
+                            </BlockFive>
+                        )
+                    })
+                }
             </DiagnBlock>
             <Button>Завершить</Button>
         </DiagBody>

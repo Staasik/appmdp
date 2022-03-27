@@ -1,4 +1,4 @@
-import {DiagnTextBlackBold} from 'styles/pages/Diagnostic3'
+import {DiagnTextBlackBold} from 'styles/pages/Diagnostics/DiagnHeader'
 
 import React, { useState } from "react";
 import Select from 'react-select';
@@ -33,7 +33,6 @@ export const QuestNum = styled.div<QuestNumProps>`
 const QuestFive = ({text,options,index}:IProps) => {
     const [target, setTarget] = useState(null) ;
   return (
-
     <QuestNum index={index}>
         <DiagnTextBlackBold>{text}</DiagnTextBlackBold>
             <Select
