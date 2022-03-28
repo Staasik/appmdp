@@ -7,7 +7,6 @@ import {
 import Htmlcontainer from 'styles/App';
 import Login from 'components/pages/Login/Login';
 import Registration from 'components/pages/Login/Registration';
-import HomePage from 'components/pages/MenuPages/HomePage';
 //<Route path="/main/diagnostics">
 //<Diagnostics />
 // </Route>

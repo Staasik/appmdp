@@ -111,6 +111,17 @@ export const DiagnText = styled.text`
     color: #C4C4C4;
     font-size:14px;
 `
+interface HeaderTextProps{
+    $active: boolean
+}
+export const HeaderText = styled.text<HeaderTextProps>`
+    color: ${({$active} : HeaderTextProps) => $active ? 'black' : '#C4C4C4'};
+    font-size:14px;
+    :hover{
+        color: #D9D9D9;
+    }
+`
+
 export const DiagnTextBlack = styled(DiagnText)`
     color:black;
 `
