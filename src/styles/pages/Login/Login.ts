@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Link } from 'react-router-dom'
 import image from "images/loginImg.png"; 
 import image600 from "images/loginImg_600.png"; 
+import { Link } from 'react-router-dom'
 
 export const LoginWrapper = styled.div`
     display:flex;
@@ -37,6 +37,10 @@ export const LoginBlock = styled.div`
         flex-direction:column;
     }
 `
+export const LinkButton = styled(Link)`
+    text-decoration: none;
+    color: inherit;
+`
 export const LoginRegistr = styled.div`
     display:flex;
     flex-direction:row;
@@ -57,7 +61,6 @@ export const LoginContainer = styled.div`
     @media (max-width:800px) {
         justify-content: flex-end;
     }
-
 `
 export const LoginImage = styled.div`
     display:flex;
@@ -123,6 +126,7 @@ export const LoginRegistrText = styled.text`
     }
 `
 export const LoginButton = styled.button`
+    cursor: pointer;
     width: 52%;
     margin-left:10%;
     height: 45px;

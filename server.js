@@ -22,7 +22,12 @@ app.post('/createNewUser', (req, res) => {
             })
     })
 })
-
+app.post('/acceptLogin', (req, res) => {
+    console.log(req.body)
+    dbOperation.acceptLogin().then(r => {
+        res.send(r)
+    })
+})
 app.get('/getUsersData', (req, res) => {
     dbOperation.getUsersData().then(r => {
         res.send(r)

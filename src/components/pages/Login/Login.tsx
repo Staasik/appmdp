@@ -1,29 +1,46 @@
 import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import { LoginBlock, LoginButton, LoginContainer, LoginImage, LoginInput, LoginRegistr, LoginRegistrText, LoginText, LoginWrapper, PasswordInput } from 'styles/pages/Login/Login';
-import LoginModal from 'components/pages/Login/LoginModal'
+import { LoginBlock, LinkButton, LoginButton, LoginContainer, LoginImage, LoginInput, LoginRegistr, LoginRegistrText, LoginText, LoginWrapper, PasswordInput } from 'styles/pages/Login/Login';
+import Cookies from 'codebase/Cookies'
 
 const Login = () => {
   const isDesktop = useMediaQuery({
     query: "(min-width: 800px)"
   });
 
-  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
   const [login, setLogin] = useState<string>('')
   const [password, setPassword] = useState<string>('')
 
   const onLogin = () =>{
-    setModalIsOpen(true)
+    if (login && password) {
+      fetch("/acceptLogin", {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({ login, password })
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          if (data){ 
+            Cookies.setCookie('login', login)
+            Cookies.setCookie('password', password)
+            window.location.href = '/main'
+          }
+        });
+    }
   }
 
   return (
     <LoginWrapper>
-      <LoginModal isOpen={modalIsOpen}></LoginModal>
       <LoginBlock>
         <LoginContainer>
           <LoginRegistr>
-            <LoginRegistrText>Вход</LoginRegistrText>
-            <LoginRegistrText>Регистрация</LoginRegistrText>
+            <LinkButton to='../login'><LoginRegistrText>Вход</LoginRegistrText></LinkButton>
+            <LinkButton to='../reg'><LoginRegistrText>Регистрация</LoginRegistrText></LinkButton>
           </LoginRegistr>
           <LoginText>Мы скучали!</LoginText>
           <LoginRegistr>Войдите, чтобы продолжить</LoginRegistr>

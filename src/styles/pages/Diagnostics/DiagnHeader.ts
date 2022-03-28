@@ -187,13 +187,17 @@ export const DiagnAllBlockText = styled.div`
         margin-left:5%;
     }
 `
-export const DiagnBlockImg = styled.div`
+
+interface DiagnBlockImgProps{
+    images: string[]
+}
+export const DiagnBlockImg = styled.div<DiagnBlockImgProps>`
     display:flex;
     flex-direction:column;
     justify-content:center;
     width: 100%;    
     height:250px;
-    background-image:url(${imagefoot});
+    background-image:url(${({images}: DiagnBlockImgProps) => images[0]});
     background-repeat: no-repeat; 
     background-size: cover;
     background-position: center; 
@@ -203,7 +207,7 @@ export const DiagnBlockImg = styled.div`
     }
     @media (max-width:430px) {
         background-color:#EEF5FF;
-        background-image:url(${image600});
+        background-image:url(${({images}: DiagnBlockImgProps) => images[1]});
         justify-content:flex-start;
         padding-top:5%;
         height:500px;

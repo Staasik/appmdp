@@ -47,6 +47,11 @@ export const LoginRegistr = styled.div`
         font-size: 14px; 
     }
 `
+export const LinkButton = styled(Link)`
+    text-decoration: none;
+    color: inherit;
+`
+
 export const LoginContainer = styled.div`
     display:flex;
     flex:1;
@@ -141,7 +146,8 @@ export const LoginRegistrText = styled.text`
         font-size: 14px; 
     }
 `
-export const LoginButton = styled(Link)`
+export const LoginButton = styled.button`
+    cursor: pointer;
     width: 52%;
     margin-left:10%;
     height: 45px;

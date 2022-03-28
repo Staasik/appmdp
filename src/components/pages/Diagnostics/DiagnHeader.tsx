@@ -4,13 +4,14 @@ interface Props {
     title: string,
     regulations: string,
     condition: string,
+    images: string[]
 }
 
 
 
-export const DiagnHeader = ({ title, regulations, condition }: Props) => {
+export const DiagnHeader = ({ title, regulations, condition, images }: Props) => {
     return (
-        <DiagnBlockImg>
+        <DiagnBlockImg images={images}>
             <DiagnAllBlockText>
                 <DiagnTextProf>{title}</DiagnTextProf>
                 <DiagnTextBlack>{regulations}</DiagnTextBlack>

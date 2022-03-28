@@ -8,8 +8,13 @@ import { ReactComponent as HomeUsrUrl } from 'images/HomePage/HomeUsrUrl.svg';
 import { ReactComponent as HomeChatUrl } from 'images/HomePage/HomeChatUrl.svg';
 import { ReactComponent as HomeDiagUrl } from 'images/HomePage/HomeDiagUrl.svg';
 import { ReactComponent as Line } from 'images/HomePage/Line.svg';
+import { IUserData } from 'App'
 
-const Diagnostics = () => {
+interface Props{
+    userData: IUserData | null
+}
+
+const Diagnostics = ({ userData }: Props) => {
     const isDesktop = useMediaQuery({
         query: "(min-width: 860px)"
     });

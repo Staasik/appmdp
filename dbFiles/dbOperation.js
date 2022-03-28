@@ -1,5 +1,6 @@
 const config = require('./dbConfig'),
-    sql = require('mssql')
+    sql = require('mssql'),
+    _ = require('lodash')
 
 const getUsersData = async() => {
     try {
@@ -22,7 +23,21 @@ const getItems = async() => {
         console.log(e)
     }
 }
+
+const acceptLogin = async() => {
+    try {
+        let pool = await sql.connect(config);
+        let emploeeys = pool.request().query("select Логин as login, Пароль as password from Заказчики")
+        console.log(emploeeys)
+
+        return emploeeys
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 module.exports = {
     getUsersData,
-    getItems
+    getItems,
+    acceptLogin
 }

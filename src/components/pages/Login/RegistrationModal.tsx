@@ -1,14 +1,8 @@
-import React from "react";
 import { ModalWrapper, ModalContainer, ModalText, ModalMiniText, ModalButton, ModalCont } from 'styles/pages/Login/LoginModal'
 import Icon from 'images/ok.png';
 
-interface Props {
-  isOpen: boolean
-}
-
-const LoginModal = ({ isOpen }: Props) => {
-  
-  if(isOpen) return (
+const RegistrationModal = () => {
+  return (
     <ModalWrapper>
       <ModalCont>
         <ModalContainer>
@@ -20,7 +14,6 @@ const LoginModal = ({ isOpen }: Props) => {
       </ModalCont>
     </ModalWrapper>
   )
-  else return null
 }
 
-export default LoginModal;
+export default RegistrationModal;
