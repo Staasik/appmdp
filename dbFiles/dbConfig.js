@@ -1,8 +1,8 @@
 const config = {
-    user: 'KERIL',
+    user: 'defaultUser',
     password: '12345',
-    server: "LAPTOP-8J2AIRNH",
-    database: 'Курсовая',
+    server: "DESKTOP-T9387QK",
+    database: 'appmdp',
     options: {
         trustServerCertificate: true,
         trustedConnection: false,

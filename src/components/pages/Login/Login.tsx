@@ -25,7 +25,7 @@ const Login = () => {
           return response.json();
         })
         .then((data) => {
-          if (data){ 
+          if (!data.error){ 
             Cookies.setCookie('login', login)
             Cookies.setCookie('password', password)
             window.location.href = '/main'
@@ -45,7 +45,7 @@ const Login = () => {
           <LoginText>Мы скучали!</LoginText>
           <LoginRegistr>Войдите, чтобы продолжить</LoginRegistr>
           <LoginInput placeholder='Логин' value={login} onChange={(e)=>setLogin(e.target.value)}/>
-          <PasswordInput placeholder='Пароль' value={password} onChange={(e)=>setPassword(e.target.value)}/>
+          <PasswordInput placeholder='Пароль' value={password} type={"password"} onChange={(e)=>setPassword(e.target.value)}/>
           <LoginButton onClick={()=>onLogin()}>Войти</LoginButton>
         </LoginContainer>
         {isDesktop && <LoginImage></LoginImage>}

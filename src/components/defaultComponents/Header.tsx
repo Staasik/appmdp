@@ -1,16 +1,28 @@
 import { ReactComponent as Chat } from 'images/Chat_Conversation_Circle.svg';
 import { ReactComponent as Prof } from 'images/UserCircle.svg';
 import { useMediaQuery } from "react-responsive";
-import { DiagHeader, DiagnCP, DiagnIcon, DiagnMenu, HeaderText, DiagnLink } from 'styles/pages/Diagnostics/DiagnHeader';
+import { DiagHeader, DiagnCP, DiagnIcon, ProfileName, DiagnMenu, HeaderText, DiagnLink } from 'styles/pages/Diagnostics/DiagnHeader';
 import { Menu } from "components/pages/Menu";
 import Icon from 'images/icon.png';
 import { useLocation } from 'react-router-dom'
-export const Header = () => {
+import { IUserData } from 'App'
+import Cookies from 'codebase/Cookies';
+interface Props{
+    userData: IUserData | null
+}
+
+export const Header = ({ userData } : Props) => {
     const isDesktop = useMediaQuery({
         query: "(max-width: 600px)"
     });
     let location = useLocation();
 
+    const Logout = () =>{
+        Cookies.deleteCookie("login")
+        Cookies.deleteCookie("password")
+        document.location.reload()
+    }
+    
     return (
         <>
             {isDesktop ?
@@ -34,7 +46,8 @@ export const Header = () => {
                     </DiagnMenu>
                     <DiagnCP>
                         <Chat style={{ "height": "30px", "width": "30px" }} />
-                        <Prof style={{ "height": "30px", "width": "30px" }} />
+                        <Prof style={{ "height": "30px", "width": "30px", "cursor": "pointer" }} onClick={()=>{Logout()}}/>
+                        { userData && <ProfileName>{userData.name}</ProfileName>}
                     </DiagnCP>
                 </DiagHeader>
             }

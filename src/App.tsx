@@ -12,32 +12,32 @@ import Cookies from 'codebase/Cookies'
 // </Route>
 
 export interface IUserData {
-  userid: number,
-  username: string,
+  name: string,
+  login: string,
   password: string
 }
 
 const App = () => {
-  const data = {userid:123, username: "123", password: "123"}
+  const data = {name:123, login: "123", password: "123"}
   const [userData, setUserData] = useState<IUserData | null>(null)
 
   useEffect(() => {
-    let username = Cookies.getCookie('username')
+    let login = Cookies.getCookie('login')
     let password = Cookies.getCookie('password')
-    if (username && password) {
+    if (login && password) {
       fetch("/acceptLogin", {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ login, password })
       })
         .then((response) => {
           return response.json();
         })
         .then((data) => {
-          data && setUserData(data)
+          !data.error && setUserData({name: data.name, login: data.login, password: data.password})
         });
     }
   }, [])
@@ -45,7 +45,7 @@ const App = () => {
 
   return (
     <Htmlcontainer>
-      <Header />
+      <Header userData={userData}/>
       <Routes>
         {
           !userData ? <>

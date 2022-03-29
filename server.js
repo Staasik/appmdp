@@ -24,7 +24,7 @@ app.post('/createNewUser', (req, res) => {
 })
 app.post('/acceptLogin', (req, res) => {
     console.log(req.body)
-    dbOperation.acceptLogin().then(r => {
+    dbOperation.acceptLogin(req.body.login, req.body.password).then(r => {
         res.send(r)
     })
 })

@@ -26,8 +26,6 @@ const Registration = () => {
       })
       .then((data) => {
         if (data){ 
-          Cookies.setCookie('login', login)
-          Cookies.setCookie('password', password)
           window.location.href = '/main'
         }
       });

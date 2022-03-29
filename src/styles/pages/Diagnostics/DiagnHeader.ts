@@ -97,7 +97,6 @@ export const DiagFooterItems = styled.div`
     width: 100%;
     flex-direction:row;
     height:100%;
-    
 `
 export const DiagnMenu = styled.div`
     display:flex;
@@ -106,6 +105,14 @@ export const DiagnMenu = styled.div`
     justify-content:center;
     align-items:center;
     gap:20px;
+`
+export const ProfileName = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: #969696;
+    height: 100%;
 `
 export const DiagnText = styled.text`
     color: #C4C4C4;
