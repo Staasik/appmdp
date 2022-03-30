@@ -12,15 +12,6 @@ app.use(bodyParser.json());
 
 app.post('/createNewUser', (req, res) => {
     console.log(req.body)
-    dbOperation.getMaxUserId().then(r => {
-        let UserId = r.recordsets[0][0].max + 1
-        dbOperation.insertCustomers(UserId, req.body.f, req.body.i, req.body.o, req.body.phone, req.body.username, req.body.password, req.body.birthday, req.body.email, req.body.date).then(r => {
-                res.send(r)
-            })
-            .catch(er => {
-                res.send(er)
-            })
-    })
 })
 app.post('/acceptLogin', (req, res) => {
     console.log(req.body)
@@ -30,6 +21,12 @@ app.post('/acceptLogin', (req, res) => {
 })
 app.get('/getUsersData', (req, res) => {
     dbOperation.getUsersData().then(r => {
+        res.send(r)
+    })
+})
+app.post('/registrationNewUser', (req, res) => {
+    console.log(req.body)
+    dbOperation.registrationNewUser(req.body.name, req.body.login, req.body.password).then(r => {
         res.send(r)
     })
 })

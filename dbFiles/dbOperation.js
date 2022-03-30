@@ -38,8 +38,24 @@ const acceptLogin = async(login, password) => {
     }
 }
 
+const registrationNewUser = async(name, login, password) => {
+    try {
+        let pool = await sql.connect(config);
+        let users = pool.request().query("select login_user as login from Users")
+        if (!_.find((await users).recordset, { login: login })) {
+            pool.request().query(`insert into Users values (${(await users).recordset.length + 1}, '${name}', '${login}', '${password}')`)
+            return { error: false, message: "Успешно зарегистрирован" }
+        } else {
+            return { error: true, message: "Пользователь с таким логином уже существует" }
+        }
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 module.exports = {
     getUsersData,
+    registrationNewUser,
     getItems,
     acceptLogin
 }

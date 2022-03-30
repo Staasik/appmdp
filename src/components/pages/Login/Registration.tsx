@@ -13,23 +13,29 @@ const Registration = () => {
   const [inputType, setInputType] = useState("password")
 
   const onReg = () => {
-    fetch("/registration", {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({ name, login, password })
-    })
-      .then((response) => {
-        return response.json();
+    if (name && login && password) {
+      fetch("/registrationNewUser", {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({ name, login, password })
       })
-      .then((data) => {
-        if (data){ 
-          window.location.href = '/main'
-        }
-      });
-    setModalIsOpen(true)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          if (!data.error) {
+            Cookies.setCookie('login', login)
+            Cookies.setCookie('password', password)
+            setModalIsOpen(true)
+          }
+          else{
+            alert(data.message)
+          }
+        });
+    }
   }
 
   const isDesktop = useMediaQuery({
@@ -37,7 +43,7 @@ const Registration = () => {
   });
   return (
     <LoginWrapper>
-      { modalIsOpen && <RegistrationModal></RegistrationModal>}
+      {modalIsOpen && <RegistrationModal></RegistrationModal>}
       <LoginBlock>
         <LoginContainer>
           <LoginRegistr>
@@ -46,10 +52,10 @@ const Registration = () => {
           </LoginRegistr>
           <LoginText>Будем рады!</LoginText>
           <LoginRegistr>Зарегистрируйтесь, чтобы продолжить</LoginRegistr>
-          <NameInput placeholder='Имя' onChange={(e)=> setName(e.target.value)}/>
-          <LoginInput placeholder='Логин' onChange={(e)=> setLogin(e.target.value)}/>
-          <PasswordInput placeholder='Пароль' type={inputType} onChange={(e)=> setPassword(e.target.value)}/>
-          <LoginButton onClick={()=>onReg()}>Войти</LoginButton>
+          <NameInput placeholder='Имя' onChange={(e) => setName(e.target.value)} />
+          <LoginInput placeholder='Логин' onChange={(e) => setLogin(e.target.value)} />
+          <PasswordInput placeholder='Пароль' type={inputType} onChange={(e) => setPassword(e.target.value)} />
+          <LoginButton onClick={() => onReg()}>Зарегистрироваться</LoginButton>
         </LoginContainer>
         {isDesktop && <LoginImage />}
       </LoginBlock>

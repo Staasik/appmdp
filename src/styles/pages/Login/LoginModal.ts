@@ -49,7 +49,7 @@ export const ModalMiniText = styled.text`
     width: 50%; 
     text-align:center; 
 `
-export const ModalButton = styled(Link)`
+export const ModalButton = styled.a`
     width: 60%;
     height: 45px;
     font-size: 12px; 
