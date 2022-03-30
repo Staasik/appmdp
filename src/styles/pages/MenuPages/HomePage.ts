@@ -20,7 +20,6 @@ export const HomeBlock = styled.div`
     display: flex;
     width:70%; 
     gap:100px;
-    padding-left:10px;
     flex-direction: row;
     justify-content:center;
     align-items:center;
@@ -149,8 +148,10 @@ export const TextBlock = styled.div`
     align-items:flex-start;
     @media (max-width:1280px) {
         width:90%;
-        align-items:center;
         height: 100px;
+    }
+    @media (max-width:860px) {
+        align-items:center;
     }
 `
 export const TextBlockWhite = styled(TextBlock)`
@@ -175,7 +176,6 @@ export const Button = styled.button`
     align-items:center;
     @media (max-width:600px) {
         width: 100%;  
-        margin-left:-5px; 
         margin-top:20px; 
     }
 `
@@ -198,7 +198,6 @@ export const ImgBlockDesktop = styled.div`
     display: flex;
     width:400px; 
     height:250px; 
-    margin-left:-5px;
     justify-content:center;
     align-items:center;
     background-image:url(${imagedesk});
@@ -216,5 +215,14 @@ export const DiagnTextBlackBold = styled.text`
     font-size:14px;
     @media (max-width:860px) {  
         height:60px;    
+    }
+`
+export const DiagnTextProfCenter = styled.text`
+    display:flex;       
+    color: black;
+    font-size:26px;
+    @media (max-width:800px) {
+    font-size:20px;
+    text-align:center;
     }
 `

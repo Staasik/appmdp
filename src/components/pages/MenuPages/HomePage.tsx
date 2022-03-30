@@ -1,6 +1,6 @@
 import { useMediaQuery } from "react-responsive";
 
-import { HomeTextBlock,ButtonBlock,ImgBlock,TextBlock,Button,HomeBlock,ButtonWhite,DiagnTextBlackBold,TextBlockWhite,MenuBlock,MenuItem,MenuLine,TextUrl,ImgBlockDesktop,BlockDesk,BlockDeskText,FootBlock} from 'styles/pages/MenuPages/HomePage';
+import { HomeTextBlock,ButtonBlock,ImgBlock,DiagnTextProfCenter,TextBlock,Button,HomeBlock,ButtonWhite,DiagnTextBlackBold,TextBlockWhite,MenuBlock,MenuItem,MenuLine,TextUrl,ImgBlockDesktop,BlockDesk,BlockDeskText,FootBlock} from 'styles/pages/MenuPages/HomePage';
 import { DiagHtml, DiagnTextBlack,DiagnTextWhite, DiagnTextProf,DiagnTextProfWhite } from 'styles/pages/Diagnostics/DiagnHeader';
 import { ReactComponent as HomeRegUrl } from 'images/HomePage/HomeRegUrl.svg';
 import { ReactComponent as HomeRecomendUrl } from 'images/HomePage/HomeRecomendUrl.svg';
@@ -23,7 +23,7 @@ const Diagnostics = ({ userData }: Props) => {
             {isDesktop ? 
             <HomeTextBlock>          
                 <TextBlock>
-                    <DiagnTextProf>Сервис для педагогов по саморегуляции</DiagnTextProf>
+                    <DiagnTextProfCenter>Сервис для педагогов по саморегуляции</DiagnTextProfCenter>
                     <DiagnTextBlack>Проходите диагностики, узнавайте новые книги и слушайте успокаивающую музыку на нашем сайте.</DiagnTextBlack>
                     <ButtonBlock>
                         <Button>Пройти диагностику</Button>
@@ -35,7 +35,7 @@ const Diagnostics = ({ userData }: Props) => {
             :
             <HomeTextBlock>          
                 <TextBlock>
-                    <DiagnTextProf>Сервис для педагогов по саморегуляции</DiagnTextProf>
+                    <DiagnTextProfCenter>Сервис для педагогов по саморегуляции</DiagnTextProfCenter>
                 </TextBlock>  
                 <ImgBlock/> 
                 <ButtonBlock>

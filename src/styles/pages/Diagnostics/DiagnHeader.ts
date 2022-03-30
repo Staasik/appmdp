@@ -10,6 +10,7 @@ export const DiagHtml = styled.div`
     flex-direction:column;
     justify-content:center;
     align-items:center;
+    align-self:center;
 `
 export const DiagHeader = styled.div`
     display:flex;
@@ -166,7 +167,7 @@ export const DiagnTextProf = styled.text`
     display:flex;       
     color: black;
     font-size:26px;
-    @media (max-width:700px) {
+    @media (max-width:800px) {
     font-size:20px;
     }
 `

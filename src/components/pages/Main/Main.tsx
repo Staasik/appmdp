@@ -4,6 +4,9 @@ import Diagnostic3 from 'components/pages/Diagnostics/Diagnostic3';
 import Diagnostics from 'components/pages/Diagnostics/Diagnostics';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from 'components/pages/MenuPages/HomePage';
+import Diagn1Results from 'components/pages/Results/Diagn1Results'
+import Diagn2Results from 'components/pages/Results/Diagn2Results'
+import Diagn3Results from 'components/pages/Results/Diagn3Results'
 import { IUserData } from 'App'
 
 interface Props{
