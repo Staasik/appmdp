@@ -9,10 +9,13 @@ interface IProps {
   text: string,
   options: IOptions[],
   index: number,
+  onChange({...args}: any) : any,
 }
 
-const Quest = ({ text, options, index }: IProps) => {
+const Quest = ({ text, options, index, onChange }: IProps) => {
   const [target, setTarget] = useState(null);
+
+
   return (
 
     <QuestNum index={index}>
@@ -20,6 +23,7 @@ const Quest = ({ text, options, index }: IProps) => {
       <Select
         options={options}
         defaultValue={target}
+        onChange={(value) =>{onChange(value)}}
         placeholder='Вариант ответа'
       />
     </QuestNum>

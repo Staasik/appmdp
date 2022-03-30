@@ -9,6 +9,7 @@ export const DiagBody = styled.div`
 `
 export const Button = styled.button`
     display:flex;
+    cursor: pointer;
     width: 200px;    
     height: 50px;
     background: #FF9254;

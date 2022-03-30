@@ -101,13 +101,16 @@ export const ButtonBlock = styled.div`
         align-items:center;
     }
 `
-export const ImgBlock = styled.div`
+interface ImgBlockProps{
+    images: string[]
+}
+export const ImgBlock = styled.div<ImgBlockProps>`
     display: flex;
     width:40%; 
     height:300px;
     justify-content:center;
     align-items:center;
-    background-image:url(${image});
+    background-image:url(${({images}: ImgBlockProps) => images[0]});
     background-repeat: no-repeat; 
     background-size:cover;
     background-position: center; 
@@ -117,7 +120,7 @@ export const ImgBlock = styled.div`
     @media (max-width:800px) {
         width:100%;
         height:350px;
-    background-image:url(${imagedesk});
+        background-image:url(${({images}: ImgBlockProps) => images[1]});
     }
 `
 export const TextBlock = styled.div`
