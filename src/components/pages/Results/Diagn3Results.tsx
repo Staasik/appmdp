@@ -5,12 +5,14 @@ import { ReactComponent as Line } from 'images/Results/Line.svg';
 import { useMediaQuery } from "react-responsive";
 import { DiagHtml } from 'styles/pages/Diagnostics/DiagnHeader';
 import { Button, DiagnTextBlack, DiagnTextBlackBold, HomeTextBlock, ResultItem, ResultLine, ResultsBlock } from 'styles/pages/Results/Diagn3Results';
+import { IDiagnResult } from 'components/pages/Results/Diagn1Results'
 
 interface Props {
-    userData: IUserData | null
+    userData: IUserData | null,
+    result: IDiagnResult[]
 }
 
-const Diagn3Results = ({ userData }: Props) => {
+const Diagn3Results = ({ userData, result}: Props) => {
 
     const HeaderProps = {
         userData: userData,

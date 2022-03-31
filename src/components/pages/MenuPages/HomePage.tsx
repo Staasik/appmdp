@@ -1,14 +1,13 @@
-import { useMediaQuery } from "react-responsive";
-
-import { HomeTextBlock,ButtonBlock,ImgBlock,DiagnTextProfCenter,TextBlock,Button,HomeBlock,ButtonWhite,DiagnTextBlackBold,TextBlockWhite,MenuBlock,MenuItem,MenuLine,TextUrl,ImgBlockDesktop,BlockDesk,BlockDeskText,FootBlock} from 'styles/pages/MenuPages/HomePage';
-import { DiagHtml, DiagnTextBlack,DiagnTextWhite, DiagnTextProf,DiagnTextProfWhite } from 'styles/pages/Diagnostics/DiagnHeader';
-import { ReactComponent as HomeRegUrl } from 'images/HomePage/HomeRegUrl.svg';
-import { ReactComponent as HomeRecomendUrl } from 'images/HomePage/HomeRecomendUrl.svg';
-import { ReactComponent as HomeUsrUrl } from 'images/HomePage/HomeUsrUrl.svg';
+import { IUserData } from 'App';
 import { ReactComponent as HomeChatUrl } from 'images/HomePage/HomeChatUrl.svg';
 import { ReactComponent as HomeDiagUrl } from 'images/HomePage/HomeDiagUrl.svg';
+import { ReactComponent as HomeRecomendUrl } from 'images/HomePage/HomeRecomendUrl.svg';
+import { ReactComponent as HomeRegUrl } from 'images/HomePage/HomeRegUrl.svg';
+import { ReactComponent as HomeUsrUrl } from 'images/HomePage/HomeUsrUrl.svg';
 import { ReactComponent as Line } from 'images/HomePage/Line.svg';
-import { IUserData } from 'App'
+import { useMediaQuery } from "react-responsive";
+import { DiagHtml, DiagnTextBlack, DiagnTextProf, DiagnTextProfWhite, DiagnTextWhite } from 'styles/pages/Diagnostics/DiagnHeader';
+import { BlockDesk, BlockDeskText, Button, ButtonBlock, ButtonWhite, DiagnTextBlackBold, DiagnTextProfCenter, FootBlock, HomeBlock, HomeTextBlock, ImgBlock, ImgBlockDesktop, MenuBlock, MenuItem, MenuLine, TextBlock, TextBlockWhite, TextUrl } from 'styles/pages/MenuPages/HomePage';
 
 interface Props{
     userData: IUserData | null

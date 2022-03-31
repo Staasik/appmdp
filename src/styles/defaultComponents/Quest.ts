@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 interface QuestNumProps {
-    index: number,
+  index: number,
 }
 
 export const QuestNum = styled.div<QuestNumProps>`
@@ -23,6 +23,14 @@ export const QuestNum = styled.div<QuestNumProps>`
       border-radius: ${({ index }: QuestNumProps) => index % 2 != 0 ? '0' : '0'};
     }
 `
+interface ImageProps {
+  $selected: boolean
+}
+
+export const Image = styled.img<ImageProps>`
+  border: ${({ $selected }: ImageProps) => $selected ? '2px solid blue' : 'none'};
+  border-radius: 10px;
+`
 export const QuestNumImg = styled.div<QuestNumProps>`
     display:flex;
     flex-direction:column;
@@ -38,7 +46,7 @@ export const QuestNumImg = styled.div<QuestNumProps>`
     }
 `
 interface QuestNumProps {
-  index:number,
+  index: number,
 }
 
 export const QuestNumFive = styled.div<QuestNumProps>`

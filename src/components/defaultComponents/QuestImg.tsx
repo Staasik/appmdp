@@ -1,18 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import { DiagnTextBlackBold } from 'styles/pages/Diagnostics/DiagnHeader';
-import { QuestNumImg } from 'styles/defaultComponents/Quest'
+import { QuestNumImg, Image } from 'styles/defaultComponents/Quest'
 interface IProps {
   text: string,
-  options: string,
+  image: string,
   index: number,
+  onChange({ ...args }: any): any,
+  selected: boolean
 }
 
-const Quest = ({ text, options, index }: IProps) => {
+const Quest = ({ text, image, index, onChange, selected }: IProps) => {
 
   return (
     <QuestNumImg index={index}>
       <DiagnTextBlackBold>{text}</DiagnTextBlackBold>
-      <img src={options} style={{ "height": "100%", "width": "100%" }} />
+      <Image src={image} style={{ "height": "100%", "width": "100%"}} onClick={()=>{onChange(index)}} $selected={selected}/>
     </QuestNumImg>
 
   );

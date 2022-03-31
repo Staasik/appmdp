@@ -4,13 +4,14 @@ import image from "images/Results/diag2result.png";
 import imagedesk from "images/Results/diag2result_600.png";
 import { DiagHtml } from 'styles/pages/Diagnostics/DiagnHeader';
 import { Button, DiagnTextBlack, DiagnTextBlackBold, DiagnTextProf, ResultItem, ResultLine, ResultsBlock } from 'styles/pages/Results/Diagn2Results';
-
+import { IDiagnResult } from 'components/pages/Results/Diagn1Results'
 
 interface Props {
-    userData: IUserData | null
+    userData: IUserData | null,
+    result: IDiagnResult[]
 }
 
-const Diagn2Results = ({ userData }: Props) => {
+const Diagn2Results = ({ userData, result }: Props) => {
 
     const HeaderProps = {
         userData: userData,

@@ -7,6 +7,7 @@ import { ReactComponent as Line } from 'images/Results/Line.svg';
 import { useMediaQuery } from "react-responsive";
 import { DiagHtml, DiagnTextProf } from 'styles/pages/Diagnostics/DiagnHeader';
 import { DiagnTextBlack, DiagnTextBlackBold, Result, ResultItem, ResultLine, ResultsBlock, ResultStaticItem } from 'styles/pages/Results/Diagn1Results';
+import ResultBlock1 from 'components/pages/Results/ResultBlock1'
 
 export interface IDiagnResult{
     title: string,
@@ -33,27 +34,17 @@ const Diagn1Results = ({ userData, result }: Props) => {
             <DiagnResultsHeader {...HeaderProps} />
             <ResultsBlock>
                 <Result>
-                    <DiagnTextBlackBold style={{ height: "50px" }}>Интегральный показатель выгорания:</DiagnTextBlackBold>
-                    <DiagnTextProf style={{ color: "#5496FF" }}>6 балл(ов) - средняя степень</DiagnTextProf>
+                    <DiagnTextBlackBold style={{ height: "50px" }}>{result[0].title}</DiagnTextBlackBold>
+                    <DiagnTextProf style={{ color: "#5496FF" }}>{result[0].level}</DiagnTextProf>
                     {isDesktop && <Line style={{ height: "50px", width: "80%" }} />}
                 </Result>
                 <ResultLine>
                     {!isDesktop && <Line style={{ height: "15px", width: "100%" }} />}
-                    <ResultItem>
-                        <DiagnTextBlack>Эмоциональное истощение</DiagnTextBlack>
-                        <DiagnTextBlackBold>Высокий уровень</DiagnTextBlackBold>
-                        {!isDesktop && <Line style={{ height: "15px", width: "100%" }} />}
-                    </ResultItem>
-                    <ResultItem>
-                        <DiagnTextBlack>Редукция личных достижений</DiagnTextBlack>
-                        <DiagnTextBlackBold>Низкий уровень</DiagnTextBlackBold>
-                        {!isDesktop && <Line style={{ height: "15px", width: "100%" }} />}
-                    </ResultItem>
-                    <ResultItem>
-                        <DiagnTextBlack>Деперсонализация</DiagnTextBlack>
-                        <DiagnTextBlackBold>Средний уровень</DiagnTextBlackBold>
-                        {!isDesktop && <Line style={{ height: "15px", width: "100%" }} />}
-                    </ResultItem>
+                    {
+                        result.slice(1).map((value) =>{
+                            return <ResultBlock1 {...value}/>
+                        })
+                    }
                 </ResultLine>
             </ResultsBlock>
             <ResultsBlock>

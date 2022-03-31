@@ -1,28 +1,75 @@
 import Quest from 'components/defaultComponents/Quest';
-import { Button, DiagBody, Diagn3Block, BlockFive, TextFive} from 'styles/pages/Diagnostics/Diagnostic';
+import { Button, DiagBody, Diagn3Block, BlockFive, TextFive } from 'styles/pages/Diagnostics/Diagnostic';
+import { useEffect, useState } from 'react';
 import DiagnHeader from './DiagnHeader';
 import { data, blockdata } from 'mockdata/mocktest3'
 import QuestFive from 'components/defaultComponents/QuestFive'
 import { IUserData } from 'App'
-import imagefoot from "images/diagn3.png"; 
-import image600 from "images/diagn3_600.png"; 
+import imagefoot from "images/diagn3.png";
+import image600 from "images/diagn3_600.png";
+import Diagn3Results from 'components/pages/Results/Diagn3Results'
+import { IDiagnResult } from 'components/pages/Results/Diagn1Results'
 
 const mockdata = {
     title: 'Оценка признаков эмоционального выгорания',
     regulations: 'Вам предлагается по 5 утверждений из каждого блока: поведение, мышление, чувства и здоровье. Пожалуйста, прочитайте следующие утверждения и выберите тот вариант ответа, который наилучшим образом отражает Ваше мнение.',
     condition: 'Варианты ответов: от 0 – никогда до 6 – ежедневно',
-    images: [imagefoot,image600]
+    images: [imagefoot, image600]
 }
 
+interface IAnswer {
+    value: number,
+    label: number
+}
 
-interface Props{
+interface Props {
     userData: IUserData | null
 }
 
 const Diagnostic3 = ({ userData }: Props) => {
-    return (
+    const [result, setResult] = useState<IDiagnResult[] | null>(null)
+    const [answers, setAnswers] = useState<number[]>([])
+
+    const onChange = (index: number, answer: IAnswer) => {
+        let tempAnswers = answers
+        tempAnswers[index] = answer.value
+        setAnswers(tempAnswers)
+    }
+
+    const onComplete = () => {
+        console.log(data.length)
+        if (answers.length == data.length && !answers.some((el) => el == undefined)) {
+            setResult([])
+        }
+    }
+
+    useEffect(() => {
+        if (userData) {
+            fetch("/getResults", {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ login: userData.login, password: userData.password, diagnnumber: 3 })
+            })
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    if (!data.error) {
+                        setResult(data.result)
+                    }
+                });
+        }
+    }, [])
+
+    if (result) return (
+        <Diagn3Results userData={userData} result={result} />
+    )
+    else return (
         <DiagBody>
-            <DiagnHeader {...mockdata}/>
+            <DiagnHeader {...mockdata} />
             <Diagn3Block>
                 {
                     blockdata.map((value, idx) => {
@@ -31,7 +78,7 @@ const Diagnostic3 = ({ userData }: Props) => {
                                 <TextFive>{value.text}</TextFive>
                                 {data.slice(idx * 5, idx * 5 + 5).map((value, index) => {
                                     return (
-                                        <QuestFive text={value.text} options={value.options} index={index} />
+                                        <QuestFive text={value.text} options={value.options} index={idx * 5 + index} onChange={(answer) => { onChange(idx * 5 + index, answer) }} />
                                     )
                                 })}
                             </BlockFive>
@@ -39,7 +86,7 @@ const Diagnostic3 = ({ userData }: Props) => {
                     })
                 }
             </Diagn3Block>
-            <Button>Завершить</Button>
+            <Button onClick={() => onComplete()}>Завершить</Button>
         </DiagBody>
     );
 }

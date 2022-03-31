@@ -7,6 +7,7 @@ import imagefoot from "images/diagn1.png";
 import image600 from "images/diagn1_600.png";
 import { useEffect, useState } from 'react';
 import Diagn1Results, { IDiagnResult } from 'components/pages/Results/Diagn1Results'
+import { AnswersIntoResultDiagn1 } from 'codebase/DiagnResults'
 
 const mockdata = {
     title: 'Профессиональное выгорание',
@@ -37,7 +38,7 @@ const Diagnostic1 = ({ userData }: Props) => {
 
     const onComplete = () => {
         if (answers.length == data.length && !answers.some((el) => el == undefined)) {
-            setResult([])
+            setResult(AnswersIntoResultDiagn1(answers))
         }
     }
     useEffect(() => {
@@ -48,7 +49,7 @@ const Diagnostic1 = ({ userData }: Props) => {
                     'content-type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify({ login: userData.login, password: userData.password })
+                body: JSON.stringify({ login: userData.login, password: userData.password, diagnnumber: 1 })
             })
                 .then((response) => {
                     return response.json();
