@@ -1,19 +1,35 @@
 import { IUserData } from 'App';
+import { useState } from 'react';
 import DiagnResultsHeader from 'components/pages/Results/DiagnResultsHeader';
-import image from "images/Results/diag2result.png";
-import imagedesk from "images/Results/diag2result_600.png";
 import { DiagHtml } from 'styles/pages/Diagnostics/DiagnHeader';
-import {} from 'styles/pages/UserProfile/UserProfile';
+import {DiagnResult,ButtonBlock,Button,ImgBlockItem,ItemBlockCheck,Img,BlocksChecks,BlockstItemChecks,DiagnTextBlackBoldName,DiagnCheckBlockstItemText,ImgBlock,DiagnResultItem,DiagnCheckBlockstItem,DiagnTextBlackBold,DiagnTextBlack,DiagnCheckBlocks,DiagnTextProfCenter,HomeTextBlock,TextBlock,ButtonWhite} from 'styles/pages/UserProfile/UserProfile';
 import { useMediaQuery } from "react-responsive";
-import { Button, ButtonBlock,DiagnTextBlack, DiagnTextProfCenter, ErrorBlock, HomeTextBlock, ImgBlock, TextBlock } from 'styles/pages/Results/Diagn1Results';
-import {ButtonWhite} from 'styles/pages/MenuPages/HomePage';
 
+import { ReactComponent as Dislike } from 'images/UserProfile/Dislike.svg';
+import { ReactComponent as Caret_Right } from 'images/UserProfile/Caret_Right.svg';
+import { ReactComponent as Line } from 'images/Results/Line.svg';
+
+import diagnItemMock, { IdiagnItemMock } from 'mockdata/UserProfileDiagnItem';
+import blockItemMock, { IblockItemMock } from 'mockdata/UserProfileBlocks';
+import data1, { ICheck } from 'mockdata/UserProfileCheck';
+import data2 from 'mockdata/UserProfileCheck';
+import data4 from 'mockdata/UserProfileCheck';
+import data3 from 'mockdata/UserProfileCheck';
+
+import UncheckedIcon from 'images/UserProfile/CheckNull.png'
+import CheckedIcon from 'images/UserProfile/CheckYes.png'
+import CheckList from 'components/pages/UserProfile/CheckList'
 interface Props {
     userData: IUserData | null
 }
 
 const UserProfile = ({ userData }: Props) => {
-
+    const [items, setItems] = useState<IdiagnItemMock[]>(diagnItemMock)
+    const [blocks, setBlocks] = useState<IblockItemMock[]>(blockItemMock)
+    const [block1, setBlock1] = useState<ICheck[]>(data1)
+    const [block2, setBlock2] = useState<ICheck[]>(data2)
+    const [block3, setBlock3] = useState<ICheck[]>(data3)
+    const [block4, setBlock4] = useState<ICheck[]>(data4)
     const isDesktop = useMediaQuery({
         query: "(min-width: 800px)"
     });
@@ -24,11 +40,31 @@ const UserProfile = ({ userData }: Props) => {
             <TextBlock>
                 <DiagnTextProfCenter>Здравствуйте, Имя пользователя</DiagnTextProfCenter>
                 <DiagnTextBlack>В личном кабинете появились новые чек-листы для вас</DiagnTextBlack>
-                <ButtonBlock>
-                        <ButtonWhite>Выйти</ButtonWhite>
-                </ButtonBlock>
             </TextBlock>
+            <ButtonBlock>
+                    <ButtonWhite>Выйти</ButtonWhite>
+            </ButtonBlock>
         </HomeTextBlock>
+        <DiagnTextBlackBoldName>Результаты  диагностик:</DiagnTextBlackBoldName>
+        <DiagnResult>  
+            {
+                items.map((value, index) =>
+                <DiagnResultItem key={index}>
+                    <Img src={value.image}/>
+                    <DiagnTextBlack style={{textAlign:"center"}}>{value.title}</DiagnTextBlack>
+                    <Button>Посмотреть результат</Button>
+                </DiagnResultItem>
+                )
+            }
+        </DiagnResult>
+        <DiagnTextBlackBoldName>Чек–листы:</DiagnTextBlackBoldName>
+        <DiagnCheckBlocks>
+        {
+                blocks.map((value, index) =>
+                <CheckList index={index} image={value.image} title={value.title} description={value.description} checklist={value.checklist}/>
+                )
+            }
+        </DiagnCheckBlocks>   
         </DiagHtml>
     );
 }

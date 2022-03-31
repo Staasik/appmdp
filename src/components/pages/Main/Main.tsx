@@ -7,6 +7,7 @@ import HomePage from 'components/pages/MenuPages/HomePage';
 import Diagn1Results from 'components/pages/Results/Diagn1Results'
 import Diagn2Results from 'components/pages/Results/Diagn2Results'
 import Diagn3Results from 'components/pages/Results/Diagn3Results'
+import UserProfile from 'components/pages/UserProfile/UserProfile'
 import { IUserData } from 'App'
 
 interface Props{
@@ -18,6 +19,7 @@ export const Main = ({ userData }: Props) => {
         <Routes>
             <Route path="/" element={<Navigate to="/main/home" replace />} />
             <Route path="diagnostics" element={<Diagnostics />} />
+            <Route path="home" element={<UserProfile userData={userData}/>} />
             <Route path="home" element={<HomePage userData={userData}/>} />
             <Route path="diagnostics/diagnostic1" element={<Diagnostic1 userData={userData}/>} />
             <Route path="diagnostics/diagnostic2" element={<Diagnostic2 userData={userData}/>} />
