@@ -33,7 +33,7 @@ export const TextBlock = styled.div`
 `
 export const DiagnCheckBlocks = styled.div`
     display: flex;
-    width:73%; 
+    width:75%; 
     flex-direction: column;
     justify-content:center;
     align-items:center;
