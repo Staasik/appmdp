@@ -1,13 +1,13 @@
+import { IUserData } from 'App';
+import { AnswersIntoResultDiagn2, IDiagnResult2 } from 'codebase/DiagnResults';
 import QuestImg from 'components/defaultComponents/QuestImg';
-import { useEffect, useState } from 'react';
-import { data } from 'mockdata/mocktest2';
-import { Button, DiagBody, DiagnBlock, BlockTwo } from 'styles/pages/Diagnostics/Diagnostic';
-import DiagnHeader from './DiagnHeader';
-import { IUserData } from 'App'
+import Diagn2Results from 'components/pages/Results/Diagn2Results';
 import imagefoot from "images/diagn2.png";
 import image600 from "images/diagn2_600.png";
-import Diagn2Results from 'components/pages/Results/Diagn2Results'
-import { IDiagnResult } from 'components/pages/Results/Diagn1Results'
+import { data } from 'mockdata/mocktest2';
+import { useEffect, useState } from 'react';
+import { BlockTwo, Button, DiagBody, DiagnBlock } from 'styles/pages/Diagnostics/Diagnostic';
+import DiagnHeader from './DiagnHeader';
 
 const mockdata = {
     title: 'Копинг–поведение в стрессовых ситуациях',
@@ -21,7 +21,7 @@ interface Props {
 }
 
 const Diagnostic2 = ({ userData }: Props) => {
-    const [result, setResult] = useState<IDiagnResult[] | null>(null)
+    const [result, setResult] = useState<IDiagnResult2[] | null>(null)
     const [answers, setAnswers] = useState<number[]>([])
 
     const onChange = (index: number, answer: number) => {
@@ -32,7 +32,7 @@ const Diagnostic2 = ({ userData }: Props) => {
 
     const onComplete = () => {
         if (answers.length == (data.length / 2) && !answers.some((el) => el == undefined)) {
-            setResult([])
+            setResult(AnswersIntoResultDiagn2(answers))
         }
     }
 
@@ -70,7 +70,7 @@ const Diagnostic2 = ({ userData }: Props) => {
                         <BlockTwo>
                             {data.slice(idx * 2, idx * 2 + 2).map((value, index) => {
                                 return (
-                                    <QuestImg text={value.text} image={value.options} index={index} onChange={(answer) => { onChange(idx, answer) }} selected={answers[idx] == index}/>
+                                    <QuestImg text={value.text} image={value.options} index={index} onChange={(answer) => { onChange(idx, answer) }} selected={answers[idx] == index} />
                                 )
                             })}
                         </BlockTwo>

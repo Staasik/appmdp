@@ -6,6 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import { DiagHtml } from 'styles/pages/Diagnostics/DiagnHeader';
 import { Button, DiagnTextBlack, DiagnTextBlackBold, HomeTextBlock, ResultItem, ResultLine, ResultsBlock } from 'styles/pages/Results/Diagn3Results';
 import { IDiagnResult } from 'components/pages/Results/Diagn1Results'
+import ResultBlock3 from 'components/pages/Results/ResultBlock3'
 
 interface Props {
     userData: IUserData | null,
@@ -28,27 +29,10 @@ const Diagn3Results = ({ userData, result}: Props) => {
             <DiagnResultsHeader {...HeaderProps} />
             <ResultsBlock>
                 <ResultLine>
-                    <ResultItem>
-                        <DiagnTextBlack>1 блок: Поведение</DiagnTextBlack>
-                        <DiagnTextBlackBold>6 балл(ов) - низкий уровень изменений</DiagnTextBlackBold>
-                        {!isDesktop && <Line style={{ height: "15px", width: "100%", marginBottom: "15px" }} />}
-                    </ResultItem>
-                    <ResultItem>
-                        <DiagnTextBlack>2 блок: Мышление</DiagnTextBlack>
-                        <DiagnTextBlackBold>1 балл(ов) - низкий уровень изменений</DiagnTextBlackBold>
-                        {!isDesktop && <Line style={{ height: "15px", width: "100%", marginBottom: "15px" }} />}
-                    </ResultItem>
+                    {result.slice(0,2).map((value, index) => <ResultBlock3 {...value} key={index}/>)}
                 </ResultLine>
                 <ResultLine>
-                    <ResultItem>
-                        <DiagnTextBlack>3 блок: Чувства</DiagnTextBlack>
-                        <DiagnTextBlackBold>11 балл(ов) - средний  уровень изменений</DiagnTextBlackBold>
-                        {!isDesktop && <Line style={{ height: "15px", width: "100%", marginBottom: "15px" }} />}
-                    </ResultItem>
-                    <ResultItem>
-                        <DiagnTextBlack>4 блок: Здоровье</DiagnTextBlack>
-                        <DiagnTextBlackBold>28 балл(ов) - высокий уровень изменений</DiagnTextBlackBold>
-                    </ResultItem>
+                    {result.slice(2).map((value, index) => <ResultBlock3 {...value} key={index}/>)}
                 </ResultLine>
             </ResultsBlock>
             <HomeTextBlock>

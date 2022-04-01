@@ -9,6 +9,7 @@ import imagefoot from "images/diagn3.png";
 import image600 from "images/diagn3_600.png";
 import Diagn3Results from 'components/pages/Results/Diagn3Results'
 import { IDiagnResult } from 'components/pages/Results/Diagn1Results'
+import { AnswersIntoResultDiagn3 } from 'codebase/DiagnResults'
 
 const mockdata = {
     title: 'Оценка признаков эмоционального выгорания',
@@ -37,9 +38,8 @@ const Diagnostic3 = ({ userData }: Props) => {
     }
 
     const onComplete = () => {
-        console.log(data.length)
         if (answers.length == data.length && !answers.some((el) => el == undefined)) {
-            setResult([])
+            setResult(AnswersIntoResultDiagn3(answers))
         }
     }
 
