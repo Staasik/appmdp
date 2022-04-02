@@ -3,10 +3,6 @@ export interface IRecommendBookMock {
     title: string,
     description:string;
 }
-export interface IRecommendMovieMock {
-    url: string,
-    title: string,
-}
 
 export const RecommendBook: IRecommendBookMock[] = [
     {
@@ -27,17 +23,4 @@ export const RecommendBook: IRecommendBookMock[] = [
         description:'Читается книга удивительно легко. Текст буквально притягивает, оторваться невозможно. Даже если вы — знаток воспитания, всё равно найдёте то, что будет для вас совершенно новым.',},
 ]
 
-
-
-export const RecommendMovie: IRecommendMovieMock[] = [
-    {
-        url: require('images/Recommendations/book1.png'),
-        title: 'А.В. Мудрик«Учитель: Мастерство и вдохновение»',},
-        {
-        url: require('images/Recommendations/book2.png'),
-        title: 'А.А. Гин «Приёмы педагогической техники»', },
-        {
-        url: require('images/Recommendations/book3.png'),
-        title: 'Ю.П. Азаров «Тайны педагогического мастерства»',}
-    ]
 export default RecommendBook

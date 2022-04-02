@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import image from "images/Recommendations/book1.png"; 
 
 export const TextBlock = styled.div`
     display: flex;
@@ -112,17 +111,11 @@ export const Music = styled.div`
     display: flex;
     width:48.8%;
     height:370px;
-    background-color:black;
     @media (max-width:1050px) {
         width:100%;
         height:500px;
     }
-    @media (max-width:750px) {
-        height:300px;
-    }
-    @media (max-width:550px) {
-        height:200px;
-    }
+
 `
 export const MovieItemBlock = styled.div`
     display: flex;
@@ -137,7 +130,6 @@ export const MovieItemBlock = styled.div`
 export const ItemMovie = styled.div`
     display: flex;
     width:100%; 
-    background-color:black;
     height:250px;
     border-radius: 12px;
     @media (max-width:1050px) {
