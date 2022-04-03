@@ -8,6 +8,7 @@ import image600 from "images/diagn1_600.png";
 import { useEffect, useState } from 'react';
 import Diagn1Results, { IDiagnResult } from 'components/pages/Results/Diagn1Results'
 import { AnswersIntoResultDiagn1 } from 'codebase/DiagnResults'
+import { MAIN_IP } from 'App'
 
 const mockdata = {
     title: 'Профессиональное выгорание',
@@ -39,7 +40,7 @@ const Diagnostic1 = ({ userData }: Props) => {
     const onComplete = () => {
         if (answers.length == data.length && !answers.some((el) => el == undefined)) {
             if (userData) {
-                fetch("/setResults", {
+                fetch(process.env.NODE_ENV == 'development' ? "/setResults" : `http://${MAIN_IP}:5000/setResults`, {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

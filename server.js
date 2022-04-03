@@ -2,6 +2,7 @@ const express = require('express'),
     bodyParser = require("body-parser"),
     dbOperation = require('./dbFiles/dbOperation'),
     cors = require('cors')
+http = require('http')
 
 const API_PORT = process.env.PORT || 5000;
 const app = express();
@@ -23,6 +24,9 @@ app.get('/getUsersData', (req, res) => {
     dbOperation.getUsersData().then(r => {
         res.send(r)
     })
+})
+app.get('/get', (req, res) => {
+    res.send("Hello")
 })
 app.post('/registrationNewUser', (req, res) => {
     console.log(req.body)

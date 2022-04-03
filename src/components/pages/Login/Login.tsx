@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { LoginBlock, LinkButton, LoginButton, LoginContainer, LoginImage, LoginInput, LoginRegistr, LoginRegistrText, LoginText, LoginWrapper, PasswordInput } from 'styles/pages/Login/Login';
 import Cookies from 'codebase/Cookies'
+import { MAIN_IP } from "App";
 
 const Login = () => {
   const isDesktop = useMediaQuery({
@@ -13,7 +14,7 @@ const Login = () => {
 
   const onLogin = () =>{
     if (login && password) {
-      fetch("/acceptLogin", {
+      fetch(process.env.NODE_ENV == 'development' ? "/acceptLogin" : `http://${MAIN_IP}:5000/acceptLogin`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',

@@ -55,13 +55,13 @@ export const AnswersIntoResultDiagn2 = (answers: number[]) => {
     let result = [0,0,0];
     let values:IDiagnResult2[]  = [{title: '', level: '',discription: ''},{title: '', level: '',discription: ''},{title: '', level: '',discription: ''}];
     [1,4,7,9,14,15,19,22].forEach(element => {
-        result[0] += tempAnswers[element-1]
+        result[0] += tempAnswers[element-1] as number
     });
     [2,5,8,11,13,18,20,23].forEach(element => {
-        result[1] += tempAnswers[element-1]
+        result[1] += tempAnswers[element-1] as number
     });
     [3,6,10,12,16,17,21,24].forEach(element => {
-        result[2] += tempAnswers[element-1]
+        result[2] += tempAnswers[element-1] as number
     });
     values.forEach((element, index) => {
         element.title = mockdataResult2.titles[index]
@@ -75,8 +75,9 @@ export const AnswersIntoResultDiagn2 = (answers: number[]) => {
 export const AnswersIntoResultDiagn3 = (answers: number[]) => {
     let values:IDiagnResult[]  = [{title: '', level: ''},{title: '', level: ''},{title: '', level: ''},{title: '', level: ''}];
     mockdataResult3.titles.forEach((element, index) => {
-        let tempResult = 0
+        let tempResult: number = 0
         answers.slice(index * 5, index * 5 + 5).forEach(element => {
+            console.log(tempResult)
             tempResult += element
         });
         values[index].title = element

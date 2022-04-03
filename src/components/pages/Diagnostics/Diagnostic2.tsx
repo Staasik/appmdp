@@ -1,4 +1,4 @@
-import { IUserData } from 'App';
+import { IUserData, MAIN_IP } from 'App';
 import { AnswersIntoResultDiagn2, IDiagnResult2 } from 'codebase/DiagnResults';
 import QuestImg from 'components/defaultComponents/QuestImg';
 import Diagn2Results from 'components/pages/Results/Diagn2Results';
@@ -27,36 +27,25 @@ const Diagnostic2 = ({ userData }: Props) => {
     const onChange = (index: number, answer: number) => {
         let tempAnswers = answers
         tempAnswers[index] = answer
+        console.log(tempAnswers)
         setAnswers([...tempAnswers])
     }
 
     const onComplete = () => {
         if (answers.length == (data.length / 2) && !answers.some((el) => el == undefined)) {
+            if (userData) {
+                fetch(process.env.NODE_ENV == 'development' ? "/setResults" : `http://${MAIN_IP}:5000/setResults`, {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ login: userData.login, password: userData.password, diagnnumber: 2, answers: answers })
+                })
+            }
             setResult(AnswersIntoResultDiagn2(answers))
         }
     }
-
-    useEffect(() => {
-        if (userData) {
-            fetch("/getResults", {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ login: userData.login, password: userData.password, diagnnumber: 2 })
-            })
-                .then((response) => {
-                    return response.json();
-                })
-                .then((data) => {
-                    if (!data.error) {
-                        setResult(data.result)
-                    }
-                });
-        }
-
-    }, [])
 
     if (result) return (
         <Diagn2Results userData={userData} result={result} />

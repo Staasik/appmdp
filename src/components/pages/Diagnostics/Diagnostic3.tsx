@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import DiagnHeader from './DiagnHeader';
 import { data, blockdata } from 'mockdata/mocktest3'
 import QuestFive from 'components/defaultComponents/QuestFive'
-import { IUserData } from 'App'
+import { IUserData, MAIN_IP } from 'App'
 import imagefoot from "images/diagn3.png";
 import image600 from "images/diagn3_600.png";
 import Diagn3Results from 'components/pages/Results/Diagn3Results'
@@ -39,30 +39,19 @@ const Diagnostic3 = ({ userData }: Props) => {
 
     const onComplete = () => {
         if (answers.length == data.length && !answers.some((el) => el == undefined)) {
+            if (userData) {
+                fetch(process.env.NODE_ENV == 'development' ? "/setResults" : `http://${MAIN_IP}:5000/setResults`, {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ login: userData.login, password: userData.password, diagnnumber: 3, answers: answers })
+                })
+            }
             setResult(AnswersIntoResultDiagn3(answers))
         }
     }
-
-    useEffect(() => {
-        if (userData) {
-            fetch("/getResults", {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ login: userData.login, password: userData.password, diagnnumber: 3 })
-            })
-                .then((response) => {
-                    return response.json();
-                })
-                .then((data) => {
-                    if (!data.error) {
-                        setResult(data.result)
-                    }
-                });
-        }
-    }, [])
 
     if (result) return (
         <Diagn3Results userData={userData} result={result} />

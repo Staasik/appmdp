@@ -7,6 +7,7 @@ import Login from 'components/pages/Login/Login';
 import Registration from 'components/pages/Login/Registration';
 import { useState, useEffect } from 'react'
 import Cookies from 'codebase/Cookies'
+import { isPropertyAccessOrQualifiedName } from 'typescript';
 //<Route path="/main/diagnostics">
 //<Diagnostics />
 // </Route>
@@ -16,6 +17,7 @@ export interface IUserData {
   login: string,
   password: string
 }
+export const MAIN_IP = '146.247.34.58'
 
 const App = () => {
   const data = {name:123, login: "123", password: "123"}
@@ -25,7 +27,7 @@ const App = () => {
     let login = Cookies.getCookie('login')
     let password = Cookies.getCookie('password')
     if (login && password) {
-      fetch("/acceptLogin", {
+      fetch(process.env.NODE_ENV == 'development' ? "/acceptLogin" : `http://${MAIN_IP}:5000/acceptLogin`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',

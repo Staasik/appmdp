@@ -1,4 +1,4 @@
-import { IUserData } from 'App';
+import { IUserData, MAIN_IP } from 'App';
 import { AnswersIntoResultDiagn1, AnswersIntoResultDiagn2, AnswersIntoResultDiagn3 } from 'codebase/DiagnResults';
 import Diagn1Results from 'components/pages/Results/Diagn1Results';
 import Diagn2Results from 'components/pages/Results/Diagn2Results';
@@ -15,7 +15,7 @@ export const UserResults = ({ userData, diagnnumber }: Props) => {
 
     useEffect(() => {
         if (userData) {
-            fetch("/getResults", {
+            fetch(process.env.NODE_ENV == 'development' ? "/getResults" : `http://${MAIN_IP}:5000/getResults`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -27,8 +27,10 @@ export const UserResults = ({ userData, diagnnumber }: Props) => {
                     return response.json();
                 })
                 .then((data) => {
-                    console.log(data)
-                    setAnswers(data.data[0].answers as number[])
+                    let arr = data.data[0].answers.replace(' ', '').trim().split(',').map((str : string) => {
+                        return Number(str);
+                      });
+                    setAnswers([...arr])
                 });
         }
     }, [userData])

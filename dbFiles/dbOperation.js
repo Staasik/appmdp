@@ -54,6 +54,7 @@ const registrationNewUser = async(name, login, password) => {
 }
 
 const setResults = async(login, password, diagnnumber, answers) => {
+    console.log(login)
     try {
         let pool = await sql.connect(config);
         let users = pool.request().query("select login_user as login, password_user as password, id_user as id from Users")
@@ -71,7 +72,6 @@ const setResults = async(login, password, diagnnumber, answers) => {
 
 const getResults = async(login, password, diagnnumber) => {
     try {
-        console.log('ASDASDSA ')
         let pool = await sql.connect(config);
         let users = pool.request().query("select login_user as login, password_user as password, id_user as id from Users")
         let tempuser = _.find((await users).recordset, { login: login, password: password })

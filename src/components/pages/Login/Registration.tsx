@@ -3,6 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import { LoginBlock, LoginButton, LinkButton, LoginContainer, LoginImage, LoginInput, LoginRegistr, LoginRegistrText, LoginText, LoginWrapper, NameInput, PasswordInput } from 'styles/pages/Login/Registration';
 import RegistrationModal from 'components/pages/Login/RegistrationModal'
 import Cookies from 'codebase/Cookies'
+import { MAIN_IP } from "App";
 
 const Registration = () => {
 
@@ -14,7 +15,7 @@ const Registration = () => {
 
   const onReg = () => {
     if (name && login && password) {
-      fetch("/registrationNewUser", {
+      fetch(process.env.NODE_ENV == 'development' ? "/registrationNewUser" : `http://${MAIN_IP}:5000/registrationNewUser`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',

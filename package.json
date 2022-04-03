@@ -2,7 +2,7 @@
     "name": "appmdp",
     "version": "0.1.0",
     "private": true,
-    "proxy": "http://146.247.34.58:5000",
+    "proxy": "http://localhost:5000",
     "dependencies": {
         "@material-ui/core": "^4.12.3",
         "@material-ui/icons": "^4.11.2",
@@ -18,7 +18,9 @@
         "body-parser": "^1.19.2",
         "cors": "^2.8.5",
         "express": "^4.17.3",
+        "http": "^0.0.1-security",
         "mssql": "^8.0.2",
+        "node-fetch": "^3.2.3",
         "react": "^17.0.2",
         "react-burger-menu": "^3.0.6",
         "react-dom": "^17.0.2",
