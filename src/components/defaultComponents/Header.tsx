@@ -17,10 +17,8 @@ export const Header = ({ userData } : Props) => {
     });
     let location = useLocation();
 
-    const Logout = () =>{
-        Cookies.deleteCookie("login")
-        Cookies.deleteCookie("password")
-        document.location.reload()
+    const toProfile = () =>{
+        document.location.href = '/main/profile'
     }
     
     return (
@@ -46,7 +44,7 @@ export const Header = ({ userData } : Props) => {
                     </DiagnMenu>
                     <DiagnCP>
                         <Chat style={{ "height": "30px", "width": "30px" }} />
-                        <Prof style={{ "height": "30px", "width": "30px", "cursor": "pointer" }} onClick={()=>{Logout()}}/>
+                        <Prof style={{ "height": "30px", "width": "30px", "cursor": "pointer" }} onClick={()=>{toProfile()}}/>
                         { userData && <ProfileName>{userData.name}</ProfileName>}
                     </DiagnCP>
                 </DiagHeader>

@@ -1,6 +1,5 @@
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
-import image from "images/Results/diag2result.png"; 
-import imagedesk from "images/Results/diag2result_600.png"; 
 
 export const HomeTextBlock = styled.div`
     display: flex;
@@ -59,6 +58,7 @@ export const DiagnCheckBlockstItem = styled.div`
     box-shadow: 0px 4px 11px 1px rgba(43, 43, 43, 0.05);
     border-radius: 12px;
     padding:50px;
+    cursor: pointer;
     @media (max-width:1000px) {  
         width:95%;
         gap:20px;
@@ -170,6 +170,7 @@ export const DiagnTextProf = styled.text`
     }
 `
 export const ButtonWhite = styled.button`
+    cursor: pointer;
     display:flex;
     width: 200px;
     height: 50px;
@@ -187,10 +188,12 @@ export const ButtonWhite = styled.button`
         margin-top:20px; 
     }
 `
-export const Button = styled.button`
+export const Button = styled(Link)`
     display:flex;
     width: 200px;
     height: 50px;
+    font-size: 16px;
+    text-decoration: none;
     background: #FF9254;
     border: 0;
     border-radius: 8px; 
@@ -202,13 +205,13 @@ export const Button = styled.button`
         margin-top:20px; 
     }
 `
-interface ImgBlockProps{
+interface ImgBlockProps {
     images: string[]
 }
 export const ImgBlock = styled.div<ImgBlockProps>`
     width:150px;
     height:150px;
-    background-image:url(${({images}: ImgBlockProps) => images[0]});
+    background-image:url(${({ images }: ImgBlockProps) => images[0]});
     background-repeat: no-repeat; 
     background-size:cover;
     background-position: center; 
@@ -220,6 +223,7 @@ export const Img = styled.img`
 export const ImgBlockItem = styled.img`
     width:40px;
     height:40px; 
+    cursor: pointer;
 `
 export const ItemBlockCheck = styled.div`
     display: flex;
@@ -227,7 +231,6 @@ export const ItemBlockCheck = styled.div`
     width:100%;
     justify-content:center;
     align-items:center;
-    cursor: pointer;
 `
 export const BlocksChecks = styled.div`
     display: flex;

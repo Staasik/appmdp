@@ -19,7 +19,6 @@ interface Props {
 }
 
 const Diagn1Results = ({ userData, result }: Props) => {
-
     const HeaderProps = {
         userData: userData,
         title: 'Результат диагностики профессиональное выгорание',

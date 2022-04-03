@@ -6,6 +6,7 @@ import { ReactComponent as HomeRegUrl } from 'images/HomePage/HomeRegUrl.svg';
 import { ReactComponent as HomeUsrUrl } from 'images/HomePage/HomeUsrUrl.svg';
 import { ReactComponent as Line } from 'images/HomePage/Line.svg';
 import { useMediaQuery } from "react-responsive";
+import { Link } from 'react-router-dom';
 import { DiagHtml, DiagnTextBlack, DiagnTextProf, DiagnTextProfWhite, DiagnTextWhite } from 'styles/pages/Diagnostics/DiagnHeader';
 import { BlockDesk, BlockDeskText, Button, ButtonBlock, ButtonWhite, DiagnTextBlackBold, DiagnTextProfCenter, FootBlock, HomeBlock, HomeTextBlock, ImgBlock, ImgBlockDesktop, MenuBlock, MenuItem, MenuLine, TextBlock, TextBlockWhite, TextUrl } from 'styles/pages/MenuPages/HomePage';
 
@@ -25,7 +26,7 @@ const Diagnostics = ({ userData }: Props) => {
                     <DiagnTextProfCenter>Сервис для педагогов по саморегуляции</DiagnTextProfCenter>
                     <DiagnTextBlack>Проходите диагностики, узнавайте новые книги и слушайте успокаивающую музыку на нашем сайте.</DiagnTextBlack>
                     <ButtonBlock>
-                        <Button>Пройти диагностику</Button>
+                        <Button to="/main/diagnostics">Пройти диагностику</Button>
                         <HomeRegUrl/>
                 </ButtonBlock>
                 </TextBlock>    
@@ -38,7 +39,7 @@ const Diagnostics = ({ userData }: Props) => {
                 </TextBlock>  
                 <ImgBlock/> 
                 <ButtonBlock>
-                    <Button>Пройти диагностику</Button>
+                    <Button to="/main/diagnostics">Пройти диагностику</Button>
                     <HomeRegUrl/>
                 </ButtonBlock> 
             </HomeTextBlock>
@@ -51,7 +52,7 @@ const Diagnostics = ({ userData }: Props) => {
                     <MenuItem>
                         <TextUrl>Диагностика</TextUrl>
                         <DiagnTextBlack>Составленные психологами профессиональные тесты личности</DiagnTextBlack>
-                        <HomeDiagUrl/>
+                        <Link to="/main/diagnostics"><HomeDiagUrl/></Link>
                     </MenuItem>
                     <MenuItem>
                         <TextUrl>Чат–бот</TextUrl>
@@ -71,7 +72,7 @@ const Diagnostics = ({ userData }: Props) => {
                     <MenuItem>
                         <TextUrl>Аккаунт</TextUrl>
                         <DiagnTextBlack>Чтобы сохранить ваши результаты, нужно пройти регистрацию</DiagnTextBlack>
-                        <HomeUsrUrl/>
+                        <Link to="/reg"><HomeUsrUrl/></Link>
                     </MenuItem>
                 </MenuLine>
             </MenuBlock>
@@ -87,14 +88,14 @@ const Diagnostics = ({ userData }: Props) => {
                     <DiagnTextBlack>- При затруднении вы можете обратиться к чат–боту</DiagnTextBlack>
                     <DiagnTextBlack>- После всех диагностик, у вас в профиле появится подробная статистка, исходя из результатов</DiagnTextBlack>
                     <DiagnTextBlack>- Всё использование сайта абсолютно бесплатно</DiagnTextBlack>
-                    <Button>Пройти диагностику</Button>
+                    <Button to="/main/diagnostics">Пройти диагностику</Button>
                 </BlockDeskText>
             </HomeBlock>
             <FootBlock>
                 <TextBlockWhite>
                     <DiagnTextProfWhite>Гармония в работе начинается с саморегуляции </DiagnTextProfWhite>
                     <DiagnTextWhite>Присоединяйтесь к нашему сервису — мы поможем узнать всё о психологии для работы преподавателем</DiagnTextWhite>
-                    <ButtonWhite>Зарегистрироваться</ButtonWhite>
+                    <ButtonWhite to="/reg">Зарегистрироваться</ButtonWhite>
                 </TextBlockWhite>
             </FootBlock>
         </DiagHtml>

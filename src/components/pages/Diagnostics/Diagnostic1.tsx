@@ -38,30 +38,19 @@ const Diagnostic1 = ({ userData }: Props) => {
 
     const onComplete = () => {
         if (answers.length == data.length && !answers.some((el) => el == undefined)) {
+            if (userData) {
+                fetch("/setResults", {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ login: userData.login, password: userData.password, diagnnumber: 1, answers: answers })
+                })
+            }
             setResult(AnswersIntoResultDiagn1(answers))
         }
     }
-    useEffect(() => {
-        if (userData) {
-            fetch("/getResults", {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ login: userData.login, password: userData.password, diagnnumber: 1 })
-            })
-                .then((response) => {
-                    return response.json();
-                })
-                .then((data) => {
-                    if (!data.error) {
-                        setResult(data.result)
-                    }
-                });
-        }
-
-    }, [])
 
     if (result) return (
         <Diagn1Results userData={userData} result={result} />

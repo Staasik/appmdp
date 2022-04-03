@@ -53,9 +53,44 @@ const registrationNewUser = async(name, login, password) => {
     }
 }
 
+const setResults = async(login, password, diagnnumber, answers) => {
+    try {
+        let pool = await sql.connect(config);
+        let users = pool.request().query("select login_user as login, password_user as password, id_user as id from Users")
+        let tempuser = _.find((await users).recordset, { login: login, password: password })
+        if (tempuser) {
+            pool.request().query(`insert into Diagnostic${diagnnumber} values (${tempuser.id}, '${answers}', '${new Date().toISOString().slice(0, 19).replace('T', ' ')}')`)
+            return { error: false, message: "Данные успешно занесены в базу" }
+        } else {
+            return { error: true, message: "Пользователя не существует" }
+        }
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+const getResults = async(login, password, diagnnumber) => {
+    try {
+        console.log('ASDASDSA ')
+        let pool = await sql.connect(config);
+        let users = pool.request().query("select login_user as login, password_user as password, id_user as id from Users")
+        let tempuser = _.find((await users).recordset, { login: login, password: password })
+        if (tempuser) {
+            let answers = pool.request().query(`select answers, date from Diagnostic${diagnnumber} where date=(select max(date) from Diagnostic${diagnnumber} where user_id=${tempuser.id})`)
+            console.log((await answers).recordset)
+            return { error: false, data: (await answers).recordset }
+        } else {
+            return { error: true, message: "Пользователя не существует" }
+        }
+    } catch (e) {
+        console.log(e)
+    }
+}
 module.exports = {
     getUsersData,
     registrationNewUser,
     getItems,
-    acceptLogin
+    acceptLogin,
+    setResults,
+    getResults
 }

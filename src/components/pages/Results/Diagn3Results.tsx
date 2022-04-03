@@ -1,19 +1,18 @@
 import { IUserData } from 'App';
+import { IDiagnResult } from 'components/pages/Results/Diagn1Results';
 import DiagnResultsHeader from 'components/pages/Results/DiagnResultsHeader';
+import ResultBlock3 from 'components/pages/Results/ResultBlock3';
 import image from "images/Results/diag3result_600.png";
-import { ReactComponent as Line } from 'images/Results/Line.svg';
 import { useMediaQuery } from "react-responsive";
 import { DiagHtml } from 'styles/pages/Diagnostics/DiagnHeader';
-import { Button, DiagnTextBlack, DiagnTextBlackBold, HomeTextBlock, ResultItem, ResultLine, ResultsBlock } from 'styles/pages/Results/Diagn3Results';
-import { IDiagnResult } from 'components/pages/Results/Diagn1Results'
-import ResultBlock3 from 'components/pages/Results/ResultBlock3'
+import { Button, HomeTextBlock, ResultLine, ResultsBlock } from 'styles/pages/Results/Diagn3Results';
 
 interface Props {
     userData: IUserData | null,
     result: IDiagnResult[]
 }
 
-const Diagn3Results = ({ userData, result}: Props) => {
+const Diagn3Results = ({ userData, result }: Props) => {
 
     const HeaderProps = {
         userData: userData,
@@ -29,10 +28,10 @@ const Diagn3Results = ({ userData, result}: Props) => {
             <DiagnResultsHeader {...HeaderProps} />
             <ResultsBlock>
                 <ResultLine>
-                    {result.slice(0,2).map((value, index) => <ResultBlock3 {...value} key={index}/>)}
+                    {result.slice(0, 2).map((value, index) => <ResultBlock3 {...value} key={index} />)}
                 </ResultLine>
                 <ResultLine>
-                    {result.slice(2).map((value, index) => <ResultBlock3 {...value} key={index}/>)}
+                    {result.slice(2).map((value, index) => <ResultBlock3 {...value} key={index} />)}
                 </ResultLine>
             </ResultsBlock>
             <HomeTextBlock>

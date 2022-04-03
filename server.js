@@ -30,5 +30,14 @@ app.post('/registrationNewUser', (req, res) => {
         res.send(r)
     })
 })
-
+app.post('/setResults', (req, res) => {
+    dbOperation.setResults(req.body.login, req.body.password, req.body.diagnnumber, req.body.answers).then(r => {
+        res.send(r)
+    })
+})
+app.post('/getResults', (req, res) => {
+    dbOperation.getResults(req.body.login, req.body.password, req.body.diagnnumber).then(r => {
+        res.send(r)
+    })
+})
 app.listen(API_PORT, () => console.log(`Listening on port ${API_PORT}`))

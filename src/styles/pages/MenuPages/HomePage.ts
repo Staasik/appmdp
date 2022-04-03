@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import image from "images/HomePage/HomeImg.png"; 
-import imagedesk from "images/HomePage/Desktop.png"; 
+import image from "images/HomePage/HomeImg.png";
+import imagedesk from "images/HomePage/Desktop.png";
+import { Link } from "react-router-dom";
 export const HomeTextBlock = styled.div`
     display: flex;
     width:90%; 
@@ -164,9 +165,11 @@ export const TextBlockWhite = styled(TextBlock)`
     }
 
 `
-export const Button = styled.button`
+export const Button = styled(Link)`
+    text-decoration: none ;
     display:flex;
-    width: 200px;    
+    width: 200px;
+    font-size: 16px;
     height: 50px;
     background: #FF9254;
     border-radius: 8px; 
