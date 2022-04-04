@@ -135,6 +135,18 @@ export const DiagnTextBlack = styled.text`
         font-size:14px; 
     }
 `
+export const DiagnosticTextBlack = styled.text`
+    color:black;
+    font-size:16px; 
+    height:70px;
+    @media (max-width:1000px) {     
+        height:auto;
+    }
+    @media (max-width:800px) {     
+        font-size:14px; 
+    }
+`
+
 export const DiagnTextBlackBold = styled.text`
     color:black;
     font-weight : bold;

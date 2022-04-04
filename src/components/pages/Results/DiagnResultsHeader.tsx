@@ -16,7 +16,7 @@ export const DiagnResultsHeader = ({ userData, title, images }: Props) => {
                 <ButtonBlock>
                     {!userData && <>
                         <ErrorBlock><ErrorReg /></ErrorBlock>
-                        <Button>Зарегистрироваться</Button>
+                        <Button to="/reg">Зарегистрироваться</Button>
                     </>}
                 </ButtonBlock>
             </TextBlock>

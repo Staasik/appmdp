@@ -27,7 +27,7 @@ const Diagnostics = ({ userData }: Props) => {
                     <DiagnTextBlack>Проходите диагностики, узнавайте новые книги и слушайте успокаивающую музыку на нашем сайте.</DiagnTextBlack>
                     <ButtonBlock>
                         <Button to="/main/diagnostics">Пройти диагностику</Button>
-                        <HomeRegUrl/>
+                        <Link to="/reg"><HomeRegUrl/></Link>
                 </ButtonBlock>
                 </TextBlock>    
                 <ImgBlock/>             
@@ -40,7 +40,7 @@ const Diagnostics = ({ userData }: Props) => {
                 <ImgBlock/> 
                 <ButtonBlock>
                     <Button to="/main/diagnostics">Пройти диагностику</Button>
-                    <HomeRegUrl/>
+                    <Link to="/reg"><HomeRegUrl/></Link>
                 </ButtonBlock> 
             </HomeTextBlock>
             }
@@ -67,7 +67,7 @@ const Diagnostics = ({ userData }: Props) => {
                     <MenuItem>
                         <TextUrl>Подборки</TextUrl>
                         <DiagnTextBlack>Предлагаем вам ознакомиться со списком интересных книг</DiagnTextBlack>
-                        <HomeRecomendUrl/>
+                        <Link to="/main/recommend"><HomeRecomendUrl/></Link>
                     </MenuItem>
                     <MenuItem>
                         <TextUrl>Аккаунт</TextUrl>

@@ -5,7 +5,7 @@ import blockItemMock, { IblockItemMock } from 'mockdata/UserProfileBlocks';
 import diagnItemMock, { IdiagnItemMock } from 'mockdata/UserProfileDiagnItem';
 import { useState } from 'react';
 import { DiagHtml } from 'styles/pages/Diagnostics/DiagnHeader';
-import { Button, ButtonBlock, ButtonWhite, DiagnCheckBlocks, DiagnResult, DiagnResultItem, DiagnTextBlack, DiagnTextBlackBoldName, DiagnTextProfCenter, HomeTextBlock, Img, TextBlock } from 'styles/pages/UserProfile/UserProfile';
+import { Button, ButtonBlock, ButtonWhite, DiagnCheckBlocks, DiagnResult,DiagnosticTextBlack, DiagnResultItem, DiagnTextBlack, DiagnTextBlackBoldName, DiagnTextProfCenter, HomeTextBlock, Img, TextBlock } from 'styles/pages/UserProfile/UserProfile';
 
 interface Props {
     userData: IUserData | null
@@ -38,7 +38,7 @@ const UserProfile = ({ userData }: Props) => {
                     items.map((value, index) =>
                         <DiagnResultItem key={index}>
                             <Img src={value.image} />
-                            <DiagnTextBlack style={{ textAlign: "center" }}>{value.title}</DiagnTextBlack>
+                            <DiagnosticTextBlack style={{ textAlign: "center"}}>{value.title}</DiagnosticTextBlack>
                             <Button to={`diagnresult${index + 1}`}>Посмотреть результат</Button>
                         </DiagnResultItem>
                     )

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { Link } from 'react-router-dom';
 export const DiagBody = styled.div`
     width: 100%;
     display:flex;
@@ -34,6 +34,9 @@ export const DiagnBlock = styled.div`
     @media (max-width:1400px) {
         width: 90%;  
     }
+`
+export const DiagnLink = styled(Link)`
+    text-decoration: none;
 `
 export const Diagn3Block = styled(DiagnBlock)`
     width: 90%;

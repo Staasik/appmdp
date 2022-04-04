@@ -1,14 +1,15 @@
-import { DiagFooter, DiagFooterItems, DiagnText, DiagnTextBlack, FooterItems, FooterItemsKGU } from 'styles/pages/Diagnostics';
+import { DiagFooter, DiagFooterItems, DiagnText, DiagnLink,DiagnTextBlack, FooterItems, FooterItemsKGU } from 'styles/pages/Diagnostics';
+
 
 export const Footer = () => {
     return (
         <DiagFooter>
             <DiagFooterItems>
                 <FooterItems>
-                    <DiagnTextBlack>Главная</DiagnTextBlack>
-                    <DiagnTextBlack>Диагностика</DiagnTextBlack>
+                    <DiagnLink to="/main/home"><DiagnTextBlack>Главная</DiagnTextBlack></DiagnLink>
+                    <DiagnLink to="/main/diagnostics"><DiagnTextBlack>Диагностика</DiagnTextBlack></DiagnLink>
                     <DiagnTextBlack>Новости</DiagnTextBlack>
-                    <DiagnTextBlack>Рекомендации</DiagnTextBlack>
+                    <DiagnLink to="/main/recommend"><DiagnTextBlack>Рекомендации</DiagnTextBlack></DiagnLink>
                 </FooterItems>
                 <FooterItems>
                     <DiagnTextBlack>Чек-листы</DiagnTextBlack>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import image from "images/Results/diag2result.png"; 
 import imagedesk from "images/Results/diag2result_600.png"; 
+import { Link } from 'react-router-dom';
 export const HomeTextBlock = styled.div`
     display: flex;
     width:90%; 
@@ -142,7 +143,8 @@ export const TextBlock = styled.div`
         align-items:center;
     }
 `
-export const Button = styled.button`
+export const Button = styled(Link)`
+    text-decoration: none ;
     display:flex;
     width: 200px;    
     height: 50px;

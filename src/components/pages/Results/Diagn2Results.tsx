@@ -6,6 +6,7 @@ import image from "images/Results/diag2result.png";
 import imagedesk from "images/Results/diag2result_600.png";
 import { DiagHtml } from 'styles/pages/Diagnostics/DiagnHeader';
 import { Button, ResultLine, ResultsBlock } from 'styles/pages/Results/Diagn2Results';
+
 interface Props {
     userData: IUserData | null,
     result: IDiagnResult2[]
@@ -25,7 +26,7 @@ const Diagn2Results = ({ userData, result }: Props) => {
             <ResultsBlock>
                 <ResultLine>
                     {result.map((value, index) => <ResultBlock2 {...value} key={index} />)}
-                    <Button style={{ marginTop: "50px", alignSelf: "center" }}>Перейти в профиль</Button>
+                    <Button to="/main/profile" style={{ marginTop: "50px", alignSelf: "center" }}>Перейти в профиль</Button>
                 </ResultLine>
 
             </ResultsBlock>

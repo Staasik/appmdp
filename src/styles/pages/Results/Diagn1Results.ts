@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import image from "images/Results/diag1result.png"; 
 import imagedesk from "images/Results/diag1result_600.png"; 
+import { Link } from 'react-router-dom';
+
 export const HomeTextBlock = styled.div`
     display: flex;
     width:90%; 
@@ -15,7 +17,6 @@ export const HomeTextBlock = styled.div`
     }
     @media (max-width:800px) {
         flex-direction: column;
-        gap:30px;
         margin:0px;
     }
 `
@@ -107,7 +108,7 @@ interface ImgBlockProps{
 export const ImgBlock = styled.div<ImgBlockProps>`
     display: flex;
     width:40%; 
-    height:300px;
+    height:350px;
     justify-content:center;
     align-items:center;
     background-image:url(${({images}: ImgBlockProps) => images[0]});
@@ -116,6 +117,7 @@ export const ImgBlock = styled.div<ImgBlockProps>`
     background-position: center; 
     @media (max-width:1000px) {
         width:50%;
+        height:300px;
     }    
     @media (max-width:800px) {
         width:100%;
@@ -139,7 +141,8 @@ export const TextBlock = styled.div`
         align-items:center;
     }
 `
-export const Button = styled.button`
+export const Button = styled(Link)`
+    text-decoration: none ;
     display:flex;
     width: 200px;    
     height: 50px;

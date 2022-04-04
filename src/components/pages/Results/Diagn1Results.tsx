@@ -6,7 +6,7 @@ import { ReactComponent as Ellipse } from 'images/Results/Ellipse.svg';
 import { ReactComponent as Line } from 'images/Results/Line.svg';
 import { useMediaQuery } from "react-responsive";
 import { DiagHtml, DiagnTextProf } from 'styles/pages/Diagnostics/DiagnHeader';
-import { DiagnTextBlack, DiagnTextBlackBold, Result, ResultItem, ResultLine, ResultsBlock, ResultStaticItem } from 'styles/pages/Results/Diagn1Results';
+import { DiagnTextBlack, DiagnTextBlackBold, HomeTextBlock,Result, Button, ResultLine, ResultsBlock, ResultStaticItem } from 'styles/pages/Results/Diagn1Results';
 import ResultBlock1 from 'components/pages/Results/ResultBlock1'
 
 export interface IDiagnResult{
@@ -62,6 +62,9 @@ const Diagn1Results = ({ userData, result }: Props) => {
                     </ResultStaticItem>
                 </ResultLine>
             </ResultsBlock>
+            <HomeTextBlock>
+                <Button to="/main/profile" style={{ marginTop: "50px", alignSelf: "center" }}>Перейти в профиль</Button>
+            </HomeTextBlock>
         </DiagHtml>
     );
 }
