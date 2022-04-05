@@ -4,23 +4,23 @@ import Diagnostic2 from 'components/pages/Diagnostics/Diagnostic2';
 import Diagnostic3 from 'components/pages/Diagnostics/Diagnostic3';
 import Diagnostics from 'components/pages/Diagnostics/Diagnostics';
 import HomePage from 'components/pages/MenuPages/HomePage';
-import UserProfile from 'components/pages/UserProfile/UserProfile';
 import Recommendations from 'components/pages/MenuPages/Recommendations';
 import UserResults from 'components/pages/Results/UserResults';
+import UserProfile from 'components/pages/UserProfile/UserProfile';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import Chat from 'components/pages/Chat/ChatBot';
 
 interface Props {
-    userData: IUserData | null
+    userData: IUserData | null,
+    onOpenChat(): any
 }
 
-export const Main = ({ userData }: Props) => {
+export const Main = ({ userData, onOpenChat }: Props) => {
     return (
         <Routes>
             <Route path="/" element={<Navigate to="/main/home" replace />} />
             <Route path="diagnostics" element={<Diagnostics />} />
-            <Route path="home" element={<HomePage userData={userData} />} />
+            <Route path="home" element={<HomePage userData={userData} onOpenChat={() => onOpenChat()}/>} />
             {userData && <Route path="profile" element={<UserProfile userData={userData} />} />}
             {userData && <Route path="profile/diagnresult1" element={<UserResults userData={userData} diagnnumber={1} />} />}
             {userData && <Route path="profile/diagnresult2" element={<UserResults userData={userData} diagnnumber={2} />} />}

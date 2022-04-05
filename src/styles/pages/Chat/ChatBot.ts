@@ -34,6 +34,26 @@ export const ModalBody = styled.div`
     padding:10px;
     margin:20px;
     overflow-y: auto;
+    ::-webkit-scrollbar {
+        background-color:#fff;
+        width:16px
+    }
+    ::-webkit-scrollbar-track {
+        background-color:#fff
+    }
+    ::-webkit-scrollbar-track:hover {
+        background-color:#f4f4f4
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color:#babac0;
+        border-radius:16px;
+        border:5px solid #fff
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background-color:#a0a0a5;
+        border:4px solid #f4f4f4
+    }
+    ::-webkit-scrollbar-button {display:none}
 `
 export const BodySmsBot = styled.div`
     display:flex;
@@ -48,12 +68,12 @@ export const BodySmsBot = styled.div`
 export const BodySmsButton = styled.div`
     display:flex;
     flex-direction:column;
-    align-self:flex-end;
     max-width:90%;
     justify-content: center;
-    align-items:center;
+    align-items:flex-start;
     padding:10px;
     background-color: #FFE9DD;
+    align-self:flex-end;
     border-radius: 15px 15px 0px 15px;
 `
 export const ModalName = styled.div`
@@ -70,7 +90,7 @@ export const ModalButtons = styled.div`
     flex-direction:row;
     flex-wrap:wrap;
     width: 90%;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items:center;
     padding:10px;
     height:17%;
@@ -115,16 +135,19 @@ export const ModalMiniText = styled.text`
     width: 50%; 
     text-align:center; 
 `
-export const Button = styled.a`
+export const Button = styled.button`
     width: 30%;
     height: 30%;
     font-size: 12px; 
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: inherit;
     text-decoration: none;
+    cursor: pointer;
     border: 1.5px solid #5496FF;
     border-radius: 11px;
+    user-select: none;
 `
 export const ModalCont = styled.div`
     height: 100vh;

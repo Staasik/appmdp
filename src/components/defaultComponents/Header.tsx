@@ -6,19 +6,20 @@ import { Menu } from "components/pages/Menu";
 import Icon from 'images/icon.png';
 import { useLocation } from 'react-router-dom'
 import { IUserData } from 'App'
-import Cookies from 'codebase/Cookies';
+
 interface Props{
-    userData: IUserData | null
+    userData: IUserData | null,
+    onOpenChat(): any
 }
 
-export const Header = ({ userData } : Props) => {
+export const Header = ({ userData, onOpenChat } : Props) => {
     const isDesktop = useMediaQuery({
         query: "(max-width: 600px)"
     });
     let location = useLocation();
 
     const toProfile = () =>{
-        document.location.href = '/main/profile'
+        userData ? document.location.href = '/main/profile' : document.location.href = '/'
     }
     
     return (
@@ -43,7 +44,7 @@ export const Header = ({ userData } : Props) => {
                         <DiagnLink to="/main/recommend"><HeaderText $active={location.pathname.includes('recommend')}>Рекомендации</HeaderText></DiagnLink>
                     </DiagnMenu>
                     <DiagnCP>
-                        <Chat style={{ "height": "30px", "width": "30px" }} />
+                        <Chat style={{ "height": "30px", "width": "30px", "cursor": "pointer" }} onClick={()=>onOpenChat()}/>
                         <Prof style={{ "height": "30px", "width": "30px", "cursor": "pointer" }} onClick={()=>{toProfile()}}/>
                         { userData && <ProfileName>{userData.name}</ProfileName>}
                     </DiagnCP>

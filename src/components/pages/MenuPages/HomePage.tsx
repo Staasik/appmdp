@@ -11,10 +11,11 @@ import { DiagHtml, DiagnTextBlack, DiagnTextProf, DiagnTextProfWhite, DiagnTextW
 import { BlockDesk, BlockDeskText, Button, ButtonBlock, ButtonWhite, DiagnTextBlackBold, DiagnTextProfCenter, FootBlock, HomeBlock, HomeTextBlock, ImgBlock, ImgBlockDesktop, MenuBlock, MenuItem, MenuLine, TextBlock, TextBlockWhite, TextUrl } from 'styles/pages/MenuPages/HomePage';
 
 interface Props{
-    userData: IUserData | null
+    userData: IUserData | null,
+    onOpenChat(): any
 }
 
-const Diagnostics = ({ userData }: Props) => {
+const Diagnostics = ({ userData, onOpenChat }: Props) => {
     const isDesktop = useMediaQuery({
         query: "(min-width: 860px)"
     });
@@ -57,7 +58,7 @@ const Diagnostics = ({ userData }: Props) => {
                     <MenuItem>
                         <TextUrl>Чат–бот</TextUrl>
                         <DiagnTextBlack>С вами может пообщаться наш виртуальный помощник</DiagnTextBlack>
-                        <HomeChatUrl/>
+                        <HomeChatUrl style={{cursor: 'pointer'}} onClick={() => onOpenChat()}/>
                     </MenuItem>
                 </MenuLine>
                 <MenuLine>

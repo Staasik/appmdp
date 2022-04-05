@@ -2,76 +2,103 @@ import { ReactComponent as CloseModal } from "images/CloseModal.svg";
 import { ReactComponent as Line } from "images/LineModal.svg";
 import { ReactComponent as Online } from "images/Online.svg";
 import { ReactComponent as Veronika } from "images/Veronika.svg";
-import { useState } from "react";
-import {BodySmsBot, BodySmsButton, Button, ModalBody, ModalButtons, ModalCont, ModalContainer, ModalHeader, ModalName, ModalText, ModalWrapper } from "styles/pages/Chat/ChatBot";
-
+import { useEffect, useState } from "react";
+import { BodySmsBot, BodySmsButton, Button, ModalBody, ModalButtons, ModalCont, ModalContainer, ModalHeader, ModalName, ModalText, ModalWrapper } from "styles/pages/Chat/ChatBot";
+import _ from 'lodash'
 import { ButtonsStart, ButtonsHelp, ButtonsInspiration, IButtonsMock } from "mockdata/ModalButtons";
-import { ISmsBotMock, SmsBotHelp, SmsBotInspiration, SmsBotStart } from "mockdata/ModalSmsBot";
+import BotAnswers, { ISmsBotMock } from "mockdata/ModalSmsBot";
 
-const RegistrationModal = () => {
-  const [buttonsStar, setButtonsStar] = useState<IButtonsMock[]>(ButtonsStart);
-  const [buttonsHelp, setButtonsHelp] = useState<IButtonsMock[]>(ButtonsHelp);
-  const [buttonsInspiration, setButtonsInspiration] = useState<IButtonsMock[]>(ButtonsInspiration);
-  const [smsStart, setSmsStart] = useState<ISmsBotMock[]>(SmsBotStart);
-  const [smsHelp, setSmsHelp] = useState<ISmsBotMock[]>(SmsBotHelp);
-  const [smsInspiration, setSmsInspiration] = useState<ISmsBotMock[]>(SmsBotInspiration);
-  return (
-    <ModalWrapper>
-      <ModalCont>
-        <ModalContainer>
-          <ModalHeader>
-            <Veronika style={{ width: "50px" }} />
-            <ModalName>
-              <ModalText>Вероника</ModalText>
-              <Online style={{ marginLeft: "-10px" }} />
-            </ModalName>
-            <CloseModal style={{ width: "50px" }} />
-          </ModalHeader>
-          <Line style={{ width: "90%" }} />
-          <ModalBody>
-          {smsStart.map((value, index) => (
-              <BodySmsBot>{value.title}</BodySmsBot>
-            ))}
-            <BodySmsBot>
-              Привет!<p>Lorem ipsum dolor laboriosam.</p> Я бот POISE, твой
-              онлайн - помощник. Я с радостью помогу тебе, найду занятие по
-              душе, да и просто поговорю с тобой.Расскажи, что ты чувствуешь в
-              данный момент?
-            </BodySmsBot>
-            <BodySmsButton>Вдохновение</BodySmsButton>
-            <BodySmsBot>
-              Хороший выбор!!!С данным методом можно ознакомиться по ссылке
-              Надеюсь, что я был тебе полезен!Чем я ещё могу помочь?
-            </BodySmsBot>
-            <BodySmsButton>Ментальные карты</BodySmsButton>
-            <BodySmsBot>
-              Привет! Я бот POISE, твой онлайн - помощник. Я с радостью помогу
-              тебе, найду занятие по душе, да и просто поговорю с
-              тобой.Расскажи, что ты чувствуешь в данный момент?
-            </BodySmsBot>
-            <BodySmsButton>Вдохновение</BodySmsButton>
-            <BodySmsBot>
-              Каждый из нас уникален.Надеюсь, что я был тебе полезен!Чем я ещё
-              могу помочь?
-            </BodySmsBot>
-            <BodySmsButton>Вдохновение</BodySmsButton>
-            <BodySmsBot>
-              Привет! Я бот POISE, твой онлайн - помощник. Я с радостью помогу
-              тебе, найду занятие по душе, да и просто поговорю с
-              тобой.Расскажи, что ты чувствуешь в данный момент?
-            </BodySmsBot>
-            <BodySmsButton>Пока</BodySmsButton>
-          </ModalBody>
-          <Line style={{ width: "90%" }} />
-          <ModalButtons>
-            {buttonsStar.map((value, index) => (
-              <Button>{value.title}</Button>
-            ))}
-          </ModalButtons>
-        </ModalContainer>
-      </ModalCont>
-    </ModalWrapper>
-  );
-};
+interface IMessages {
+  senderBot: boolean,
+  message: string
+}
 
-export default RegistrationModal;
+interface IQuestions {
+  buttons: IButtonsMock[],
+  questionNumber: number
+}
+
+const FirstMessage: IMessages = {
+  senderBot: true,
+  message: `Привет! Я бот POISE, твой
+  онлайн - помощник. Я с радостью помогу тебе, найду занятие по
+  душе, да и просто поговорю с тобой.Расскажи, что ты чувствуешь в
+  данный момент?`
+}
+function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+interface Props{
+  onClose(): any
+}
+
+const RegistrationModal = ({onClose} : Props) => {
+  const [questions, setQuestions] = useState<IQuestions>({ buttons: ButtonsStart, questionNumber: 1 });
+  const [allMessages, setAllMessages] = useState<IMessages[]>([FirstMessage]);
+
+  const onQuestionClick = (question: string) => {
+    setQuestions(a => ({ buttons: [], questionNumber: a.questionNumber}))
+    setAllMessages(a => [...a, { senderBot: false, message: question }])
+    sleep(500).then(() => {
+      let answer = _.find(BotAnswers, { message: question })
+      answer && setAllMessages(a => [...a, { senderBot: true, message: answer?.answer || '' }])
+    switch (questions.questionNumber) {
+      case 1:
+        if (question.includes("Вдохновение")) setQuestions({ buttons: ButtonsInspiration, questionNumber: 2 })
+        else setQuestions({ buttons: ButtonsHelp, questionNumber: 3 })
+        break;
+      case 2:
+        setQuestions({ buttons: ButtonsHelp, questionNumber: 3 })
+        break;
+      case 3:
+        if (question.includes("Спасибо, помощь не нужна")) setQuestions({ buttons: [{title: 'Начать заново'}], questionNumber: 4 })
+        else setQuestions({ buttons: ButtonsHelp, questionNumber: 3 })
+        break;
+      case 4:
+        setQuestions({ buttons: ButtonsStart, questionNumber: 1 })
+        setAllMessages(a => [...a, FirstMessage])
+      break;
+      default:
+        break;
+    }});
+  }
+
+  useEffect(() => {
+    return () => {
+      let chatContainer = document.getElementById("chatContainer");
+      chatContainer && (chatContainer.scrollTop = chatContainer.scrollHeight)
+    }
+  }, [allMessages])
+  
+    return (
+      <ModalWrapper>
+        <ModalCont>
+          <ModalContainer>
+            <ModalHeader>
+              <Veronika style={{ width: "50px" }} />
+              <ModalName>
+                <ModalText>Вероника</ModalText>
+                <Online style={{ marginLeft: "-10px" }} />
+              </ModalName>
+              <CloseModal style={{ width: "50px", cursor: 'pointer' }}  onClick={()=>onClose()}/>
+            </ModalHeader>
+            <Line style={{ width: "90%" }} />
+            <ModalBody id="chatContainer">
+              {
+                allMessages.map((value, index) => value.senderBot ? <BodySmsBot key={index}>{value.message}</BodySmsBot> : <BodySmsButton key={index}>{value.message}</BodySmsButton>)
+              }
+            </ModalBody>
+            <Line style={{ width: "90%" }} />
+            <ModalButtons>
+              {questions.buttons.map((value, index) => (
+                <Button key={index} onClick={() => { onQuestionClick(value.title) }}>{value.title}</Button>
+              ))}
+            </ModalButtons>
+          </ModalContainer>
+        </ModalCont>
+      </ModalWrapper>
+    );
+  };
+
+  export default RegistrationModal;
