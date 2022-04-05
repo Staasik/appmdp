@@ -9,6 +9,7 @@ import Recommendations from 'components/pages/MenuPages/Recommendations';
 import UserResults from 'components/pages/Results/UserResults';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
+import Chat from 'components/pages/Chat/ChatBot';
 
 interface Props {
     userData: IUserData | null
