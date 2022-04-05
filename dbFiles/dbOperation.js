@@ -77,7 +77,6 @@ const getResults = async(login, password, diagnnumber) => {
         let tempuser = _.find((await users).recordset, { login: login, password: password })
         if (tempuser) {
             let answers = pool.request().query(`select answers, date from Diagnostic${diagnnumber} where date=(select max(date) from Diagnostic${diagnnumber} where user_id=${tempuser.id})`)
-            console.log((await answers).recordset)
             return { error: false, data: (await answers).recordset }
         } else {
             return { error: true, message: "Пользователя не существует" }
@@ -86,7 +85,48 @@ const getResults = async(login, password, diagnnumber) => {
         console.log(e)
     }
 }
+
+const getCheckLists = async(login, password) => {
+    try {
+        let pool = await sql.connect(config);
+        let users = pool.request().query("select login_user as login, password_user as password, id_user as id from Users")
+        let tempuser = _.find((await users).recordset, { login: login, password: password })
+        if (tempuser) {
+            let answers = pool.request().query(`select checklist_id, data from CheckLists where user_id=${tempuser.id}`)
+            let result = (await answers).recordset
+            result.forEach(element => {
+                element.data = element.data.split(',').map((str) => {
+                    return Number(str);
+                });
+            });
+            return { error: false, data: (await answers).recordset }
+        } else {
+            return { error: true, message: "Пользователя не существует" }
+        }
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+const setCheckLists = async(login, password, checklist_id, checklist) => {
+    try {
+        let pool = await sql.connect(config);
+        let users = pool.request().query("select login_user as login, password_user as password, id_user as id from Users")
+        let tempuser = _.find((await users).recordset, { login: login, password: password })
+        if (tempuser) {
+            pool.request().query(`update CheckLists set data='${checklist}' where user_id=${tempuser.id} and checklist_id=${checklist_id}`)
+            return { error: false }
+        } else {
+            return { error: true, message: "Пользователя не существует" }
+        }
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 module.exports = {
+    setCheckLists,
+    getCheckLists,
     getUsersData,
     registrationNewUser,
     getItems,
