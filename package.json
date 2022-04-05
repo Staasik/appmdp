@@ -57,6 +57,7 @@
         ]
     },
     "devDependencies": {
+        "@types/lodash": "^4.14.181",
         "nodemon": "^2.0.15",
         "styled-components": "^5.3.3"
     }

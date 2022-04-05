@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
+import { ReactComponent as UncheckedIcon } from "images/UserProfile/CheckNull.svg";
+import { ReactComponent as CheckedIcon } from "images/UserProfile/CheckYes.svg";
 
 export const HomeTextBlock = styled.div`
     display: flex;
@@ -224,6 +226,20 @@ export const ImgBlockItem = styled.img`
     width:40px;
     height:40px; 
     cursor: pointer;
+`
+export const UncheckedImg = styled(UncheckedIcon)`
+    width:40px;
+    height:40px; 
+    cursor: pointer;
+`
+export const CheckedImg = styled(CheckedIcon)`
+    width:40px;
+    height:40px; 
+    cursor: pointer;
+`
+export const IconWrapper = styled.div`
+    width:40px;
+    height:40px; 
 `
 export const ItemBlockCheck = styled.div`
     display: flex;

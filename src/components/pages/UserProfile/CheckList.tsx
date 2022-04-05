@@ -5,28 +5,29 @@ import {
   DiagnCheckBlockstItemText,
   DiagnTextBlack,
   DiagnTextBlackBold,
+  CheckedImg,
   ImgBlockItem,
+  UncheckedImg,
   ItemBlockCheck,
+  IconWrapper
 } from "styles/pages/UserProfile/UserProfile";
 import { ICheck } from "mockdata/UserProfileCheck";
-import UncheckedIcon from "images/UserProfile/CheckNull.png";
-import CheckedIcon from "images/UserProfile/CheckYes.png";
 import { useState } from "react";
 import {Caret,Button} from 'styles/pages/UserProfile/CheckList'
 import { ReactComponent as File_Download } from "images/UserProfile/File_Download.svg";
 interface Props {
-  index: number;
   image: string;
   title: string;
   description: string;
   checklist: ICheck[];
+  onChange({...args}: any) : any,
 }
-const CheckList = ({ index, image, title, description, checklist }: Props) => {
+
+const CheckList = ({ image, title, description, checklist, onChange: callback }: Props) => {
   const [listOpened, setListOpened] = useState(false);
   return (
     <ItemBlockCheck>
       <DiagnCheckBlockstItem
-        key={index}
         onClick={() => setListOpened((a) => !a)}
       >
         <ImgBlockItem src={image} />
@@ -43,9 +44,9 @@ const CheckList = ({ index, image, title, description, checklist }: Props) => {
           {checklist.map((value, index) => (
             <BlockstItemChecks>
               {value.checked ? (
-                <ImgBlockItem src={CheckedIcon} />
+                <IconWrapper><CheckedImg onClick={()=> callback(index)}/></IconWrapper>
               ) : (
-                <ImgBlockItem src={UncheckedIcon} />
+                <IconWrapper><UncheckedImg onClick={()=> callback(index)} /></IconWrapper>
               )}
               <DiagnTextBlack>{value.text}</DiagnTextBlack>          
             </BlockstItemChecks>

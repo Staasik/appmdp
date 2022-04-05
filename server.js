@@ -44,4 +44,15 @@ app.post('/getResults', (req, res) => {
         res.send(r)
     })
 })
+app.post('/getCheckLists', (req, res) => {
+    dbOperation.getCheckLists(req.body.login, req.body.password).then(r => {
+        res.send(r)
+    })
+})
+app.post('/setCheckLists', (req, res) => {
+    dbOperation.setCheckLists(req.body.login, req.body.password, req.body.checklist_id, req.body.checklist).then(r => {
+        res.send(r)
+    })
+})
+
 app.listen(API_PORT, () => console.log(`Listening on port ${API_PORT}`))
