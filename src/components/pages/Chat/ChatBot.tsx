@@ -29,6 +29,9 @@ const RegistrationModal = () => {
           </ModalHeader>
           <Line style={{ width: "90%" }} />
           <ModalBody>
+          {smsStart.map((value, index) => (
+              <BodySmsBot>{value.title}</BodySmsBot>
+            ))}
             <BodySmsBot>
               Привет!<p>Lorem ipsum dolor laboriosam.</p> Я бот POISE, твой
               онлайн - помощник. Я с радостью помогу тебе, найду занятие по

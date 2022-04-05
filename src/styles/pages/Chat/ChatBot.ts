@@ -33,7 +33,7 @@ export const ModalBody = styled.div`
     height:60%;
     padding:10px;
     margin:20px;
-    overflow-y: scroll;
+    overflow-y: auto;
 `
 export const BodySmsBot = styled.div`
     display:flex;
