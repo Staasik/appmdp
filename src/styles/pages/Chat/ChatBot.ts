@@ -9,39 +9,105 @@ export const ModalWrapper = styled.div`
     top: 0;
     background-color:rgba(98, 98, 98, 0.4);
 `
+export const ModalHeader = styled.div`
+    display:flex;
+    flex-direction:row;
+    width: 90%;
+    gap:50px;
+    justify-content: center;
+    align-items:center;
+    height:70px;
+    padding:20px;   
+    @media (max-width:800px) {
+        height:50px;
+        padding:10px; 
+    }
+`
+export const ModalBody = styled.div`
+    display:flex;
+    flex-direction:column;
+    width: 90%;
+    gap:20px;
+    //justify-content: flex-end;
+    align-items:flex-start;
+    height:60%;
+    padding:10px;
+    margin:20px;
+    overflow-y: scroll;
+`
+export const BodySmsBot = styled.div`
+    display:flex;
+    flex-direction:column;
+    max-width:90%;
+    justify-content: center;
+    align-items:flex-start;
+    padding:10px;
+    background-color: #F6F6F9;
+    border-radius: 15px 15px 15px 0px;
+`
+export const BodySmsButton = styled.div`
+    display:flex;
+    flex-direction:column;
+    align-self:flex-end;
+    max-width:90%;
+    justify-content: center;
+    align-items:center;
+    padding:10px;
+    background-color: #FFE9DD;
+    border-radius: 15px 15px 0px 15px;
+`
+export const ModalName = styled.div`
+    display:flex;
+    flex-direction:column;
+    width: 70%;
+    justify-content: center;
+    align-items:center;
+    gap:10px;
+    height:100%;
+`
+export const ModalButtons = styled.div`
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    width: 90%;
+    justify-content: space-between;
+    align-items:center;
+    padding:10px;
+    height:17%;
+`
 export const ModalContainer = styled.div`
     display:flex;
     flex-direction:column;
-    gap:15px;
-    width: 25%;
+    width: 40%;
     position:fixed;
-    height:40%;
+    height:85%;
     justify-content: center;
     align-items:center;
     background-color: #FFFFFF;
     box-shadow: 0px -20px 40px -15px rgba(0, 0, 0, 0.05), 0px 20px 40px -15px rgba(0, 0, 0, 0.05);
     border-radius: 19px;
+    @media (max-width:1500px) {
+        width: 50%;
+    }
     @media (max-width:1200px) {
-        width: 35%;
-        height:40%;
-    }
-    @media (max-width:800px) {
-        width: 45%;
-    }
-    @media (max-width:600px) {
         width: 60%;
     }
-    @media (max-width:450px) {
+    @media (max-width:1000px) {
+        width: 70%;
+    }
+    @media (max-width:900px) {
         width: 80%;
-        height:50%;
-        gap:25px;
+    }
+    @media (max-width:800px) {
+        width: 90%;
     }
 `
 
 export const ModalText = styled.text`
     font-size: 24px;
-    @media (max-width:900px) {
-        font-size: 20px;
+    @media (max-width:800px) {
+        font-size: 16px;
+        height:15px;
     }   
 `
 export const ModalMiniText = styled.text`
@@ -49,21 +115,16 @@ export const ModalMiniText = styled.text`
     width: 50%; 
     text-align:center; 
 `
-export const ModalButton = styled.a`
-    width: 60%;
-    height: 45px;
+export const Button = styled.a`
+    width: 30%;
+    height: 30%;
     font-size: 12px; 
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    background: #FF9254;
-    border-radius: 8px;
-    color: white;
-    border:0;
-    @media (max-width:900px) {
-        width: 80%;
-    } 
+    border: 1.5px solid #5496FF;
+    border-radius: 11px;
 `
 export const ModalCont = styled.div`
     height: 100vh;

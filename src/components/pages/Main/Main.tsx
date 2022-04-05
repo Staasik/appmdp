@@ -19,6 +19,7 @@ export const Main = ({ userData }: Props) => {
     return (
         <Routes>
             <Route path="/" element={<Navigate to="/main/home" replace />} />
+            <Route path="home" element={<Chat />} />
             <Route path="diagnostics" element={<Diagnostics />} />
             <Route path="home" element={<HomePage userData={userData} />} />
             {userData && <Route path="profile" element={<UserProfile userData={userData} />} />}
