@@ -19,11 +19,12 @@ export interface IUserData {
 }
 export const MAIN_IP = '146.247.34.58'
 
+
 const App = () => {
-  const data = {name:123, login: "123", password: "123"}
+  const data = {name:"123", login: "123", password: "123"}
 
   const [chatOpened, setChatOpened] = useState(false)
-  const [userData, setUserData] = useState<IUserData | null>(null)
+  const [userData, setUserData] = useState<IUserData | null>(data)
 
   useEffect(() => {
     console.log(chatOpened)

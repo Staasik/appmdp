@@ -8,7 +8,7 @@ export const Caret = styled(Caret_Right)<CaretProps>`
     transform: ${({$listOpened}:CaretProps)=>$listOpened ? 'rotate(90deg)' : 'none'};
     transition:transform .5s;
 `
-export const Button = styled.button`
+export const Button = styled.a`
     display:flex;
     width: 200px;
     height: 50px;
@@ -18,7 +18,10 @@ export const Button = styled.button`
     color:#fff;
     justify-content:center;
     align-items:center;
-        margin-top:50px; 
+    margin-top:50px; 
+    text-decoration:none;
+    text-align:center;
+    cursor:pointer;
     @media (max-width:600px) {
         width: 100%;  
         margin-top:20px; 

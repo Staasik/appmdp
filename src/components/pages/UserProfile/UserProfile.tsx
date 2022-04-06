@@ -101,7 +101,7 @@ const UserProfile = ({ userData }: Props) => {
             <DiagnCheckBlocks>
                 {
                     blocks.map((value, index) =>
-                        <CheckList key={index} image={value.image} title={value.title} description={value.description} checklist={value.checklist} onChange={(value: number) => onChange(index, value)} />
+                        <CheckList key={index} image={value.image} title={value.title} description={value.description} checklist={value.checklist} pdf={value.pdf} name={value.name} onChange={(value: number) => onChange(index, value)} />
                     )
                 }
             </DiagnCheckBlocks>

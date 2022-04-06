@@ -7,6 +7,7 @@ import Icon from 'images/icon.png';
 import { useLocation } from 'react-router-dom'
 import { IUserData } from 'App'
 
+import { useState } from 'react'
 interface Props{
     userData: IUserData | null,
     onOpenChat(): any
@@ -30,7 +31,7 @@ export const Header = ({ userData, onOpenChat } : Props) => {
                         <img src={Icon} style={{ "height": "30px", "width": "110px" }} />
                     </DiagnIcon >
                     <DiagnCP>
-                        <Menu />
+                        <Menu userData={userData} onOpenChat={() => onOpenChat()}/>
                     </DiagnCP>
                 </DiagHeader >
                 :
@@ -44,7 +45,7 @@ export const Header = ({ userData, onOpenChat } : Props) => {
                         <DiagnLink to="/main/recommend"><HeaderText $active={location.pathname.includes('recommend')}>Рекомендации</HeaderText></DiagnLink>
                     </DiagnMenu>
                     <DiagnCP>
-                        <Chat style={{ "height": "30px", "width": "30px", "cursor": "pointer" }} onClick={()=>onOpenChat()}/>
+                        <Chat style={{ "height": "30px", "width": "30px", "cursor": "pointer" }} onClick={()=> onOpenChat()}/>
                         <Prof style={{ "height": "30px", "width": "30px", "cursor": "pointer" }} onClick={()=>{toProfile()}}/>
                         { userData && <ProfileName>{userData.name}</ProfileName>}
                     </DiagnCP>

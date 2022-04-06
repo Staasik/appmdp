@@ -28,7 +28,7 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                     <DiagnTextBlack>Проходите диагностики, узнавайте новые книги и слушайте успокаивающую музыку на нашем сайте.</DiagnTextBlack>
                     <ButtonBlock>
                         <Button to="/main/diagnostics">Пройти диагностику</Button>
-                        <Link to="/reg"><HomeRegUrl/></Link>
+                        {!userData && <Link to="/reg"><HomeRegUrl/></Link>}
                 </ButtonBlock>
                 </TextBlock>    
                 <ImgBlock/>             
@@ -41,7 +41,7 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                 <ImgBlock/> 
                 <ButtonBlock>
                     <Button to="/main/diagnostics">Пройти диагностику</Button>
-                    <Link to="/reg"><HomeRegUrl/></Link>
+                    {!userData && <Link to="/reg"><HomeRegUrl/></Link>}
                 </ButtonBlock> 
             </HomeTextBlock>
             }
@@ -62,9 +62,7 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                     </MenuItem>
                 </MenuLine>
                 <MenuLine>
-                    <MenuItem>
-                        <Line/>
-                    </MenuItem>
+                {isDesktop && <MenuItem><Line/></MenuItem>}
                     <MenuItem>
                         <TextUrl>Подборки</TextUrl>
                         <DiagnTextBlack>Предлагаем вам ознакомиться со списком интересных книг</DiagnTextBlack>
@@ -96,7 +94,7 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                 <TextBlockWhite>
                     <DiagnTextProfWhite>Гармония в работе начинается с саморегуляции </DiagnTextProfWhite>
                     <DiagnTextWhite>Присоединяйтесь к нашему сервису — мы поможем узнать всё о психологии для работы преподавателем</DiagnTextWhite>
-                    <ButtonWhite to="/reg">Зарегистрироваться</ButtonWhite>
+                    {!userData && <ButtonWhite to="/reg">Зарегистрироваться</ButtonWhite>}
                 </TextBlockWhite>
             </FootBlock>
         </DiagHtml>

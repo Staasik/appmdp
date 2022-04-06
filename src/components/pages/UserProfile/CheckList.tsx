@@ -15,15 +15,21 @@ import { ICheck } from "mockdata/UserProfileCheck";
 import { useState } from "react";
 import {Caret,Button} from 'styles/pages/UserProfile/CheckList'
 import { ReactComponent as File_Download } from "images/UserProfile/File_Download.svg";
+
+
 interface Props {
   image: string;
   title: string;
   description: string;
   checklist: ICheck[];
+  pdf:string;
+  name:string;
   onChange({...args}: any) : any,
 }
 
-const CheckList = ({ image, title, description, checklist, onChange: callback }: Props) => {
+
+const CheckList = ({ image, title, description, checklist,pdf,name, onChange: callback }: Props) => {
+
   const [listOpened, setListOpened] = useState(false);
   return (
     <ItemBlockCheck>
@@ -51,7 +57,7 @@ const CheckList = ({ image, title, description, checklist, onChange: callback }:
               <DiagnTextBlack>{value.text}</DiagnTextBlack>          
             </BlockstItemChecks>
           ))}
-          <Button>Скачать для печати<File_Download style={{marginLeft:"20px"}}/></Button>
+         <Button href={pdf} download={name}>Скачать для печати<File_Download style={{marginLeft:"10px"}}/></Button>
         </BlocksChecks>
       )}
     </ItemBlockCheck>
