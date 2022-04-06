@@ -10,7 +10,7 @@ export const Caret = styled(Caret_Right)<CaretProps>`
 `
 export const Button = styled.a`
     display:flex;
-    width: 200px;
+    width: 250px;
     height: 50px;
     background: #FF9254;
     border: 0;
