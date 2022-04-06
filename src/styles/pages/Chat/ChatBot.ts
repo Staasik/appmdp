@@ -29,6 +29,7 @@ export const ModalBody = styled.div`
     width: 90%;
     gap:20px;
     //justify-content: flex-end;
+    align-self: center;
     align-items:flex-start;
     height:60%;
     padding:10px;
@@ -93,7 +94,11 @@ export const ModalButtons = styled.div`
     justify-content: space-around;
     align-items:center;
     padding:10px;
-    height:17%;
+    height:20%;
+    @media (max-width:800px) {
+        width: 95%;
+        height:25%;
+    }  
 `
 export const ModalContainer = styled.div`
     display:flex;
@@ -137,7 +142,7 @@ export const ModalMiniText = styled.text`
 `
 export const Button = styled.button`
     width: 30%;
-    height: 30%;
+    height: 35%;
     font-size: 12px; 
     display: flex;
     justify-content: center;
@@ -148,6 +153,10 @@ export const Button = styled.button`
     border: 1.5px solid #5496FF;
     border-radius: 11px;
     user-select: none;
+    @media (max-width:800px) {
+        width: 45%;
+        height: 30%;
+    }  
 `
 export const ModalCont = styled.div`
     height: 100vh;
