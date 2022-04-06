@@ -4,8 +4,9 @@ import QuestImg from 'components/defaultComponents/QuestImg';
 import Diagn2Results from 'components/pages/Results/Diagn2Results';
 import imagefoot from "images/diagn2.png";
 import image600 from "images/diagn2_600.png";
+import _ from 'lodash';
 import { data } from 'mockdata/mocktest2';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { BlockTwo, Button, DiagBody, DiagnBlock } from 'styles/pages/Diagnostics/Diagnostic';
 import DiagnHeader from './DiagnHeader';
 
@@ -23,16 +24,19 @@ interface Props {
 const Diagnostic2 = ({ userData }: Props) => {
     const [result, setResult] = useState<IDiagnResult2[] | null>(null)
     const [answers, setAnswers] = useState<number[]>([])
+    const [completeDisabled, setCompleteDisabled] = useState<boolean>(true)
 
     const onChange = (index: number, answer: number) => {
         let tempAnswers = answers
         tempAnswers[index] = answer
-        console.log(tempAnswers)
         setAnswers([...tempAnswers])
+        if (tempAnswers.length == (data.length / 2) && !_.some(tempAnswers, (el) => el == undefined)) {
+            setCompleteDisabled(false)
+        }
     }
 
     const onComplete = () => {
-        if (answers.length == (data.length / 2) && !answers.some((el) => el == undefined)) {
+        if (!completeDisabled) {
             if (userData) {
                 fetch(process.env.NODE_ENV == 'development' ? "/setResults" : `http://${MAIN_IP}:5000/setResults`, {
                     method: 'POST',
@@ -66,7 +70,7 @@ const Diagnostic2 = ({ userData }: Props) => {
                     )
                 })}
             </DiagnBlock>
-            <Button onClick={() => onComplete()}>Завершить</Button>
+            <Button onClick={() => onComplete()} $completeDisabled={completeDisabled}>Завершить</Button>
         </DiagBody>
     );
 }

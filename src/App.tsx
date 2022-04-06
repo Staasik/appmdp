@@ -24,7 +24,7 @@ const App = () => {
   const data = {name:"123", login: "123", password: "123"}
 
   const [chatOpened, setChatOpened] = useState(false)
-  const [userData, setUserData] = useState<IUserData | null>(data)
+  const [userData, setUserData] = useState<IUserData | null>(null)
 
   useEffect(() => {
     console.log(chatOpened)

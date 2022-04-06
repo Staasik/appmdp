@@ -1,14 +1,14 @@
+import { IUserData, MAIN_IP } from 'App';
+import { AnswersIntoResultDiagn1 } from 'codebase/DiagnResults';
 import Quest from 'components/defaultComponents/Quest';
-import { data } from 'mockdata/mocktest1';
-import { Button, DiagBody, DiagnBlock } from 'styles/pages/Diagnostics/Diagnostic';
-import DiagnHeader from './DiagnHeader';
-import { IUserData } from 'App'
+import Diagn1Results, { IDiagnResult } from 'components/pages/Results/Diagn1Results';
 import imagefoot from "images/diagn1.png";
 import image600 from "images/diagn1_600.png";
-import { useEffect, useState } from 'react';
-import Diagn1Results, { IDiagnResult } from 'components/pages/Results/Diagn1Results'
-import { AnswersIntoResultDiagn1 } from 'codebase/DiagnResults'
-import { MAIN_IP } from 'App'
+import _ from 'lodash';
+import { data } from 'mockdata/mocktest1';
+import { useState } from 'react';
+import { Button, DiagBody, DiagnBlock } from 'styles/pages/Diagnostics/Diagnostic';
+import DiagnHeader from './DiagnHeader';
 
 const mockdata = {
     title: 'Профессиональное выгорание',
@@ -30,15 +30,19 @@ const Diagnostic1 = ({ userData }: Props) => {
 
     const [result, setResult] = useState<IDiagnResult[] | null>(null)
     const [answers, setAnswers] = useState<number[]>([])
+    const [completeDisabled, setCompleteDisabled] = useState<boolean>(true)
 
     const onChange = (index: number, answer: IAnswer) => {
         let tempAnswers = answers
         tempAnswers[index] = answer.value
         setAnswers(tempAnswers)
+        if (tempAnswers.length == data.length && !_.some(tempAnswers, (el) => el == undefined)) {
+            setCompleteDisabled(false)
+        }
     }
 
     const onComplete = () => {
-        if (answers.length == data.length && !answers.some((el) => el == undefined)) {
+        if (!completeDisabled) {
             if (userData) {
                 fetch(process.env.NODE_ENV == 'development' ? "/setResults" : `http://${MAIN_IP}:5000/setResults`, {
                     method: 'POST',
@@ -66,7 +70,7 @@ const Diagnostic1 = ({ userData }: Props) => {
                     )
                 })}
             </DiagnBlock>
-            <Button onClick={() => onComplete()}>Завершить</Button>
+            <Button onClick={() => onComplete()} $completeDisabled={completeDisabled}>Завершить</Button>
         </DiagBody>
     );
 }

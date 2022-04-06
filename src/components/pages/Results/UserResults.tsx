@@ -27,10 +27,13 @@ export const UserResults = ({ userData, diagnnumber }: Props) => {
                     return response.json();
                 })
                 .then((data) => {
-                    let arr = data.data[0].answers.replace(' ', '').trim().split(',').map((str : string) => {
-                        return Number(str);
-                      });
-                    setAnswers([...arr])
+                    if (data.data.length != 0) {
+                        let arr = data.data[0].answers.replace(' ', '').trim().split(',').map((str: string) => {
+                            return Number(str);
+                        });
+                        setAnswers([...arr])
+                    }
+                    else window.location.href = `/main/diagnostics/diagnostic${diagnnumber}`
                 });
         }
     }, [userData])

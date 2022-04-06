@@ -7,16 +7,19 @@ export const DiagBody = styled.div`
     justify-content:center;
     align-items:center;
 `
-export const Button = styled.button`
+interface ButtonProps{
+    $completeDisabled: boolean
+}
+export const Button = styled.button<ButtonProps>`
     display:flex;
-    cursor: pointer;
+    ${({$completeDisabled}: ButtonProps) => !$completeDisabled && 'cursor: pointer;'}
     width: 200px;    
     height: 50px;
-    background: #FF9254;
+    background:${({$completeDisabled}: ButtonProps) => $completeDisabled ? '#969696' : ' #FF9254' };
     border-radius: 8px; 
     border:0;
     margin-top: 50px;
-    color:white;
+    color:white; 
     justify-content:center;
     align-items:center;
     @media (max-width:600px) {

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { ReactComponent as SelectedImg} from 'images/test2/selected.svg'
 
 interface QuestNumProps {
   index: number,
@@ -23,13 +24,24 @@ export const QuestNum = styled.div<QuestNumProps>`
       border-radius: ${({ index }: QuestNumProps) => index % 2 != 0 ? '0' : '0'};
     }
 `
-interface ImageProps {
-  $selected: boolean
-}
 
-export const Image = styled.img<ImageProps>`
-  border: ${({ $selected }: ImageProps) => $selected ? '2px solid blue' : 'none'};
+export const Image = styled.img`
   border-radius: 10px;
+`
+
+export const ImageContainer = styled.div`
+  width: 100%;
+  height: max-content;
+  overflow: hidden ;
+  position: relative;
+`
+export const SelectedImage = styled(SelectedImg)`
+  position: absolute;
+  top: -3px;
+  left: 0;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
 `
 export const QuestNumImg = styled.div<QuestNumProps>`
     display:flex;

@@ -1,15 +1,15 @@
-import Quest from 'components/defaultComponents/Quest';
-import { Button, DiagBody, Diagn3Block, BlockFive, TextFive } from 'styles/pages/Diagnostics/Diagnostic';
-import { useEffect, useState } from 'react';
-import DiagnHeader from './DiagnHeader';
-import { data, blockdata } from 'mockdata/mocktest3'
-import QuestFive from 'components/defaultComponents/QuestFive'
-import { IUserData, MAIN_IP } from 'App'
+import { IUserData, MAIN_IP } from 'App';
+import { AnswersIntoResultDiagn3 } from 'codebase/DiagnResults';
+import QuestFive from 'components/defaultComponents/QuestFive';
+import { IDiagnResult } from 'components/pages/Results/Diagn1Results';
+import Diagn3Results from 'components/pages/Results/Diagn3Results';
 import imagefoot from "images/diagn3.png";
 import image600 from "images/diagn3_600.png";
-import Diagn3Results from 'components/pages/Results/Diagn3Results'
-import { IDiagnResult } from 'components/pages/Results/Diagn1Results'
-import { AnswersIntoResultDiagn3 } from 'codebase/DiagnResults'
+import _ from 'lodash';
+import { blockdata, data } from 'mockdata/mocktest3';
+import { useState } from 'react';
+import { BlockFive, Button, DiagBody, Diagn3Block, TextFive } from 'styles/pages/Diagnostics/Diagnostic';
+import DiagnHeader from './DiagnHeader';
 
 const mockdata = {
     title: 'Оценка признаков эмоционального выгорания',
@@ -30,15 +30,19 @@ interface Props {
 const Diagnostic3 = ({ userData }: Props) => {
     const [result, setResult] = useState<IDiagnResult[] | null>(null)
     const [answers, setAnswers] = useState<number[]>([])
+    const [completeDisabled, setCompleteDisabled] = useState<boolean>(true)
 
     const onChange = (index: number, answer: IAnswer) => {
         let tempAnswers = answers
         tempAnswers[index] = answer.value
         setAnswers(tempAnswers)
+        if (tempAnswers.length == data.length && !_.some(tempAnswers, (el) => el == undefined)) {
+            setCompleteDisabled(false)
+        }
     }
 
     const onComplete = () => {
-        if (answers.length == data.length && !answers.some((el) => el == undefined)) {
+        if (!completeDisabled) {
             if (userData) {
                 fetch(process.env.NODE_ENV == 'development' ? "/setResults" : `http://${MAIN_IP}:5000/setResults`, {
                     method: 'POST',
@@ -75,7 +79,7 @@ const Diagnostic3 = ({ userData }: Props) => {
                     })
                 }
             </Diagn3Block>
-            <Button onClick={() => onComplete()}>Завершить</Button>
+            <Button onClick={() => onComplete()} $completeDisabled={completeDisabled}>Завершить</Button>
         </DiagBody>
     );
 }
