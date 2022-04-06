@@ -37,6 +37,9 @@ export const DiagnBlock = styled.div`
     @media (max-width:1400px) {
         width: 90%;  
     }
+    @media (max-width:800px) {
+        row-gap:20px;
+    } 
 `
 export const DiagnLink = styled(Link)`
     text-decoration: none;
@@ -55,6 +58,7 @@ export const BlockTwo = styled.div`
     box-sizing: border-box;
     box-shadow: 0px -20px 40px -15px rgba(0, 0, 0, 0.05), 0px 20px 40px -15px rgba(0, 0, 0, 0.05);
     border-radius: 19px;
+
 `
 
 export const DiagnBlockImg = styled.div`

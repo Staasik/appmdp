@@ -55,6 +55,7 @@ export const QuestNumImg = styled.div<QuestNumProps>`
     }
     @media (max-width:800px) {
       width: 80%;
+      padding:15px;
     }
 `
 interface QuestNumProps {
