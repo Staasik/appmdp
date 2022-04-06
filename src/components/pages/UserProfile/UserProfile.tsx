@@ -97,6 +97,7 @@ const UserProfile = ({ userData }: Props) => {
                     )
                 }
             </DiagnResult>
+            <a id="checklists"/>
             <DiagnTextBlackBoldName>Чек–листы:</DiagnTextBlackBoldName>
             <DiagnCheckBlocks>
                 {

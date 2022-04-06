@@ -7,7 +7,6 @@ import Icon from 'images/icon.png';
 import { useLocation } from 'react-router-dom'
 import { IUserData } from 'App'
 
-import { useState } from 'react'
 interface Props{
     userData: IUserData | null,
     onOpenChat(): any

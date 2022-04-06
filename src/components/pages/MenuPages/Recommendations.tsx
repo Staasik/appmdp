@@ -20,6 +20,7 @@ const Recommendations = ({ userData }: Props) => {
         <DiagnTextProfCenter>Рекомендации</DiagnTextProfCenter>
       </TextBlock>
       <TextBlock>
+        <a id="films"/>
         <DiagnTextBlackBold>Подборка фильмов</DiagnTextBlackBold>
       </TextBlock>
       <Movie />
@@ -28,6 +29,7 @@ const Recommendations = ({ userData }: Props) => {
       </TextBlock>
       <Music />
       <TextBlock>
+        <a id="books"/>
         <DiagnTextBlackBold>Подборка книг</DiagnTextBlackBold>
       </TextBlock>
       <Books />

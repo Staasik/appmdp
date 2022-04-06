@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import image from "images/footer.png"; 
+import image from "images/footer.png";
 import { Link } from 'react-router-dom'
 
 export const HtmlContainer = styled.div`
@@ -26,7 +26,10 @@ export const DiagBody = styled.div`
     display:flex;
     flex-direction:column;
 `
-export const DiagFooter = styled.div`
+interface DiagFooterProps{
+    $margin: boolean
+}
+export const DiagFooter = styled.div<DiagFooterProps>`
     display:flex;    
     width: 100%;
     flex-direction:row;
@@ -35,7 +38,7 @@ export const DiagFooter = styled.div`
     background-size: cover;
     background-position: center; 
     height:250px;
-    margin-top:50px;
+    margin-top:${({$margin}: DiagFooterProps) => $margin ? '50px' : '0px'};
     @media (max-width:600px) {
         flex-direction:column;
   }
@@ -144,6 +147,9 @@ export const DiagnImg = styled.div`
     }
 `
 export const DiagnLink = styled(Link)`
+    text-decoration: none;
+`
+export const DiagnLinkId = styled.a`
     text-decoration: none;
 `
 export const DiagnImage = styled.img`

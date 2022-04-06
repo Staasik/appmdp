@@ -1,13 +1,13 @@
+import Cookies from 'codebase/Cookies';
 import Footer from 'components/defaultComponents/Footer';
 import Header from 'components/defaultComponents/Header';
-import Main from 'components/pages/Main/Main';
-import { Navigate, Route, Routes } from "react-router-dom";
-import Htmlcontainer from 'styles/App';
+import Chat from 'components/pages/Chat/ChatBot';
 import Login from 'components/pages/Login/Login';
 import Registration from 'components/pages/Login/Registration';
-import { useState, useEffect } from 'react'
-import Cookies from 'codebase/Cookies'
-import Chat from 'components/pages/Chat/ChatBot';
+import Main from 'components/pages/Main/Main';
+import { useEffect, useState } from 'react';
+import { Navigate, Route, Routes } from "react-router-dom";
+import Htmlcontainer from 'styles/App';
 //<Route path="/main/diagnostics">
 //<Diagnostics />
 // </Route>
@@ -21,15 +21,11 @@ export const MAIN_IP = '146.247.34.58'
 
 
 const App = () => {
-  const data = {name:"123", login: "123", password: "123"}
+  const data = { name: "123", login: "123", password: "123" }
 
   const [chatOpened, setChatOpened] = useState(false)
   const [userData, setUserData] = useState<IUserData | null>(null)
 
-  useEffect(() => {
-    console.log(chatOpened)
-  }, [chatOpened])
-  
   useEffect(() => {
     let login = Cookies.getCookie('login')
     let password = Cookies.getCookie('password')
@@ -46,7 +42,7 @@ const App = () => {
           return response.json();
         })
         .then((data) => {
-          !data.error && setUserData({name: data.name, login: data.login, password: data.password})
+          !data.error && setUserData({ name: data.name, login: data.login, password: data.password })
         });
     }
   }, [])
@@ -54,23 +50,23 @@ const App = () => {
 
   return (
     <Htmlcontainer>
-      {chatOpened && <Chat onClose={() => {setChatOpened(false)}}></Chat>}
-      <Header userData={userData} onOpenChat={() => {setChatOpened(true)}}/>
+      {chatOpened && <Chat onClose={() => { setChatOpened(false) }}></Chat>}
+      <Header userData={userData} onOpenChat={() => { setChatOpened(true) }} />
       <Routes>
         {
           !userData ? <>
             <Route path="/" element={<Navigate to="/login" replace />} />
             <Route path="login" element={<Login />} />
-            <Route path="main/*" element={<Main userData={userData} onOpenChat={() => {setChatOpened(true)}}/>} />
+            <Route path="main/*" element={<Main userData={userData} onOpenChat={() => { setChatOpened(true) }} />} />
             <Route path="reg" element={<Registration />} />
           </>
             : <>
               <Route path="*" element={<Navigate to="/main" replace />} />
-              <Route path="main/*" element={<Main userData={userData} onOpenChat={() => {setChatOpened(true)}}/>} />
+              <Route path="main/*" element={<Main userData={userData} onOpenChat={() => { setChatOpened(true) }} />} />
             </>
         }
       </Routes>
-      <Footer />
+      <Footer userData={userData} />
     </Htmlcontainer>
   );
 }

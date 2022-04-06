@@ -10,7 +10,8 @@ import BotAnswers, { ISmsBotMock } from "mockdata/ModalSmsBot";
 
 interface IMessages {
   senderBot: boolean,
-  message: string
+  message: string,
+  component(): any
 }
 
 interface IQuestions {
@@ -20,10 +21,13 @@ interface IQuestions {
 
 const FirstMessage: IMessages = {
   senderBot: true,
-  message: `Привет! Я бот POISE, твой
-  онлайн - помощник. Я с радостью помогу тебе, найду занятие по
-  душе, да и просто поговорю с тобой.Расскажи, что ты чувствуешь в
-  данный момент?`
+  message: ``,
+  component: () => <div>
+    Привет! Я бот POISE, твой
+    онлайн - помощник. Я с радостью помогу тебе, найду занятие по
+    душе, да и просто поговорю с тобой.Расскажи, что ты чувствуешь в
+    данный момент?
+  </div>
 }
 function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -39,10 +43,10 @@ const RegistrationModal = ({onClose} : Props) => {
 
   const onQuestionClick = (question: string) => {
     setQuestions(a => ({ buttons: [], questionNumber: a.questionNumber}))
-    setAllMessages(a => [...a, { senderBot: false, message: question }])
+    setAllMessages(a => [...a, { senderBot: false, message: question, component: () => null }])
     sleep(500).then(() => {
-      let answer = _.find(BotAnswers, { message: question })
-      answer && setAllMessages(a => [...a, { senderBot: true, message: answer?.answer || '' }])
+      let an = _.find(BotAnswers, { message: question })
+      an && setAllMessages(a => [...a, { senderBot: true, message: '', component: an?.answer || (() => null) }])
     switch (questions.questionNumber) {
       case 1:
         if (question.includes("Вдохновение")) setQuestions({ buttons: ButtonsInspiration, questionNumber: 2 })
@@ -86,7 +90,7 @@ const RegistrationModal = ({onClose} : Props) => {
             <Line style={{ width: "90%" }} />
             <ModalBody id="chatContainer">
               {
-                allMessages.map((value, index) => value.senderBot ? <BodySmsBot key={index}>{value.message}</BodySmsBot> : <BodySmsButton key={index}>{value.message}</BodySmsButton>)
+                allMessages.map((value, index) => value.senderBot ? <BodySmsBot key={index}><value.component></value.component></BodySmsBot> : <BodySmsButton key={index}>{value.message}</BodySmsButton>)
               }
             </ModalBody>
             <Line style={{ width: "90%" }} />
