@@ -41,7 +41,7 @@ export const SelectedImage = styled(SelectedImg)`
   left: 0;
   border-radius: 10px;
   width: 100%;
-  height: calc(100% + 1px);
+  height: calc(100% + 3px);
 `
 export const QuestNumImg = styled.div<QuestNumProps>`
     display:flex;
