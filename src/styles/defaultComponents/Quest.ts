@@ -37,11 +37,11 @@ export const ImageContainer = styled.div`
 `
 export const SelectedImage = styled(SelectedImg)`
   position: absolute;
-  top: -3px;
+  top: -2px;
   left: 0;
   border-radius: 10px;
   width: 100%;
-  height: calc(100% + 3px);
+  height: 100%;
 `
 export const QuestNumImg = styled.div<QuestNumProps>`
     display:flex;

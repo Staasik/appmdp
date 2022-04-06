@@ -17,7 +17,7 @@ const Quest = ({ text, image, index, onChange, selected }: IProps) => {
       <DiagnTextBlackBold>{text}</DiagnTextBlackBold>
       <ImageContainer>
         {selected && <SelectedImage></SelectedImage>}
-        <Image src={image} style={{ "height": "100%", "width": "100%"}} onClick={()=>{onChange(index)}}/>
+        <Image src={image} style={{ "height": "100%", "width": "99%"}} onClick={()=>{onChange(index)}}/>
       </ImageContainer>
     </QuestNumImg>
 
