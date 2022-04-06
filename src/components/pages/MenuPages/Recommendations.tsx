@@ -25,6 +25,7 @@ const Recommendations = ({ userData }: Props) => {
       </TextBlock>
       <Movie />
       <TextBlock>
+        <a id="playlists"/>
         <DiagnTextBlackBold>Подборка плейлистов</DiagnTextBlackBold>
       </TextBlock>
       <Music />
