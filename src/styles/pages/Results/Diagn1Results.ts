@@ -171,9 +171,9 @@ export const ErrorBlock = styled.div`
 `
 export const DiagnTextBlackBold = styled.text`
     color:black;
-    font-weight : bold;
+    font-weight : 600;
     height:40px;    
-    font-size:16px;
+    font-size:18px;
     @media (max-width:800px) {  
         height:30px;   
         font-size:14px; 
@@ -181,7 +181,7 @@ export const DiagnTextBlackBold = styled.text`
 `
 export const DiagnTextBlack = styled.text`
     color:black;
-    font-size:16px; 
+    font-size:18px; 
     @media (max-width:800px) {     
         font-size:14px; 
     }
@@ -189,7 +189,14 @@ export const DiagnTextBlack = styled.text`
 export const DiagnTextProfCenter = styled.text`
     display:flex;       
     color: black;
-    font-size:26px;
+    font-weight: 600;
+    font-size: 40px;
+    @media (max-width:1680px) {
+    font-size:36px;
+    }
+    @media (max-width:1350px) {
+    font-size:30px;
+    }
     @media (max-width:800px) {
     font-size:20px;
     text-align:center;

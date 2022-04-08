@@ -124,7 +124,8 @@ export const ButtonBlock = styled.div`
 export const DiagnTextProfCenter = styled.text`
     display:flex;       
     color: black;
-    font-size:26px;
+    font-size:38px;
+    font-weight:700;
     @media (max-width:800px) {
     font-size:20px;
     text-align:center;
@@ -132,14 +133,15 @@ export const DiagnTextProfCenter = styled.text`
 `
 export const DiagnTextBlack = styled.text`
     color:black;
-    font-size:16px; 
+    font-size:18px; 
     @media (max-width:800px) {     
         font-size:14px; 
     }
 `
 export const DiagnosticTextBlack = styled.text`
     color:black;
-    font-size:16px; 
+    font-size:18px; 
+    font-weight:600;
     height:70px;
     @media (max-width:1000px) {     
         height:auto;
@@ -151,29 +153,31 @@ export const DiagnosticTextBlack = styled.text`
 
 export const DiagnTextBlackBold = styled.text`
     color:black;
-    font-weight : bold;
-    height:40px;    
-    font-size:16px;
+    font-weight : 600;
+    height:60px;    
+    font-size:30px;
     align-self:flex-start;
     @media (max-width:800px) {  
-        height:50px; 
-        font-size:14px;   
+        height:30px; 
+        font-size:20px;   
     }
 `
 export const DiagnTextBlackBoldName = styled.text`
     color:black;
-    font-weight : bold;
+    font-weight : 600;
     height:40px;    
-    font-size:20px;
+    font-size:30px;
     align-self:flex-start;
     margin-left:14%;
-    @media (max-width:1000px) {  
-        align-self:center;
-        margin-left:0px;
-    }
     @media (max-width:1240px) {  
         margin-left:5%;
     }
+    @media (max-width:1000px) {  
+        align-self:center;
+        margin-left:0px; 
+        font-size:24px;
+    }
+
 `
 export const DiagnTextProf = styled.text`
     display:flex;       

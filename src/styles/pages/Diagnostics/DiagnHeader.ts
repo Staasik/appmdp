@@ -62,7 +62,7 @@ export const DiagnImg = styled.div`
     align-self:center;
     align-items:center;
     gap:50px;
-    @media (max-width:700px) {
+    @media (max-width:1000px) {
         width: 90%;
         gap:20px;
     }
@@ -72,7 +72,8 @@ export const DiagnTextDiagn = styled.div`
     color: black;  
     padding-top:20px;
     padding-bottom:40px;
-    font-size:26px;
+    font-size:40px;  
+    font-weight: 600;
     align-self:flex-start;
     @media (max-width:700px) {
         padding-bottom:0px;
@@ -117,7 +118,10 @@ export const ProfileName = styled.div`
 `
 export const DiagnText = styled.text`
     color: #C4C4C4;
-    font-size:14px;
+    font-size:18px;
+    @media (max-width:600px) {
+        font-size:14px;
+  }
 `
 interface HeaderTextProps{
     $active: boolean
@@ -138,8 +142,21 @@ export const DiagnTextWhite = styled(DiagnText)`
 `
 export const DiagnTextBlackBold = styled(DiagnText)`
     color:black;
-    font-weight : bold;
+    font-weight : 600;
+    height:90px;
+    @media (max-width:1200px) {      
+    height:auto;
+    }
+`
+export const DiagnTextBlackBoldI = styled(DiagnText)`
+    color:black;
+    font-weight : 600;
     height:70px;
+    @media (max-width:1000px) {      
+    height:auto;
+    margin-top:10px;
+    margin-bottom:10px;
+    }
 `
 export const DiagnCP = styled.div`
     display:flex;
@@ -166,20 +183,41 @@ export const DiagnIcon = styled.div`
 export const DiagnTextProf = styled.text`
     display:flex;       
     color: black;
-    font-size:26px;
+    font-weight:600;
+    font-size:38px;
     @media (max-width:800px) {
-    font-size:20px;
+    font-size:24px;
+    }
+`
+export const DiagnTextProfD = styled.text`
+    display:flex;       
+    color: black;
+    font-weight:600;
+    font-size:30px;
+    @media (max-width:800px) {
+    font-size:24px;
+    }
+`
+export const DiagnTextProfS = styled(DiagnTextProf)`
+    width:200px;
+    @media (max-width:800px) {
+    width:100%;
     }
 `
 export const DiagnTextProfWhite = styled(DiagnTextProf)`
     color:white;
+    font-size:54px;
+    font-weight:800;
+    @media (max-width:850px) {
+        font-size:20px;
+    }
 `
 export const DiagnBlockText = styled.div`
     display:flex;
     flex-direction:column;
     width: 60%;
     row-gap:20px;
-    @media (max-width:700px) {
+    @media (max-width:1000px) {
         width: 100%;
         row-gap:10px;
     }
@@ -190,7 +228,7 @@ export const DiagnAllBlockText = styled.div`
     margin-left:15%;
     width: 50%;
     row-gap:20px;
-    @media (max-width:700px) {
+    @media (max-width:1200px) {
         width: 90%;
         margin-left:5%;
     }
@@ -204,16 +242,16 @@ export const DiagnBlockImg = styled.div<DiagnBlockImgProps>`
     flex-direction:column;
     justify-content:center;
     width: 100%;    
-    height:250px;
+    height:350px;
     background-image:url(${({images}: DiagnBlockImgProps) => images[0]});
     background-repeat: no-repeat; 
     background-size: cover;
     background-position: center; 
-    @media (max-width:800px) {
+    @media (max-width:1200px) {
         background-color:#EEF5FF;
         background-image:url();
     }
-    @media (max-width:430px) {
+    @media (max-width:600px) {
         background-color:#EEF5FF;
         background-image:url(${({images}: DiagnBlockImgProps) => images[1]});
         justify-content:flex-start;
@@ -242,7 +280,7 @@ export const DiagnAllBlock = styled.div`
     justify-content:flex-start;
     align-self:center;
     align-items:center;
-    @media (max-width:700px) {
+    @media (max-width:1000px) {
         flex-direction:column;
     }
 `

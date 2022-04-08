@@ -2,7 +2,7 @@ import { ReactComponent as Start } from 'images/start.svg';
 import diagnMock, { IdiagnMock } from 'mockdata/diagnBlocksMock';
 import { useState } from 'react';
 import { DiagBody, DiagnBlockImg } from 'styles/pages/Diagnostics/Diagnostic';
-import { DiagnBlockText, DiagnAllBlock, DiagnImage, DiagnImg, DiagnLink, DiagnText, DiagnTextBlack, DiagnTextDiagn, DiagnTextProf } from 'styles/pages/Diagnostics/DiagnHeader'
+import { DiagnBlockText, DiagnAllBlock, DiagnTextProfD,DiagnImage, DiagnImg, DiagnLink, DiagnText, DiagnTextBlack, DiagnTextDiagn, DiagnTextProf } from 'styles/pages/Diagnostics/DiagnHeader'
 
 const Diagnostics = () => {
 
@@ -20,7 +20,7 @@ const Diagnostics = () => {
                                 <DiagnImage src={value.image} />
                             </DiagnBlockImg>
                             <DiagnBlockText>
-                                <DiagnTextProf>{value.name}</DiagnTextProf>
+                                <DiagnTextProfD>{value.name}</DiagnTextProfD>
                                 <DiagnTextBlack>{value.description}</DiagnTextBlack>
                                 <DiagnLink to={"diagnostic" + (index + 1)}><Start /></DiagnLink>
                             </DiagnBlockText>

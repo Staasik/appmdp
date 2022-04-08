@@ -7,7 +7,7 @@ export interface IRecommendBookMock {
 export const RecommendBook: IRecommendBookMock[] = [
     {
         image: require('images/Recommendations/book1.png'),
-        title: 'А.В. Мудрик«Учитель: Мастерство и вдохновение»',
+        title: 'А.В. Мудрик «Учитель: Мастерство и вдохновение»',
         description:'Книга содержит практикумы, игровые методики, которые будут полезны особенно тем, кто только начинает свой путь в педагогику.',},
     {
         image: require('images/Recommendations/book2.png'),

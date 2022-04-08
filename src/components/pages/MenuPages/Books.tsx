@@ -1,7 +1,7 @@
 import RecommendBook, { IRecommendBookMock } from "mockdata/RecommendBook";
 import { useState } from "react";
 import {
-    Book, BookBlock, DiagnTextBlack, DiagnTextBlackBold, ItemBook,
+    Book, BookBlock, DiagnTextBlack,DiagnTextBlackBoldBook, DiagnTextBlackBold, ItemBook,
     TextItemBook
 } from "styles/pages/MenuPages/Recommendations";
 
@@ -14,7 +14,7 @@ const Books = () => {
         <Book key={index}>
           <ItemBook src={value.image} />
           <TextItemBook>
-            <DiagnTextBlackBold>{value.title}</DiagnTextBlackBold>
+            <DiagnTextBlackBoldBook>{value.title}</DiagnTextBlackBoldBook>
             <DiagnTextBlack>{value.description}</DiagnTextBlack>
           </TextItemBook>
         </Book>

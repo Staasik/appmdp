@@ -61,22 +61,30 @@ export const BodySmsBot = styled.div`
     display:flex;
     flex-direction:column;
     max-width:90%;
+    font-size:18px;
     justify-content: center;
     align-items:flex-start;
     padding:10px;
     background-color: #F6F6F9;
     border-radius: 15px 15px 15px 0px;
+    @media (max-width:800px) {
+    font-size:14px;
+    } 
 `
 export const BodySmsButton = styled.div`
     display:flex;
     flex-direction:column;
     max-width:90%;
+    font-size:18px;
     justify-content: center;
     align-items:flex-start;
     padding:10px;
     background-color: #FFE9DD;
     align-self:flex-end;
     border-radius: 15px 15px 0px 15px;
+    @media (max-width:800px) {
+    font-size:14px;
+    } 
 `
 export const ModalName = styled.div`
     display:flex;
@@ -104,7 +112,7 @@ export const ModalButtons = styled.div`
 export const ModalContainer = styled.div`
     display:flex;
     flex-direction:column;
-    width: 40%;
+    width: 50%;
     position:fixed;
     height:85%;
     justify-content: center;
@@ -113,16 +121,16 @@ export const ModalContainer = styled.div`
     box-shadow: 0px -20px 40px -15px rgba(0, 0, 0, 0.05), 0px 20px 40px -15px rgba(0, 0, 0, 0.05);
     border-radius: 19px;
     @media (max-width:1500px) {
-        width: 50%;
-    }
-    @media (max-width:1200px) {
         width: 60%;
     }
-    @media (max-width:1000px) {
+    @media (max-width:1200px) {
         width: 70%;
     }
-    @media (max-width:900px) {
+    @media (max-width:1000px) {
         width: 80%;
+    }
+    @media (max-width:900px) {
+        width: 90%;
     }
     @media (max-width:800px) {
         width: 90%;
@@ -143,8 +151,8 @@ export const ModalMiniText = styled.text`
 `
 export const Button = styled.button`
     width: 30%;
-    height: 35%;
-    font-size: 12px; 
+    height: 33%;
+    font-size: 16px; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -157,6 +165,7 @@ export const Button = styled.button`
     @media (max-width:800px) {
         width: 45%;
         height: 30%;
+    font-size: 12px; 
     }  
 `
 export const ModalCont = styled.div`

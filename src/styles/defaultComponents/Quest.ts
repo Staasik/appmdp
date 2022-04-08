@@ -18,7 +18,7 @@ export const QuestNum = styled.div<QuestNumProps>`
     @media (max-width:1430px) {
       width: 40%;
     }
-    @media (max-width:800px) {
+    @media (max-width:1000px) {
       width: 80%;
       box-shadow: ${({ index }: QuestNumProps) => index % 2 == 0 ? '0px' : '0px'};
       border-radius: ${({ index }: QuestNumProps) => index % 2 != 0 ? '0' : '0'};
@@ -53,7 +53,7 @@ export const QuestNumImg = styled.div<QuestNumProps>`
     @media (max-width:1430px) {
       width: 40%;
     }
-    @media (max-width:800px) {
+    @media (max-width:1000px) {
       width: 80%;
       padding:15px;
     }
@@ -70,11 +70,11 @@ export const QuestNumFive = styled.div<QuestNumProps>`
   justify-content:flex-start;
   align-items:flex-start;
   padding:20px;
-  @media (max-width:1024px) {
-    width: 300px;
-  }
-  @media (max-width:800px) {
+  @media (max-width:1300px) {
     width: 90%;
+  }
+  @media (max-width:1300px) {
+    gap:20px;  
   }
 `
 export default QuestNum

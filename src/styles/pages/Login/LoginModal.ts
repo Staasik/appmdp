@@ -21,15 +21,22 @@ export const ModalContainer = styled.div`
     background-color: #FFFFFF;
     box-shadow: 0px -20px 40px -15px rgba(0, 0, 0, 0.05), 0px 20px 40px -15px rgba(0, 0, 0, 0.05);
     border-radius: 19px;
-    @media (max-width:1200px) {
+    @media (max-width:1500px) {
         width: 35%;
         height:40%;
     }
-    @media (max-width:800px) {
+    @media (max-width:1200px) {
+        width: 40%;
+        height:40%;
+    }
+    @media (max-width:1000px) {
         width: 45%;
     }
+    @media (max-width:800px) {
+        width: 55%;
+    }
     @media (max-width:600px) {
-        width: 60%;
+        width: 65%;
     }
     @media (max-width:450px) {
         width: 80%;
@@ -39,15 +46,18 @@ export const ModalContainer = styled.div`
 `
 
 export const ModalText = styled.text`
-    font-size: 24px;
+    font-size: 30px;
     @media (max-width:900px) {
         font-size: 20px;
     }   
 `
 export const ModalMiniText = styled.text`
-    font-size: 12px;  
+    font-size: 16px;  
     width: 50%; 
     text-align:center; 
+    @media (max-width:800px) {
+        width: 80%;
+    } 
 `
 export const ModalButton = styled.a`
     width: 60%;

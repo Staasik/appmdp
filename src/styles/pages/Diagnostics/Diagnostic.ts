@@ -70,7 +70,7 @@ export const DiagnBlockImg = styled.div`
     @media (max-width:1000px) {
         width: 70%;
     } 
-    @media (max-width:700px) {
+    @media (max-width:1000px) {
         width: 100%;
     }  
 `
@@ -88,6 +88,9 @@ export const BlockFive = styled.div`
     box-sizing: border-box;
     box-shadow: 0px 20px 40px -15px rgba(0, 0, 0, 0.05);
     border-radius: 19px;
+    @media (max-width:1200px) {
+    width: 90%;
+    }
     @media (max-width:600px) {
     padding-left:0;
     width: 100%;
@@ -104,7 +107,7 @@ export const TextFive = styled.div`
     font-size:26px;
     @media (max-width:600px) {
     font-size:20px;
-    padding-left:10%;
+    padding-left:5%;
     }
 `
 

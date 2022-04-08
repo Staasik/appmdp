@@ -7,7 +7,7 @@ import { ReactComponent as HomeUsrUrl } from 'images/HomePage/HomeUsrUrl.svg';
 import { ReactComponent as Line } from 'images/HomePage/Line.svg';
 import { useMediaQuery } from "react-responsive";
 import { Link } from 'react-router-dom';
-import { DiagHtml, DiagnTextBlack, DiagnTextProf, DiagnTextProfWhite, DiagnTextWhite } from 'styles/pages/Diagnostics/DiagnHeader';
+import { DiagHtml, DiagnTextBlack, DiagnTextProf,DiagnTextProfS, DiagnTextProfWhite, DiagnTextWhite } from 'styles/pages/Diagnostics/DiagnHeader';
 import { BlockDesk, BlockDeskText, Button, ButtonBlock, ButtonWhite, DiagnTextBlackBold, DiagnTextProfCenter, FootBlock, HomeBlock, HomeTextBlock, ImgBlock, ImgBlockDesktop, MenuBlock, MenuItem, MenuLine, TextBlock, TextBlockWhite, TextUrl } from 'styles/pages/MenuPages/HomePage';
 
 interface Props{
@@ -48,7 +48,7 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
             <MenuBlock>
                 <MenuLine>
                     <MenuItem>
-                        <DiagnTextProf>Что есть на сайте?</DiagnTextProf>
+                        <DiagnTextProfS>Что есть на сайте?</DiagnTextProfS>
                     </MenuItem>
                     <MenuItem>
                         <TextUrl>Диагностика</TextUrl>
@@ -80,7 +80,7 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                     <DiagnTextProf>Как это работает?</DiagnTextProf>
                     <ImgBlockDesktop/>
                 </BlockDesk>
-                <BlockDeskText style={{gap:"10px"}}>
+                <BlockDeskText style={{gap:"15px"}}>
                     <DiagnTextBlackBold>Диагностика интересна, и поможет нам составить рекомендации на основе ваших результатов</DiagnTextBlackBold>
                     <DiagnTextBlack>- Вам предлагаются утверждения о переживаниях</DiagnTextBlack>
                     <DiagnTextBlack>- Вы можете ответить, выбрав картинку</DiagnTextBlack>

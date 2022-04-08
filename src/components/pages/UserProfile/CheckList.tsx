@@ -38,7 +38,7 @@ const CheckList = ({ image, title, description, checklist,pdf,name, onChange: ca
       >
         <ImgBlockItem src={image} />
         <DiagnCheckBlockstItemText>
-          <DiagnTextBlackBold style={{ fontSize: "20px" }}>
+          <DiagnTextBlackBold>
             {title}
           </DiagnTextBlackBold>
           <DiagnTextBlack>{description}</DiagnTextBlack>

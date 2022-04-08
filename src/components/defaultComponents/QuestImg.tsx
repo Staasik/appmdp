@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { DiagnTextBlackBold } from 'styles/pages/Diagnostics/DiagnHeader';
+import { DiagnTextBlackBold,DiagnTextBlackBoldI } from 'styles/pages/Diagnostics/DiagnHeader';
 import { QuestNumImg, Image, ImageContainer, SelectedImage } from 'styles/defaultComponents/Quest'
 
 interface IProps {
@@ -14,7 +14,7 @@ const Quest = ({ text, image, index, onChange, selected }: IProps) => {
 
   return (
     <QuestNumImg index={index}>
-      <DiagnTextBlackBold>{text}</DiagnTextBlackBold>
+      <DiagnTextBlackBoldI>{text}</DiagnTextBlackBoldI>
       <ImageContainer>
         {selected && <SelectedImage></SelectedImage>}
         <Image src={image} style={{ "height": "100%", "width": "99%"}} onClick={()=>{onChange(index)}}/>

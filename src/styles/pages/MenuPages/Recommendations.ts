@@ -40,7 +40,7 @@ export const MovieBlock = styled.div`
     @media (max-width:1400px) {
         width:90%; 
     }
-    @media (max-width:1050px) {
+    @media (max-width:1200px) {
         flex-direction: column;
     }
     @media (max-width:550px) {
@@ -61,7 +61,7 @@ export const MusicBlock = styled.div`
     @media (max-width:1400px) {
         width:90%; 
     }
-    @media (max-width:1050px) {
+    @media (max-width:1200px) {
         flex-wrap:nowrap;
         height:auto;
         margin:0px;
@@ -78,10 +78,10 @@ export const BookBlock = styled.div`
     justify-content:center;
     align-items:center;
     margin:20px;
-    @media (max-width:1400px) {
+    @media (max-width:1580px) {
         width:90%; 
     }
-    @media (max-width:1050px) {
+    @media (max-width:1200px) {
         flex-wrap:nowrap;
         height:auto;
         margin:0px;
@@ -95,7 +95,7 @@ export const Book = styled.div`
     align-items:center;
     width: 48.8%;
     gap:30px;
-    @media (max-width:1050px) {
+    @media (max-width:1200px) {
         width:100%;
     }
     @media (max-width:550px) {
@@ -111,7 +111,7 @@ export const Music = styled.div`
     display: flex;
     width:48.8%;
     height:370px;
-    @media (max-width:1050px) {
+    @media (max-width:1200px) {
         width:100%;
         height:500px;
     }
@@ -123,7 +123,7 @@ export const MovieItemBlock = styled.div`
     justify-content:center;
     align-items:flex-start;
     flex:1;
-    @media (max-width:1050px) {
+    @media (max-width:1200px) {
         width:100%;
     }
 `
@@ -132,7 +132,7 @@ export const ItemMovie = styled.div`
     width:100%; 
     height:250px;
     border-radius: 12px;
-    @media (max-width:1050px) {
+    @media (max-width:1200px) {
         height:500px;
     }
     @media (max-width:750px) {
@@ -144,13 +144,22 @@ export const ItemMovie = styled.div`
 `
 export const DiagnTextBlackBold = styled.text`
     color:black;
-    font-weight : bold;
+    font-weight : 600;
     height:40px;    
-    font-size:20px;
+    font-size:30px;
     @media (max-width:550px) {  
         height:30px; 
-        font-size:16px;   
+        font-size:18px;   
     }
+`
+export const DiagnTextBlackBoldBook = styled(DiagnTextBlackBold)`
+    font-size:24px;  
+    @media (max-width:1350px) {  
+        font-size:20px;   
+    } 
+    @media (max-width:800px) {  
+        font-size:18px;   
+    } 
 `
 export const DiagnTextProf = styled.text`
     display:flex;       
@@ -163,7 +172,8 @@ export const DiagnTextProf = styled.text`
 export const DiagnTextProfCenter = styled.text`
     display:flex;       
     color: black;
-    font-size:26px;
+    font-size:40px;
+    font-weight:600;
     margin-top:20px;
     margin-bottom:20px;
     @media (max-width:550px) {
@@ -174,7 +184,7 @@ export const DiagnTextProfCenter = styled.text`
 `
 export const DiagnTextBlack = styled.text`
     color:black;
-    font-size:16px; 
+    font-size:18px; 
     @media (max-width:800px) {     
         font-size:14px; 
     }

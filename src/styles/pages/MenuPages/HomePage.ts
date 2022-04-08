@@ -25,11 +25,14 @@ export const HomeBlock = styled.div`
     justify-content:center;
     align-items:center;
     margin:50px;
-    @media (max-width:1280px) {
+    @media (max-width:1550px) {
+        width:80%;
+    }
+    @media (max-width:1350px) {
         width:90%;
         gap:40px;
     }
-    @media (max-width:860px) {             
+    @media (max-width:1150px) {             
         width:90%;
         flex-direction: column;
         gap:20px;
@@ -60,10 +63,11 @@ export const MenuBlock = styled.div`
 export const FootBlock = styled.div`
     display: flex;
     width:100%; 
+    height:450px;
     background-color:#FF9254;
     justify-content:center;
     align-items:center;
-    @media (max-width:860px) {
+    @media (max-width:800px) {
         height:300px;
     }
 `
@@ -74,7 +78,7 @@ export const BlockDesk = styled.div`
     flex-direction: column;
     justify-content:flex-start;
     align-items:flex-start;
-    @media (max-width:860px) {             
+    @media (max-width:1150px) {             
         width:100%;
         justify-content:center;
         align-items:flex-start;
@@ -83,8 +87,12 @@ export const BlockDesk = styled.div`
 export const BlockDeskText = styled(BlockDesk)`
     justify-content:flex-end;
     align-items:flex-start;
-    height:280px; 
-    @media (max-width:860px) {             
+    height:350px; 
+    width:50%; 
+    @media (max-width:1200px) {             
+        height:400px; 
+    }
+    @media (max-width:1150px) {             
         width:100%;
         justify-content:center;
         align-items:flex-start;
@@ -149,20 +157,22 @@ export const TextBlock = styled.div`
     align-items:flex-start;
     @media (max-width:1280px) {
         width:90%;
-        height: 100px;
     }
     @media (max-width:860px) {
+        height:100px;
         align-items:center;
     }
 `
 export const TextBlockWhite = styled(TextBlock)`
     display: flex;
     align-items:center;
+    height:400px;
     text-align:center;
     align-items:center;
-    @media (max-width:1280px) {
-        height: 300px;
+    @media (max-width:1550px) {
+        height: 400px;
     }
+
 
 `
 export const Button = styled(Link)`
@@ -191,33 +201,35 @@ export const ButtonWhite = styled(Button)`
 `
 export const TextUrl = styled.text`
     display:flex;       
+    font-weight:600;
     color: #FF9254;
-    font-size:26px;
+    font-size:30px;
     @media (max-width:700px) {
     font-size:20px;
     }
 `
 export const ImgBlockDesktop = styled.div`
     display: flex;
-    width:400px; 
-    height:250px; 
+    width:500px; 
+    height:300px; 
     justify-content:center;
     align-items:center;
     background-image:url(${imagedesk});
     background-repeat: no-repeat; 
     background-size:cover;
-    @media (max-width:860px) {             
+    @media (max-width:1150px) {             
         width:100%;
         height:55vw;
     }
 `
 export const DiagnTextBlackBold = styled.text`
     color:black;
-    font-weight : bold;
-    height:40px;    
+    font-weight : 600;
+    height:50px;    
     font-size:18px;
     @media (max-width:860px) {  
-        height:60px;    
+        height:60px;  
+    font-size:14px;   
     }
 `
 export const DiagnTextProfCenter = styled.text`
@@ -225,8 +237,11 @@ export const DiagnTextProfCenter = styled.text`
     color: black;
     font-size:54px;
     font-weight: 800;
-    @media (max-width:800px) {
-    font-size:20px;
+    @media (max-width:860px) {
+    font-size:30px;
     text-align:center;
+    }
+    @media (max-width:800px) {
+    font-size:24px;
     }
 `

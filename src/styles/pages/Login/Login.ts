@@ -27,7 +27,7 @@ export const LoginBlock = styled.div`
         width: 80%;
         height: 80vh;
     }
-    @media (max-width:800px) {
+    @media (max-width:1200px) {
         width: 90%;
         height: 80vh;
         min-height:600px;
@@ -45,7 +45,7 @@ export const LoginRegistr = styled.div`
     display:flex;
     flex-direction:row;
     margin-left:10%;
-    font-size: 16px;
+    font-size: 18px;
     gap:40px;    
     @media (max-width:800px) {
         font-size: 14px; 
@@ -58,7 +58,7 @@ export const LoginContainer = styled.div`
     justify-content: center;
     gap:15px;
     align-items: flex-start;
-    @media (max-width:800px) {
+    @media (max-width:1200px) {
         justify-content: flex-end;
     }
 `
@@ -111,7 +111,8 @@ export const PasswordInput = styled.input`
     }
 `
 export const LoginText = styled.text`
-    font-size: 36px;
+    font-size: 40px;
+    font-weight:600;
     margin-left:10%;
     margin-top:50px;    
     @media (max-width:800px) {
@@ -120,7 +121,7 @@ export const LoginText = styled.text`
     }
 `
 export const LoginRegistrText = styled.text`
-    font-size: 16px;    
+    font-size: 18px;    
     @media (max-width:800px) {
         font-size: 14px; 
     }

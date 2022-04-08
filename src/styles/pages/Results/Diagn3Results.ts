@@ -37,11 +37,11 @@ export const ResultsBlock = styled.div`
     background-size:cover;
     background-position: center; 
     border-radius: 19px;
-    @media (max-width:1000px) {   
+    @media (max-width:1200px) {   
         width:60%; 
-        margin-left:5%;   
+        margin-left:10%;   
     }
-    @media (max-width:800px) {  
+    @media (max-width:1000px) {  
         width:90%; 
         margin-left:0;  
         gap:0px;
@@ -59,7 +59,7 @@ export const ResultItem = styled.div`
     align-items:flex-start;
     gap:20px;
     padding:30px;
-    @media (max-width:1000px) {             
+    @media (max-width:1200px) {             
         width:95%;
     }
     @media (max-width:800px) {             
@@ -187,7 +187,7 @@ export const DiagnTextBlackBold = styled.text`
     color:black;
     font-weight : bold;
     height:40px;    
-    font-size:16px;
+    font-size:18px;
     @media (max-width:800px) {  
         height:30px; 
         font-size:14px;   
@@ -212,7 +212,7 @@ export const DiagnTextProfCenter = styled.text`
 `
 export const DiagnTextBlack = styled.text`
     color:black;
-    font-size:16px; 
+    font-size:18px; 
     @media (max-width:800px) {     
         font-size:14px; 
     }

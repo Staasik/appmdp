@@ -6,7 +6,7 @@ import { MAIN_IP } from "App";
 
 const Login = () => {
   const isDesktop = useMediaQuery({
-    query: "(min-width: 800px)"
+    query: "(min-width: 1200px)"
   });
 
   const [login, setLogin] = useState<string>('')
