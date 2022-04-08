@@ -27,7 +27,7 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                     <DiagnTextProfCenter>Сервис для педагогов по саморегуляции</DiagnTextProfCenter>
                     <DiagnTextBlack>Проходите диагностики, узнавайте новые книги и слушайте успокаивающую музыку на нашем сайте.</DiagnTextBlack>
                     <ButtonBlock>
-                        <Button to="/main/diagnostics">Пройти диагностику</Button>
+                        <Button href="/main/diagnostics">Пройти диагностику</Button>
                         {!userData && <Link to="/reg"><HomeRegUrl/></Link>}
                 </ButtonBlock>
                 </TextBlock>    
@@ -40,7 +40,7 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                 </TextBlock>  
                 <ImgBlock/> 
                 <ButtonBlock>
-                    <Button to="/main/diagnostics">Пройти диагностику</Button>
+                    <Button href="/main/diagnostics">Пройти диагностику</Button>
                     {!userData && <Link to="/reg"><HomeRegUrl/></Link>}
                 </ButtonBlock> 
             </HomeTextBlock>
@@ -53,7 +53,7 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                     <MenuItem>
                         <TextUrl>Диагностика</TextUrl>
                         <DiagnTextBlack>Составленные психологами профессиональные тесты личности</DiagnTextBlack>
-                        <Link to="/main/diagnostics"><HomeDiagUrl/></Link>
+                        <a href="/main/diagnostics"><HomeDiagUrl/></a>
                     </MenuItem>
                     <MenuItem>
                         <TextUrl>Чат–бот</TextUrl>
@@ -62,16 +62,16 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                     </MenuItem>
                 </MenuLine>
                 <MenuLine>
-                {isDesktop && <MenuItem><Line/></MenuItem>}
+                {isDesktop && <MenuItem style={{alignSelf: 'flex-end', paddingBottom: '8px'}}><Line/></MenuItem>}
                     <MenuItem>
                         <TextUrl>Подборки</TextUrl>
                         <DiagnTextBlack>Предлагаем вам ознакомиться со списком интересных книг</DiagnTextBlack>
-                        <Link to="/main/recommend"><HomeRecomendUrl/></Link>
+                        <a href="/main/recommend"><HomeRecomendUrl/></a>
                     </MenuItem>
                     <MenuItem>
                         <TextUrl>Аккаунт</TextUrl>
                         <DiagnTextBlack>Чтобы сохранить ваши результаты, нужно пройти регистрацию</DiagnTextBlack>
-                        <Link to="/reg"><HomeUsrUrl/></Link>
+                        <a href="/reg"><HomeUsrUrl/></a>
                     </MenuItem>
                 </MenuLine>
             </MenuBlock>
@@ -87,14 +87,14 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                     <DiagnTextBlack>- При затруднении вы можете обратиться к чат–боту</DiagnTextBlack>
                     <DiagnTextBlack>- После всех диагностик, у вас в профиле появится подробная статистка, исходя из результатов</DiagnTextBlack>
                     <DiagnTextBlack>- Всё использование сайта абсолютно бесплатно</DiagnTextBlack>
-                    <Button to="/main/diagnostics">Пройти диагностику</Button>
+                    <Button href="/main/diagnostics">Пройти диагностику</Button>
                 </BlockDeskText>
             </HomeBlock>
             <FootBlock>
                 <TextBlockWhite>
                     <DiagnTextProfWhite>Гармония в работе начинается с саморегуляции </DiagnTextProfWhite>
                     <DiagnTextWhite>Присоединяйтесь к нашему сервису — мы поможем узнать всё о психологии для работы преподавателем</DiagnTextWhite>
-                    {!userData && <ButtonWhite to="/reg">Зарегистрироваться</ButtonWhite>}
+                    {!userData && <ButtonWhite href="/reg">Зарегистрироваться</ButtonWhite>}
                 </TextBlockWhite>
             </FootBlock>
         </DiagHtml>

@@ -39,9 +39,9 @@ export const Header = ({ userData, onOpenChat } : Props) => {
                         <img src={Icon} style={{ "height": "30px", "width": "110px" }} />
                     </DiagnIcon>
                     <DiagnMenu>
-                        <DiagnLink to="/main/home"><HeaderText $active={location.pathname.includes('home')}>Главная</HeaderText></DiagnLink>
-                        <DiagnLink to="/main/diagnostics"><HeaderText $active={location.pathname.includes('diagnostics')}>Диагностика</HeaderText></DiagnLink>
-                        <DiagnLink to="/main/recommend"><HeaderText $active={location.pathname.includes('recommend')}>Рекомендации</HeaderText></DiagnLink>
+                        <DiagnLink href="/main/home"><HeaderText $active={location.pathname.includes('home')}>Главная</HeaderText></DiagnLink>
+                        <DiagnLink href="/main/diagnostics"><HeaderText $active={location.pathname.includes('diagnostics')}>Диагностика</HeaderText></DiagnLink>
+                        <DiagnLink href="/main/recommend"><HeaderText $active={location.pathname.includes('recommend')}>Рекомендации</HeaderText></DiagnLink>
                     </DiagnMenu>
                     <DiagnCP>
                         <Chat style={{ "height": "30px", "width": "30px", "cursor": "pointer" }} onClick={()=> onOpenChat()}/>

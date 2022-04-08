@@ -26,7 +26,7 @@ const Diagn2Results = ({ userData, result }: Props) => {
             <ResultsBlock>
                 <ResultLine>
                     {result.map((value, index) => <ResultBlock2 {...value} key={index} />)}
-                    <Button to="/main/profile" style={{ marginTop: "50px", alignSelf: "center" }}>Перейти в профиль</Button>
+                    <Button href="/main/profile" style={{ marginTop: "50px", alignSelf: "center" }}>Перейти в профиль</Button>
                 </ResultLine>
 
             </ResultsBlock>

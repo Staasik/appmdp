@@ -14,9 +14,9 @@ export const Footer = ({ userData }: Props) => {
         <DiagFooter $margin={!location.pathname.includes('home')}>
             <DiagFooterItems>
                 <FooterItems>
-                    <DiagnLink to="/main/home"><DiagnTextBlack>Главная</DiagnTextBlack></DiagnLink>
-                    <DiagnLink to="/main/diagnostics"><DiagnTextBlack>Диагностика</DiagnTextBlack></DiagnLink>
-                    <DiagnLink to="/main/recommend"><DiagnTextBlack>Рекомендации</DiagnTextBlack></DiagnLink>
+                    <DiagnLinkId href="/main/home"><DiagnTextBlack>Главная</DiagnTextBlack></DiagnLinkId>
+                    <DiagnLinkId href="/main/diagnostics"><DiagnTextBlack>Диагностика</DiagnTextBlack></DiagnLinkId>
+                    <DiagnLinkId href="/main/recommend"><DiagnTextBlack>Рекомендации</DiagnTextBlack></DiagnLinkId>
                 </FooterItems>
                 <FooterItems>
                 {userData && <DiagnLinkId href="/main/profile#checklists"><DiagnTextBlack>Чек-листы</DiagnTextBlack></DiagnLinkId>}
