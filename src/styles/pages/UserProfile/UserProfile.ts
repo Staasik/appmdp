@@ -109,6 +109,72 @@ export const DiagnResultItem = styled.div`
         padding:20px;
     }
 `
+export const DiagnChecksResults = styled.div`
+    display: flex;
+    width:73%; 
+    background: #FFFFFF;
+    box-shadow: 0px 4px 11px 1px rgba(43, 43, 43, 0.05);
+    border-radius: 12px;
+    margin-bottom: 50px ;
+    @media (max-width:1240px) { 
+        width:90%; 
+    }
+`
+export const ChecksResultsWrapper = styled.div`
+    padding: 50px;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    @media (max-width:1000px) { 
+        gap:20px;
+        flex-direction: column;
+        padding:20px;
+    }
+
+`
+export const ChecksResultsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center ;
+    gap:50px;
+    width: 45%;
+    height: 100%;
+    @media (max-width:1000px) { 
+        width: 100%;
+        gap:20px;
+        padding:20px;
+    }
+`
+export const ChecksResultsTitle = styled.div`
+    display: flex;
+    font-size: 30px;
+    font-weight: 600;
+`
+export const ChecksResultsContent = styled.div`
+    display: flex;
+    font-size: 18px;
+    font-weight: 600;
+`
+export const ChecksResultsPS = styled.div`
+    display: flex;
+    font-size: 14px;
+    font-weight: 300;
+`
+export const ChecksResultsButton = styled.a`
+
+`
+export const ChecksResultsImageContainer = styled.div`
+    display: flex;
+    width: 45%;
+    justify-content: center;
+    height: 100%;
+    @media (max-width:1000px) { 
+        width: 100%;
+        gap:20px;
+        padding:20px;
+        height: 45%;
+    }
+`
 export const ButtonBlock = styled.div`
     display: flex;
     flex-direction: column;
@@ -137,10 +203,9 @@ export const DiagnTextBlack = styled.text`
         font-size:14px; 
     }
 `
-export const DiagnosticTextBlack = styled.text`
+export const DiagnosticTextBlack = styled.div`
     color:black;
-    font-size:16px; 
-    height:70px;
+    font-size:16px;
     @media (max-width:1000px) {     
         height:auto;
     }
@@ -202,7 +267,7 @@ export const ButtonWhite = styled.button`
         margin-top:20px; 
     }
 `
-export const Button = styled(Link)`
+export const Button = styled.a`
     display:flex;
     width: 200px;
     height: 50px;

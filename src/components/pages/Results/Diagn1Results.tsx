@@ -63,7 +63,7 @@ const Diagn1Results = ({ userData, result }: Props) => {
                 </ResultLine>
             </ResultsBlock>
             <HomeTextBlock>
-                <Button to="/main/profile" style={{ marginTop: "50px", alignSelf: "center" }}>Перейти в профиль</Button>
+                <Button href="/main/profile" style={{ marginTop: "50px", alignSelf: "center" }}>Перейти в профиль</Button>
             </HomeTextBlock>
         </DiagHtml>
     );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import { LoginBlock, LinkButton, LoginButton, LoginContainer, LoginImage, LoginInput, LoginRegistr, LoginRegistrText, LoginText, LoginWrapper, PasswordInput } from 'styles/pages/Login/Login';
+import { LoginBlock, LinkButton, LoginButton, LoginContainer, LoginImage, LoginInput, LoginRegistr, LoginRegistrText, LoginText, LoginWrapper, PasswordInput, PasswordWrapper, ShowIcon } from 'styles/pages/Login/Login';
 import Cookies from 'codebase/Cookies'
 import { MAIN_IP } from "App";
 
@@ -11,8 +11,8 @@ const Login = () => {
 
   const [login, setLogin] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-
-  const onLogin = () =>{
+  const [inputType, setInputType] = useState<string>('password')
+  const onLogin = () => {
     if (login && password) {
       fetch(process.env.NODE_ENV == 'development' ? "/acceptLogin" : `http://${MAIN_IP}:5000/acceptLogin`, {
         method: 'POST',
@@ -26,7 +26,7 @@ const Login = () => {
           return response.json();
         })
         .then((data) => {
-          if (!data.error){ 
+          if (!data.error) {
             Cookies.setCookie('login', login)
             Cookies.setCookie('password', password)
             window.location.href = '/main'
@@ -45,9 +45,12 @@ const Login = () => {
           </LoginRegistr>
           <LoginText>Мы скучали!</LoginText>
           <LoginRegistr>Войдите, чтобы продолжить</LoginRegistr>
-          <LoginInput placeholder='Логин' value={login} onChange={(e)=>setLogin(e.target.value)}/>
-          <PasswordInput placeholder='Пароль' value={password} type={"password"} onChange={(e)=>setPassword(e.target.value)}/>
-          <LoginButton onClick={()=>onLogin()}>Войти</LoginButton>
+          <LoginInput placeholder='Логин' value={login} onChange={(e) => setLogin(e.target.value.replace( /\s/g, ""))} />
+          <PasswordWrapper>
+            <PasswordInput placeholder='Пароль' value={password} type={inputType} onChange={(e) => setPassword(e.target.value.replace( /\s/g, ""))} />
+            <ShowIcon onClick={() => setInputType(a => a.includes('password') ? 'text' : 'password')}/>
+          </PasswordWrapper>
+          <LoginButton onClick={() => onLogin()}>Войти</LoginButton>
         </LoginContainer>
         {isDesktop && <LoginImage></LoginImage>}
       </LoginBlock>

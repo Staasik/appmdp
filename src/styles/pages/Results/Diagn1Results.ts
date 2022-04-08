@@ -141,7 +141,7 @@ export const TextBlock = styled.div`
         align-items:center;
     }
 `
-export const Button = styled(Link)`
+export const Button = styled.a`
     text-decoration: none ;
     display:flex;
     width: 200px;    

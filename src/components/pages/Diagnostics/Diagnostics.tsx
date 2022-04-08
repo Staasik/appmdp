@@ -22,7 +22,7 @@ const Diagnostics = () => {
                             <DiagnBlockText>
                                 <DiagnTextProf>{value.name}</DiagnTextProf>
                                 <DiagnTextBlack>{value.description}</DiagnTextBlack>
-                                <DiagnLink to={"diagnostic" + (index + 1)}><Start /></DiagnLink>
+                                <DiagnLink href={"diagnostics/diagnostic" + (index + 1)}><Start /></DiagnLink>
                             </DiagnBlockText>
                         </DiagnAllBlock>
                     )

@@ -63,6 +63,7 @@ export const FootBlock = styled.div`
     background-color:#FF9254;
     justify-content:center;
     align-items:center;
+    margin-top: 50px;
     @media (max-width:860px) {
         height:300px;
     }
@@ -165,7 +166,7 @@ export const TextBlockWhite = styled(TextBlock)`
     }
 
 `
-export const Button = styled(Link)`
+export const Button = styled.a`
     text-decoration: none ;
     display:flex;
     width: 200px;

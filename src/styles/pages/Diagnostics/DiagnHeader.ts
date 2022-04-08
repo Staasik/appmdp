@@ -221,7 +221,7 @@ export const DiagnBlockImg = styled.div<DiagnBlockImgProps>`
         height:500px;
     }
 `
-export const DiagnLink = styled(Link)`
+export const DiagnLink = styled.a`
     text-decoration: none;
 `
 export const DiagnBlock = styled.div`

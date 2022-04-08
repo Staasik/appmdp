@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from 'react-router-dom'
 import image from "images/regImg.png"; 
 import image600 from "images/regImg_600.png"; 
+import { ReactComponent as Show } from 'images/Show.svg'
 
 export const LoginWrapper = styled.div`
     display:flex;
@@ -114,14 +115,23 @@ export const NameInput = styled.input`
     }
 `
 export const PasswordInput = styled.input`
-    width: 50%;
-    height: 45px;
+    user-select: none;
+    width: 100%;
+    height: 100%;
     font-size: 14px;
-    padding-left:2%;
-    margin-left:10%;
+    padding-left:4%;
     background-color: rgba(150, 150, 150, 0.1);
     border:0;
     border-radius: 8px;
+    @media (max-width:800px) {
+        padding-left:3%;
+    }
+`
+export const PasswordWrapper = styled.div`
+    position: relative; 
+    height: 45px;
+    margin-left:10%;
+    width: 50%;
     @media (max-width:1200px) {
         width: 60%;
     }
@@ -130,6 +140,12 @@ export const PasswordInput = styled.input`
         margin-left:10%;
         margin-right:10%;
     }
+`
+export const ShowIcon = styled(Show)`
+    position: absolute;
+    right: 7px;
+    top: 11px;
+    stroke: #969696;
 `
 export const LoginText = styled.text`
     font-size: 36px;
