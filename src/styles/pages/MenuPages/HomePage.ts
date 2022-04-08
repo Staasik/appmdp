@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const HomeTextBlock = styled.div`
     display: flex;
     width:90%; 
-    gap:100px;
+    gap:150px;
     flex-direction: row;
     justify-content:center;
     align-items:center;
@@ -152,7 +152,7 @@ export const TextBlock = styled.div`
     flex-direction: column;
     gap:30px;
     height:300px;
-    width:50%;
+    width:42%;
     justify-content:center;
     align-items:flex-start;
     @media (max-width:1280px) {

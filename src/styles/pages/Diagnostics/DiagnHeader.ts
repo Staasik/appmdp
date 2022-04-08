@@ -222,6 +222,72 @@ export const DiagnBlockText = styled.div`
         row-gap:10px;
     }
 `
+export const DiagnRecBlockWrapper = styled.div`
+    width: 100%;
+    display: flex;
+`
+export const DiagnRecBlock = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    gap: 30px;
+    background: #FFF6F1;
+    border-radius: 16px;
+    @media (max-width:1000px) {     
+        gap: 20px;
+        padding: 20px;
+    }
+`
+export const DiagnRecTitle = styled.div`
+    font-weight: 600;
+    font-size: 24px;
+    @media (max-width:1000px) {     
+        font-size: 18px;
+    }
+`
+export const DiagnRecContent = styled.div`
+    font-weight: 400;
+    font-size: 18px;
+    @media (max-width:1000px) {     
+        font-size: 16px;
+    }
+`
+export const DiagnRecPS = styled.div`
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-weight: 400;
+    font-size: 18px;
+    color: #969696;
+    @media (max-width:1000px) {     
+        font-size: 16px;
+    }
+`
+export const DiagnRecButtons = styled.div`
+    display: flex;
+    width: 100%;
+    gap: 50px;
+    @media (max-width:1000px) {     
+        gap: 16px;
+        flex-direction: column;
+    }
+`
+export const DiagnRecButton = styled.a`
+    background-color: #FFF;
+    text-decoration: none;
+    border: 1.5px solid #5496FF;
+    padding: 15px 30px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border-radius: 11px;
+    font-weight: 400;
+    font-size: 18px;
+    @media (max-width:1000px) {     
+        font-size: 16px;
+    }
+`
 export const DiagnAllBlockText = styled.div`
     display:flex;
     flex-direction:column;

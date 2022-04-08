@@ -82,11 +82,11 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                 </BlockDesk>
                 <BlockDeskText style={{gap:"15px"}}>
                     <DiagnTextBlackBold>Диагностика интересна, и поможет нам составить рекомендации на основе ваших результатов</DiagnTextBlackBold>
-                    <DiagnTextBlack>- Вам предлагаются утверждения о переживаниях</DiagnTextBlack>
-                    <DiagnTextBlack>- Вы можете ответить, выбрав картинку</DiagnTextBlack>
-                    <DiagnTextBlack>- При затруднении вы можете обратиться к чат–боту</DiagnTextBlack>
-                    <DiagnTextBlack>- После всех диагностик, у вас в профиле появится подробная статистка, исходя из результатов</DiagnTextBlack>
-                    <DiagnTextBlack>- Всё использование сайта абсолютно бесплатно</DiagnTextBlack>
+                    <DiagnTextBlack>• Вам предлагаются утверждения о переживаниях</DiagnTextBlack>
+                    <DiagnTextBlack>• Вы можете ответить, выбрав картинку</DiagnTextBlack>
+                    <DiagnTextBlack>• При затруднении вы можете обратиться к чат–боту</DiagnTextBlack>
+                    <DiagnTextBlack>• После всех диагностик, у вас в профиле появится подробная статистка, исходя из результатов</DiagnTextBlack>
+                    <DiagnTextBlack>• Всё использование сайта абсолютно бесплатно</DiagnTextBlack>
                     <Button href="/main/diagnostics">Пройти диагностику</Button>
                 </BlockDeskText>
             </HomeBlock>
