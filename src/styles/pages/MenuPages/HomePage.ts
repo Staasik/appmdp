@@ -24,7 +24,7 @@ export const HomeBlock = styled.div`
     flex-direction: row;
     justify-content:center;
     align-items:center;
-    margin:50px;
+    margin:50px 50px 100px 50px;
     @media (max-width:1550px) {
         width:80%;
     }
