@@ -50,6 +50,9 @@ const UserProfile = ({ userData }: Props) => {
         if(tempCount == 40) {
             setResultsData(LastResultsDataMock)
         }
+        else{
+            setResultsData(DefaultResultsDataMock)
+        }
         setCheckResultCount(tempCount)
     }, [blocks])
 

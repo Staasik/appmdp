@@ -282,6 +282,7 @@ export const Button = styled.a`
     border: 0;
     border-radius: 8px; 
     color:#fff;
+    font-weight: 400;
     justify-content:center;
     align-items:center;
     @media (max-width:600px) {
