@@ -21,7 +21,7 @@ export const Main = ({ userData, onOpenChat }: Props) => {
             <Route path="/" element={<Navigate to="/main/home" replace />} />
             <Route path="diagnostics" element={<Diagnostics />} />
             <Route path="home" element={<HomePage userData={userData} onOpenChat={() => onOpenChat()}/>} />
-            {userData ? <Route path="profile" element={<UserProfile userData={userData} />} /> : <Route path="profile" element={<Navigate to="/login" replace />} />}
+            {userData && <Route path="profile" element={<UserProfile userData={userData} />} />}
             {userData && <Route path="profile/diagnresult1" element={<UserResults userData={userData} diagnnumber={1} />} />}
             {userData && <Route path="profile/diagnresult2" element={<UserResults userData={userData} diagnnumber={2} />} />}
             {userData && <Route path="profile/diagnresult3" element={<UserResults userData={userData} diagnnumber={3} />} />}
