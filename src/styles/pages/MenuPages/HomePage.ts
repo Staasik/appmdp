@@ -215,7 +215,7 @@ export const DiagnTextBlackBold = styled.text`
     color:black;
     font-weight : bold;
     height:40px;    
-    font-size:14px;
+    font-size:18px;
     @media (max-width:860px) {  
         height:60px;    
     }
@@ -223,7 +223,8 @@ export const DiagnTextBlackBold = styled.text`
 export const DiagnTextProfCenter = styled.text`
     display:flex;       
     color: black;
-    font-size:26px;
+    font-size:54px;
+    font-weight: 800;
     @media (max-width:800px) {
     font-size:20px;
     text-align:center;
