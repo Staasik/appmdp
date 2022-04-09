@@ -7,7 +7,7 @@ import { ReactComponent as HomeUsrUrl } from 'images/HomePage/HomeUsrUrl.svg';
 import { ReactComponent as Line } from 'images/HomePage/Line.svg';
 import { useMediaQuery } from "react-responsive";
 import { Link } from 'react-router-dom';
-import { DiagHtml, DiagnTextBlack, DiagnTextProf, DiagnTextProfS, DiagnTextProfWhite, DiagnTextWhite } from 'styles/pages/Diagnostics/DiagnHeader';
+import { DiagHtml, DiagnTextBlack, DiagnTextProf, DiagnTextProfS,DiagnTextBlackI, DiagnTextBlackItem,DiagnTextProfWhite, DiagnTextWhite } from 'styles/pages/Diagnostics/DiagnHeader';
 import { BlockDesk, BlockDeskText, Button, ButtonBlock, ButtonWhite, DiagnTextBlackBold, DiagnTextProfCenter, FootBlock, HomeBlock, HomeTextBlock, ImgBlock, ImgBlockDesktop, MenuBlock, MenuItem, MenuLine, TextBlock, TextBlockWhite, TextUrl } from 'styles/pages/MenuPages/HomePage';
 
 interface Props {
@@ -52,12 +52,12 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                     </MenuItem>
                     <MenuItem>
                         <TextUrl>Диагностика</TextUrl>
-                        <DiagnTextBlack>Составленные психологами профессиональные тесты личности</DiagnTextBlack>
+                        <DiagnTextBlackItem>Составленные психологами профессиональные тесты личности</DiagnTextBlackItem>
                         <a href="/main/diagnostics"><HomeDiagUrl /></a>
                     </MenuItem>
                     <MenuItem>
                         <TextUrl>Чат–бот</TextUrl>
-                        <DiagnTextBlack>С вами может пообщаться наш виртуальный помощник</DiagnTextBlack>
+                        <DiagnTextBlackItem>С вами может пообщаться наш виртуальный помощник</DiagnTextBlackItem>
                         <HomeChatUrl style={{ cursor: 'pointer' }} onClick={() => onOpenChat()} />
                     </MenuItem>
                 </MenuLine>
@@ -65,12 +65,12 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                     {isDesktop && <MenuItem style={{ alignSelf: 'flex-end', paddingBottom: '8px' }}><Line /></MenuItem>}
                     <MenuItem>
                         <TextUrl>Подборки</TextUrl>
-                        <DiagnTextBlack>Предлагаем вам ознакомиться со списком интересных книг</DiagnTextBlack>
+                        <DiagnTextBlackItem>Предлагаем вам ознакомиться со списком интересных книг</DiagnTextBlackItem>
                         <a href="/main/recommend"><HomeRecomendUrl /></a>
                     </MenuItem>
                     <MenuItem>
                         <TextUrl>Аккаунт</TextUrl>
-                        <DiagnTextBlack>Чтобы сохранить ваши результаты, нужно пройти регистрацию</DiagnTextBlack>
+                        <DiagnTextBlackItem>Чтобы сохранить ваши результаты, нужно пройти регистрацию</DiagnTextBlackItem>
                         <a href="/reg"><HomeUsrUrl /></a>
                     </MenuItem>
                 </MenuLine>
@@ -82,11 +82,11 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                 </BlockDesk>
                 <BlockDeskText style={{ gap: "15px" }}>
                     <DiagnTextBlackBold>Диагностика интересна, и поможет нам составить рекомендации на основе ваших результатов</DiagnTextBlackBold>
-                    <DiagnTextBlack>• Вам предлагаются утверждения о переживаниях</DiagnTextBlack>
-                    <DiagnTextBlack>• Вы можете ответить, выбрав картинку</DiagnTextBlack>
-                    <DiagnTextBlack>• При затруднении вы можете обратиться к чат–боту</DiagnTextBlack>
-                    <DiagnTextBlack>• После всех диагностик, у вас в профиле появится подробная статистка, исходя из результатов</DiagnTextBlack>
-                    <DiagnTextBlack>• Всё использование сайта абсолютно бесплатно</DiagnTextBlack>
+                    <DiagnTextBlackI>• Вам предлагаются утверждения о переживаниях</DiagnTextBlackI>
+                    <DiagnTextBlackI>• Вы можете ответить, выбрав картинку</DiagnTextBlackI>
+                    <DiagnTextBlackI>• При затруднении вы можете обратиться к чат–боту</DiagnTextBlackI>
+                    <DiagnTextBlackI>• После всех диагностик, у вас в профиле появится подробная статистка, исходя из результатов</DiagnTextBlackI>
+                    <DiagnTextBlackI>• Всё использование сайта абсолютно бесплатно</DiagnTextBlackI>
                     <Button href="/main/diagnostics">Пройти диагностику</Button>
                 </BlockDeskText>
             </HomeBlock>

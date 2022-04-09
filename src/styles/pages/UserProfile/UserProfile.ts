@@ -172,7 +172,7 @@ export const ChecksResultsImageContainer = styled.div`
         width: 100%;
         gap:20px;
         padding:20px;
-        height: 45%;
+        height: 60%;
     }
 `
 export const ButtonBlock = styled.div`

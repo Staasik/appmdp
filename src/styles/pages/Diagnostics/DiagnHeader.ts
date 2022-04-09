@@ -137,6 +137,16 @@ export const HeaderText = styled.text<HeaderTextProps>`
 export const DiagnTextBlack = styled(DiagnText)`
     color:black;
 `
+export const DiagnTextBlackI = styled(DiagnTextBlack)`
+    font-size:16px;
+`
+export const DiagnTextBlackItem = styled(DiagnTextBlack)`
+    font-size:16px;
+    height:60px;
+    @media (max-width:800px) {      
+    height:40px;
+    }
+`
 export const DiagnTextWhite = styled(DiagnText)`
     color:white;
 `
@@ -271,11 +281,14 @@ export const DiagnRecButtons = styled.div`
     @media (max-width:1000px) {     
         gap: 16px;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 `
 export const DiagnRecButton = styled.a`
     background-color: #FFF;
     text-decoration: none;
+    width:30%;
     border: 1.5px solid #5496FF;
     padding: 15px 30px;
     align-items: center;
@@ -283,9 +296,13 @@ export const DiagnRecButton = styled.a`
     justify-content: center;
     border-radius: 11px;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     @media (max-width:1000px) {     
-        font-size: 16px;
+        font-size: 14px;
+        width:90%;
+    }
+    @media (max-width:600px) {     
+        width:80%;
     }
 `
 export const DiagnAllBlockText = styled.div`

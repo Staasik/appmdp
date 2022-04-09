@@ -20,7 +20,7 @@ export const TextItemMovie = styled.div`
 export const TextItemBook = styled.div`
     display: flex;
     flex-direction: column;
-    gap:30px;
+    gap:50px;
     width:70%; 
     height:80%;
     justify-content:center;
@@ -78,10 +78,10 @@ export const BookBlock = styled.div`
     justify-content:center;
     align-items:center;
     margin:20px;
-    @media (max-width:1580px) {
+    @media (max-width:1620px) {
         width:90%; 
     }
-    @media (max-width:1200px) {
+    @media (max-width:1350px) {
         flex-wrap:nowrap;
         height:auto;
         margin:0px;
@@ -95,7 +95,7 @@ export const Book = styled.div`
     align-items:center;
     width: 48.8%;
     gap:30px;
-    @media (max-width:1200px) {
+    @media (max-width:1350px) {
         width:100%;
     }
     @media (max-width:550px) {
@@ -104,8 +104,8 @@ export const Book = styled.div`
 `
 
 export const ItemBook = styled.img`
-    width:185px; 
-    height:225px; 
+    width:200px; 
+    height:250px; 
 `
 export const Music = styled.div`
     display: flex;
@@ -185,6 +185,7 @@ export const DiagnTextProfCenter = styled.text`
 export const DiagnTextBlack = styled.text`
     color:black;
     font-size:18px; 
+    font-weight:300;
     @media (max-width:800px) {     
         font-size:14px; 
     }

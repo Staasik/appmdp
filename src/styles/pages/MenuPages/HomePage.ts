@@ -96,7 +96,7 @@ export const BlockDeskText = styled(BlockDesk)`
         width:100%;
         justify-content:center;
         align-items:flex-start;
-        height:400px; 
+        height:450px; 
     }
 `
 export const MenuItem = styled.div`
@@ -172,8 +172,11 @@ export const TextBlockWhite = styled(TextBlock)`
     @media (max-width:1550px) {
         height: 400px;
     }
-
-
+    width:70%;
+    @media (max-width:600px) {
+        height: 300px;
+        gap:10px;
+    }
 `
 export const Button = styled.a`
     text-decoration: none ;
