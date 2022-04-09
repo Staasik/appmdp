@@ -77,7 +77,6 @@ export const AnswersIntoResultDiagn3 = (answers: number[]) => {
     mockdataResult3.titles.forEach((element, index) => {
         let tempResult: number = 0
         answers.slice(index * 5, index * 5 + 5).forEach(element => {
-            console.log(tempResult)
             tempResult += element
         });
         values[index].title = element
