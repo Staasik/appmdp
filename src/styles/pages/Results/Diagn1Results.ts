@@ -1,17 +1,31 @@
 import styled from "styled-components";
-import image from "images/Results/diag1result.png"; 
-import imagedesk from "images/Results/diag1result_600.png"; 
+import image from "images/Results/diag1result.png";
+import imagedesk from "images/Results/diag1result_600.png";
 import { Link } from 'react-router-dom';
 
 export const HomeTextBlock = styled.div`
-    display: flex;
+  display: flex;
     width:90%; 
     gap:100px;
     flex-direction: row;
     justify-content:center;
     align-items:center;
+    @media (max-width:1000px) {
+        gap:0px;
+        margin:0px;
+    }
+    @media (max-width:800px) {
+        flex-direction: column;
+        gap:30px;
+        margin:0px;
+    }
+`
+export const RecommendWrapper = styled.div`
+    display: flex;
+    width:70%; 
     margin:50px;
     @media (max-width:1000px) {
+        width:100%; 
         gap:0px;
         margin:0px;
     }
@@ -102,7 +116,7 @@ export const ButtonBlock = styled.div`
         align-items:center;
     }
 `
-interface ImgBlockProps{
+interface ImgBlockProps {
     images: string[]
 }
 export const ImgBlock = styled.div<ImgBlockProps>`
@@ -111,7 +125,7 @@ export const ImgBlock = styled.div<ImgBlockProps>`
     height:350px;
     justify-content:center;
     align-items:center;
-    background-image:url(${({images}: ImgBlockProps) => images[0]});
+    background-image:url(${({ images }: ImgBlockProps) => images[0]});
     background-repeat: no-repeat; 
     background-size:cover;
     background-position: center; 
@@ -122,7 +136,7 @@ export const ImgBlock = styled.div<ImgBlockProps>`
     @media (max-width:800px) {
         width:100%;
         height:350px;
-        background-image:url(${({images}: ImgBlockProps) => images[1]});
+        background-image:url(${({ images }: ImgBlockProps) => images[1]});
     }
 `
 export const TextBlock = styled.div`
@@ -148,6 +162,8 @@ export const Button = styled.a`
     height: 50px;
     background: #FF9254;
     border-radius: 8px; 
+    font-size: 16px;
+    font-weight: 400;
     border:0;
     color:white;
     justify-content:center;
@@ -200,5 +216,29 @@ export const DiagnTextProfCenter = styled.text`
     @media (max-width:800px) {
     font-size:20px;
     text-align:center;
+    }
+`
+export const Discription = styled.div`
+    display: flex;
+    flex-direction:column;
+    gap: 16px;
+    width: 100%;
+    padding: 25px 50px;
+    align-items: center;
+`
+export const DiscTitle = styled.div`
+    font-weight: 600;
+    font-size: 24px;
+    width: 70%;
+    @media (max-width:800px) {             
+        width:90%;
+    }
+`
+export const DiscContent = styled.div`
+    font-weight: 400;
+    font-size: 18px;
+    width: 70%;
+    @media (max-width:800px) {             
+        width:90%;
     }
 `

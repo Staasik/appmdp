@@ -62,7 +62,7 @@ const Diagnostic3 = ({ userData }: Props) => {
     )
     else return (
         <DiagBody>
-            <DiagnHeader {...mockdata} />
+            <DiagnHeader {...mockdata} index={3}/>
             <Diagn3Block>
                 {
                     blockdata.map((value, idx) => {

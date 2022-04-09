@@ -9,7 +9,6 @@ export const HomeTextBlock = styled.div`
     flex-direction: row;
     justify-content:center;
     align-items:center;
-    margin:50px;
     @media (max-width:1000px) {
         gap:0px;
         margin:0px;
@@ -108,6 +107,20 @@ export const ButtonBlock = styled.div`
         align-items:center;
     }
 `
+export const RecommendWrapper = styled.div`
+    display: flex;
+    width:70%; 
+    margin:50px;
+    @media (max-width:1000px) {
+        width:100%; 
+        gap:0px;
+        margin:0px;
+    }
+    @media (max-width:800px) {
+        flex-direction: column;
+        margin:0px;
+    }
+`
 export const ImgBlock = styled.div`
     display: flex;
     width:40%; 
@@ -150,6 +163,8 @@ export const Button = styled.a`
     height: 50px;
     background: #FF9254;
     border-radius: 8px; 
+    font-size: 16px;
+    font-weight: 400;
     border:0;
     color:white;
     justify-content:center;
@@ -204,5 +219,52 @@ export const DiagnTextBlack = styled.text`
     font-size:18px; 
     @media (max-width:800px) {     
         font-size:14px; 
+    }
+`
+export const Discription = styled.div`
+    display: flex;
+    flex-direction:column;
+    width: 100%;
+    padding: 25px 50px;
+    align-items: center;
+    gap: 30px;
+`
+export const DiscriptionContainer = styled.div`
+    display: flex;
+    flex-direction:column;
+    width: 70%;
+    gap: 20px;
+    @media (max-width:800px) {             
+        width:85%;
+    }
+
+`
+export const DiscTitle = styled.div`
+    font-weight: 600;
+    font-size: 24px;
+    width: 70%;
+    @media (max-width:800px) {             
+        width:85%;
+    }
+`
+export const DiscContent = styled.div`
+    font-weight: 400;
+    font-size: 18px;
+    width: 100%;
+`
+export const DiscriptionImageCont = styled.div`
+    display: flex;
+    width: 30px;
+    align-items: center;
+    gap: 16px;
+`
+export const DiscriptionPS = styled.div`
+    display: flex;
+    width: 70%;
+    align-items: center;
+    gap: 16px;
+    color: #5496FF;
+    @media (max-width:800px) {             
+        width:85%;
     }
 `

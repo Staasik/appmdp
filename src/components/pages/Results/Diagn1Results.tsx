@@ -6,8 +6,9 @@ import { ReactComponent as Ellipse } from 'images/Results/Ellipse.svg';
 import { ReactComponent as Line } from 'images/Results/Line.svg';
 import { useMediaQuery } from "react-responsive";
 import { DiagHtml, DiagnTextProf } from 'styles/pages/Diagnostics/DiagnHeader';
-import { DiagnTextBlack, DiagnTextBlackBold, HomeTextBlock,Result, Button, ResultLine, ResultsBlock, ResultStaticItem } from 'styles/pages/Results/Diagn1Results';
+import { RecommendWrapper, Discription, DiscTitle, DiscContent, DiagnTextBlack, DiagnTextBlackBold, HomeTextBlock,Result, Button, ResultLine, ResultsBlock, ResultStaticItem } from 'styles/pages/Results/Diagn1Results';
 import ResultBlock1 from 'components/pages/Results/ResultBlock1'
+import DiagnRecommends from 'components/defaultComponents/DiagnRecommends'
 
 export interface IDiagnResult{
     title: string,
@@ -31,6 +32,14 @@ const Diagn1Results = ({ userData, result }: Props) => {
     return (
         <DiagHtml>
             <DiagnResultsHeader {...HeaderProps} />
+            <Discription>
+                <DiscTitle>Что под этим понимается?</DiscTitle>
+                <DiscContent>— состояние эмоционального истощения, связанного с высокой эмоциональной нагрузкой, которую человек не в состоянии выдержать. Долгое профессиональное выгорание приводит к полному эмоциональному выгоранию.</DiscContent>
+            </Discription>
+            <Discription>
+                <DiscTitle>Что включает в себя данный синдром?</DiscTitle>
+                <DiscContent>— три составляющих: эмоциональную истощенность, деперсонализацию (цинизм) и редукцию профессиональных достижений.</DiscContent>
+            </Discription>
             <ResultsBlock>
                 <Result>
                     <DiagnTextBlackBold style={{ height: "50px" }}>{result[0].title}</DiagnTextBlackBold>
@@ -62,6 +71,9 @@ const Diagn1Results = ({ userData, result }: Props) => {
                     </ResultStaticItem>
                 </ResultLine>
             </ResultsBlock>
+            <RecommendWrapper>
+                <DiagnRecommends></DiagnRecommends>
+            </RecommendWrapper>
             <HomeTextBlock>
                 <Button href="/main/profile" style={{ marginTop: "50px", alignSelf: "center" }}>Перейти в профиль</Button>
             </HomeTextBlock>
