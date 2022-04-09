@@ -2,14 +2,15 @@ export interface IOptions {
     value: number,
     label: string,
 } 
+
 export const targets : IOptions[] = [
-    { value: 0, label: '0' },
-    { value: 1, label: '1' },
-    { value: 2, label: '2' },
-    { value: 3, label: '3' },
-    { value: 4, label: '4' },
-    { value: 5, label: '5' },
-    { value: 6, label: '6' },
+    { value: 0, label: '0 – никогда' },
+    { value: 1, label: '1 – очень редко' },
+    { value: 2, label: '2 – редко' },
+    { value: 3, label: '3 – иногда' },
+    { value: 4, label: '4 – часто' },
+    { value: 5, label: '5 – очень часто' },
+    { value: 6, label: '6 - ежедневно' },
   ];
 
   

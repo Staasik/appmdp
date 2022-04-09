@@ -137,9 +137,9 @@ export const ButtonBlock = styled.div`
 `
 export const ImgBlock = styled.div`
     display: flex;
-    width:200px; 
-    min-width:200px; 
-    height:200px;
+    width:250px; 
+    min-width:250px; 
+    height:250px;
     justify-content:center;
     align-items:center;
     background-image:url(${image});
@@ -152,7 +152,7 @@ export const TextBlock = styled.div`
     flex-direction: column;
     gap:30px;
     height:300px;
-    width:42%;
+    width:50%;
     justify-content:center;
     align-items:flex-start;
     @media (max-width:1280px) {

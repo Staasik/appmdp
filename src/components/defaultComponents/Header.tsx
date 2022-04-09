@@ -7,36 +7,40 @@ import Icon from 'images/icon.png';
 import { useLocation } from 'react-router-dom'
 import { IUserData } from 'App'
 
-interface Props{
+interface Props {
     userData: IUserData | null,
     onOpenChat(): any
 }
 
-export const Header = ({ userData, onOpenChat } : Props) => {
+export const Header = ({ userData, onOpenChat }: Props) => {
     const isDesktop = useMediaQuery({
         query: "(max-width: 600px)"
     });
     let location = useLocation();
 
-    const toProfile = () =>{
+    const toProfile = () => {
         userData ? document.location.href = '/main/profile' : document.location.href = '/'
     }
-    
+
     return (
         <>
             {isDesktop ?
                 <DiagHeader>
                     < DiagnIcon >
-                        <img src={Icon} style={{ "height": "30px", "width": "110px" }} />
+                        <a href='/main/home'>
+                            <img src={Icon} style={{ "height": "30px", "width": "110px" }} />
+                        </a>
                     </DiagnIcon >
                     <DiagnCP>
-                        <Menu userData={userData} onOpenChat={() => onOpenChat()}/>
+                        <Menu userData={userData} onOpenChat={() => onOpenChat()} />
                     </DiagnCP>
                 </DiagHeader >
                 :
                 <DiagHeader>
                     <DiagnIcon>
-                        <img src={Icon} style={{ "height": "30px", "width": "110px" }} />
+                        <a href='/main/home'>
+                            <img src={Icon} style={{ "height": "30px", "width": "110px" }} />
+                        </a>
                     </DiagnIcon>
                     <DiagnMenu>
                         <DiagnLink href="/main/home"><HeaderText $active={location.pathname.includes('home')}>Главная</HeaderText></DiagnLink>
@@ -44,9 +48,9 @@ export const Header = ({ userData, onOpenChat } : Props) => {
                         <DiagnLink href="/main/recommend"><HeaderText $active={location.pathname.includes('recommend')}>Рекомендации</HeaderText></DiagnLink>
                     </DiagnMenu>
                     <DiagnCP>
-                        <Chat style={{ "height": "30px", "width": "30px", "cursor": "pointer" }} onClick={()=> onOpenChat()}/>
-                        <Prof style={{ "height": "30px", "width": "30px", "cursor": "pointer" }} onClick={()=>{toProfile()}}/>
-                        { userData && <ProfileName>{userData.name}</ProfileName>}
+                        <Chat style={{ "height": "30px", "width": "30px", "cursor": "pointer" }} onClick={() => onOpenChat()} />
+                        <Prof style={{ "height": "30px", "width": "30px", "cursor": "pointer" }} onClick={() => { toProfile() }} />
+                        {userData && <ProfileName>{userData.name}</ProfileName>}
                     </DiagnCP>
                 </DiagHeader>
             }

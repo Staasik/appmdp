@@ -13,8 +13,8 @@ interface IProps {
 }
 
 const Quest = ({ text, options, index, onChange }: IProps) => {
+  
   const [target, setTarget] = useState(null);
-
 
   return (
 
