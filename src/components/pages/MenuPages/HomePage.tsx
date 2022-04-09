@@ -25,7 +25,7 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                 <HomeTextBlock>
                     <TextBlock>
                         <DiagnTextProfCenter>Сервис для педагогов по саморегуляции</DiagnTextProfCenter>
-                        <DiagnTextBlack style={{ lineHeight: '1.8', width: '75%' }}>Проходите диагностики, узнавайте новые книги и слушайте успокаивающую музыку на нашем сайте.</DiagnTextBlack>
+                        <DiagnTextBlack style={{ lineHeight: '1.8', width: '75%' }}>Если вы чувствуете усталость и снижение интереса к своей работе, хотите мыслить иначе, освоить навыки управления своим эмоциональным состоянием и повысить уровень осознанности.</DiagnTextBlack>
                         <ButtonBlock>
                             <Button href="/main/diagnostics">Пройти диагностику</Button>
                             {!userData && <Link to="/reg"><HomeRegUrl /></Link>}

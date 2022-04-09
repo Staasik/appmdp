@@ -147,6 +147,11 @@ export const DiagnTextBlackItem = styled(DiagnTextBlack)`
     height:40px;
     }
 `
+export const DiagnTextBlackTitle = styled(DiagnTextBlack)`
+    font-weight: 600;
+    font-size: 24px;
+    margin: 30px 0 10px 0;
+`
 export const DiagnTextWhite = styled(DiagnText)`
     color:white;
 `
@@ -318,14 +323,15 @@ export const DiagnAllBlockText = styled.div`
 `
 
 interface DiagnBlockImgProps{
-    images: string[]
+    images: string[],
+    index: number
 }
 export const DiagnBlockImg = styled.div<DiagnBlockImgProps>`
     display:flex;
     flex-direction:column;
     justify-content:center;
     width: 100%;    
-    height:350px;
+    height:${({index}: DiagnBlockImgProps) => index==2 ?  '500px' : '350px'};
     background-image:url(${({images}: DiagnBlockImgProps) => images[0]});
     background-repeat: no-repeat; 
     background-size: cover;
@@ -339,7 +345,7 @@ export const DiagnBlockImg = styled.div<DiagnBlockImgProps>`
         background-image:url(${({images}: DiagnBlockImgProps) => images[1]});
         justify-content:flex-start;
         padding-top:5%;
-        height:500px;
+        height:${({index}: DiagnBlockImgProps) => index==2 ?  '700px' : '500px'};
     }
 `
 export const DiagnLink = styled.a`

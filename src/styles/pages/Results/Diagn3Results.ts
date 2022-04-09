@@ -11,7 +11,6 @@ export const HomeTextBlock = styled.div`
     flex-direction: row;
     justify-content:center;
     align-items:center;
-    margin:50px;
     @media (max-width:1000px) {
         gap:0px;
         margin:0px;
@@ -19,6 +18,20 @@ export const HomeTextBlock = styled.div`
     @media (max-width:800px) {
         flex-direction: column;
         gap:30px;
+        margin:0px;
+    }
+`
+export const RecommendWrapper = styled.div`
+    display: flex;
+    width:70%; 
+    margin:50px;
+    @media (max-width:1000px) {
+        width:100%; 
+        gap:0px;
+        margin:0px;
+    }
+    @media (max-width:800px) {
+        flex-direction: column;
         margin:0px;
     }
 `
@@ -165,6 +178,8 @@ export const Button = styled.a`
     border:0;
     color:white;
     justify-content:center;
+    font-size: 16px;
+    font-weight: 400;
     align-items:center;
     @media (max-width:600px) {
         width: 100%;  
@@ -215,5 +230,62 @@ export const DiagnTextBlack = styled.text`
     font-size:18px; 
     @media (max-width:800px) {     
         font-size:14px; 
+    }
+`
+export const Discription = styled.div`
+    display: flex;
+    flex-direction:column;
+    width: 100%;
+    margin-top: 20px;
+    padding: 25px 50px;
+    align-items: center;
+    gap: 30px;
+`
+export const DiscriptionContainer = styled.div`
+    display: flex;
+    flex-direction:column;
+    width: 70%;
+    gap: 20px;
+    @media (max-width:800px) {             
+        width:85%;
+    }
+
+`
+export const DiscriptionContainerTitle = styled.div`
+    width: 70%;
+    color: #5496FF;
+    font-weight: 600;
+    font-size: 18px;
+    @media (max-width:800px) {             
+        width:85%;
+    }
+`
+export const DiscTitle = styled.div`
+    font-weight: 600;
+    font-size: 24px;
+    width: 70%;
+    @media (max-width:800px) {             
+        width:85%;
+    }
+`
+export const DiscContent = styled.div`
+    font-weight: 400;
+    font-size: 18px;
+    width: 100%;
+`
+export const DiscriptionImageCont = styled.div`
+    display: flex;
+    width: 30px;
+    align-items: center;
+    gap: 16px;
+`
+export const DiscriptionPS = styled.div`
+    display: flex;
+    width: 70%;
+    align-items: center;
+    gap: 16px;
+    color: #5496FF;
+    @media (max-width:800px) {             
+        width:85%;
     }
 `
