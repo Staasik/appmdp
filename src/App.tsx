@@ -17,7 +17,7 @@ export interface IUserData {
   login: string,
   password: string
 }
-export const MAIN_IP = '46.42.34.107'
+export const MAIN_IP = '100.64.44.139'
 
 
 const App = () => {
