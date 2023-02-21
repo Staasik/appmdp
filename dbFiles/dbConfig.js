@@ -1,7 +1,7 @@
 const config = {
     user: 'defaultUser',
     password: '12345',
-    server: "DESKTOP-T9387QK",
+    server: "DESKTOP-OOOUVM1",
     database: 'appmdp',
     options: {
         trustServerCertificate: true,

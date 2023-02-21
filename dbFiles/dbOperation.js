@@ -43,7 +43,11 @@ const registrationNewUser = async(name, login, password) => {
         let pool = await sql.connect(config);
         let users = pool.request().query("select login_user as login from Users")
         if (!_.find((await users).recordset, { login: login })) {
-            pool.request().query(`insert into Users values (${(await users).recordset.length + 1}, '${name}', '${login}', '${password}')`)
+            let id_user = (await users).recordset.length + 1
+            pool.request().query(`insert into Users values (${id_user}, '${name}', '${login}', '${password}')`)
+            for(let i = 1; i <=4; i++){
+                pool.request().query(`insert into CheckLists values (${id_user}, ${i}, '${[]}')`)   
+            }
             return { error: false, message: "Успешно зарегистрирован" }
         } else {
             return { error: true, message: "Пользователь с таким логином уже существует" }
@@ -60,7 +64,7 @@ const setResults = async(login, password, diagnnumber, answers) => {
         let users = pool.request().query("select login_user as login, password_user as password, id_user as id from Users")
         let tempuser = _.find((await users).recordset, { login: login, password: password })
         if (tempuser) {
-            pool.request().query(`insert into Diagnostic${diagnnumber} values (${tempuser.id}, '${answers}', '${new Date().toISOString().slice(0, 19).replace('T', ' ')}')`)
+            pool.request().query(`insert into Diagnostics values (${tempuser.id}, ${diagnnumber}, '${answers}', '${new Date().toISOString().slice(0, 19).replace('T', ' ')}')`)
             return { error: false, message: "Данные успешно занесены в базу" }
         } else {
             return { error: true, message: "Пользователя не существует" }
@@ -76,7 +80,7 @@ const getResults = async(login, password, diagnnumber) => {
         let users = pool.request().query("select login_user as login, password_user as password, id_user as id from Users")
         let tempuser = _.find((await users).recordset, { login: login, password: password })
         if (tempuser) {
-            let answers = pool.request().query(`select answers, date from Diagnostic${diagnnumber} where date=(select max(date) from Diagnostic${diagnnumber} where user_id=${tempuser.id})`)
+            let answers = pool.request().query(`select answers, date from Diagnostics where diagnostic_id=${diagnnumber} and date=(select max(date) from Diagnostics where id_user=${tempuser.id})`)
             return { error: false, data: (await answers).recordset }
         } else {
             return { error: true, message: "Пользователя не существует" }
@@ -92,7 +96,7 @@ const getCheckLists = async(login, password) => {
         let users = pool.request().query("select login_user as login, password_user as password, id_user as id from Users")
         let tempuser = _.find((await users).recordset, { login: login, password: password })
         if (tempuser) {
-            let answers = pool.request().query(`select checklist_id, data from CheckLists where user_id=${tempuser.id}`)
+            let answers = pool.request().query(`select checklist_id, data from CheckLists where id_user=${tempuser.id}`)
             let result = (await answers).recordset
             result.forEach(element => {
                 element.data = element.data.split(',').map((str) => {
@@ -114,7 +118,7 @@ const setCheckLists = async(login, password, checklist_id, checklist) => {
         let users = pool.request().query("select login_user as login, password_user as password, id_user as id from Users")
         let tempuser = _.find((await users).recordset, { login: login, password: password })
         if (tempuser) {
-            pool.request().query(`update CheckLists set data='${checklist}' where user_id=${tempuser.id} and checklist_id=${checklist_id}`)
+            pool.request().query(`update CheckLists set data='${checklist}' where id_user=${tempuser.id} and checklist_id=${checklist_id}`)
             return { error: false }
         } else {
             return { error: true, message: "Пользователя не существует" }
