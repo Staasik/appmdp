@@ -72,6 +72,7 @@ class UserController {
             next(error)
         }
     }
+
     async setResults(req, res, next) {
         try {
             const results = await userService.setResults(req.headers.authorization, req.file)
@@ -80,6 +81,7 @@ class UserController {
             next(error)
         }
     }
+    
     async getResults(req, res, next) {
         try {
             const { diagnosticID, answers } = req.body

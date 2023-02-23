@@ -1,7 +1,6 @@
 import bcrypt from 'bcrypt'
 import _ from 'lodash'
 import { Op } from 'sequelize'
-import { FileDTO } from '../dtos/file.dto.js'
 import { UserDTO } from "../dtos/user.dto.js"
 import { ApiError } from '../exceptions/api.error.js'
 import { db } from '../model/index.js'

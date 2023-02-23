@@ -15,7 +15,7 @@ import Htmlcontainer from 'styles/App';
 export interface IUserData {
   name: string,
   login: string,
-  password: string
+  accessToken: string
 }
 export const MAIN_IP = '178.57.39.247'
 
@@ -30,7 +30,7 @@ const App = () => {
     let login = Cookies.getCookie('login')
     let password = Cookies.getCookie('password')
     if (login && password) {
-      fetch(process.env.NODE_ENV == 'development' ? "/acceptLogin" : `http://${MAIN_IP}:5000/acceptLogin`, {
+      fetch(process.env.NODE_ENV == 'development' ? "/api/login" : `http://${MAIN_IP}:5000/api/login`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -42,7 +42,7 @@ const App = () => {
           return response.json();
         })
         .then((data) => {
-          !data.error && setUserData({ name: data.name, login: data.login, password: data.password })
+          setUserData({ name: data.user.name, login: data.user.login, accessToken: data.accessToken })
         });
     }
   }, [])

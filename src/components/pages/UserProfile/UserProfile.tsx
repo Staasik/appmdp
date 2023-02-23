@@ -58,7 +58,7 @@ const UserProfile = ({ userData }: Props) => {
 
     useEffect(() => {
         if (userData) {
-            fetch(process.env.NODE_ENV == 'development' ? "/getCheckLists" : `http://${MAIN_IP}:5000/getCheckLists`, {
+            fetch(process.env.NODE_ENV == 'development' ? "/api/getCheckLists" : `http://${MAIN_IP}:5000/api/getCheckLists`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -91,7 +91,7 @@ const UserProfile = ({ userData }: Props) => {
             tempblocks[checklist_id] = tempCheckList
             setBlocks([...tempblocks])
             let requestbody = tempCheckList.checklist.map((value, index) => value.checked ? 1 : 0)
-            fetch(process.env.NODE_ENV == 'development' ? "/setCheckLists" : `http://${MAIN_IP}:5000/setCheckLists`, {
+            fetch(process.env.NODE_ENV == 'development' ? "/api/setCheckLists" : `http://${MAIN_IP}:5000/api/setCheckLists`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

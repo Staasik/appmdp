@@ -14,7 +14,7 @@ const Login = () => {
   const [inputType, setInputType] = useState<string>('password')
   const onLogin = () => {
     if (login && password) {
-      fetch(process.env.NODE_ENV == 'development' ? "/acceptLogin" : `http://${MAIN_IP}:5000/acceptLogin`, {
+      fetch(process.env.NODE_ENV == 'development' ? "/api/login" : `http://${MAIN_IP}:5000/api/login`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',

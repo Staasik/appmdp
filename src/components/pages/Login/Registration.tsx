@@ -17,7 +17,7 @@ const Registration = () => {
 
   const onReg = () => {
     if (name.replace( /\s/g, "") && login.replace( /\s/g, "") && password.replace( /\s/g, "") && repeatPassword.replace( /\s/g, "") && password === repeatPassword) {
-      fetch(process.env.NODE_ENV == 'development' ? "/registrationNewUser" : `http://${MAIN_IP}:5000/registrationNewUser`, {
+      fetch(process.env.NODE_ENV == 'development' ? "/api/registration" : `http://${MAIN_IP}:5000/api/registration`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
