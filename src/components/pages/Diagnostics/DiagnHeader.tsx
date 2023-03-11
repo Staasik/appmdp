@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite';
 import { DiagnBlockImg, DiagnAllBlockText, DiagnTextBlack, DiagnTextBlackTitle, DiagnTextBlackBold, DiagnTextProf } from 'styles/pages/Diagnostics/DiagnHeader';
 
 interface Props {
@@ -24,4 +25,4 @@ export const DiagnHeader = ({ title, regulations, condition, images, index }: Pr
     )
 }
 
-export default DiagnHeader
+export default observer(DiagnHeader)

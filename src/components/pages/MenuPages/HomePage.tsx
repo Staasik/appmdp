@@ -1,24 +1,32 @@
-import { IUserData } from 'App';
 import { ReactComponent as HomeChatUrl } from 'images/HomePage/HomeChatUrl.svg';
 import { ReactComponent as HomeDiagUrl } from 'images/HomePage/HomeDiagUrl.svg';
 import { ReactComponent as HomeRecomendUrl } from 'images/HomePage/HomeRecomendUrl.svg';
 import { ReactComponent as HomeRegUrl } from 'images/HomePage/HomeRegUrl.svg';
 import { ReactComponent as HomeUsrUrl } from 'images/HomePage/HomeUsrUrl.svg';
 import { ReactComponent as Line } from 'images/HomePage/Line.svg';
+import { Context } from 'index';
 import { useMediaQuery } from "react-responsive";
 import { Link } from 'react-router-dom';
-import { DiagHtml, DiagnTextBlack, DiagnTextProf, DiagnTextProfS,DiagnTextBlackI, DiagnTextBlackItem,DiagnTextProfWhite, DiagnTextWhite } from 'styles/pages/Diagnostics/DiagnHeader';
+import { useContext } from 'react'
+import { DiagHtml, DiagnTextBlack, DiagnTextBlackI, DiagnTextBlackItem, DiagnTextProf, DiagnTextProfS, DiagnTextProfWhite, DiagnTextWhite } from 'styles/pages/Diagnostics/DiagnHeader';
 import { BlockDesk, BlockDeskText, Button, ButtonBlock, ButtonWhite, DiagnTextBlackBold, DiagnTextProfCenter, FootBlock, HomeBlock, HomeTextBlock, ImgBlock, ImgBlockDesktop, MenuBlock, MenuItem, MenuLine, TextBlock, TextBlockWhite, TextUrl } from 'styles/pages/MenuPages/HomePage';
+import { observer } from 'mobx-react-lite';
 
 interface Props {
-    userData: IUserData | null,
     onOpenChat(): any
 }
 
-const Diagnostics = ({ userData, onOpenChat }: Props) => {
+
+
+
+const Diagnostics = ({ onOpenChat }: Props) => {
     const isDesktop = useMediaQuery({
         query: "(min-width: 860px)"
     });
+
+    const { store } = useContext(Context)
+    const { isAuth } = store
+
     return (
         <DiagHtml>
             {isDesktop ?
@@ -28,7 +36,7 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                         <DiagnTextBlack style={{ lineHeight: '1.8', width: '75%' }}>Если вы чувствуете усталость и снижение интереса к своей работе, хотите мыслить иначе, освоить навыки управления своим эмоциональным состоянием и повысить уровень осознанности.</DiagnTextBlack>
                         <ButtonBlock>
                             <Button href="/main/diagnostics">Пройти диагностику</Button>
-                            {!userData && <Link to="/reg"><HomeRegUrl /></Link>}
+                            {!isAuth && <Link to="/reg"><HomeRegUrl /></Link>}
                         </ButtonBlock>
                     </TextBlock>
                     <ImgBlock />
@@ -41,7 +49,7 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                     <ImgBlock />
                     <ButtonBlock>
                         <Button href="/main/diagnostics">Пройти диагностику</Button>
-                        {!userData && <Link to="/reg"><HomeRegUrl /></Link>}
+                        {!isAuth && <Link to="/reg"><HomeRegUrl /></Link>}
                     </ButtonBlock>
                 </HomeTextBlock>
             }
@@ -94,11 +102,11 @@ const Diagnostics = ({ userData, onOpenChat }: Props) => {
                 <TextBlockWhite>
                     <DiagnTextProfWhite>Гармония в работе начинается с саморегуляции </DiagnTextProfWhite>
                     <DiagnTextWhite>Присоединяйтесь к нашему сервису — мы поможем узнать всё о психологии для работы преподавателем</DiagnTextWhite>
-                    {!userData && <ButtonWhite href="/reg">Зарегистрироваться</ButtonWhite>}
+                    {!isAuth && <ButtonWhite href="/reg">Зарегистрироваться</ButtonWhite>}
                 </TextBlockWhite>
             </FootBlock>
         </DiagHtml>
     );
 }
 
-export default Diagnostics;
+export default observer(Diagnostics);

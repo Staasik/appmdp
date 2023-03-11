@@ -2,6 +2,7 @@ import { DiagnRecommendsWrapper, DiagnRecommendsBlock, BlockContent, DiagnRecomm
 import { ReactComponent as Up } from 'images/Results/TrendingUp.svg'
 import { ReactComponent as Checkbox } from 'images/Results/CheckboxCheck.svg'
 import { ReactComponent as Toogle } from 'images/Results/Toogle.svg'
+import { observer } from 'mobx-react-lite'
 
 export const DiagnRecommends = () => {
     return (
@@ -28,4 +29,4 @@ export const DiagnRecommends = () => {
         </DiagnRecommendsWrapper>
     )
 }
-export default DiagnRecommends
+export default observer(DiagnRecommends)

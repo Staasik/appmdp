@@ -1,4 +1,4 @@
-import { IUserData, MAIN_IP } from 'App';
+import { MAIN_IP } from 'App';
 import Cookies from 'codebase/Cookies';
 import CheckList from 'components/pages/UserProfile/CheckList';
 import _ from 'lodash';
@@ -8,10 +8,9 @@ import { useEffect, useState } from 'react';
 import { DiagHtml } from 'styles/pages/Diagnostics/DiagnHeader';
 import { Button, ButtonBlock, ButtonWhite, DiagnCheckBlocks, ChecksResultsWrapper, DiagnosticTextBlack, ChecksResultsButton, ChecksResultsContainer, ChecksResultsContent, ChecksResultsPS, ChecksResultsImageContainer, ChecksResultsTitle, DiagnResult, DiagnResultItem, DiagnChecksResults, DiagnTextBlack, DiagnTextBlackBoldName, DiagnTextProfCenter, HomeTextBlock, Img, TextBlock } from 'styles/pages/UserProfile/UserProfile';
 import ChecksResultsImage from 'components/pages/UserProfile/ChecksResultsImage'
-
-interface Props {
-    userData: IUserData | null
-}
+import { Context } from 'index';
+import { useContext } from 'react';
+import { observer } from 'mobx-react-lite';
 
 interface IResultsData{
     title: string,
@@ -34,7 +33,12 @@ const LastResultsDataMock = {
     ps: null
 }
 
-const UserProfile = ({ userData }: Props) => {
+const UserProfile = () => {
+
+    const { store } = useContext(Context)
+    const { user : userData } = store
+
+
     const [resultsData, setResultsData] = useState<IResultsData>(DefaultResultsDataMock)
     const [items, setItems] = useState<IdiagnItemMock[]>(diagnItemMock)
     const [blocks, setBlocks] = useState<IblockItemMock[]>(blockItemMock)
@@ -64,7 +68,7 @@ const UserProfile = ({ userData }: Props) => {
                     'content-type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify({ login: userData.login, password: userData.password })
+                body: JSON.stringify({ login: userData.login})
             })
                 .then((response) => {
                     return response.json();
@@ -97,7 +101,7 @@ const UserProfile = ({ userData }: Props) => {
                     'content-type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify({ login: userData.login, password: userData.password, checklist_id: checklist_id + 1, checklist: requestbody })
+                body: JSON.stringify({ login: userData.login, checklist_id: checklist_id + 1, checklist: requestbody })
             })
                 .then((response) => {
                     return response.json();
@@ -165,4 +169,4 @@ const UserProfile = ({ userData }: Props) => {
     );
 }
 
-export default UserProfile;
+export default observer(UserProfile);

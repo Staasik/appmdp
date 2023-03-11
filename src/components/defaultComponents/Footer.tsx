@@ -1,12 +1,13 @@
 import { DiagFooter, DiagFooterItems, DiagnText, DiagnLink,DiagnTextBlack, FooterItems, FooterItemsKGU, DiagnLinkId } from 'styles/pages/Diagnostics';
-import { IUserData } from 'App'
 import { useLocation } from 'react-router-dom'
+import { useContext } from 'react';
+import { Context } from 'index';
+import { observer } from 'mobx-react-lite';
 
-interface Props{
-    userData: IUserData | null
-}
+export const Footer = () => {
 
-export const Footer = ({ userData }: Props) => {
+    const { store } = useContext(Context)
+    const { isAuth } = store
 
     let location = useLocation();
 
@@ -19,7 +20,7 @@ export const Footer = ({ userData }: Props) => {
                     <DiagnLinkId href="/main/recommend"><DiagnTextBlack>Рекомендации</DiagnTextBlack></DiagnLinkId>
                 </FooterItems>
                 <FooterItems>
-                {userData && <DiagnLinkId href="/main/profile#checklists"><DiagnTextBlack>Чек-листы</DiagnTextBlack></DiagnLinkId>}
+                {isAuth && <DiagnLinkId href="/main/profile#checklists"><DiagnTextBlack>Чек-листы</DiagnTextBlack></DiagnLinkId>}
                 <DiagnLinkId href="/main/recommend#films"><DiagnTextBlack>Фильмы</DiagnTextBlack></DiagnLinkId>
                 <DiagnLinkId href="/main/recommend#books"><DiagnTextBlack>Книги</DiagnTextBlack></DiagnLinkId>
                 </FooterItems>
@@ -30,4 +31,4 @@ export const Footer = ({ userData }: Props) => {
         </DiagFooter>
     )
 }
-export default Footer
+export default observer(Footer)

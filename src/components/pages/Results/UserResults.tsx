@@ -1,17 +1,21 @@
-import { IUserData, MAIN_IP } from 'App';
+import { MAIN_IP } from 'App';
 import { AnswersIntoResultDiagn1, AnswersIntoResultDiagn2, AnswersIntoResultDiagn3 } from 'codebase/DiagnResults';
 import Diagn1Results from 'components/pages/Results/Diagn1Results';
 import Diagn2Results from 'components/pages/Results/Diagn2Results';
 import Diagn3Results from 'components/pages/Results/Diagn3Results';
-import { useEffect, useState } from 'react';
+import { Context } from 'index';
+import { observer } from 'mobx-react-lite';
+import { useContext, useEffect, useState } from 'react';
 
 interface Props {
-    userData: IUserData | null
     diagnnumber: number
 }
-export const UserResults = ({ userData, diagnnumber }: Props) => {
+export const UserResults = ({ diagnnumber }: Props) => {
 
     const [answers, setAnswers] = useState<number[] | null>(null)
+
+    const { store } = useContext(Context)
+    const { user : userData } = store
 
     useEffect(() => {
         if (userData) {
@@ -21,7 +25,7 @@ export const UserResults = ({ userData, diagnnumber }: Props) => {
                     'content-type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify({ login: userData.login, password: userData.password, diagnnumber: diagnnumber })
+                body: JSON.stringify({ login: userData.login, diagnnumber: diagnnumber })
             })
                 .then((response) => {
                     return response.json();
@@ -41,15 +45,15 @@ export const UserResults = ({ userData, diagnnumber }: Props) => {
     if (answers) {
         switch (diagnnumber) {
             case 1:
-                return <Diagn1Results userData={userData} result={AnswersIntoResultDiagn1(answers)} />
+                return <Diagn1Results result={AnswersIntoResultDiagn1(answers)} />
             case 2:
-                return <Diagn2Results userData={userData} result={AnswersIntoResultDiagn2(answers)} />
+                return <Diagn2Results result={AnswersIntoResultDiagn2(answers)} />
             case 3:
-                return <Diagn3Results userData={userData} result={AnswersIntoResultDiagn3(answers)} />
+                return <Diagn3Results result={AnswersIntoResultDiagn3(answers)} />
             default:
                 return null
         }
     }
     else { return null }
 }
-export default UserResults
+export default observer(UserResults)

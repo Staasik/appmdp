@@ -1,19 +1,16 @@
-import { IUserData } from "App";
 import Books from "components/pages/MenuPages/Books";
 import Movie from "components/pages/MenuPages/Movie";
 import Music from "components/pages/MenuPages/Music";
+import { observer } from "mobx-react-lite";
 import { DiagHtml } from "styles/pages/Diagnostics/DiagnHeader";
 import {
-    DiagnTextBlackBold, DiagnTextProfCenter,
-    TextBlock
+  DiagnTextBlackBold, DiagnTextProfCenter,
+  TextBlock
 } from "styles/pages/MenuPages/Recommendations";
 
 
-interface Props {
-  userData: IUserData | null;
-}
+const Recommendations = () => {
 
-const Recommendations = ({ userData }: Props) => {
   return (
     <DiagHtml>
       <TextBlock>
@@ -38,4 +35,4 @@ const Recommendations = ({ userData }: Props) => {
   );
 };
 
-export default Recommendations;
+export default observer(Recommendations)

@@ -1,10 +1,7 @@
-import DiagnResultsHeader from 'components/pages/Results/DiagnResultsHeader';
-import image from "images/Results/diag3result_600.png";
 import { ReactComponent as Line } from 'images/Results/Line.svg';
+import { observer } from 'mobx-react-lite';
 import { useMediaQuery } from "react-responsive";
-import { DiagHtml } from 'styles/pages/Diagnostics/DiagnHeader';
-import { Button, DiagnTextBlack, DiagnTextBlackBold, HomeTextBlock, ResultItem, ResultLine, ResultsBlock } from 'styles/pages/Results/Diagn3Results';
-import { IDiagnResult } from 'components/pages/Results/Diagn1Results'
+import { DiagnTextBlack, DiagnTextBlackBold, ResultItem } from 'styles/pages/Results/Diagn3Results';
 
 interface Props {
     title: string,
@@ -25,4 +22,4 @@ export const ResultBlock3 = ({ title, level } : Props) => {
         </ResultItem>
     )
 }
-export default ResultBlock3
+export default observer(ResultBlock3)

@@ -1,9 +1,10 @@
+import { ReactComponent as PSIcon } from 'images/PSIcon.svg';
 import { ReactComponent as Start } from 'images/start.svg';
+import { observer } from 'mobx-react-lite';
 import diagnMock, { IdiagnMock } from 'mockdata/diagnBlocksMock';
 import { useState } from 'react';
+import { DiagnAllBlock, DiagnBlockText, DiagnImage, DiagnImg, DiagnLink, DiagnRecBlock, DiagnRecBlockWrapper, DiagnRecButton, DiagnRecButtons, DiagnRecContent, DiagnRecPS, DiagnRecTitle, DiagnText, DiagnTextBlack, DiagnTextDiagn, DiagnTextProfD } from 'styles/pages/Diagnostics/DiagnHeader';
 import { DiagBody, DiagnBlockImg } from 'styles/pages/Diagnostics/Diagnostic';
-import { DiagnRecButton, DiagnRecButtons, DiagnRecPS, DiagnRecContent, DiagnRecTitle, DiagnRecBlockWrapper, DiagnRecBlock, DiagnBlockText, DiagnAllBlock, DiagnTextProfD, DiagnImage, DiagnImg, DiagnLink, DiagnText, DiagnTextBlack, DiagnTextDiagn, DiagnTextProf } from 'styles/pages/Diagnostics/DiagnHeader'
-import { ReactComponent as PSIcon } from 'images/PSIcon.svg'
 
 const RecButtonsMock = [
     {
@@ -60,4 +61,4 @@ const Diagnostics = () => {
     );
 }
 
-export default Diagnostics;
+export default observer(Diagnostics)

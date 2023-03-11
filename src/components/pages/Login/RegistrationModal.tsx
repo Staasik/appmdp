@@ -1,5 +1,6 @@
 import { ModalWrapper, ModalContainer, ModalText, ModalMiniText, ModalButton, ModalCont } from 'styles/pages/Login/LoginModal'
 import Icon from 'images/ok.png';
+import { observer } from 'mobx-react-lite';
 
 const RegistrationModal = () => {
   return (
@@ -16,4 +17,4 @@ const RegistrationModal = () => {
   )
 }
 
-export default RegistrationModal;
+export default observer(RegistrationModal)

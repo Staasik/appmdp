@@ -1,13 +1,15 @@
-import { IUserData, MAIN_IP } from 'App';
+import { MAIN_IP } from 'App';
 import { AnswersIntoResultDiagn3 } from 'codebase/DiagnResults';
 import QuestFive from 'components/defaultComponents/QuestFive';
 import { IDiagnResult } from 'components/pages/Results/Diagn1Results';
 import Diagn3Results from 'components/pages/Results/Diagn3Results';
 import imagefoot from "images/diagn3.png";
 import image600 from "images/diagn3_600.png";
+import { Context } from 'index';
 import _ from 'lodash';
+import { observer } from 'mobx-react-lite';
 import { blockdata, data } from 'mockdata/mocktest3';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { BlockFive, Button, DiagBody, Diagn3Block, TextFive } from 'styles/pages/Diagnostics/Diagnostic';
 import DiagnHeader from './DiagnHeader';
 
@@ -23,11 +25,11 @@ interface IAnswer {
     label: number
 }
 
-interface Props {
-    userData: IUserData | null
-}
+const Diagnostic3 = () => {
 
-const Diagnostic3 = ({ userData }: Props) => {
+    const { store } = useContext(Context)
+    const { user : userData } = store
+
     const [result, setResult] = useState<IDiagnResult[] | null>(null)
     const [answers, setAnswers] = useState<number[]>([])
     const [completeDisabled, setCompleteDisabled] = useState<boolean>(true)
@@ -50,7 +52,7 @@ const Diagnostic3 = ({ userData }: Props) => {
                         'content-type': 'application/json',
                         'Accept': 'application/json'
                     },
-                    body: JSON.stringify({ login: userData.login, password: userData.password, diagnnumber: 3, answers: answers })
+                    body: JSON.stringify({ login: userData.login, diagnnumber: 3, answers: answers })
                 })
             }
             setResult(AnswersIntoResultDiagn3(answers))
@@ -58,7 +60,7 @@ const Diagnostic3 = ({ userData }: Props) => {
     }
 
     if (result) return (
-        <Diagn3Results userData={userData} result={result} />
+        <Diagn3Results result={result} />
     )
     else return (
         <DiagBody>
@@ -84,4 +86,4 @@ const Diagnostic3 = ({ userData }: Props) => {
     );
 }
 
-export default Diagnostic3;
+export default observer(Diagnostic3)

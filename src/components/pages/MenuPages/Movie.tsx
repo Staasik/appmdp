@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import RecommendMovie, { IRecommendMovieMock } from "mockdata/RecommendMovie";
 import { useState } from "react";
 import ReactPlayer from "react-player";
@@ -24,4 +25,4 @@ const Movie = () => {
   );
 };
 
-export default Movie;
+export default observer(Movie)

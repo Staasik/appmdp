@@ -1,6 +1,6 @@
-import React, {useState} from "react";
-import { DiagnTextBlackBold,DiagnTextBlackBoldI } from 'styles/pages/Diagnostics/DiagnHeader';
-import { QuestNumImg, Image, ImageContainer, SelectedImage } from 'styles/defaultComponents/Quest'
+import { observer } from "mobx-react-lite";
+import { Image, ImageContainer, QuestNumImg, SelectedImage } from 'styles/defaultComponents/Quest';
+import { DiagnTextBlackBoldI } from 'styles/pages/Diagnostics/DiagnHeader';
 
 interface IProps {
   text: string,
@@ -25,4 +25,4 @@ const Quest = ({ text, image, index, onChange, selected }: IProps) => {
 }
 
 
-export default Quest;
+export default observer(Quest)

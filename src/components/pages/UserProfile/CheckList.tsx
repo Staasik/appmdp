@@ -1,20 +1,15 @@
-import {
-  BlocksChecks,
-  BlockstItemChecks,
-  DiagnCheckBlockstItem,
-  DiagnCheckBlockstItemText,
-  DiagnTextBlack,
-  DiagnTextBlackBold,
-  CheckedImg,
-  ImgBlockItem,
-  UncheckedImg,
-  ItemBlockCheck,
-  IconWrapper
-} from "styles/pages/UserProfile/UserProfile";
+import { ReactComponent as File_Download } from "images/UserProfile/File_Download.svg";
+import { observer } from "mobx-react-lite";
 import { ICheck } from "mockdata/UserProfileCheck";
 import { useState } from "react";
-import {Caret,Button} from 'styles/pages/UserProfile/CheckList'
-import { ReactComponent as File_Download } from "images/UserProfile/File_Download.svg";
+import { Button, Caret } from 'styles/pages/UserProfile/CheckList';
+import {
+  BlocksChecks,
+  BlockstItemChecks, CheckedImg, DiagnCheckBlockstItem,
+  DiagnCheckBlockstItemText,
+  DiagnTextBlack,
+  DiagnTextBlackBold, IconWrapper, ImgBlockItem, ItemBlockCheck, UncheckedImg
+} from "styles/pages/UserProfile/UserProfile";
 
 
 interface Props {
@@ -64,4 +59,4 @@ const CheckList = ({ image, title, description, checklist,pdf,name, onChange: ca
   );
 };
 
-export default CheckList;
+export default observer(CheckList)

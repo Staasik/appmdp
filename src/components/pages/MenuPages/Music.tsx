@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { MusicBlock, Music } from "styles/pages/MenuPages/Recommendations";
-import ReactPlayer from "react-player";
+import { Music, MusicBlock } from "styles/pages/MenuPages/Recommendations";
 
+import { observer } from "mobx-react-lite";
 import RecommendMusic, { IRecommendMusicMock } from "mockdata/RecommendMusic";
 
 const Movie = () => {
@@ -23,4 +23,4 @@ const Movie = () => {
   );
 };
 
-export default Movie;
+export default observer(Movie)

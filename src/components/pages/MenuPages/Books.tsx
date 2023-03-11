@@ -1,8 +1,9 @@
+import { observer } from "mobx-react-lite";
 import RecommendBook, { IRecommendBookMock } from "mockdata/RecommendBook";
 import { useState } from "react";
 import {
-    Book, BookBlock, DiagnTextBlack,DiagnTextBlackBoldBook, DiagnTextBlackBold, ItemBook,
-    TextItemBook
+  Book, BookBlock, DiagnTextBlack, DiagnTextBlackBoldBook, ItemBook,
+  TextItemBook
 } from "styles/pages/MenuPages/Recommendations";
 
 
@@ -23,4 +24,4 @@ const Books = () => {
   );
 };
 
-export default Books;
+export default observer(Books)

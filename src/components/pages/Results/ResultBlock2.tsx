@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite';
 import { DiagnTextBlack, DiagnTextBlackBold, DiagnTextProf, ResultItem } from 'styles/pages/Results/Diagn2Results';
 
 interface Props {
@@ -14,4 +15,4 @@ export const ResultBlock2 = ({ title, level, discription }: Props) => {
         </ResultItem>
     )
 }
-export default ResultBlock2
+export default observer(ResultBlock2)

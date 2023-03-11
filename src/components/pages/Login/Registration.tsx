@@ -4,6 +4,7 @@ import { LoginBlock, LoginButton, LinkButton, LoginContainer, LoginImage, LoginI
 import RegistrationModal from 'components/pages/Login/RegistrationModal'
 import Cookies from 'codebase/Cookies'
 import { MAIN_IP } from "App";
+import { observer } from "mobx-react-lite";
 
 const Registration = () => {
 
@@ -77,4 +78,4 @@ const Registration = () => {
   );
 }
 
-export default Registration;
+export default observer(Registration)

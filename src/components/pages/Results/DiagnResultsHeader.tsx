@@ -1,20 +1,25 @@
-import { IUserData } from 'App';
-import { Button, ButtonBlock, DiagnTextProfCenter, ErrorBlock, HomeTextBlock, ImgBlock, TextBlock } from 'styles/pages/Results/Diagn1Results';
 import { ReactComponent as ErrorReg } from 'images/Results/ErrorReg.svg';
-
+import { Context } from 'index';
+import { observer } from 'mobx-react-lite';
+import { useContext } from 'react';
+import { Button, ButtonBlock, DiagnTextProfCenter, ErrorBlock, HomeTextBlock, ImgBlock, TextBlock } from 'styles/pages/Results/Diagn1Results';
 interface Props {
-    userData: IUserData | null,
     title: string,
     images: string[]
 }
 
-export const DiagnResultsHeader = ({ userData, title, images }: Props) => {
+export const DiagnResultsHeader = ({ title, images }: Props) => {
+
+    const { store } = useContext(Context)
+    const { isAuth } = store
+
+
     return (
         <HomeTextBlock>
             <TextBlock>
                 <DiagnTextProfCenter>{title}</DiagnTextProfCenter>
                 <ButtonBlock>
-                    {!userData && <>
+                    {!isAuth && <>
                         <ErrorBlock><ErrorReg /></ErrorBlock>
                         <Button href="/reg">Зарегистрироваться</Button>
                     </>}
@@ -24,4 +29,4 @@ export const DiagnResultsHeader = ({ userData, title, images }: Props) => {
         </HomeTextBlock>
     )
 }
-export default DiagnResultsHeader
+export default observer(DiagnResultsHeader)

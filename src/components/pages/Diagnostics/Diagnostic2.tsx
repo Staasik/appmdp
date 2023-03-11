@@ -1,12 +1,14 @@
-import { IUserData, MAIN_IP } from 'App';
+import { MAIN_IP } from 'App';
 import { AnswersIntoResultDiagn2, IDiagnResult2 } from 'codebase/DiagnResults';
 import QuestImg from 'components/defaultComponents/QuestImg';
 import Diagn2Results from 'components/pages/Results/Diagn2Results';
 import imagefoot from "images/diagn2.png";
 import image600 from "images/diagn2_600.png";
+import { Context } from 'index';
 import _ from 'lodash';
+import { observer } from 'mobx-react-lite';
 import { data } from 'mockdata/mocktest2';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { BlockTwo, Button, DiagBody, DiagnBlock } from 'styles/pages/Diagnostics/Diagnostic';
 import DiagnHeader from './DiagnHeader';
 
@@ -17,11 +19,12 @@ const mockdata = {
     images: [imagefoot, image600]
 }
 
-interface Props {
-    userData: IUserData | null
-}
 
-const Diagnostic2 = ({ userData }: Props) => {
+const Diagnostic2 = () => {
+    
+    const { store } = useContext(Context)
+    const { user : userData } = store
+
     const [result, setResult] = useState<IDiagnResult2[] | null>(null)
     const [answers, setAnswers] = useState<number[]>([])
     const [completeDisabled, setCompleteDisabled] = useState<boolean>(true)
@@ -44,7 +47,7 @@ const Diagnostic2 = ({ userData }: Props) => {
                         'content-type': 'application/json',
                         'Accept': 'application/json'
                     },
-                    body: JSON.stringify({ login: userData.login, password: userData.password, diagnnumber: 2, answers: answers })
+                    body: JSON.stringify({ login: userData.login, diagnnumber: 2, answers: answers })
                 })
             }
             setResult(AnswersIntoResultDiagn2(answers))
@@ -52,7 +55,7 @@ const Diagnostic2 = ({ userData }: Props) => {
     }
 
     if (result) return (
-        <Diagn2Results userData={userData} result={result} />
+        <Diagn2Results result={result} />
     )
     else return (
         <DiagBody>
@@ -75,4 +78,4 @@ const Diagnostic2 = ({ userData }: Props) => {
     );
 }
 
-export default Diagnostic2;
+export default observer(Diagnostic2)

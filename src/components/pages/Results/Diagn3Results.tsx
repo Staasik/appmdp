@@ -1,29 +1,23 @@
-import { IUserData } from 'App';
+import DiagnRecommends from 'components/defaultComponents/DiagnRecommends';
 import { IDiagnResult } from 'components/pages/Results/Diagn1Results';
 import DiagnResultsHeader from 'components/pages/Results/DiagnResultsHeader';
 import ResultBlock3 from 'components/pages/Results/ResultBlock3';
 import image from "images/Results/diag3result_600.png";
-import { useMediaQuery } from "react-responsive";
+import { observer } from 'mobx-react-lite';
 import { DiagHtml } from 'styles/pages/Diagnostics/DiagnHeader';
-import { DiscriptionImageCont, DiscriptionContainerTitle, DiscriptionContainer, Discription, DiscTitle, DiscContent, Button, RecommendWrapper, HomeTextBlock, ResultLine, ResultsBlock } from 'styles/pages/Results/Diagn3Results';
-import DiagnRecommends from 'components/defaultComponents/DiagnRecommends'
+import { Button, DiscContent, Discription, DiscriptionContainer, DiscriptionContainerTitle, DiscTitle, HomeTextBlock, RecommendWrapper, ResultLine, ResultsBlock } from 'styles/pages/Results/Diagn3Results';
 
 interface Props {
-    userData: IUserData | null,
     result: IDiagnResult[]
 }
 
-const Diagn3Results = ({ userData, result }: Props) => {
+const Diagn3Results = ({ result }: Props) => {
 
     const HeaderProps = {
-        userData: userData,
         title: 'Результат оценки признаков эмоционального выгорания',
         images: [image, image]
     }
 
-    const isDesktop = useMediaQuery({
-        query: "(min-width: 800px)"
-    });
     return (
         <DiagHtml>
             <DiagnResultsHeader {...HeaderProps} />
@@ -60,4 +54,4 @@ const Diagn3Results = ({ userData, result }: Props) => {
     );
 }
 
-export default Diagn3Results;
+export default observer(Diagn3Results);

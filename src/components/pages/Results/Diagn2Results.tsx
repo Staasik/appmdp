@@ -1,23 +1,21 @@
-import { IUserData } from 'App';
 import { IDiagnResult2 } from 'codebase/DiagnResults';
+import DiagnRecommends from 'components/defaultComponents/DiagnRecommends';
 import DiagnResultsHeader from 'components/pages/Results/DiagnResultsHeader';
 import ResultBlock2 from 'components/pages/Results/ResultBlock2';
+import { ReactComponent as Alert } from 'images/Results/Alert.svg';
 import image from "images/Results/diag2result.png";
 import imagedesk from "images/Results/diag2result_600.png";
+import { observer } from 'mobx-react-lite';
 import { DiagHtml } from 'styles/pages/Diagnostics/DiagnHeader';
-import { DiscriptionImageCont, DiscriptionPS, DiscriptionContainer, Discription, DiscTitle, DiscContent, Button, RecommendWrapper, ResultLine, ResultsBlock, HomeTextBlock } from 'styles/pages/Results/Diagn2Results';
-import DiagnRecommends from 'components/defaultComponents/DiagnRecommends'
-import { ReactComponent as Alert } from 'images/Results/Alert.svg'
+import { Button, DiscContent, Discription, DiscriptionContainer, DiscriptionImageCont, DiscriptionPS, DiscTitle, HomeTextBlock, RecommendWrapper, ResultLine, ResultsBlock } from 'styles/pages/Results/Diagn2Results';
 
 interface Props {
-    userData: IUserData | null,
     result: IDiagnResult2[]
 }
 
-const Diagn2Results = ({ userData, result }: Props) => {
+const Diagn2Results = ({ result }: Props) => {
 
-    const HeaderProps = {
-        userData: userData,
+    const HeaderProps = {    
         title: 'Результат диагностики копинг–поведение в стрессовых ситуациях',
         images: [image, imagedesk]
     }
@@ -55,4 +53,4 @@ const Diagn2Results = ({ userData, result }: Props) => {
     );
 }
 
-export default Diagn2Results;
+export default observer(Diagn2Results);

@@ -1,5 +1,4 @@
 import { ReactComponent as Image0 } from 'images/UserProfile/CheckListsResults/0.svg'
-import { ReactComponent as Image5 } from 'images/UserProfile/CheckListsResults/5.svg'
 import { ReactComponent as Image10 } from 'images/UserProfile/CheckListsResults/10.svg'
 import { ReactComponent as Image15 } from 'images/UserProfile/CheckListsResults/15.svg'
 import { ReactComponent as Image20 } from 'images/UserProfile/CheckListsResults/20.svg'
@@ -7,6 +6,8 @@ import { ReactComponent as Image25 } from 'images/UserProfile/CheckListsResults/
 import { ReactComponent as Image30 } from 'images/UserProfile/CheckListsResults/30.svg'
 import { ReactComponent as Image35 } from 'images/UserProfile/CheckListsResults/35.svg'
 import { ReactComponent as Image40 } from 'images/UserProfile/CheckListsResults/40.svg'
+import { ReactComponent as Image5 } from 'images/UserProfile/CheckListsResults/5.svg'
+import { observer } from 'mobx-react-lite'
 
 interface Props {
     count: number
@@ -30,4 +31,4 @@ export const ChecksResultsImage = ({ count }: Props) => {
         </>
     )
 }
-export default ChecksResultsImage
+export default observer(ChecksResultsImage)

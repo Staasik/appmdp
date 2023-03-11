@@ -1,27 +1,26 @@
-import { IUserData } from 'App';
+import DiagnRecommends from 'components/defaultComponents/DiagnRecommends';
 import DiagnResultsHeader from 'components/pages/Results/DiagnResultsHeader';
+import ResultBlock1 from 'components/pages/Results/ResultBlock1';
 import image from "images/Results/diag1result.png";
 import imagedesk from "images/Results/diag1result_600.png";
 import { ReactComponent as Ellipse } from 'images/Results/Ellipse.svg';
 import { ReactComponent as Line } from 'images/Results/Line.svg';
+import { observer } from 'mobx-react-lite';
 import { useMediaQuery } from "react-responsive";
 import { DiagHtml, DiagnTextProf } from 'styles/pages/Diagnostics/DiagnHeader';
-import { RecommendWrapper, Discription, DiscTitle, DiscContent, DiagnTextBlack, DiagnTextBlackBold, HomeTextBlock,Result, Button, ResultLine, ResultsBlock, ResultStaticItem } from 'styles/pages/Results/Diagn1Results';
-import ResultBlock1 from 'components/pages/Results/ResultBlock1'
-import DiagnRecommends from 'components/defaultComponents/DiagnRecommends'
-
+import { Button, DiagnTextBlack, DiagnTextBlackBold, DiscContent, Discription, DiscTitle, HomeTextBlock, RecommendWrapper, Result, ResultLine, ResultsBlock, ResultStaticItem } from 'styles/pages/Results/Diagn1Results';
 export interface IDiagnResult{
     title: string,
     level: string
 }
 interface Props {
-    userData: IUserData | null,
     result: IDiagnResult[]
 }
 
-const Diagn1Results = ({ userData, result }: Props) => {
+const Diagn1Results = ({ result }: Props) => {
+
+
     const HeaderProps = {
-        userData: userData,
         title: 'Результат диагностики профессиональное выгорание',
         images: [image, imagedesk]
     }
@@ -81,4 +80,4 @@ const Diagn1Results = ({ userData, result }: Props) => {
     );
 }
 
-export default Diagn1Results;
+export default observer(Diagn1Results);

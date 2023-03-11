@@ -1,5 +1,6 @@
+import { observer } from 'mobx-react-lite';
 import { IOptions } from 'mockdata/mocktest1';
-import React, { useState } from "react";
+import { useState } from "react";
 import Select from 'react-select';
 import { QuestNumFive } from 'styles/defaultComponents/Quest';
 import { DiagnTextBlackBold } from 'styles/pages/Diagnostics/DiagnHeader';
@@ -30,4 +31,4 @@ const QuestFive = ({ text, options, index, onChange }: IProps) => {
 }
 
 
-export default QuestFive;
+export default observer(QuestFive)

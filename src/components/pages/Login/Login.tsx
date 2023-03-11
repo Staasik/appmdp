@@ -3,6 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import { LoginBlock, LinkButton, LoginButton, LoginContainer, LoginImage, LoginInput, LoginRegistr, LoginRegistrText, LoginText, LoginWrapper, PasswordInput, PasswordWrapper, ShowIcon } from 'styles/pages/Login/Login';
 import Cookies from 'codebase/Cookies'
 import { MAIN_IP } from "App";
+import { observer } from "mobx-react-lite";
 
 const Login = () => {
   const isDesktop = useMediaQuery({
@@ -58,4 +59,4 @@ const Login = () => {
   );
 }
 
-export default Login;
+export default observer(Login)

@@ -2,11 +2,12 @@ import { ReactComponent as CloseModal } from "images/CloseModal.svg";
 import { ReactComponent as Line } from "images/LineModal.svg";
 import { ReactComponent as Online } from "images/Online.svg";
 import { ReactComponent as Veronika } from "images/Veronika.svg";
+import _ from 'lodash';
+import { observer } from "mobx-react-lite";
+import { ButtonsHelp, ButtonsInspiration, ButtonsStart, IButtonsMock } from "mockdata/ModalButtons";
+import BotAnswers from "mockdata/ModalSmsBot";
 import { useEffect, useState } from "react";
 import { BodySmsBot, BodySmsButton, Button, ModalBody, ModalButtons, ModalCont, ModalContainer, ModalHeader, ModalName, ModalText, ModalWrapper } from "styles/pages/Chat/ChatBot";
-import _ from 'lodash'
-import { ButtonsStart, ButtonsHelp, ButtonsInspiration, IButtonsMock } from "mockdata/ModalButtons";
-import BotAnswers, { ISmsBotMock } from "mockdata/ModalSmsBot";
 
 interface IMessages {
   messageId: number,
@@ -109,4 +110,4 @@ const RegistrationModal = ({onClose} : Props) => {
     );
   };
 
-  export default RegistrationModal;
+  export default observer(RegistrationModal)

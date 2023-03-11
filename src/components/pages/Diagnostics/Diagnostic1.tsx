@@ -1,12 +1,14 @@
-import { IUserData, MAIN_IP } from 'App';
+import { MAIN_IP } from 'App';
 import { AnswersIntoResultDiagn1 } from 'codebase/DiagnResults';
 import Quest from 'components/defaultComponents/Quest';
 import Diagn1Results, { IDiagnResult } from 'components/pages/Results/Diagn1Results';
 import imagefoot from "images/diagn1.png";
 import image600 from "images/diagn1_600.png";
+import { Context } from 'index';
 import _ from 'lodash';
+import { observer } from 'mobx-react-lite';
 import { data } from 'mockdata/mocktest1';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Button, DiagBody, DiagnBlock } from 'styles/pages/Diagnostics/Diagnostic';
 import DiagnHeader from './DiagnHeader';
 
@@ -17,16 +19,15 @@ const mockdata = {
     images: [imagefoot, image600]
 }
 
-interface Props {
-    userData: IUserData | null
-}
-
 interface IAnswer {
     value: number,
     label: number
 }
 
-const Diagnostic1 = ({ userData }: Props) => {
+const Diagnostic1 = () => {
+
+    const { store } = useContext(Context)
+    const { user : userData } = store
 
     const [result, setResult] = useState<IDiagnResult[] | null>(null)
     const [answers, setAnswers] = useState<number[]>([])
@@ -50,7 +51,7 @@ const Diagnostic1 = ({ userData }: Props) => {
                         'content-type': 'application/json',
                         'Accept': 'application/json'
                     },
-                    body: JSON.stringify({ login: userData.login, password: userData.password, diagnnumber: 1, answers: answers })
+                    body: JSON.stringify({ login: userData.login, diagnnumber: 1, answers: answers })
                 })
             }
             setResult(AnswersIntoResultDiagn1(answers))
@@ -58,7 +59,7 @@ const Diagnostic1 = ({ userData }: Props) => {
     }
 
     if (result) return (
-        <Diagn1Results userData={userData} result={result} />
+        <Diagn1Results result={result} />
     )
     else return (
         <DiagBody>
@@ -75,4 +76,4 @@ const Diagnostic1 = ({ userData }: Props) => {
     );
 }
 
-export default Diagnostic1;
+export default observer(Diagnostic1)
