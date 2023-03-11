@@ -13,6 +13,7 @@ export default class Store {
     isAuth = false
     isLoading = false
     checkListBlocks = blockItemMock
+    chatOpened = false
 
     constructor(){
         makeAutoObservable(this)
@@ -28,6 +29,10 @@ export default class Store {
     
     setLoading(bool: boolean){
         this.isLoading = bool
+    }
+
+    setChatOpened(bool: boolean){
+        this.chatOpened = bool
     }
 
     async login(login: string, password: string){
