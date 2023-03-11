@@ -6,20 +6,25 @@ import { Menu } from "components/pages/Menu";
 import Icon from 'images/icon.png';
 import { useLocation } from 'react-router-dom'
 import { IUserData } from 'App'
+import { Context } from 'index';
+import { observer } from 'mobx-react-lite';
+import { useContext } from 'react';
+
 
 interface Props {
-    userData: IUserData | null,
     onOpenChat(): any
 }
 
-export const Header = ({ userData, onOpenChat }: Props) => {
+export const Header = ({ onOpenChat }: Props) => {
     const isDesktop = useMediaQuery({
         query: "(max-width: 600px)"
     });
     let location = useLocation();
 
+    const { store } = useContext(Context)
+
     const toProfile = () => {
-        userData ? document.location.href = '/main/profile' : document.location.href = '/'
+        store.user ? document.location.href = '/main/profile' : document.location.href = '/'
     }
 
     return (
@@ -32,7 +37,7 @@ export const Header = ({ userData, onOpenChat }: Props) => {
                         </a>
                     </DiagnIcon >
                     <DiagnCP>
-                        <Menu userData={userData} onOpenChat={() => onOpenChat()} />
+                        <Menu userData={ store.user} onOpenChat={() => onOpenChat()} />
                     </DiagnCP>
                 </DiagHeader >
                 :
@@ -50,7 +55,7 @@ export const Header = ({ userData, onOpenChat }: Props) => {
                     <DiagnCP>
                         <Chat style={{ "height": "30px", "width": "30px", "cursor": "pointer" }} onClick={() => onOpenChat()} />
                         <Prof style={{ "height": "30px", "width": "30px", "cursor": "pointer" }} onClick={() => { toProfile() }} />
-                        {userData && <ProfileName>{userData.name}</ProfileName>}
+                        {store.user && <ProfileName>{store.user.name}</ProfileName>}
                     </DiagnCP>
                 </DiagHeader>
             }
@@ -58,4 +63,4 @@ export const Header = ({ userData, onOpenChat }: Props) => {
     )
 }
 
-export default Header
+export default observer(Header)

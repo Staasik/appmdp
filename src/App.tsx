@@ -1,22 +1,17 @@
-import Cookies from 'codebase/Cookies';
 import Footer from 'components/defaultComponents/Footer';
 import Header from 'components/defaultComponents/Header';
 import Chat from 'components/pages/Chat/ChatBot';
 import Login from 'components/pages/Login/Login';
 import Registration from 'components/pages/Login/Registration';
 import Main from 'components/pages/Main/Main';
-import { useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Navigate, Route, Routes } from "react-router-dom";
 import Htmlcontainer from 'styles/App';
+import { Context } from 'index';
 //<Route path="/main/diagnostics">
 //<Diagnostics />
 // </Route>
 
-export interface IUserData {
-  name: string,
-  login: string,
-  accessToken: string
-}
 export const MAIN_IP = '178.57.39.247'
 
 
@@ -24,49 +19,28 @@ const App = () => {
   const data = { name: "123", login: "123", password: "123" }
 
   const [chatOpened, setChatOpened] = useState(false)
-  const [userData, setUserData] = useState<IUserData | null>(null)
-
-  useEffect(() => {
-    let login = Cookies.getCookie('login')
-    let password = Cookies.getCookie('password')
-    if (login && password) {
-      fetch(process.env.NODE_ENV == 'development' ? "/api/login" : `http://${MAIN_IP}:5000/api/login`, {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({ login, password })
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          setUserData({ name: data.user.name, login: data.user.login, accessToken: data.accessToken })
-        });
-    }
-  }, [])
+  const { store } = useContext(Context)
 
 
   return (
     <Htmlcontainer>
       {chatOpened && <Chat onClose={() => { setChatOpened(false) }}></Chat>}
-      <Header userData={userData} onOpenChat={() => { setChatOpened(true) }} />
+      <Header onOpenChat={() => { setChatOpened(true) }} />
       <Routes>
         {
-          !userData ? <>
+          !store.user ? <>
             <Route path="/" element={<Navigate to="/login" replace />} />
             <Route path="login" element={<Login />} />
-            <Route path="main/*" element={<Main userData={userData} onOpenChat={() => { setChatOpened(true) }} />} />
+            <Route path="main/*" element={<Main onOpenChat={() => { setChatOpened(true) }} />} />
             <Route path="reg" element={<Registration />} />
           </>
             : <>
               <Route path="*" element={<Navigate to="/main" replace />} />
-              <Route path="main/*" element={<Main userData={userData} onOpenChat={() => { setChatOpened(true) }} />} />
+              <Route path="main/*" element={<Main onOpenChat={() => { setChatOpened(true) }} />} />
             </>
         }
       </Routes>
-      <Footer userData={userData} />
+      <Footer/>
     </Htmlcontainer>
   );
 }
