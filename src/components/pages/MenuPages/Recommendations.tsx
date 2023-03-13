@@ -1,7 +1,6 @@
 import Books from "components/pages/MenuPages/Books";
 import Movie from "components/pages/MenuPages/Movie";
 import Music from "components/pages/MenuPages/Music";
-import { observer } from "mobx-react-lite";
 import { DiagHtml } from "styles/pages/Diagnostics/DiagnHeader";
 import {
   DiagnTextBlackBold, DiagnTextProfCenter,
@@ -35,4 +34,4 @@ const Recommendations = () => {
   );
 };
 
-export default observer(Recommendations)
+export default Recommendations

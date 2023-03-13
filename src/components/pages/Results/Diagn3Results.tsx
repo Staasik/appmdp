@@ -3,7 +3,6 @@ import { IDiagnResult } from 'components/pages/Results/Diagn1Results';
 import DiagnResultsHeader from 'components/pages/Results/DiagnResultsHeader';
 import ResultBlock3 from 'components/pages/Results/ResultBlock3';
 import image from "images/Results/diag3result_600.png";
-import { observer } from 'mobx-react-lite';
 import { DiagHtml } from 'styles/pages/Diagnostics/DiagnHeader';
 import { Button, DiscContent, Discription, DiscriptionContainer, DiscriptionContainerTitle, DiscTitle, HomeTextBlock, RecommendWrapper, ResultLine, ResultsBlock } from 'styles/pages/Results/Diagn3Results';
 
@@ -54,4 +53,4 @@ const Diagn3Results = ({ result }: Props) => {
     );
 }
 
-export default observer(Diagn3Results);
+export default Diagn3Results

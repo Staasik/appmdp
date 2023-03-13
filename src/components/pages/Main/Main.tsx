@@ -9,6 +9,7 @@ import UserProfile from 'components/pages/UserProfile/UserProfile';
 import { useContext } from 'react';
 import { Context } from 'index';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 
 
 interface Props {
@@ -36,4 +37,4 @@ export const Main = ({ onOpenChat }: Props) => {
         </Routes>
     )
 }
-export default Main
+export default observer(Main)

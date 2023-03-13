@@ -5,7 +5,6 @@ import image from "images/Results/diag1result.png";
 import imagedesk from "images/Results/diag1result_600.png";
 import { ReactComponent as Ellipse } from 'images/Results/Ellipse.svg';
 import { ReactComponent as Line } from 'images/Results/Line.svg';
-import { observer } from 'mobx-react-lite';
 import { useMediaQuery } from "react-responsive";
 import { DiagHtml, DiagnTextProf } from 'styles/pages/Diagnostics/DiagnHeader';
 import { Button, DiagnTextBlack, DiagnTextBlackBold, DiscContent, Discription, DiscTitle, HomeTextBlock, RecommendWrapper, Result, ResultLine, ResultsBlock, ResultStaticItem } from 'styles/pages/Results/Diagn1Results';
@@ -80,4 +79,4 @@ const Diagn1Results = ({ result }: Props) => {
     );
 }
 
-export default observer(Diagn1Results);
+export default Diagn1Results

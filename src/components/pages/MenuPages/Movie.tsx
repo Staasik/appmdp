@@ -1,9 +1,8 @@
-import { observer } from "mobx-react-lite";
 import RecommendMovie, { IRecommendMovieMock } from "mockdata/RecommendMovie";
 import { useState } from "react";
 import ReactPlayer from "react-player";
 import {
-    DiagnTextBlack, ItemMovie, MovieBlock, MovieItemBlock, TextItemMovie
+  DiagnTextBlack, ItemMovie, MovieBlock, MovieItemBlock, TextItemMovie
 } from "styles/pages/MenuPages/Recommendations";
 
 
@@ -25,4 +24,4 @@ const Movie = () => {
   );
 };
 
-export default observer(Movie)
+export default Movie

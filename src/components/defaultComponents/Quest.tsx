@@ -1,4 +1,3 @@
-import { observer } from 'mobx-react-lite';
 import { IOptions } from 'mockdata/mocktest1';
 import { useState } from "react";
 import Select from 'react-select';
@@ -33,4 +32,4 @@ const Quest = ({ text, options, index, onChange }: IProps) => {
 }
 
 
-export default observer(Quest)
+export default Quest

@@ -1,6 +1,5 @@
 import { ReactComponent as PSIcon } from 'images/PSIcon.svg';
 import { ReactComponent as Start } from 'images/start.svg';
-import { observer } from 'mobx-react-lite';
 import diagnMock, { IdiagnMock } from 'mockdata/diagnBlocksMock';
 import { useState } from 'react';
 import { DiagnAllBlock, DiagnBlockText, DiagnImage, DiagnImg, DiagnLink, DiagnRecBlock, DiagnRecBlockWrapper, DiagnRecButton, DiagnRecButtons, DiagnRecContent, DiagnRecPS, DiagnRecTitle, DiagnText, DiagnTextBlack, DiagnTextDiagn, DiagnTextProfD } from 'styles/pages/Diagnostics/DiagnHeader';
@@ -61,4 +60,4 @@ const Diagnostics = () => {
     );
 }
 
-export default observer(Diagnostics)
+export default Diagnostics

@@ -3,7 +3,6 @@ import { ReactComponent as Line } from "images/LineModal.svg";
 import { ReactComponent as Online } from "images/Online.svg";
 import { ReactComponent as Veronika } from "images/Veronika.svg";
 import _ from 'lodash';
-import { observer } from "mobx-react-lite";
 import { ButtonsHelp, ButtonsInspiration, ButtonsStart, IButtonsMock } from "mockdata/ModalButtons";
 import BotAnswers from "mockdata/ModalSmsBot";
 import { useEffect, useState } from "react";
@@ -110,4 +109,4 @@ const RegistrationModal = ({onClose} : Props) => {
     );
   };
 
-  export default observer(RegistrationModal)
+  export default RegistrationModal

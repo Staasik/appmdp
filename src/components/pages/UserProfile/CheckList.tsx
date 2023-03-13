@@ -1,5 +1,4 @@
 import { ReactComponent as File_Download } from "images/UserProfile/File_Download.svg";
-import { observer } from "mobx-react-lite";
 import { ICheck } from "mockdata/UserProfileCheck";
 import { useState } from "react";
 import { Button, Caret } from 'styles/pages/UserProfile/CheckList';
@@ -59,4 +58,4 @@ const CheckList = ({ image, title, description, checklist,pdf,name, onChange: ca
   );
 };
 
-export default observer(CheckList)
+export default CheckList

@@ -1,4 +1,3 @@
-import { observer } from "mobx-react-lite";
 import { Image, ImageContainer, QuestNumImg, SelectedImage } from 'styles/defaultComponents/Quest';
 import { DiagnTextBlackBoldI } from 'styles/pages/Diagnostics/DiagnHeader';
 
@@ -24,5 +23,4 @@ const Quest = ({ text, image, index, onChange, selected }: IProps) => {
   );
 }
 
-
-export default observer(Quest)
+export default Quest

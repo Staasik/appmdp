@@ -5,7 +5,6 @@ import ResultBlock2 from 'components/pages/Results/ResultBlock2';
 import { ReactComponent as Alert } from 'images/Results/Alert.svg';
 import image from "images/Results/diag2result.png";
 import imagedesk from "images/Results/diag2result_600.png";
-import { observer } from 'mobx-react-lite';
 import { DiagHtml } from 'styles/pages/Diagnostics/DiagnHeader';
 import { Button, DiscContent, Discription, DiscriptionContainer, DiscriptionImageCont, DiscriptionPS, DiscTitle, HomeTextBlock, RecommendWrapper, ResultLine, ResultsBlock } from 'styles/pages/Results/Diagn2Results';
 
@@ -53,4 +52,4 @@ const Diagn2Results = ({ result }: Props) => {
     );
 }
 
-export default observer(Diagn2Results);
+export default Diagn2Results

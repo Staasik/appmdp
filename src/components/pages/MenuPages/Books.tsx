@@ -1,4 +1,3 @@
-import { observer } from "mobx-react-lite";
 import RecommendBook, { IRecommendBookMock } from "mockdata/RecommendBook";
 import { useState } from "react";
 import {
@@ -24,4 +23,4 @@ const Books = () => {
   );
 };
 
-export default observer(Books)
+export default Books

@@ -1,6 +1,5 @@
 
 import { ReactComponent as Line } from 'images/Results/Line.svg';
-import { observer } from 'mobx-react-lite';
 import { useMediaQuery } from "react-responsive";
 import { DiagnTextBlack, DiagnTextBlackBold, ResultItem } from 'styles/pages/Results/Diagn1Results';
 
@@ -22,4 +21,4 @@ export const ResultBlock1 = ({ title, level }: Props) => {
         </ResultItem>
     )
 }
-export default observer(ResultBlock1)
+export default ResultBlock1

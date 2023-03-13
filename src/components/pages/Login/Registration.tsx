@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { useMediaQuery } from "react-responsive";
-import { LoginBlock, LoginButton, LinkButton, LoginContainer, LoginImage, LoginInput, LoginRegistr, LoginRegistrText, LoginText, LoginWrapper, NameInput, PasswordInput, PasswordWrapper, ShowIcon } from 'styles/pages/Login/Registration';
-import RegistrationModal from 'components/pages/Login/RegistrationModal'
-import Cookies from 'codebase/Cookies'
 import { MAIN_IP } from "App";
-import { observer } from "mobx-react-lite";
+import Cookies from 'codebase/Cookies';
+import RegistrationModal from 'components/pages/Login/RegistrationModal';
+import { useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import { LinkButton, LoginBlock, LoginButton, LoginContainer, LoginImage, LoginInput, LoginRegistr, LoginRegistrText, LoginText, LoginWrapper, NameInput, PasswordInput, PasswordWrapper, ShowIcon } from 'styles/pages/Login/Registration';
 
 const Registration = () => {
 
@@ -78,4 +77,4 @@ const Registration = () => {
   );
 }
 
-export default observer(Registration)
+export default Registration

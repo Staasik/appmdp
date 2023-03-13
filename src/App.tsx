@@ -8,6 +8,7 @@ import { useContext, useState } from 'react';
 import { Navigate, Route, Routes } from "react-router-dom";
 import Htmlcontainer from 'styles/App';
 import { Context } from 'index';
+import { observer } from 'mobx-react-lite';
 //<Route path="/main/diagnostics">
 //<Diagnostics />
 // </Route>
@@ -45,4 +46,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default observer(App)
