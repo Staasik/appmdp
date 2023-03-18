@@ -43,6 +43,7 @@ interface ITest {
     text:IOptions[],
     options:IOptions[],
 }
+
 export const data : ITest[] = [
     {
         text:targetsText,

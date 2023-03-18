@@ -27,9 +27,7 @@ const CheckList = ({ image, title, description, checklist,pdf,name, onChange: ca
   const [listOpened, setListOpened] = useState(false);
   return (
     <ItemBlockCheck>
-      <DiagnCheckBlockstItem
-        onClick={() => setListOpened((a) => !a)}
-      >
+      <DiagnCheckBlockstItem onClick={() => setListOpened((a) => !a)}>
         <ImgBlockItem src={image} />
         <DiagnCheckBlockstItemText>
           <DiagnTextBlackBold>

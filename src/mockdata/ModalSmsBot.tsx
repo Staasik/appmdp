@@ -2,7 +2,7 @@ import {useLayoutEffect, useState} from "react"
 
 export interface ISmsBotMock {
     message: string,
-    answer(): any,
+    answer(): JSX.Element,
 }
 
 const Answer1 = () => {

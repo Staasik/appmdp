@@ -1,4 +1,15 @@
 import styled from "styled-components";
+import datePicker from "sassy-datepicker";
+
+
+export const DatePicker = styled(datePicker)`
+    height: calc(100% - 1.5rem);
+    width: 100%;
+    .sdp--square-btn{
+        height: 40px;
+        width: 40px;
+    }
+`
 
 export const TrackerButtonsDiv = styled.div`
     display: flex;
@@ -6,6 +17,7 @@ export const TrackerButtonsDiv = styled.div`
     gap: 20px;
     padding-bottom:40px;
 `
+
 export const TrackButtonsDiv = styled(TrackerButtonsDiv)`
     flex-wrap:wrap;
     width: 75%;
@@ -18,13 +30,13 @@ export const TrackButtonsDivNext = styled(TrackerButtonsDiv)`
     justify-content: right;
 `
 interface ButtonProps{
-    $isClick: boolean
+    $disabled: boolean
 }
 
 export const TrackButton = styled.button<ButtonProps>`
     cursor: pointer;
-    background:${({$isClick}: ButtonProps) => $isClick ? '#FF9254' : '#FFF' };
-    color:${({$isClick}: ButtonProps) => $isClick ? '#FFF' : '#2E2E2E' };
+    background:${({$disabled}: ButtonProps) => !$disabled ? '#FF9254' : '#FFF' };
+    color:${({$disabled}: ButtonProps) => !$disabled ? '#FFF' : '#2E2E2E' };
     text-decoration: none;
     width:auto;
     border: 1.5px solid #CFCFCF;
@@ -37,9 +49,9 @@ export const TrackButton = styled.button<ButtonProps>`
     font-size: 16px;
 `
 export const TrackButtonN = styled.button<ButtonProps>`
-    cursor:${({$isClick}: ButtonProps) => $isClick ? 'pointer' : 'default' };
-    background:${({$isClick}: ButtonProps) => $isClick ? '#FF9254' : '#E0E0E0' };
-    color:${({$isClick}: ButtonProps) => $isClick ? '#FFF' : '#2E2E2E' };
+    cursor:${({$disabled}: ButtonProps) => !$disabled ? 'pointer' : 'default' };
+    background:${({$disabled}: ButtonProps) => !$disabled ? '#FF9254' : '#E0E0E0' };
+    color:${({$disabled}: ButtonProps) => !$disabled ? '#FFF' : '#2E2E2E' };
     text-decoration: none;
     width:auto;
     border: 1.5px solid #CFCFCF;

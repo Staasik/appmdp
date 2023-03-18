@@ -1,14 +1,8 @@
 import { IOptions } from 'mockdata/mocktest1';
 import Select from 'react-select';
 import { TrackButtonNext, SelectBlocks, TrackButtonsDivNext, TrackerButtonsDiv, TrackerMiniText, TrackButtonsDiv } from "styles/pages/Trackers/Trackers";
-
-
 import { ReactComponent as AddPlus } from 'images/Trackers/Add_Plus.svg'
 import { ReactComponent as TrashFull } from 'images/Trackers/Trash_Full.svg';import { useState } from 'react';
-;
-
-const ChoiseMosk = [{value: 'Веселость'},{value: 'Радость'},{value: 'Выберите эмоцию'}]
-const ChoiseMoskNum = [{value: '1'},{value: '2'},{value: '10'}]
 
 interface IProps {
     text: IOptions[],
@@ -20,8 +14,8 @@ interface IProps {
 const Choise = ({ options, index, onChange,text }: IProps) => {
 
   const [target, setTarget] = useState(null);
-  return (            
-    
+
+  return (
     <TrackButtonsDiv style={{gap: "10px", flexWrap: "nowrap", paddingBottom: "0px"}}>
         <SelectBlocks style={{width: "80%", paddingBottom: "0px"}}>
             {

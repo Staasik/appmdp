@@ -8,37 +8,18 @@ import {
   TrackerMiniText,
 } from "styles/pages/Trackers/Trackers";
 
-const ButtonsMock = [
-  {
-    value: "Общение с коллегой",
-  },
-  {
-    value: "Общение с учеником",
-  },
-  {
-    value: "Общение с группой детей",
-  },
-  {
-    value: "Общение с родителями учеников",
-  },
-  {
-    value: "Общение с администрацией школы",
-  },
-  {
-    value: "Другое",
-  },
-];
+const ButtonsMock = ["Общение с коллегой","Общение с учеником", "Общение с группой детей", "Общение с родителями учеников", "Общение с администрацией школы", "Другое"]
 
 const ButtonsComponent = () => {
 
-
-  const [selectedButton, setSelectedButton] = useState<number>(-1);
+  const [selectedBtnIdx, setSelectedBtnIdx] = useState<number>(-1);
+  
   const Click = (index:number) => {
-    if(index === selectedButton) {
-        setSelectedButton(-1);
+    if(index === selectedBtnIdx) {
+      setSelectedBtnIdx(-1);
     }
     else {
-        setSelectedButton(index);
+      setSelectedBtnIdx(index);
     }
   };
 
@@ -48,11 +29,11 @@ const ButtonsComponent = () => {
       <TrackerButtonsDiv style={{ paddingBottom: "0px" }}>
         <TrackButtonsDiv>
           {ButtonsMock.map((data, index) => (
-            <TrackButton key={index} onClick={() => Click(index)} $isClick={index === selectedButton}>{data.value}</TrackButton>
+            <TrackButton key={index} onClick={() => Click(index)} $disabled={index !== selectedBtnIdx}>{data}</TrackButton>
           ))}
         </TrackButtonsDiv>
         <TrackButtonsDivNext>
-          <TrackButtonN $isClick={selectedButton !== -1}>Далее</TrackButtonN>
+          <TrackButtonN $disabled={selectedBtnIdx === -1}>Далее</TrackButtonN>
         </TrackButtonsDivNext>
       </TrackerButtonsDiv>
     </div>
