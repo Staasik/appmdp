@@ -36,7 +36,7 @@ const LastResultsDataMock = {
 const UserProfile = () => {
 
     const { store } = useContext(Context)
-    const { user : userData } = store
+    const { user : userData, isAuth } = store
 
 
     const [resultsData, setResultsData] = useState<IResultsData>(DefaultResultsDataMock)
@@ -61,7 +61,7 @@ const UserProfile = () => {
     }, [blocks])
 
     useEffect(() => {
-        if (userData) {
+        if (isAuth) {
             fetch(process.env.NODE_ENV == 'development' ? "/api/getCheckLists" : `http://${MAIN_IP}:5000/api/getCheckLists`, {
                 method: 'POST',
                 headers: {
@@ -86,7 +86,7 @@ const UserProfile = () => {
     }, [userData])
 
     const onChange = (checklist_id: number, index: number) => {
-        if (userData) {
+        if (isAuth) {
             let tempblocks = blocks
             let tempCheckList = tempblocks[checklist_id]
             tempCheckList.checklist.forEach((element, idx) => {
@@ -122,7 +122,7 @@ const UserProfile = () => {
         <DiagHtml>
             <HomeTextBlock>
                 <TextBlock>
-                    <DiagnTextProfCenter>Здравствуйте, {userData?.name}</DiagnTextProfCenter>
+                    <DiagnTextProfCenter>Здравствуйте, {userData.name}</DiagnTextProfCenter>
                     <DiagnTextBlack>В личном кабинете появились новые чек-листы для вас</DiagnTextBlack>
                 </TextBlock>
                 <ButtonBlock>

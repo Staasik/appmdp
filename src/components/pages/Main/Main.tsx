@@ -28,9 +28,13 @@ export const Main = ({ onOpenChat }: Props) => {
             <Route path="diagnostics" element={<Diagnostics />} />
             <Route path="home" element={<HomePage onOpenChat={() => onOpenChat()}/>} />
             {store.user && <Route path="profile" element={<UserProfile />} />}
-            {isAuth && <Route path="profile/diagnresult1" element={<UserResults diagnnumber={1} />} />}
-            {isAuth && <Route path="profile/diagnresult2" element={<UserResults diagnnumber={2} />} />}
-            {isAuth && <Route path="profile/diagnresult3" element={<UserResults diagnnumber={3} />} />}
+            {
+                isAuth && <>
+                    <Route path="profile/diagnresult1" element={<UserResults diagnnumber={1} />} />
+                    <Route path="profile/diagnresult2" element={<UserResults diagnnumber={2} />} />
+                    <Route path="profile/diagnresult3" element={<UserResults diagnnumber={3} />} />
+                </>
+            }
             {/* <Route path="recommend" element={<Recommendations />} /> */}
             <Route path="recommend" element={<Trackers />} />
             <Route path="diagnostics/diagnostic1" element={<Diagnostic1 />} />

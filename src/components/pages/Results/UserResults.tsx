@@ -15,10 +15,10 @@ export const UserResults = ({ diagnnumber }: Props) => {
     const [answers, setAnswers] = useState<number[] | null>(null)
 
     const { store } = useContext(Context)
-    const { user : userData } = store
+    const { user : userData, isAuth } = store
 
     useEffect(() => {
-        if (userData) {
+        if (isAuth) {
             fetch(process.env.NODE_ENV == 'development' ? "/getResults" : `http://${MAIN_IP}:5000/getResults`, {
                 method: 'POST',
                 headers: {

@@ -23,7 +23,7 @@ const mockdata = {
 const Diagnostic2 = () => {
     
     const { store } = useContext(Context)
-    const { user : userData } = store
+    const { user : userData, isAuth } = store
 
     const [result, setResult] = useState<IDiagnResult2[] | null>(null)
     const [answers, setAnswers] = useState<number[]>([])
@@ -40,7 +40,7 @@ const Diagnostic2 = () => {
 
     const onComplete = () => {
         if (!completeDisabled) {
-            if (userData) {
+            if (isAuth) {
                 fetch(process.env.NODE_ENV == 'development' ? "/setResults" : `http://${MAIN_IP}:5000/setResults`, {
                     method: 'POST',
                     headers: {

@@ -27,7 +27,7 @@ interface IAnswer {
 const Diagnostic1 = () => {
 
     const { store } = useContext(Context)
-    const { user : userData } = store
+    const { user : userData, isAuth } = store
 
     const [result, setResult] = useState<IDiagnResult[] | null>(null)
     const [answers, setAnswers] = useState<number[]>([])
@@ -44,7 +44,7 @@ const Diagnostic1 = () => {
 
     const onComplete = () => {
         if (!completeDisabled) {
-            if (userData) {
+            if (isAuth) {
                 fetch(process.env.NODE_ENV == 'development' ? "/setResults" : `http://${MAIN_IP}:5000/setResults`, {
                     method: 'POST',
                     headers: {

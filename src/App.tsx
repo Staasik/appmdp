@@ -21,6 +21,7 @@ const App = () => {
 
   const [chatOpened, setChatOpened] = useState(false)
   const { store } = useContext(Context)
+  const { isAuth } = store
 
 
   return (
@@ -29,7 +30,7 @@ const App = () => {
       <Header onOpenChat={() => { setChatOpened(true) }} />
       <Routes>
         {
-          !store.user ? <>
+          !isAuth ? <>
             <Route path="/" element={<Navigate to="/login" replace />} />
             <Route path="login" element={<Login />} />
             <Route path="main/*" element={<Main onOpenChat={() => { setChatOpened(true) }} />} />
@@ -37,6 +38,9 @@ const App = () => {
           </>
             : <>
               <Route path="*" element={<Navigate to="/main" replace />} />
+              {
+              // Одинаковые роуты для мейна мб лишние)
+              }
               <Route path="main/*" element={<Main onOpenChat={() => { setChatOpened(true) }} />} />
             </>
         }
