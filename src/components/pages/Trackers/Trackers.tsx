@@ -8,10 +8,9 @@ import { TextCalendare, TextCalendareDiv, TrackButtonsDiv, TrackButtonsDivNext, 
 
 import { useState } from 'react';
 import DatePicker from 'sassy-datepicker';
-import 'sassy-datepicker/dist/styles.css';
+//import 'sassy-datepicker/dist/styles.css';
 
 const StepMosk = [{value: '1 шаг...'},{value: '2 шаг...'},{value: '3 шаг...'},{value: '4 шаг...'},{value: '5 шаг...'},{value: '6 шаг'}]
-
 
 export function getCurrentDate(separator='.'){
 
@@ -46,13 +45,21 @@ const Trackers = () => {
                     }
             </TrackButtonsDiv>
 
-            <ChoiseComponent />
+            <ButtonsComponent />
 
   
             <Line style={{ width: "100%", paddingBottom: "40px", paddingTop:"0px" }} />
             <TrackerButtonsDiv>
-                <TrackButtonsDivNext style={{backgroundColor: "#626262", height: "400px", width: "35%"}}>
-                    <DatePicker onChange={onChange} value={date} />
+                <TrackButtonsDivNext style={{backgroundColor: "#626262", height: "400px", width: "35%", padding: "0px" }}>
+                    <script
+                    src="https://unpkg.com/sassy-datepicker/dist/sassy-datepicker.esm.js"
+                    type="module"
+                    ></script>
+                    <link
+                    rel="stylesheet"
+                    href="https://unpkg.com/sassy-datepicker/dist/styles.css"
+                    />
+                    <DatePicker onChange={onChange} value={date} style={{ width: "100%", height: "93.5%"}}/>
                 </TrackButtonsDivNext>
                 <TrackButtonsDiv style={{justifyContent: "center", alignItems: "flex-start",  width: "65%"}}>
                     <TrackDate>{getCurrentDate()}</TrackDate>

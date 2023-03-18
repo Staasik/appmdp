@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import image from "images/footer.png";
-import { Link } from 'react-router-dom'
 
 export const TrackerButtonsDiv = styled.div`
     display: flex;
@@ -38,8 +36,23 @@ export const TrackButton = styled.button<ButtonProps>`
     font-weight: 400;
     font-size: 16px;
 `
+export const TrackButtonN = styled.button<ButtonProps>`
+    cursor:${({$isClick}: ButtonProps) => $isClick ? 'pointer' : 'default' };
+    background:${({$isClick}: ButtonProps) => $isClick ? '#FF9254' : '#E0E0E0' };
+    color:${({$isClick}: ButtonProps) => $isClick ? '#FFF' : '#2E2E2E' };
+    text-decoration: none;
+    width:auto;
+    border: 1.5px solid #CFCFCF;
+    padding: 15px 30px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border-radius: 11px;
+    font-weight: 400;
+    font-size: 16px;
+`
 export const TrackButtonNext = styled.button`
-    background: #E0E0E0;
+    background:'#E0E0E0';
     text-decoration: none;
     width:auto;
     border: 1.5px solid #CFCFCF;
