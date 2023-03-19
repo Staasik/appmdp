@@ -39,21 +39,3 @@ export const targets : IOptions[] = [
     { value: 19, label: 'Гнев' }
   ];
   
-interface ITest {
-    text:IOptions[],
-    options:IOptions[],
-}
-
-export const data : ITest[] = [
-    {
-        text:targetsText,
-        options: targets,
-    },{
-        text:targetsText,
-        options: targets,
-    },    {
-        text:targetsText,
-        options: targets,
-    }
-]
-export default data;

@@ -13,16 +13,12 @@ interface IProps {
 }
 
 const Quest = ({ text, options, index, onChange }: IProps) => {
-  
-  const [target, setTarget] = useState(null);
 
   return (
-
     <QuestNum index={index}>
       <DiagnTextBlackBold>{text}</DiagnTextBlackBold>
       <Select
         options={options}
-        defaultValue={target}
         onChange={(value) =>{onChange(value)}}
         placeholder='Вариант ответа'
       />

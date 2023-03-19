@@ -1,4 +1,4 @@
-import { ButtonsMock } from "mockdata/MoskTacker";
+import { ButtonsMock } from "mockdata/MoсkTacker";
 import { useState } from "react";
 import { BtnNextContainer, ButtonNext, Buttons, ButtonsContainer, Container, TrackButton } from "styles/pages/Trackers/Buttons";
 import { TextDescription } from "styles/pages/Trackers/Trackers";

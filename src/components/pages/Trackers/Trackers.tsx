@@ -3,7 +3,7 @@ import { ReactComponent as Calendar } from "images/Trackers/Calendar_Check.svg";
 import { DiagHtml, DiagnImg } from "styles/pages/Diagnostics/DiagnHeader";
 import { CalendarContainer, DateContainer, DatePicker, DiaryText, EventContainer, StepContainer, StepText, TextCalendar, TextCalendarContainer, TextDescription, TrackDate, WelcomeText } from "styles/pages/Trackers/Trackers";
 
-import StepMock from "mockdata/MoskTacker";
+import StepMock from "mockdata/MoсkTacker";
 import { useState } from "react";
 
 export function getCurrentDate(separator = ".") {
