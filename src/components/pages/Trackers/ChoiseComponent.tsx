@@ -11,10 +11,6 @@ export interface IAnswer {
   label: number;
 }
 
-interface ITest {
-  text:IOptions[],
-  options:IOptions[],
-}
 
 export const defaultOption: IAnswer = {value:0, label: 0}
 
@@ -29,9 +25,8 @@ const ChoiseComponent = () => {
   const removeEmotion = (index: number) =>{
     let tempAnswers = answers;
     tempAnswers.splice(index,1)
-
+    console.log(tempAnswers)
     setAnswers([...tempAnswers]);
-    console.log(tempAnswers);
   }
 
   const onChange = (index: number, answer: IAnswer) => {
@@ -39,6 +34,7 @@ const ChoiseComponent = () => {
     tempAnswers[index] = answer;
     setAnswers([...tempAnswers]);
     setCompleteDisabled(!(tempAnswers.length > 0 && !_.some(tempAnswers, (el) => el == undefined)));
+    console.log(tempAnswers)
   };
 
   return (
@@ -47,19 +43,17 @@ const ChoiseComponent = () => {
       <ChoisesContainer>
         <Choises>
             {
-              answers.map((value,index) => {
-                return (<Choise 
-                  key = {index}
-                  value = {value}
-                  text={targetsText} 
-                  options={targets} 
-                  index={index} 
+              answers.map((value,index) => <Choise
+                  key={index}
+                  value={value}
+                  text={targetsText}
+                  options={targets}
                   onChange={(answer) => onChange(index, answer)} 
-                  addEmotion={addEmotion}
+                  addEmotion={() => addEmotion()}
                   removeEmotion={() => removeEmotion(index)}                  
                   />
-                );
-            })}
+                )
+            }
         </Choises>
         <BtnNextContainer>
             <ButtonNext $disabled={completeDisabled}>Далее</ButtonNext>

@@ -9,40 +9,33 @@ interface IProps {
   text: IOptions[];
   value: IAnswer;
   options: IOptions[];
-  index: number;
   onChange({ ...args }: any): any;
   addEmotion() : void;
   removeEmotion(): void
 }
 
-const Choise = ({ options, index, onChange, text, addEmotion, removeEmotion, value }: IProps) => {
-
-  const [option, setOption] = useState<IAnswer>(value);
-
-  useEffect(() => {
-    onChange(option);
-  }, [option])
+const Choise = ({ options, onChange, text, addEmotion, removeEmotion, value}: IProps) => {
   
   return (
     <OneChoiseContainer>
       <SelectBlockEmotion>
         <Emotion>
-          <Select key={index} options={text} placeholder="Выберите эмоцию" onChange={(opt) => {opt && setOption({value:opt.value,label:option.label})}} />
+          <Select options={text} value={text[value.value]} placeholder="Выберите эмоцию" onChange={(opt) => {opt != null && onChange({value:opt.value,label:value.label})}} />
         </Emotion>
       </SelectBlockEmotion>
       <SelectBlockNumber>
         <Number>
-          <Select key={index} options={options}  placeholder="0" onChange={(opt) => {opt && setOption({value:option.value,label:opt.value})}} />
+          <Select options={options} value={options[value.label]} placeholder="0" onChange={(opt) => {opt != null && onChange({value:value.value,label:opt.value})}} />
         </Number>
       </SelectBlockNumber>
       <SelectImg>
         <Img>
-          <AddPlus key={index} onClick={() => addEmotion()}/>
+          <AddPlus onClick={() => addEmotion()}/>
         </Img>
       </SelectImg>
       <SelectImg>
         <Img>
-          <TrashFull key={index} onClick={() => removeEmotion()}/>
+          <TrashFull onClick={() => removeEmotion()}/>
         </Img>
       </SelectImg>
     </OneChoiseContainer>
