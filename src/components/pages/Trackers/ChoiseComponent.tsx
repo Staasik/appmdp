@@ -1,6 +1,6 @@
 import Choise from "components/pages/Trackers/Choise";
 import _ from "lodash";
-import {  IOptions, targets, targetsText } from "mockdata/MoсkTrackersSelect";
+import { IOptions, targets, targetsText } from "mockdata/MoсkTrackersSelect";
 import { useState } from "react";
 import { ButtonNext } from "styles/pages/Trackers/Buttons";
 import { BtnNextContainer, Choises, ChoisesContainer, UserChoises } from "styles/pages/Trackers/Choise";
@@ -16,25 +16,28 @@ interface ITest {
   options:IOptions[],
 }
 
-const defaultOption: ITest = {text:targetsText, options: targets}
+export const defaultOption: IAnswer = {value:0, label: 0}
 
 const ChoiseComponent = () => {
-  const [answers, setAnswers] = useState<number[]>([]);
+  const [answers, setAnswers] = useState<IAnswer[]>([defaultOption]);
   const [completeDisabled, setCompleteDisabled] = useState<boolean>(true);
-  const [options, setOptions] = useState<ITest[]>([defaultOption])
 
   const addEmotion = () => {
-    setOptions(a => [...a, defaultOption])
+    setAnswers(a => [...a, defaultOption]);
   }
 
   const removeEmotion = (index: number) =>{
-    setOptions([...options.slice(0, index), ...options.slice(index + 1)])
+    let tempAnswers = answers;
+    tempAnswers.splice(index,1)
+
+    setAnswers([...tempAnswers]);
+    console.log(tempAnswers);
   }
 
   const onChange = (index: number, answer: IAnswer) => {
     let tempAnswers = answers;
-    tempAnswers[index] = answer.value;
-    setAnswers(tempAnswers);
+    tempAnswers[index] = answer;
+    setAnswers([...tempAnswers]);
     setCompleteDisabled(!(tempAnswers.length > 0 && !_.some(tempAnswers, (el) => el == undefined)));
   };
 
@@ -44,15 +47,16 @@ const ChoiseComponent = () => {
       <ChoisesContainer>
         <Choises>
             {
-              options.map((value, index) => {
+              answers.map((value,index) => {
                 return (<Choise 
-                  text={value.text} 
-                  options={value.options} 
+                  key = {index}
+                  value = {value}
+                  text={targetsText} 
+                  options={targets} 
                   index={index} 
                   onChange={(answer) => onChange(index, answer)} 
                   addEmotion={addEmotion}
-                  removeEmotion={() => removeEmotion(index)}
-                  
+                  removeEmotion={() => removeEmotion(index)}                  
                   />
                 );
             })}
