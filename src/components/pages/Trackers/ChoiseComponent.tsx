@@ -23,10 +23,11 @@ const ChoiseComponent = () => {
   }
 
   const removeEmotion = (index: number) =>{
-    let tempAnswers = answers;
-    tempAnswers.splice(index,1)
-    console.log(tempAnswers)
-    setAnswers([...tempAnswers]);
+    if(answers.length > 1){
+      let tempAnswers = answers;
+      tempAnswers.splice(index,1)
+      setAnswers([...tempAnswers]);
+    }
   }
 
   const onChange = (index: number, answer: IAnswer) => {
