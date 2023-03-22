@@ -3,7 +3,11 @@ import { useState } from "react";
 import { BtnNextContainer, ButtonNext, Buttons, ButtonsContainer, Container, TrackButton } from "styles/pages/Trackers/Buttons";
 import { TextDescription } from "styles/pages/Trackers/Trackers";
 
-const ButtonsComponent = () => {
+interface IPlace {
+  decription: string;
+}
+
+const ButtonsComponent = ({decription}:IPlace) => {
   const [selectedBtnIdx, setSelectedBtnIdx] = useState<number>(-1);
 
   const Click = (index: number) => {
@@ -16,7 +20,7 @@ const ButtonsComponent = () => {
 
   return (
     <Buttons>
-      <TextDescription>Выберите ситуацию общения, в которой вы сегодня в течение дня приняли участие, и она вызвала у вас сильные эмоции</TextDescription>
+      <TextDescription>{decription}</TextDescription>
       <ButtonsContainer>
         <Container>
           {

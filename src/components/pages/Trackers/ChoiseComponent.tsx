@@ -10,11 +10,13 @@ export interface IAnswer {
   value: number | null;
   label: number;
 }
-
+interface IPlace {
+  decription: string;
+}
 
 export const defaultOption: IAnswer = { value: null, label: 0 }
 
-const ChoiseComponent = () => {
+const ChoiseComponent = ({decription}:IPlace) => {
   const [answers, setAnswers] = useState<IAnswer[]>([defaultOption]);
   const [completeDisabled, setCompleteDisabled] = useState<boolean>(true);
 
@@ -39,7 +41,7 @@ const ChoiseComponent = () => {
 
   return (
     <UserChoises>
-      <TextDescription>Выберете одну или несколько эмоций, которые вы испытывали в данной ситуации и оцените их интенсивность по шкале от 0 до 10</TextDescription>
+      <TextDescription>{decription}</TextDescription>
       <ChoisesContainer>
         <Choises>
           {
