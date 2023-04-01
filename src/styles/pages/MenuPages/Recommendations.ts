@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "utils/colors";
 
 export const TextBlock = styled.div`
     display: flex;
@@ -143,7 +144,7 @@ export const ItemMovie = styled.div`
     }
 `
 export const DiagnTextBlackBold = styled.text`
-    color:black;
+    color:${colors.BLACK};
     font-weight : 600;
     height:40px;    
     font-size:30px;
@@ -163,7 +164,7 @@ export const DiagnTextBlackBoldBook = styled(DiagnTextBlackBold)`
 `
 export const DiagnTextProf = styled.text`
     display:flex;       
-    color: black;
+    color: ${colors.BLACK};
     font-size:26px;
     @media (max-width:800px) {
     font-size:20px;
@@ -171,7 +172,7 @@ export const DiagnTextProf = styled.text`
 `
 export const DiagnTextProfCenter = styled.text`
     display:flex;       
-    color: black;
+    color: ${colors.BLACK};
     font-size:40px;
     font-weight:600;
     margin-top:20px;
@@ -183,7 +184,7 @@ export const DiagnTextProfCenter = styled.text`
     }
 `
 export const DiagnTextBlack = styled.text`
-    color:black;
+    color:${colors.BLACK};
     font-size:18px; 
     font-weight:300;
     @media (max-width:800px) {     

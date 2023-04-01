@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
+import colors from "utils/colors";
 export const DiagBody = styled.div`
     width: 100%;
     display:flex;
@@ -15,11 +16,11 @@ export const Button = styled.button<ButtonProps>`
     ${({$completeDisabled}: ButtonProps) => !$completeDisabled && 'cursor: pointer;'}
     width: 200px;    
     height: 50px;
-    background:${({$completeDisabled}: ButtonProps) => $completeDisabled ? '#969696' : ' #FF9254' };
+    background:${({$completeDisabled}: ButtonProps) => $completeDisabled ? colors.FORD_GRAY : colors.ORANGE_LIGHT };
     border-radius: 8px; 
     border:0;
     margin-top: 50px;
-    color:white; 
+    color:${colors.WHITE}; 
     justify-content:center;
     align-items:center;
     @media (max-width:600px) {
@@ -83,8 +84,8 @@ export const BlockFive = styled.div`
     flex-wrap:wrap;
     width: 80%;
     row-gap:50px;
-    background: #FBFBFB;
-    border: 2px solid #F2F2F2;
+    background: ${colors.SMOKE};
+    border: 2px solid ${colors.GRAY_GRAY};
     box-sizing: border-box;
     box-shadow: 0px 20px 40px -15px rgba(0, 0, 0, 0.05);
     border-radius: 19px;
@@ -100,7 +101,7 @@ export const BlockFive = styled.div`
 `
 export const TextFive = styled.div`
     display:flex;       
-    color: black;
+    color: ${colors.BLACK};
     margin-top:30px;
     width: 100%;
     padding-left:3%;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from 'react-router-dom'
+import colors from "utils/colors";
 
 export const ModalWrapper = styled.div`
     display:flex;
@@ -18,7 +19,7 @@ export const ModalContainer = styled.div`
     height:40%;
     justify-content: center;
     align-items:center;
-    background-color: #FFFFFF;
+    background-color: ${colors.WHITE};
     box-shadow: 0px -20px 40px -15px rgba(0, 0, 0, 0.05), 0px 20px 40px -15px rgba(0, 0, 0, 0.05);
     border-radius: 19px;
     @media (max-width:1500px) {
@@ -67,9 +68,9 @@ export const ModalButton = styled.a`
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    background: #FF9254;
+    background: ${colors.ORANGE_LIGHT};
     border-radius: 8px;
-    color: white;
+    color: ${colors.WHITE};
     border:0;
     @media (max-width:900px) {
         width: 80%;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from 'react-router-dom'
+import colors from "utils/colors";
 
 export const ModalWrapper = styled.div`
     display:flex;
@@ -37,23 +38,23 @@ export const ModalBody = styled.div`
     margin:20px;
     overflow-y: auto;
     ::-webkit-scrollbar {
-        background-color:#fff;
+        background-color:${colors.WHITE};
         width:16px
     }
     ::-webkit-scrollbar-track {
-        background-color:#fff
+        background-color:${colors.WHITE};
     }
     ::-webkit-scrollbar-track:hover {
-        background-color:#f4f4f4
+        background-color:${colors.CAPAROL};
     }
     ::-webkit-scrollbar-thumb {
-        background-color:#babac0;
+        background-color:${colors.GHOST};
         border-radius:16px;
-        border:5px solid #fff
+        border:5px solid ${colors.WHITE};
     }
     ::-webkit-scrollbar-thumb:hover {
-        background-color:#a0a0a5;
-        border:4px solid #f4f4f4
+        background-color:${colors.SPUN_PEARL};
+        border:4px solid ${colors.CAPAROL};
     }
     ::-webkit-scrollbar-button {display:none}
 `
@@ -65,7 +66,7 @@ export const BodySmsBot = styled.div`
     justify-content: center;
     align-items:flex-start;
     padding:10px;
-    background-color: #F6F6F9;
+    background-color: ${colors.ALICE_BLUE};
     border-radius: 15px 15px 15px 0px;
     @media (max-width:800px) {
     font-size:14px;
@@ -79,7 +80,7 @@ export const BodySmsButton = styled.div`
     justify-content: center;
     align-items:flex-start;
     padding:10px;
-    background-color: #FFE9DD;
+    background-color: ${colors.CHABLIS};
     align-self:flex-end;
     border-radius: 15px 15px 0px 15px;
     @media (max-width:800px) {
@@ -117,7 +118,7 @@ export const ModalContainer = styled.div`
     height:85%;
     justify-content: center;
     align-items:center;
-    background-color: #FFFFFF;
+    background-color: ${colors.WHITE};
     box-shadow: 0px -20px 40px -15px rgba(0, 0, 0, 0.05), 0px 20px 40px -15px rgba(0, 0, 0, 0.05);
     border-radius: 19px;
     @media (max-width:1500px) {
@@ -159,7 +160,7 @@ export const Button = styled.button`
     background-color: inherit;
     text-decoration: none;
     cursor: pointer;
-    border: 1.5px solid #5496FF;
+    border: 1.5px solid ${colors.BLUE_LIGHT};
     border-radius: 11px;
     user-select: none;
     @media (max-width:800px) {

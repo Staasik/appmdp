@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import { ReactComponent as UncheckedIcon } from "images/UserProfile/CheckNull.svg";
 import { ReactComponent as CheckedIcon } from "images/UserProfile/CheckYes.svg";
+import colors from 'utils/colors';
 
 export const HomeTextBlock = styled.div`
     display: flex;
@@ -56,7 +57,7 @@ export const DiagnCheckBlockstItem = styled.div`
     justify-content:flex-start;
     align-items:center;
     gap:30px;
-    background: #FFFFFF;
+    background: ${colors.WHITE};
     box-shadow: 0px 4px 11px 1px rgba(43, 43, 43, 0.05);
     border-radius: 12px;
     padding:50px;
@@ -99,7 +100,7 @@ export const DiagnResultItem = styled.div`
     justify-content:center;
     align-items:center;
     gap:30px;
-    background: #FFFFFF;
+    background: ${colors.WHITE};
     box-shadow: 0px 4px 11px 1px rgba(43, 43, 43, 0.05);
     border-radius: 12px;
     padding:50px;
@@ -112,7 +113,7 @@ export const DiagnResultItem = styled.div`
 export const DiagnChecksResults = styled.div`
     display: flex;
     width:73%; 
-    background: #FFFFFF;
+    background: ${colors.WHITE};
     box-shadow: 0px 4px 11px 1px rgba(43, 43, 43, 0.05);
     border-radius: 12px;
     margin-bottom: 50px ;
@@ -189,7 +190,7 @@ export const ButtonBlock = styled.div`
 `
 export const DiagnTextProfCenter = styled.text`
     display:flex;       
-    color: black;
+    color: ${colors.BLACK};
     font-size:38px;
     font-weight:700;
     @media (max-width:800px) {
@@ -198,14 +199,14 @@ export const DiagnTextProfCenter = styled.text`
     }
 `
 export const DiagnTextBlack = styled.text`
-    color:black;
+    color:${colors.BLACK};
     font-size:18px; 
     @media (max-width:800px) {     
         font-size:14px; 
     }
 `
 export const DiagnosticTextBlack = styled.div`
-    color:black;
+    color:${colors.BLACK};
     font-size:18px; 
     font-weight:600;
     height:70px;
@@ -218,7 +219,7 @@ export const DiagnosticTextBlack = styled.div`
 `
 
 export const DiagnTextBlackBold = styled.text`
-    color:black;
+    color:${colors.BLACK};
     font-weight : 600;
     height:60px;    
     font-size:30px;
@@ -229,7 +230,7 @@ export const DiagnTextBlackBold = styled.text`
     }
 `
 export const DiagnTextBlackBoldName = styled.text`
-    color:black;
+    color:${colors.BLACK};
     font-weight : 600;
     height:40px;    
     font-size:30px;
@@ -247,7 +248,7 @@ export const DiagnTextBlackBoldName = styled.text`
 `
 export const DiagnTextProf = styled.text`
     display:flex;       
-    color: black;
+    color: ${colors.BLACK};
     font-size:26px;
     @media (max-width:800px) {
     font-size:20px;
@@ -258,10 +259,10 @@ export const ButtonWhite = styled.button`
     display:flex;
     width: 200px;
     height: 50px;
-    background: #fff;
-    border: 1px solid #FF9254;
+    background: ${colors.WHITE};
+    border: 1px solid ${colors.ORANGE_LIGHT};
     border-radius: 8px; 
-    color:#FF9254;
+    color:${colors.ORANGE_LIGHT};
     justify-content:center;
     align-items:center;
     @media (max-width:600px) {
@@ -278,10 +279,10 @@ export const Button = styled.a`
     height: 50px;
     font-size: 16px;
     text-decoration: none;
-    background: #FF9254;
+    background: ${colors.ORANGE_LIGHT};
     border: 0;
     border-radius: 8px; 
-    color:#fff;
+    color:${colors.WHITE};
     font-weight: 400;
     justify-content:center;
     align-items:center;
@@ -340,7 +341,7 @@ export const BlocksChecks = styled.div`
     align-items:center;
     padding:50px;
     align-items:center;
-    background: #FFFFFF;
+    background: ${colors.WHITE};
     box-shadow: 0px 4px 11px 1px rgba(43, 43, 43, 0.05);
     border-radius: 12px;
     @media (max-width:1000px) {  

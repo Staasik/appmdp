@@ -41,12 +41,12 @@ export const ChoisesWrapper = styled.div`
 export const ChoisesContainer = styled.div`
     display: flex;
     flex-wrap:wrap;
-    width: 75%;
+    width: 100%;
     gap: 20px;
     padding-bottom:0px;
 `
 export const UserChoises = styled.div`
-    width: 100%;
+    width: 75%;
 `
 export const BtnNextContainer = styled.div`
     display: flex;

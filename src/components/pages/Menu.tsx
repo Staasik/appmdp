@@ -7,13 +7,14 @@ import styled from "styled-components";
 import Hamburger from "components/pages/Hamburger";
 import { Context } from "index";
 import { observer } from "mobx-react-lite";
+import colors from "utils/colors";
 
 const StyledMenu = styled.nav<{ open: boolean }>`
   top: 0;
   left: 0;
   width: 100vw;
   position: fixed;
-  background-color: #5496ff;
+  background-color: ${colors.BLUE_LIGHT};
   padding-top: 70px;
   flex-direction: column;
   display: ${({ open }) => (open ? "flex" : "none")};
@@ -22,7 +23,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   padding: 10px 30px;
   font-size: 16px;
-  color: white;
+  color: ${colors.WHITE};
   text-decoration: none;
 `;
 const Icons = styled.div`

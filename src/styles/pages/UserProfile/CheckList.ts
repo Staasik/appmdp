@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ReactComponent as Caret_Right } from "images/UserProfile/Caret_Right.svg";
+import colors from "utils/colors";
 
 interface CaretProps{
     $listOpened:boolean,
@@ -12,10 +13,10 @@ export const Button = styled.a`
     display:flex;
     width: 250px;
     height: 50px;
-    background: #FF9254;
+    background: ${colors.ORANGE_LIGHT};
     border: 0;
     border-radius: 8px; 
-    color:#fff;
+    color:${colors.WHITE};
     justify-content:center;
     align-items:center;
     margin-top:50px; 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import image from "images/footer.png";
 import { Link } from 'react-router-dom'
+import colors from "utils/colors";
 
 export const HtmlContainer = styled.div`
     width: 100%;
@@ -88,11 +89,11 @@ export const DiagnMenu = styled.div`
     gap:20px;
 `
 export const DiagnText = styled.text`
-    color: #C4C4C4;
+    color: ${colors.BEHR_SILVER_BULLET};
     font-size:14px;
 `
 export const DiagnTextBlack = styled(DiagnText)`
-    color: #C4C4C4;
+    color: ${colors.BEHR_SILVER_BULLET};
     font-size:14px;
 `
 
@@ -119,7 +120,7 @@ export const DiagnIcon = styled.div`
 `
 export const DiagnTextDiagn = styled.div`
     display:flex;       
-    color: black;  
+    color: ${colors.BLACK};  
     padding-top:20px;
     padding-bottom:40px;
     font-size:26px;
@@ -130,7 +131,7 @@ export const DiagnTextDiagn = styled.div`
 `
 export const DiagnTextProf = styled.text`
     display:flex;       
-    color: black;
+    color: ${colors.BLACK};
     font-size:20px;
 `
 export const DiagnImg = styled.div`

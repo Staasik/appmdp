@@ -2,6 +2,7 @@ import styled from "styled-components";
 import image from "images/Results/diag2result.png"; 
 import imagedesk from "images/Results/diag2result_600.png"; 
 import { Link } from 'react-router-dom';
+import colors from "utils/colors";
 export const HomeTextBlock = styled.div`
     display: flex;
     width:90%; 
@@ -44,7 +45,7 @@ export const ResultItem = styled.div`
     justify-content:flex-start;
     align-items:flex-start;
     gap:20px;
-    background: #FFFFFF;
+    background: ${colors.WHITE};
     box-shadow: 0px 20px 40px -15px rgba(0, 0, 0, 0.05);
     border-radius: 19px;
     padding:30px;
@@ -161,12 +162,12 @@ export const Button = styled.a`
     display:flex;
     width: 200px;    
     height: 50px;
-    background: #FF9254;
+    background: ${colors.ORANGE_LIGHT};
     border-radius: 8px; 
     font-size: 16px;
     font-weight: 400;
     border:0;
-    color:white;
+    color:${colors.WHITE};
     justify-content:center;
     align-items:center;
     @media (max-width:600px) {
@@ -180,14 +181,14 @@ export const ErrorBlock = styled.div`
     justify-content:center;
     align-items:center;
     height: 50px;
-    background: #fff;
+    background: ${colors.WHITE};
     @media (max-width:600px) {
         width: 100%;  
         margin-top:20px; 
     }
 `
 export const DiagnTextBlackBold = styled.text`
-    color:black;
+    color:${colors.BLACK};
     font-weight : 700;
     height:40px;    
     font-size:18px;
@@ -198,7 +199,7 @@ export const DiagnTextBlackBold = styled.text`
 `
 export const DiagnTextProf = styled.text`
     display:flex;       
-    color: black;
+    color: ${colors.BLACK};
     font-size:30px;
     font-weight:600;
     @media (max-width:800px) {
@@ -207,7 +208,7 @@ export const DiagnTextProf = styled.text`
 `
 export const DiagnTextProfCenter = styled.text`
     display:flex;       
-    color: black;
+    color: ${colors.BLACK};
     font-size:26px;
     @media (max-width:800px) {
     font-size:20px;
@@ -215,7 +216,7 @@ export const DiagnTextProfCenter = styled.text`
     }
 `
 export const DiagnTextBlack = styled.text`
-    color:black;
+    color:${colors.BLACK};
     font-size:18px; 
     @media (max-width:800px) {     
         font-size:14px; 
@@ -263,7 +264,7 @@ export const DiscriptionPS = styled.div`
     width: 70%;
     align-items: center;
     gap: 16px;
-    color: #5496FF;
+    color: ${colors.BLUE_LIGHT};
     @media (max-width:800px) {             
         width:85%;
     }

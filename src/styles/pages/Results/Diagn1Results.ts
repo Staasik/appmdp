@@ -2,6 +2,7 @@ import styled from "styled-components";
 import image from "images/Results/diag1result.png";
 import imagedesk from "images/Results/diag1result_600.png";
 import { Link } from 'react-router-dom';
+import colors from "utils/colors";
 
 export const HomeTextBlock = styled.div`
   display: flex;
@@ -160,12 +161,12 @@ export const Button = styled.a`
     display:flex;
     width: 200px;    
     height: 50px;
-    background: #FF9254;
+    background: ${colors.ORANGE_LIGHT};
     border-radius: 8px; 
     font-size: 16px;
     font-weight: 400;
     border:0;
-    color:white;
+    color:${colors.WHITE};
     justify-content:center;
     align-items:center;
     @media (max-width:600px) {
@@ -179,14 +180,14 @@ export const ErrorBlock = styled.div`
     justify-content:center;
     align-items:center;
     height: 50px;
-    background: #fff;
+    background: ${colors.WHITE};
     @media (max-width:600px) {
         width: 100%;  
         margin-top:20px; 
     }
 `
 export const DiagnTextBlackBold = styled.text`
-    color:black;
+    color:${colors.BLACK};
     font-weight : 600;
     height:40px;    
     font-size:18px;
@@ -196,7 +197,7 @@ export const DiagnTextBlackBold = styled.text`
     }
 `
 export const DiagnTextBlack = styled.text`
-    color:black;
+    color:${colors.BLACK};
     font-size:18px; 
     @media (max-width:800px) {     
         font-size:14px; 
@@ -204,7 +205,7 @@ export const DiagnTextBlack = styled.text`
 `
 export const DiagnTextProfCenter = styled.text`
     display:flex;       
-    color: black;
+    color: ${colors.BLACK};
     font-weight: 600;
     font-size: 40px;
     @media (max-width:1680px) {

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import image from "images/regImg.png"; 
 import image600 from "images/regImg_600.png"; 
 import { ReactComponent as Show } from 'images/Show.svg'
+import colors from "utils/colors";
 
 export const LoginWrapper = styled.div`
     display:flex;
@@ -21,7 +22,7 @@ export const LoginBlock = styled.div`
     height: 70vh;
     min-height:500px;
     flex-direction:row;
-    background: #FFFFFF;
+    background: ${colors.WHITE};
     box-shadow: 0px -20px 40px -15px rgba(0, 0, 0, 0.05), 0px 20px 40px -15px rgba(0, 0, 0, 0.05);
     border-radius: 19px;
     @media (max-width:1200px) {
@@ -145,7 +146,7 @@ export const ShowIcon = styled(Show)`
     position: absolute;
     right: 7px;
     top: 11px;
-    stroke: #969696;
+    stroke: ${colors.FORD_GRAY};
 `
 export const LoginText = styled.text`
     font-size: 40px;
@@ -172,9 +173,9 @@ export const LoginButton = styled.button`
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    background: #FF9254;
+    background: ${colors.ORANGE_LIGHT};
     border-radius: 8px;
-    color: white;
+    color: ${colors.WHITE};
     border:0;
     margin-bottom:50px;
     @media (max-width:1200px) {

@@ -3,6 +3,7 @@ import image from "images/Results/diag3result_600.png";
 import imagedesk from "images/Results/diag3result_600.png"; 
 import Lines from "images/Results/Lines.png";
 import { Link } from 'react-router-dom';
+import colors from "utils/colors";
 
 export const HomeTextBlock = styled.div`
     display: flex;
@@ -173,10 +174,10 @@ export const Button = styled.a`
     display:flex;
     width: 200px;    
     height: 50px;
-    background: #FF9254;
+    background: ${colors.ORANGE_LIGHT};
     border-radius: 8px; 
     border:0;
-    color:white;
+    color:${colors.WHITE};
     justify-content:center;
     font-size: 16px;
     font-weight: 400;
@@ -192,14 +193,14 @@ export const ErrorBlock = styled.div`
     justify-content:center;
     align-items:center;
     height: 50px;
-    background: #fff;
+    background: ${colors.WHITE};
     @media (max-width:600px) {
         width: 100%;  
         margin-top:20px; 
     }
 `
 export const DiagnTextBlackBold = styled.text`
-    color:black;
+    color:${colors.BLACK};
     font-weight : bold;
     height:40px;    
     font-size:18px;
@@ -210,7 +211,7 @@ export const DiagnTextBlackBold = styled.text`
 `
 export const DiagnTextProf = styled.text`
     display:flex;       
-    color: black;
+    color: ${colors.BLACK};
     font-size:26px;
     @media (max-width:800px) {
     font-size:20px;
@@ -218,7 +219,7 @@ export const DiagnTextProf = styled.text`
 `
 export const DiagnTextProfCenter = styled.text`
     display:flex;       
-    color: black;
+    color: ${colors.BLACK};
     font-size:26px;
     @media (max-width:800px) {
     font-size:20px;
@@ -226,7 +227,7 @@ export const DiagnTextProfCenter = styled.text`
     }
 `
 export const DiagnTextBlack = styled.text`
-    color:black;
+    color:${colors.BLACK};
     font-size:18px; 
     @media (max-width:800px) {     
         font-size:14px; 
@@ -253,7 +254,7 @@ export const DiscriptionContainer = styled.div`
 `
 export const DiscriptionContainerTitle = styled.div`
     width: 70%;
-    color: #5496FF;
+    color: ${colors.BLUE_LIGHT};
     font-weight: 600;
     font-size: 18px;
     @media (max-width:800px) {             
@@ -284,7 +285,7 @@ export const DiscriptionPS = styled.div`
     width: 70%;
     align-items: center;
     gap: 16px;
-    color: #5496FF;
+    color: ${colors.BLUE_LIGHT};
     @media (max-width:800px) {             
         width:85%;
     }

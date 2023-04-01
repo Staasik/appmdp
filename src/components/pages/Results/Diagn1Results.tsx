@@ -8,6 +8,7 @@ import { ReactComponent as Line } from 'images/Results/Line.svg';
 import { useMediaQuery } from "react-responsive";
 import { DiagHtml, DiagnTextProf } from 'styles/pages/Diagnostics/DiagnHeader';
 import { Button, DiagnTextBlack, DiagnTextBlackBold, DiscContent, Discription, DiscTitle, HomeTextBlock, RecommendWrapper, Result, ResultLine, ResultsBlock, ResultStaticItem } from 'styles/pages/Results/Diagn1Results';
+import colors from 'utils/colors';
 export interface IDiagnResult{
     title: string,
     level: string
@@ -41,7 +42,7 @@ const Diagn1Results = ({ result }: Props) => {
             <ResultsBlock>
                 <Result>
                     <DiagnTextBlackBold style={{ height: "50px" }}>{result[0].title}</DiagnTextBlackBold>
-                    <DiagnTextProf style={{ color: "#5496FF" }}>{result[0].level}</DiagnTextProf>
+                    <DiagnTextProf style={{ color: colors.BLUE_LIGHT }}>{result[0].level}</DiagnTextProf>
                     {isDesktop && <Line style={{ height: "50px", width: "80%" }} />}
                 </Result>
                 <ResultLine>

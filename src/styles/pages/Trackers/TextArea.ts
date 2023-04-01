@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "utils/colors";
 
 export const TextAreaContainer = styled.div`
     display: flex;
@@ -7,7 +8,7 @@ export const TextAreaContainer = styled.div`
     padding-bottom:0px;
 `
 export const TextAreaWrapper = styled.div`
-    width: 100%;
+    width: 75%;
 `
 export const Container = styled.div`
     display: flex;
@@ -15,13 +16,13 @@ export const Container = styled.div`
     flex-wrap:wrap;
     align-items: center;
     justify-content: left;
-    width: 75%;
+    width: 100%;
     padding-bottom:40px;
 `
 export const TextComponents = styled.textarea`
     width: 100%;
     height: 100px;
-    border: 1.5px solid #CBCBCB;
+    border: 1.5px solid ${colors.VERY_LIGHT_GRAY};
     border-radius: 42px;
     font-weight: 400;
     font-size: 16px;

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import image from "images/HomePage/HomeImg.png";
 import imagedesk from "images/HomePage/Desktop.png";
 import { Link } from "react-router-dom";
+import colors from "utils/colors";
 export const HomeTextBlock = styled.div`
     display: flex;
     width:90%; 
@@ -64,7 +65,7 @@ export const FootBlock = styled.div`
     display: flex;
     width:100%; 
     height:450px;
-    background-color:#FF9254;
+    background-color:${colors.ORANGE_LIGHT};
     justify-content:center;
     align-items:center;
     @media (max-width:800px) {
@@ -184,10 +185,10 @@ export const Button = styled.a`
     width: 200px;
     font-size: 16px;
     height: 50px;
-    background: #FF9254;
+    background: ${colors.ORANGE_LIGHT};
     border-radius: 8px; 
     border:0;
-    color:white;
+    color:${colors.WHITE};
     justify-content:center;
     align-items:center;
     @media (max-width:600px) {
@@ -196,8 +197,8 @@ export const Button = styled.a`
     }
 `
 export const ButtonWhite = styled(Button)`
-    background: white;
-    color:#FF9254;
+    background: ${colors.WHITE};
+    color:${colors.ORANGE_LIGHT};
     @media (max-width:600px) {
         margin-left:0px; 
     }
@@ -205,7 +206,7 @@ export const ButtonWhite = styled(Button)`
 export const TextUrl = styled.text`
     display:flex;       
     font-weight:600;
-    color: #FF9254;
+    color: ${colors.ORANGE_LIGHT};
     font-size:30px;
     @media (max-width:700px) {
     font-size:20px;
@@ -226,7 +227,7 @@ export const ImgBlockDesktop = styled.div`
     }
 `
 export const DiagnTextBlackBold = styled.text`
-    color:black;
+    color:${colors.BLACK};
     font-weight : 600;
     height:50px;    
     font-size:18px;
@@ -237,7 +238,7 @@ export const DiagnTextBlackBold = styled.text`
 `
 export const DiagnTextProfCenter = styled.text`
     display:flex;       
-    color: black;
+    color: ${colors.BLACK};
     font-size:54px;
     font-weight: 800;
     @media (max-width:860px) {

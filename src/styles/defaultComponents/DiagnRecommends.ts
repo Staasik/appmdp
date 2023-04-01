@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import colors from 'utils/colors'
 
 export const DiagnRecommendsWrapper = styled.div`
     display: flex;
@@ -15,7 +16,7 @@ export const DiagnRecommendsBlock = styled.div`
     padding: 50px;
     width: 55%;
     gap: 50px;
-    background: #FFFFFF;
+    background: ${colors.WHITE};
     box-shadow: 0px 20px 40px -15px rgba(0, 0, 0, 0.05);
     border-radius: 19px;
     @media (max-width:800px) {
@@ -30,7 +31,7 @@ export const BlockContent = styled.div`
     align-items: center;
     font-size: 18px;
     a{
-        color: #5496FF;
+        color:${colors.BLUE_LIGHT};
     }
     @media (max-width:800px) {
         margin:0px;
@@ -48,7 +49,7 @@ export const DiagnRecommendsLinkBlock = styled.div`
 `
 export const LinkBlockTitle = styled.div`
     display: flex;
-    color: #FF9254;
+    color: ${colors.ORANGE_LIGHT};
     font-weight: 600;
     font-size: 18px;
 `
@@ -60,7 +61,7 @@ export const LinkBlockContent = styled.div`
 export const LinkBlockHref = styled.a`
     text-decoration: none;
     display: flex;
-    color: #969696;
+    color: ${colors.FORD_GRAY};
     font-weight: 600;
     font-size: 18px;
     align-items: center;

@@ -3,6 +3,7 @@ import image from "images/footer.png";
 import imagefoot from "images/diagn1.png"; 
 import image600 from "images/diagn1_600.png"; 
 import { Link } from 'react-router-dom'
+import colors from "utils/colors";
 
 export const DiagHtml = styled.div`
     width: 100%;
@@ -69,7 +70,7 @@ export const DiagnImg = styled.div`
 `
 export const DiagnTextDiagn = styled.div`
     display:flex;       
-    color: black;  
+    color: ${colors.BLACK};  
     padding-top:20px;
     padding-bottom:40px;
     font-size:40px;  
@@ -113,11 +114,11 @@ export const ProfileName = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    color: #969696;
+    color: colors.FORD_GRAY;
     height: 100%;
 `
 export const DiagnText = styled.text`
-    color: #C4C4C4;
+    color: ${colors.BEHR_SILVER_BULLET};
     font-size:18px;
     @media (max-width:600px) {
         font-size:14px;
@@ -127,15 +128,15 @@ interface HeaderTextProps{
     $active: boolean
 }
 export const HeaderText = styled.text<HeaderTextProps>`
-    color: ${({$active} : HeaderTextProps) => $active ? 'black' : '#C4C4C4'};
+    color: ${({$active} : HeaderTextProps) => $active ? colors.BLACK : colors.BEHR_SILVER_BULLET};
     font-size:14px;
     :hover{
-        color: #D9D9D9;
+        color: ${colors.GRAY85};
     }
 `
 
 export const DiagnTextBlack = styled(DiagnText)`
-    color:black;
+    color:${colors.BLACK};
 `
 export const DiagnTextBlackI = styled(DiagnTextBlack)`
     font-size:16px;
@@ -153,10 +154,10 @@ export const DiagnTextBlackTitle = styled(DiagnTextBlack)`
     margin: 30px 0 10px 0;
 `
 export const DiagnTextWhite = styled(DiagnText)`
-    color:white;
+    color:${colors.WHITE};
 `
 export const DiagnTextBlackBold = styled(DiagnText)`
-    color:black;
+    color:${colors.BLACK};
     font-weight : 600;
     height:90px;
     @media (max-width:1200px) {      
@@ -164,7 +165,7 @@ export const DiagnTextBlackBold = styled(DiagnText)`
     }
 `
 export const DiagnTextBlackBoldI = styled(DiagnText)`
-    color:black;
+    color:${colors.BLACK};
     font-weight : 600;
     height:70px;
     @media (max-width:1000px) {      
@@ -197,7 +198,7 @@ export const DiagnIcon = styled.div`
 
 export const DiagnTextProf = styled.text`
     display:flex;       
-    color: black;
+    color: ${colors.BLACK};
     font-weight:600;
     font-size:38px;
     @media (max-width:800px) {
@@ -206,7 +207,7 @@ export const DiagnTextProf = styled.text`
 `
 export const DiagnTextProfD = styled.text`
     display:flex;       
-    color: black;
+    color: ${colors.BLACK};
     font-weight:600;
     font-size:30px;
     @media (max-width:800px) {
@@ -220,7 +221,7 @@ export const DiagnTextProfS = styled(DiagnTextProf)`
     }
 `
 export const DiagnTextProfWhite = styled(DiagnTextProf)`
-    color:white;
+    color:${colors.WHITE};
     font-size:54px;
     font-weight:800;
     @media (max-width:850px) {
@@ -247,7 +248,7 @@ export const DiagnRecBlock = styled.div`
     flex-direction: column;
     padding: 50px;
     gap: 30px;
-    background: #FFF6F1;
+    background: ${colors.SEASHELL};
     border-radius: 16px;
     @media (max-width:1000px) {     
         gap: 20px;
@@ -274,7 +275,7 @@ export const DiagnRecPS = styled.div`
     align-items: center;
     font-weight: 400;
     font-size: 18px;
-    color: #969696;
+    color: ${colors.FORD_GRAY};
     @media (max-width:1000px) {     
         font-size: 16px;
     }
@@ -291,10 +292,10 @@ export const DiagnRecButtons = styled.div`
     }
 `
 export const DiagnRecButton = styled.a`
-    background-color: #FFF;
+    background-color: ${colors.WHITE};
     text-decoration: none;
     width:30%;
-    border: 1.5px solid #5496FF;
+    border: 1.5px solid ${colors.BLUE_LIGHT};
     padding: 15px 30px;
     align-items: center;
     text-align: center;
@@ -337,11 +338,11 @@ export const DiagnBlockImg = styled.div<DiagnBlockImgProps>`
     background-size: cover;
     background-position: center; 
     @media (max-width:1200px) {
-        background-color:#EEF5FF;
+        background-color:${colors.ALICE_BLUE2};
         background-image:url();
     }
     @media (max-width:600px) {
-        background-color:#EEF5FF;
+        background-color:${colors.ALICE_BLUE2};
         background-image:url(${({images}: DiagnBlockImgProps) => images[1]});
         justify-content:flex-start;
         padding-top:5%;

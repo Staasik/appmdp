@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "utils/colors";
 
 export const StyledHamburger = styled.button<{ open: boolean }>`
   left: 5vw;
@@ -18,7 +19,7 @@ export const StyledHamburger = styled.button<{ open: boolean }>`
     height: 0.25rem;
     border-radius: 10px;
     background-color: ${({ open }) =>
-      open ? 'white' : 'black'};
+      open ? colors.WHITE : colors.BLACK};
   }
 `;
  

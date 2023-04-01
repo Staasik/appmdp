@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "utils/colors";
 
 export const ButtonsContainer = styled.div`
     display: flex;
@@ -7,7 +8,7 @@ export const ButtonsContainer = styled.div`
     padding-bottom:0px;
 `
 export const Wrapper = styled.div`
-    width: 100%;
+    width: 75%;
 `
 export const Container = styled.div`
     display: flex;
@@ -15,7 +16,7 @@ export const Container = styled.div`
     flex-wrap:wrap;
     align-items: center;
     justify-content: left;
-    width: 75%;
+    width: 100%;
     padding-bottom:40px;
 `
 export const BtnNextContainer = styled.div`
@@ -32,11 +33,11 @@ interface ButtonProps {
 
 export const TrackButton = styled.button<ButtonProps>`
     cursor: pointer;
-    background:${({ $disabled }: ButtonProps) => !$disabled ? '#FF9254' : '#FFF'};
-    color:${({ $disabled }: ButtonProps) => !$disabled ? '#FFF' : '#2E2E2E'};
+    background:${({ $disabled }: ButtonProps) => !$disabled ? colors.ORANGE_LIGHT : colors.WHITE};
+    color:${({ $disabled }: ButtonProps) => !$disabled ? colors.WHITE : colors.FORD_GRAPHITE};
     text-decoration: none;
     width:auto;
-    border: 1.5px solid #CFCFCF;
+    border: 1.5px solid ${colors.GRAY};
     padding: 15px 30px;
     align-items: center;
     text-align: center;
@@ -47,11 +48,11 @@ export const TrackButton = styled.button<ButtonProps>`
 `
 export const ButtonNext = styled.button<ButtonProps>`
     cursor:${({ $disabled }: ButtonProps) => !$disabled ? 'pointer' : 'default'};
-    background:${({ $disabled }: ButtonProps) => !$disabled ? '#FF9254' : '#E0E0E0'};
-    color:${({ $disabled }: ButtonProps) => !$disabled ? '#FFF' : '#2E2E2E'};
+    background:${({ $disabled }: ButtonProps) => !$disabled ? colors.ORANGE_LIGHT : colors.LIGHT_GRAY};
+    color:${({ $disabled }: ButtonProps) => !$disabled ? colors.WHITE : colors.FORD_GRAPHITE};
     text-decoration: none;
     width:auto;
-    border: 1.5px solid #CFCFCF;
+    border: 1.5px solid ${colors.GRAY};
     padding: 15px 30px;
     align-items: center;
     text-align: center;
