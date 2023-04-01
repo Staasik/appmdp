@@ -83,7 +83,12 @@ export const TextDescription = styled(WelcomeText)`
     color: #626262;
     padding-top:0px;
 `
-export const StepText = styled(TextDescription)`
-    color: #CBCBCB;
+
+interface StepTextProps {
+    $color: boolean
+}
+
+export const StepText = styled(TextDescription) <StepTextProps>`
+    color: ${({ $color }: StepTextProps) => $color ? 'black' : '#CBCBCB'};
 `
 

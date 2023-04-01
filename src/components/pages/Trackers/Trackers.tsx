@@ -44,8 +44,8 @@ const Trackers = () => {
         <DiaryText> Дневник Настроения</DiaryText>
         <StepContainer>
           {
-            StepMock.map((data, index) => (<StepText key={index} onClick={() => { setCurrentStep(index); }}>{data.stepName}</StepText>
-            ))}
+            StepMock.map((data, index) => <StepText key={index} $color={index <= currentStep} onClick={() => { setCurrentStep(index); }}>{data.stepName}</StepText>)
+          }
         </StepContainer>
 
         {StepMock[currentStep].component}
