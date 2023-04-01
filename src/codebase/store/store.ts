@@ -5,8 +5,25 @@ import { IUser } from "codebase/models/IUser";
 import { AuthResponse } from "codebase/models/response/AuthResponse";
 import AuthService from "codebase/services/AuthService";
 import UserService from "codebase/services/UserService";
+import { IAnswer } from "components/pages/Trackers/Choises";
 import { makeAutoObservable } from 'mobx';
 import blockItemMock from "mockdata/UserProfileBlocks";
+
+enum AnswerTypeEnum {
+    buttons,
+    text,
+    multiselect
+}
+
+type AnswerType = keyof typeof AnswerTypeEnum
+type AnswerValue = number | string | Array<IAnswer>
+
+export const defaultOption: IAnswer = { value: null, label: 0 }
+
+interface ITrackerAnswer {
+    type: AnswerType,
+    value?: AnswerValue | null
+}
 
 export default class Store {
     user = {} as IUser
@@ -14,8 +31,16 @@ export default class Store {
     isLoading = false
     checkListBlocks = blockItemMock
     chatOpened = false
+    trackerAnswers: Array<ITrackerAnswer> = [
+        { type: 'buttons', value: null},
+        { type: 'text', value: null },
+        { type: 'multiselect', value: [defaultOption] },
+        { type: 'multiselect', value: [defaultOption] },
+        { type: 'text', value: null },
+        { type: 'text', value: null }
+    ]
 
-    constructor(){
+    constructor() {
         makeAutoObservable(this)
     }
 
@@ -26,16 +51,20 @@ export default class Store {
     setUser(user: IUser) {
         this.user = user
     }
-    
-    setLoading(bool: boolean){
+
+    setLoading(bool: boolean) {
         this.isLoading = bool
     }
 
-    setChatOpened(bool: boolean){
+    setChatOpened(bool: boolean) {
         this.chatOpened = bool
     }
 
-    async login(login: string, password: string){
+    addNewAnswers(index: number, answers: AnswerValue | null){
+        if(this) this.trackerAnswers[index].value = answers
+    }
+
+    async login(login: string, password: string) {
         try {
             const response = await AuthService.login(login, password)
             localStorage.setItem('token', response.data.accessToken)
@@ -46,9 +75,9 @@ export default class Store {
         }
     }
 
-    async registration(name: string, login: string, password: string){
+    async registration(name: string, login: string, password: string) {
         try {
-            const response = await AuthService.registration( name, login, password)
+            const response = await AuthService.registration(name, login, password)
             localStorage.setItem('token', response.data.accessToken)
             this.setAuth(true)
             this.setUser(response.data.user)
@@ -69,23 +98,23 @@ export default class Store {
         }
     }
 
-    async checkAuth(){
+    async checkAuth() {
         this.setLoading(true)
         try {
-            const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {withCredentials: true})
+            const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, { withCredentials: true })
             localStorage.setItem('token', response.data.accessToken)
             this.setAuth(true)
             this.setUser(response.data.user)
         } catch (error) {
             console.log(error)
-        } finally{
+        } finally {
             this.setLoading(false)
         }
     }
 
-    async changeUsername(newname: string){
+    async changeUsername(newname: string) {
         try {
-            const response = await  UserService.changeUsername(newname)
+            const response = await UserService.changeUsername(newname)
             localStorage.setItem('token', response.data.accessToken)
             this.setUser(response.data.user)
         } catch (error) {
@@ -93,7 +122,7 @@ export default class Store {
         }
     }
 
-    async UploadFile(file: File){
+    async UploadFile(file: File) {
         try {
             const response = await UserService.UploadFile(file)
             return response.data.file

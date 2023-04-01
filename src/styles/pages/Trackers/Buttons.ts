@@ -6,7 +6,7 @@ export const ButtonsContainer = styled.div`
     gap: 20px;
     padding-bottom:0px;
 `
-export const Buttons = styled.div`
+export const Wrapper = styled.div`
     width: 100%;
 `
 export const Container = styled.div`

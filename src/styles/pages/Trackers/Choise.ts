@@ -33,12 +33,12 @@ export const SelectBlockNumber = styled(SelectBlockEmotion)`
 export const SelectImg = styled(SelectBlockEmotion)`
     width: 5%;
 `
-export const ChoisesContainer = styled.div`
+export const ChoisesWrapper = styled.div`
     width: 100%;
     padding-bottom: 40px;
     display: flex;
 `
-export const Choises = styled.div`
+export const ChoisesContainer = styled.div`
     display: flex;
     flex-wrap:wrap;
     width: 75%;

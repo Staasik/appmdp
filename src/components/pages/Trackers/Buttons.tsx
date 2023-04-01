@@ -1,38 +1,36 @@
+import { Context } from "index";
+import { observer } from "mobx-react-lite";
 import { ButtonsMock } from "mockdata/MoсkTacker";
-import { useState } from "react";
-import { BtnNextContainer, ButtonNext, Buttons, ButtonsContainer, Container, TrackButton } from "styles/pages/Trackers/Buttons";
+import { useState, useContext, useEffect } from "react";
+import { Wrapper, ButtonsContainer, Container, TrackButton } from "styles/pages/Trackers/Buttons";
 import { TextDescription } from "styles/pages/Trackers/Trackers";
 
 interface IPlace {
   decription: string;
+  index: number;
 }
 
-const ButtonsComponent = ({decription}:IPlace) => {
-  const [selectedBtnIdx, setSelectedBtnIdx] = useState<number>(-1);
+const Buttons = ({ decription, index }: IPlace) => {
+  const { store } =  useContext(Context)
 
-  const Click = (index: number) => {
-    if (index === selectedBtnIdx) {
-      setSelectedBtnIdx(-1);
-    } else {
-      setSelectedBtnIdx(index);
-    }
+  const handleClick = (idx: number) => {
+    store.addNewAnswers(index, idx === store.trackerAnswers[index].value as number ? null : idx)
   };
 
   return (
-    <Buttons>
+    <Wrapper>
       <TextDescription>{decription}</TextDescription>
       <ButtonsContainer>
         <Container>
           {
-            ButtonsMock.map((data, index) => (<TrackButton key={index} onClick={() => Click(index)} $disabled={index !== selectedBtnIdx}>{data}</TrackButton>
-          ))}
+            ButtonsMock.map(
+              (data, idx) => <TrackButton key={idx} onClick={() => handleClick(idx)} $disabled={idx !== store.trackerAnswers[index].value as number}>{data}</TrackButton>
+            )
+          }
         </Container>
-        <BtnNextContainer>
-          <ButtonNext $disabled={selectedBtnIdx === -1}>Далее</ButtonNext>
-        </BtnNextContainer>
       </ButtonsContainer>
-    </Buttons>
+    </Wrapper>
   );
 };
 
-export default ButtonsComponent;
+export default observer(Buttons);

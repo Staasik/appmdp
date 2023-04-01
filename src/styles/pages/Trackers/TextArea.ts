@@ -6,7 +6,7 @@ export const TextAreaContainer = styled.div`
     gap: 20px;
     padding-bottom:0px;
 `
-export const TextArea = styled.div`
+export const TextAreaWrapper = styled.div`
     width: 100%;
 `
 export const Container = styled.div`

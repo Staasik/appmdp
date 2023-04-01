@@ -3,7 +3,8 @@ import { ReactComponent as TrashFull } from "images/Trackers/Trash_Full.svg";
 import { IOptions } from "mockdata/MoсkTrackersSelect";
 import Select from "react-select";
 import { Emotion, Img, Number, OneChoiseContainer, SelectBlockEmotion, SelectBlockNumber, SelectImg } from "styles/pages/Trackers/Choise";
-import { IAnswer } from "./ChoiseComponent";
+import { IAnswer } from "./Choises";
+
 interface IProps {
   text: IOptions[];
   value: IAnswer;

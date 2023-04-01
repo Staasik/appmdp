@@ -1,6 +1,6 @@
-import ButtonsComponent from "components/pages/Trackers/Buttons";
-import ChoiseComponent from "components/pages/Trackers/ChoiseComponent";
-import TextComponent from "components/pages/Trackers/TextArea";
+import Buttons from "components/pages/Trackers/Buttons";
+import Choises from "components/pages/Trackers/Choises";
+import TextArea from "components/pages/Trackers/TextArea";
 interface IStepMock {
     stepName: string;
     component: JSX.Element;
@@ -22,27 +22,27 @@ export const TextDescription = [
 export const StepMock: Array<IStepMock> = [
     {
       stepName: "1 шаг...",
-      component: <ButtonsComponent decription={TextDescription[0]}/>,
+      component: <Buttons index={0} decription={TextDescription[0]}/>,
     },
     {
       stepName: "2 шаг...",
-      component: <TextComponent placetext={PlaceholderText[0]} decription={TextDescription[1]}/>,
+      component: <TextArea index={1} placetext={PlaceholderText[0]} decription={TextDescription[1]}/>,
     },
     {
       stepName: "3 шаг...",
-      component: <ChoiseComponent decription={TextDescription[2]}/>,
+      component: <Choises index={2} decription={TextDescription[2]}/>,
     },
     {
       stepName: "4 шаг...",
-      component: <ChoiseComponent decription={TextDescription[3]}/>,
+      component: <Choises index={3} decription={TextDescription[3]}/>,
     },
     {
       stepName: "5 шаг...",
-      component: <TextComponent placetext = {PlaceholderText[1]} decription={TextDescription[4]}/>,
+      component: <TextArea index={4} placetext = {PlaceholderText[1]} decription={TextDescription[4]}/>,
     },
     {
       stepName: "6 шаг",
-      component: <TextComponent placetext = {PlaceholderText[2]} decription={TextDescription[5]}/>,
+      component: <TextArea index={5} placetext = {PlaceholderText[2]} decription={TextDescription[5]}/>,
     },
 ];
 
