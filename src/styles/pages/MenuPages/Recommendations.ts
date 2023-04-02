@@ -143,7 +143,7 @@ export const ItemMovie = styled.div`
         height:200px;
     }
 `
-export const DiagnTextBlackBold = styled.text`
+export const DiagnTextBlackBold = styled.a`
     color:${colors.BLACK};
     font-weight : 600;
     height:40px;    
@@ -162,7 +162,7 @@ export const DiagnTextBlackBoldBook = styled(DiagnTextBlackBold)`
         font-size:18px;   
     } 
 `
-export const DiagnTextProf = styled.text`
+export const DiagnTextProf = styled.a`
     display:flex;       
     color: ${colors.BLACK};
     font-size:26px;
@@ -170,7 +170,7 @@ export const DiagnTextProf = styled.text`
     font-size:20px;
     }
 `
-export const DiagnTextProfCenter = styled.text`
+export const DiagnTextProfCenter = styled.a`
     display:flex;       
     color: ${colors.BLACK};
     font-size:40px;
@@ -183,7 +183,7 @@ export const DiagnTextProfCenter = styled.text`
         margin:0;
     }
 `
-export const DiagnTextBlack = styled.text`
+export const DiagnTextBlack = styled.a`
     color:${colors.BLACK};
     font-size:18px; 
     font-weight:300;

@@ -1,7 +1,4 @@
 import styled from "styled-components";
-import image from "images/Results/diag1result.png";
-import imagedesk from "images/Results/diag1result_600.png";
-import { Link } from 'react-router-dom';
 import colors from "utils/colors";
 
 export const HomeTextBlock = styled.div`
@@ -186,7 +183,7 @@ export const ErrorBlock = styled.div`
         margin-top:20px; 
     }
 `
-export const DiagnTextBlackBold = styled.text`
+export const DiagnTextBlackBold = styled.a`
     color:${colors.BLACK};
     font-weight : 600;
     height:40px;    
@@ -196,14 +193,14 @@ export const DiagnTextBlackBold = styled.text`
         font-size:14px; 
     }
 `
-export const DiagnTextBlack = styled.text`
+export const DiagnTextBlack = styled.a`
     color:${colors.BLACK};
     font-size:18px; 
     @media (max-width:800px) {     
         font-size:14px; 
     }
 `
-export const DiagnTextProfCenter = styled.text`
+export const DiagnTextProfCenter = styled.a`
     display:flex;       
     color: ${colors.BLACK};
     font-weight: 600;

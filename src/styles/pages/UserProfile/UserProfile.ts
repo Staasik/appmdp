@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import { ReactComponent as UncheckedIcon } from "images/UserProfile/CheckNull.svg";
 import { ReactComponent as CheckedIcon } from "images/UserProfile/CheckYes.svg";
@@ -188,7 +187,7 @@ export const ButtonBlock = styled.div`
         align-items:center;
     }
 `
-export const DiagnTextProfCenter = styled.text`
+export const DiagnTextProfCenter = styled.a`
     display:flex;       
     color: ${colors.BLACK};
     font-size:38px;
@@ -198,7 +197,7 @@ export const DiagnTextProfCenter = styled.text`
     text-align:center;
     }
 `
-export const DiagnTextBlack = styled.text`
+export const DiagnTextBlack = styled.a`
     color:${colors.BLACK};
     font-size:18px; 
     @media (max-width:800px) {     
@@ -218,7 +217,7 @@ export const DiagnosticTextBlack = styled.div`
     }
 `
 
-export const DiagnTextBlackBold = styled.text`
+export const DiagnTextBlackBold = styled.a`
     color:${colors.BLACK};
     font-weight : 600;
     height:60px;    
@@ -229,7 +228,7 @@ export const DiagnTextBlackBold = styled.text`
         font-size:20px;   
     }
 `
-export const DiagnTextBlackBoldName = styled.text`
+export const DiagnTextBlackBoldName = styled.a`
     color:${colors.BLACK};
     font-weight : 600;
     height:40px;    
@@ -246,7 +245,7 @@ export const DiagnTextBlackBoldName = styled.text`
     }
 
 `
-export const DiagnTextProf = styled.text`
+export const DiagnTextProf = styled.a`
     display:flex;       
     color: ${colors.BLACK};
     font-size:26px;

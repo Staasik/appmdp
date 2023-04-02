@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from 'react-router-dom'
 import colors from "utils/colors";
 
 export const ModalWrapper = styled.div`
@@ -138,14 +137,14 @@ export const ModalContainer = styled.div`
     }
 `
 
-export const ModalText = styled.text`
+export const ModalText = styled.a`
     font-size: 24px;
     @media (max-width:800px) {
         font-size: 16px;
         height:15px;
     }   
 `
-export const ModalMiniText = styled.text`
+export const ModalMiniText = styled.a`
     font-size: 12px;  
     width: 50%; 
     text-align:center; 

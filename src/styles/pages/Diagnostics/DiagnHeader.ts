@@ -1,8 +1,5 @@
 import styled from "styled-components";
 import image from "images/footer.png"; 
-import imagefoot from "images/diagn1.png"; 
-import image600 from "images/diagn1_600.png"; 
-import { Link } from 'react-router-dom'
 import colors from "utils/colors";
 
 export const DiagHtml = styled.div`
@@ -117,7 +114,7 @@ export const ProfileName = styled.div`
     color: colors.FORD_GRAY;
     height: 100%;
 `
-export const DiagnText = styled.text`
+export const DiagnText = styled.a`
     color: ${colors.GRAY};
     font-size:18px;
     @media (max-width:600px) {
@@ -127,7 +124,7 @@ export const DiagnText = styled.text`
 interface HeaderTextProps{
     $active: boolean
 }
-export const HeaderText = styled.text<HeaderTextProps>`
+export const HeaderText = styled.a<HeaderTextProps>`
     color: ${({$active} : HeaderTextProps) => $active ? colors.BLACK : colors.GRAY};
     font-size:14px;
     :hover{
@@ -196,7 +193,7 @@ export const DiagnIcon = styled.div`
     }
 `
 
-export const DiagnTextProf = styled.text`
+export const DiagnTextProf = styled.a`
     display:flex;       
     color: ${colors.BLACK};
     font-weight:600;
@@ -205,7 +202,7 @@ export const DiagnTextProf = styled.text`
     font-size:24px;
     }
 `
-export const DiagnTextProfD = styled.text`
+export const DiagnTextProfD = styled.a`
     display:flex;       
     color: ${colors.BLACK};
     font-weight:600;
@@ -332,7 +329,7 @@ export const DiagnBlockImg = styled.div<DiagnBlockImgProps>`
     flex-direction:column;
     justify-content:center;
     width: 100%;    
-    height:${({index}: DiagnBlockImgProps) => index==2 ?  '500px' : '350px'};
+    height:${({index}: DiagnBlockImgProps) => index===2 ?  '500px' : '350px'};
     background-image:url(${({images}: DiagnBlockImgProps) => images[0]});
     background-repeat: no-repeat; 
     background-size: cover;
@@ -346,7 +343,7 @@ export const DiagnBlockImg = styled.div<DiagnBlockImgProps>`
         background-image:url(${({images}: DiagnBlockImgProps) => images[1]});
         justify-content:flex-start;
         padding-top:5%;
-        height:${({index}: DiagnBlockImgProps) => index==2 ?  '700px' : '500px'};
+        height:${({index}: DiagnBlockImgProps) => index===2 ?  '700px' : '500px'};
     }
 `
 export const DiagnLink = styled.a`

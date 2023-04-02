@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import image from "images/HomePage/HomeImg.png";
 import imagedesk from "images/HomePage/Desktop.png";
-import { Link } from "react-router-dom";
 import colors from "utils/colors";
 export const HomeTextBlock = styled.div`
     display: flex;
@@ -203,7 +202,7 @@ export const ButtonWhite = styled(Button)`
         margin-left:0px; 
     }
 `
-export const TextUrl = styled.text`
+export const TextUrl = styled.a`
     display:flex;       
     font-weight:600;
     color: ${colors.ORANGE_LIGHT};
@@ -226,7 +225,7 @@ export const ImgBlockDesktop = styled.div`
         height:55vw;
     }
 `
-export const DiagnTextBlackBold = styled.text`
+export const DiagnTextBlackBold = styled.a`
     color:${colors.BLACK};
     font-weight : 600;
     height:50px;    
@@ -236,7 +235,7 @@ export const DiagnTextBlackBold = styled.text`
     font-size:14px;   
     }
 `
-export const DiagnTextProfCenter = styled.text`
+export const DiagnTextProfCenter = styled.a`
     display:flex;       
     color: ${colors.BLACK};
     font-size:54px;

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import image from "images/Results/diag2result.png"; 
 import imagedesk from "images/Results/diag2result_600.png"; 
-import { Link } from 'react-router-dom';
 import colors from "utils/colors";
 export const HomeTextBlock = styled.div`
     display: flex;
@@ -187,7 +186,7 @@ export const ErrorBlock = styled.div`
         margin-top:20px; 
     }
 `
-export const DiagnTextBlackBold = styled.text`
+export const DiagnTextBlackBold = styled.a`
     color:${colors.BLACK};
     font-weight : 700;
     height:40px;    
@@ -197,7 +196,7 @@ export const DiagnTextBlackBold = styled.text`
         font-size:14px;   
     }
 `
-export const DiagnTextProf = styled.text`
+export const DiagnTextProf = styled.a`
     display:flex;       
     color: ${colors.BLACK};
     font-size:30px;
@@ -206,7 +205,7 @@ export const DiagnTextProf = styled.text`
     font-size:20px;
     }
 `
-export const DiagnTextProfCenter = styled.text`
+export const DiagnTextProfCenter = styled.a`
     display:flex;       
     color: ${colors.BLACK};
     font-size:26px;
@@ -215,7 +214,7 @@ export const DiagnTextProfCenter = styled.text`
     text-align:center;
     }
 `
-export const DiagnTextBlack = styled.text`
+export const DiagnTextBlack = styled.a`
     color:${colors.BLACK};
     font-size:18px; 
     @media (max-width:800px) {     

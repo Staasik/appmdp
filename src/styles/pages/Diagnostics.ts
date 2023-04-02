@@ -88,7 +88,7 @@ export const DiagnMenu = styled.div`
     align-items:center;
     gap:20px;
 `
-export const DiagnText = styled.text`
+export const DiagnText = styled.a`
     color: ${colors.GRAY};
     font-size:14px;
 `
@@ -129,7 +129,7 @@ export const DiagnTextDiagn = styled.div`
         padding-bottom:0px;
     }
 `
-export const DiagnTextProf = styled.text`
+export const DiagnTextProf = styled.a`
     display:flex;       
     color: ${colors.BLACK};
     font-size:20px;
