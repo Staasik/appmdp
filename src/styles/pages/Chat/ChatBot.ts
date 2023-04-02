@@ -45,16 +45,16 @@ export const ModalBody = styled.div`
         background-color:${colors.WHITE};
     }
     ::-webkit-scrollbar-track:hover {
-        background-color:${colors.CAPAROL};
+        background-color:${colors.WHITE};
     }
     ::-webkit-scrollbar-thumb {
-        background-color:${colors.GHOST};
+        background-color:${colors.GRAY};
         border-radius:16px;
         border:5px solid ${colors.WHITE};
     }
     ::-webkit-scrollbar-thumb:hover {
-        background-color:${colors.SPUN_PEARL};
-        border:4px solid ${colors.CAPAROL};
+        background-color:${colors.FORD_GRAY};
+        border:4px solid ${colors.WHITE};
     }
     ::-webkit-scrollbar-button {display:none}
 `
@@ -66,7 +66,7 @@ export const BodySmsBot = styled.div`
     justify-content: center;
     align-items:flex-start;
     padding:10px;
-    background-color: ${colors.ALICE_BLUE};
+    background-color: ${colors.WHITE};
     border-radius: 15px 15px 15px 0px;
     @media (max-width:800px) {
     font-size:14px;

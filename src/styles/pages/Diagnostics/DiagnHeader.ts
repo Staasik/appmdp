@@ -118,7 +118,7 @@ export const ProfileName = styled.div`
     height: 100%;
 `
 export const DiagnText = styled.text`
-    color: ${colors.BEHR_SILVER_BULLET};
+    color: ${colors.GRAY};
     font-size:18px;
     @media (max-width:600px) {
         font-size:14px;
@@ -128,10 +128,10 @@ interface HeaderTextProps{
     $active: boolean
 }
 export const HeaderText = styled.text<HeaderTextProps>`
-    color: ${({$active} : HeaderTextProps) => $active ? colors.BLACK : colors.BEHR_SILVER_BULLET};
+    color: ${({$active} : HeaderTextProps) => $active ? colors.BLACK : colors.GRAY};
     font-size:14px;
     :hover{
-        color: ${colors.GRAY85};
+        color: ${colors.GRAY};
     }
 `
 

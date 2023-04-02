@@ -120,6 +120,6 @@ interface StepTextProps {
 }
 
 export const StepText = styled(TextDescription) <StepTextProps>`
-    color: ${({ $color }: StepTextProps) => $color ? colors.BLACK : colors.VERY_LIGHT_GRAY};
+    color: ${({ $color }: StepTextProps) => $color ? colors.BLACK : colors.GRAY};
 `
 

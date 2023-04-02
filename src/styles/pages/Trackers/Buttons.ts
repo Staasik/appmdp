@@ -34,7 +34,7 @@ interface ButtonProps {
 export const TrackButton = styled.button<ButtonProps>`
     cursor: pointer;
     background:${({ $disabled }: ButtonProps) => !$disabled ? colors.ORANGE_LIGHT : colors.WHITE};
-    color:${({ $disabled }: ButtonProps) => !$disabled ? colors.WHITE : colors.FORD_GRAPHITE};
+    color:${({ $disabled }: ButtonProps) => !$disabled ? colors.WHITE : colors.FORD_GRAY};
     text-decoration: none;
     width:auto;
     border: 1.5px solid ${colors.GRAY};
@@ -49,7 +49,7 @@ export const TrackButton = styled.button<ButtonProps>`
 export const ButtonNext = styled.button<ButtonProps>`
     cursor:${({ $disabled }: ButtonProps) => !$disabled ? 'pointer' : 'default'};
     background:${({ $disabled }: ButtonProps) => !$disabled ? colors.ORANGE_LIGHT : colors.LIGHT_GRAY};
-    color:${({ $disabled }: ButtonProps) => !$disabled ? colors.WHITE : colors.FORD_GRAPHITE};
+    color:${({ $disabled }: ButtonProps) => !$disabled ? colors.WHITE : colors.FORD_GRAY};
     text-decoration: none;
     width:auto;
     border: 1.5px solid ${colors.GRAY};

@@ -22,7 +22,7 @@ export const Container = styled.div`
 export const TextComponents = styled.textarea`
     width: 100%;
     height: 100px;
-    border: 1.5px solid ${colors.VERY_LIGHT_GRAY};
+    border: 1.5px solid ${colors.GRAY};
     border-radius: 42px;
     font-weight: 400;
     font-size: 16px;

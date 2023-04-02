@@ -89,11 +89,11 @@ export const DiagnMenu = styled.div`
     gap:20px;
 `
 export const DiagnText = styled.text`
-    color: ${colors.BEHR_SILVER_BULLET};
+    color: ${colors.GRAY};
     font-size:14px;
 `
 export const DiagnTextBlack = styled(DiagnText)`
-    color: ${colors.BEHR_SILVER_BULLET};
+    color: ${colors.GRAY};
     font-size:14px;
 `
 

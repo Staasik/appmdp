@@ -84,8 +84,8 @@ export const BlockFive = styled.div`
     flex-wrap:wrap;
     width: 80%;
     row-gap:50px;
-    background: ${colors.SMOKE};
-    border: 2px solid ${colors.GRAY_GRAY};
+    background: ${colors.WHITE};
+    border: 2px solid ${colors.WHITE};
     box-sizing: border-box;
     box-shadow: 0px 20px 40px -15px rgba(0, 0, 0, 0.05);
     border-radius: 19px;
