@@ -12,7 +12,7 @@ import { Context } from 'index';
 import { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 
-interface IResultsData{
+interface IResultsData {
     title: string,
     content: string,
     ps: string | null
@@ -36,7 +36,7 @@ const LastResultsDataMock = {
 const UserProfile = () => {
 
     const { store } = useContext(Context)
-    const { user : userData, isAuth } = store
+    const { user: userData, isAuth } = store
 
 
     const [resultsData, setResultsData] = useState<IResultsData>(DefaultResultsDataMock)
@@ -51,10 +51,10 @@ const UserProfile = () => {
                 tempCount = check.checked ? tempCount + 1 : tempCount
             });
         });
-        if(tempCount == 40) {
+        if (tempCount == 40) {
             setResultsData(LastResultsDataMock)
         }
-        else{
+        else {
             setResultsData(DefaultResultsDataMock)
         }
         setCheckResultCount(tempCount)
@@ -62,26 +62,20 @@ const UserProfile = () => {
 
     useEffect(() => {
         if (isAuth) {
-            fetch(process.env.NODE_ENV == 'development' ? "/api/getCheckLists" : `http://${MAIN_IP}:5000/api/getCheckLists`, {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ login: userData.login})
-            })
-                .then((response) => {
-                    return response.json();
-                })
-                .then((data) => {
+            const data = store.getCheckLists()
+            data.then((value) => {
+                if (value !== undefined) {
                     let tempBlocks = blocks
                     tempBlocks.forEach((element, idx) => {
                         element.checklist.forEach((check, index) => {
-                            check.checked = (_.find(data.data, { checklist_id: idx + 1 }).data[index] == 1)
+                            check.checked = value[idx][index] == 1
                         });
                     });
                     setBlocks([...tempBlocks])
-                });
+                }
+                
+            }, (r) => console.log(r)
+            )
         }
     }, [userData])
 
@@ -94,28 +88,13 @@ const UserProfile = () => {
             });
             tempblocks[checklist_id] = tempCheckList
             setBlocks([...tempblocks])
-            let requestbody = tempCheckList.checklist.map((value, index) => value.checked ? 1 : 0)
-            fetch(process.env.NODE_ENV == 'development' ? "/api/setCheckLists" : `http://${MAIN_IP}:5000/api/setCheckLists`, {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ login: userData.login, checklist_id: checklist_id + 1, checklist: requestbody })
-            })
-                .then((response) => {
-                    return response.json();
-                })
-                .then((data) => {
-                    console.log(data)
-                });
+            let requestbody = tempCheckList.checklist.map((value) => value.checked ? 1 : 0)
+            store.setCheckLists(checklist_id + 1, requestbody)
         }
     }
 
     const Logout = () => {
-        Cookies.deleteCookie("login")
-        Cookies.deleteCookie("password")
-        document.location.href = '/main'
+        store.logout()
     }
 
     return (

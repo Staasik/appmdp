@@ -6,7 +6,7 @@ export const diagosticsResultModel = (sequelize, DataTypes) => {
         },
         userID: {
             type: DataTypes.INTEGER,
-            allowNull: true,
+            allowNull: false,
         },
         answers:{
             type: DataTypes.STRING,

@@ -31,7 +31,7 @@ export const Header = ({ onOpenChat }: Props) => {
   const { user : userData } = store
 
   const toProfile = () => {
-    store.user
+    store.isAuth
       ? (document.location.href = "/main/profile")
       : (document.location.href = "/");
   };

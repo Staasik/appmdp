@@ -9,11 +9,12 @@ import reportWebVitals from './reportWebVitals';
 interface IStore {
   store: Store
 }
+
 const store = new Store()
 
-export const Context = createContext<IStore>(({
+export const Context = createContext<IStore>({
   store
-}))
+})
 
 
 store.checkAuth()
@@ -27,7 +28,5 @@ createRoot(document.getElementById('root')!).render(
     </React.StrictMode>
   </BrowserRouter>
 );
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 reportWebVitals();

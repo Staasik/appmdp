@@ -1,6 +1,7 @@
 import { Router } from "express";
 import multer from 'multer';
 import { userController } from "../controllers/user.controller.js";
+import { checkListsController } from "../controllers/checkLists.controller.js";
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -21,3 +22,6 @@ export const router = new Router()
 router.post('/registration', userController.registration)
 router.post('/login', userController.login)
 router.post('/logout', userController.logout)
+router.get('/refresh', userController.refresh)
+router.post('/setCheckLists', checkListsController.setResults)
+router.get('/getCheckLists', checkListsController.getResults)

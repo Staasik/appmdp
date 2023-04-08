@@ -4,6 +4,7 @@ import { userModel } from './user.model.js'
 import { diagosticsResultModel } from './diagosticsResult.model.js'
 import { diagnosticModel } from './diagnostic.model.js'
 import { questionModel } from './question.model.js'
+import { checkListsModel } from './checklists.model.js'
 
 const sequelize = new Sequelize('Poise', 'defaultUser', '12345', {
     host: "DESKTOP-OOOUVM1",
@@ -23,3 +24,4 @@ db.models.tokenModel = tokenModel(sequelize, Sequelize.DataTypes)
 db.models.diagosticsResultModel = diagosticsResultModel(sequelize, Sequelize.DataTypes)
 db.models.diagnosticModel = diagnosticModel(sequelize, Sequelize.DataTypes)
 db.models.questionModel = questionModel(sequelize, Sequelize.DataTypes)
+db.models.checkListsModel = checkListsModel(sequelize, Sequelize.DataTypes)

@@ -20,6 +20,13 @@ class UserService {
         return {...tokens, user: userDTO }
     }
 
+    async createCheckLists(userID){
+        await db.models.checkListsModel.create({userID, checkListNumber: 1})
+        await db.models.checkListsModel.create({userID, checkListNumber: 2})
+        await db.models.checkListsModel.create({userID, checkListNumber: 3})
+        await db.models.checkListsModel.create({userID, checkListNumber: 4})
+    }
+
     async registration(name, login, password) {
         const newUser = await db.models.userModel.findOne({ where: { login: login } })
         if (newUser) {
@@ -27,8 +34,7 @@ class UserService {
         }
         const hashPassword = await bcrypt.hash(password, 3)
         const user = await db.models.userModel.create({ name, login, password: hashPassword })
-        const chat = await db.models.chatModel.create({ admin: user.id, private: true, name: `Избранное` })
-        await db.models.chatUserModel.create({ chatID: chat.id, userID: user.id, messagesFrom: 0, admin: false })
+        await this.createCheckLists(user.id)
         return await this.defaultResponse(user)
     }
 
@@ -63,6 +69,7 @@ class UserService {
 
         return await this.defaultResponse(user)
     }
+
     async uploadFile(accessToken, file) {
         const userData = tokenService.validateAccessToken(accessToken);
         const newfile = await db.models.fileModel.create({ originalName: file.originalname, name: file.filename, type: file.mimetype, size: file.size, path: file.path, loader: userData.id })

@@ -1,6 +1,7 @@
 import { MAIN_IP } from "App";
 import Cookies from 'codebase/Cookies';
-import { useState } from "react";
+import { Context } from "index";
+import { useContext, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { LinkButton, LoginBlock, LoginButton, LoginContainer, LoginImage, LoginInput, LoginRegistr, LoginRegistrText, LoginText, LoginWrapper, PasswordInput, PasswordWrapper, ShowIcon } from 'styles/pages/Login/Login';
 
@@ -12,26 +13,11 @@ const Login = () => {
   const [login, setLogin] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [inputType, setInputType] = useState<string>('password')
+  const { store } = useContext(Context)
+
   const onLogin = () => {
     if (login && password) {
-      fetch(process.env.NODE_ENV == 'development' ? "/api/login" : `http://${MAIN_IP}:5000/api/login`, {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({ login, password })
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          if (!data.error) {
-            Cookies.setCookie('login', login)
-            Cookies.setCookie('password', password)
-            window.location.href = '/main'
-          }
-        });
+      store.login(login,password)
     }
   }
 

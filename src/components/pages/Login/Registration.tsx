@@ -1,12 +1,13 @@
 import { MAIN_IP } from "App";
-import Cookies from 'codebase/Cookies';
 import RegistrationModal from 'components/pages/Login/RegistrationModal';
-import { useState } from "react";
+import { Context } from "index";
+import { useContext, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { LinkButton, LoginBlock, LoginButton, LoginContainer, LoginImage, LoginInput, LoginRegistr, LoginRegistrText, LoginText, LoginWrapper, NameInput, PasswordInput, PasswordWrapper, ShowIcon } from 'styles/pages/Login/Registration';
 
 const Registration = () => {
 
+  const { store } = useContext(Context)
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
   const [name, setName] = useState<string>('')
   const [login, setLogin] = useState<string>('')
@@ -17,29 +18,9 @@ const Registration = () => {
 
   const onReg = () => {
     if (name.replace( /\s/g, "") && login.replace( /\s/g, "") && password.replace( /\s/g, "") && repeatPassword.replace( /\s/g, "") && password === repeatPassword) {
-      fetch(process.env.NODE_ENV == 'development' ? "/api/registration" : `http://${MAIN_IP}:5000/api/registration`, {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({ name, login, password })
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          if (!data.error) {
-            Cookies.setCookie('login', login)
-            Cookies.setCookie('password', password)
-            setModalIsOpen(true)
-          }
-          else {
-            alert(data.message)
-          }
-        });
+      store.registration(name,login,password)
     }
-    else 
+    else
     {
       console.log('Данные нормальные впишите)')
     }

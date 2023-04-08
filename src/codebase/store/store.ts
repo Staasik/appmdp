@@ -1,9 +1,10 @@
 import { MAIN_IP } from "App";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { API_URL } from "codebase/http";
 import { IUser } from "codebase/models/IUser";
 import { AuthResponse } from "codebase/models/response/AuthResponse";
 import AuthService from "codebase/services/AuthService";
+import CheckListsService from "codebase/services/CheckListsService";
 import UserService from "codebase/services/UserService";
 import { IAnswer } from "components/pages/Trackers/Choises";
 import { makeAutoObservable } from 'mobx';
@@ -107,6 +108,7 @@ export default class Store {
             this.setUser(response.data.user)
         } catch (error) {
             console.log(error)
+            this.setAuth(false)
         } finally {
             this.setLoading(false)
         }
@@ -119,6 +121,24 @@ export default class Store {
             this.setUser(response.data.user)
         } catch (error) {
             console.log(error)
+        }
+    }
+
+    async setCheckLists(checkListNumber: number, data: Array<number>) {
+        try {
+            const response = await CheckListsService.setCheckLists(checkListNumber, data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async getCheckLists() {
+        try {
+            const response = await CheckListsService.getCheckLists()
+            return response.data
+        } catch (error) {
+            console.log(error)
+            return undefined
         }
     }
 
