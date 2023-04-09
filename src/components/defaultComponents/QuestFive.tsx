@@ -25,7 +25,6 @@ const QuestFive = ({ text, options, index, onChange }: IProps) => {
         onChange={(value) =>{onChange(value)}}
       />
     </QuestNumFive>
-
   );
 }
 
