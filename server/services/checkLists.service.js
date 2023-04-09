@@ -24,22 +24,16 @@ class CheckListsService {
         }
         return null
     }
+
     async getResults(accessToken) {
         const userData = tokenService.validateAccessToken(accessToken);
         if(userData){
-            console.log('GFJGHJSFDGDFKGHSFDKGH')
-            console.log(userData.id)
             const data = await db.models.checkListsModel.findAll({
                 where: {
                     userID: userData.id
                 }
             })
-            
-            let response =  [] 
-            data.forEach((value) => {
-                response.push(value.dataValues.data.split(',').map(Number))
-            })
-            return response
+            return data
         }
         return null
     }

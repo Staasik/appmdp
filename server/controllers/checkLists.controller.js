@@ -16,7 +16,11 @@ class CheckListsController {
     async getResults(req, res, next) {
         try {
             const results = await checkListsService.getResults(req.headers.authorization)
-            return res.json(results)
+            let response =  [] 
+            results.forEach((value) => {
+                response.push(value.dataValues.data.split(',').map(Number))
+            })
+            return res.json(response)
         } catch (error) {
             next(error)
         }

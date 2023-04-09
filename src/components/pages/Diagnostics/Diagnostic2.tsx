@@ -41,14 +41,7 @@ const Diagnostic2 = () => {
     const onComplete = () => {
         if (!completeDisabled) {
             if (isAuth) {
-                fetch(process.env.NODE_ENV == 'development' ? "/setResults" : `http://${MAIN_IP}:5000/setResults`, {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({ login: userData.login, diagnnumber: 2, answers: answers })
-                })
+                store.setBaseDiagnosticsData(2,answers)
             }
             setResult(AnswersIntoResultDiagn2(answers))
         }

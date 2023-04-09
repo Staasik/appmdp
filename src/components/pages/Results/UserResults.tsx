@@ -19,26 +19,12 @@ export const UserResults = ({ diagnnumber }: Props) => {
 
     useEffect(() => {
         if (isAuth) {
-            fetch(process.env.NODE_ENV == 'development' ? "/getResults" : `http://${MAIN_IP}:5000/getResults`, {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ login: userData.login, diagnnumber: diagnnumber })
+            let response = store.getBaseDiagnosticsData(diagnnumber)
+            response.then((data) => {
+                if (data && data.length != 0) {
+                    setAnswers([...data])
+                }
             })
-                .then((response) => {
-                    return response.json();
-                })
-                .then((data) => {
-                    if (data.data.length != 0) {
-                        let arr = data.data[0].answers.replace(' ', '').trim().split(',').map((str: string) => {
-                            return Number(str);
-                        });
-                        setAnswers([...arr])
-                    }
-                    else window.location.href = `/main/diagnostics/diagnostic${diagnnumber}`
-                });
         }
     }, [userData])
 

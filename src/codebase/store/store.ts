@@ -5,6 +5,7 @@ import { IUser } from "codebase/models/IUser";
 import { AuthResponse } from "codebase/models/response/AuthResponse";
 import AuthService from "codebase/services/AuthService";
 import CheckListsService from "codebase/services/CheckListsService";
+import DiagnosticsService from "codebase/services/DiagnosticsService";
 import UserService from "codebase/services/UserService";
 import { IAnswer } from "components/pages/Trackers/Choises";
 import { makeAutoObservable } from 'mobx';
@@ -126,7 +127,7 @@ export default class Store {
 
     async setCheckLists(checkListNumber: number, data: Array<number>) {
         try {
-            const response = await CheckListsService.setCheckLists(checkListNumber, data)
+            await CheckListsService.setCheckLists(checkListNumber, data)
         } catch (error) {
             console.log(error)
         }
@@ -135,6 +136,26 @@ export default class Store {
     async getCheckLists() {
         try {
             const response = await CheckListsService.getCheckLists()
+            return response.data
+        } catch (error) {
+            console.log(error)
+            return undefined
+        }
+    }
+
+    async setBaseDiagnosticsData(diagnosticID: number, data: number[]){
+        try {
+            const response = await DiagnosticsService.setBaseDiagnosticsData(diagnosticID, data)
+            return response.data
+        } catch (error) {
+            console.log(error)
+            return undefined
+        }
+    }
+
+    async getBaseDiagnosticsData(diagnosticID: number){
+        try {
+            const response = await DiagnosticsService.getBaseDiagnosticsData(diagnosticID)
             return response.data
         } catch (error) {
             console.log(error)
