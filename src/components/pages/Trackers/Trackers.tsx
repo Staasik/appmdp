@@ -1,25 +1,22 @@
+import DiaryView from "components/pages/Trackers/DiaryView";
 import { ReactComponent as Line } from "images/LineModal.svg";
-import { ReactComponent as Calendar } from "images/Trackers/Calendar_Check.svg";
 import { Context } from "index";
 import { observer } from "mobx-react-lite";
+import DiaryViewMock from "mockdata/DiaryViewText";
 import StepMock from "mockdata/MoсkTacker";
-import { useState, useContext, useEffect } from "react";
+import { useContext, useState } from "react";
 import { DiagHtml, DiagnImg } from "styles/pages/Diagnostics/DiagnHeader";
 import { BtnNextContainer, ButtonNext } from "styles/pages/Trackers/Buttons";
 import {
   CalendarContainer,
-  DateContainer,
   ComponentContainer,
   DatePickerCalendar,
   DiaryText,
   EventContainer,
   StepContainer,
   StepText,
-  TextCalendar,
-  TextCalendarContainer,
   TextDescription,
-  TrackDate,
-  WelcomeText,
+  WelcomeText
 } from "styles/pages/Trackers/Trackers";
 import { IAnswer } from "./Choises";
 
@@ -35,15 +32,6 @@ const Trackers = () => {
     }
   };
 
-  function getCurrentDate(newDate: Date) {
-    let date = newDate.getDate();
-    let month = newDate.getMonth() + 1;
-    let year = newDate.getFullYear();
-
-    return `${date < 10 ? `0${date}` : `${date}`}${"."}${
-      month < 10 ? `0${month}` : `${month}`
-    }${"."}${year}`;
-  }
 
   return (
     <DiagHtml>
@@ -53,7 +41,7 @@ const Trackers = () => {
           В личном кабинете появились новые чек-листы для Вас
         </TextDescription>
         <Line style={{ width: "100%" }} />
-        <DiaryText> Дневник Настроения</DiaryText>
+        <DiaryText> Дневник Эмоций</DiaryText>
         <StepContainer>
           {StepMock.map((data, index) => (
             <StepText key={index} $color={index <= currentStep}>
@@ -67,9 +55,9 @@ const Trackers = () => {
             <ButtonNext
               $disabled={
                 trackerAnswers[currentStep].value === null ||
-                (trackerAnswers[currentStep].type == "multiselect" &&
+                (trackerAnswers[currentStep].type === "multiselect" &&
                   (trackerAnswers[currentStep].value as Array<IAnswer>).some(
-                    (obj) => obj.value == null
+                    (obj) => obj.value === null
                   ))
               }
               onClick={() => handleClick()}
@@ -88,15 +76,7 @@ const Trackers = () => {
               value={date}
             />
           </CalendarContainer>
-          <DateContainer>
-            <TrackDate>{getCurrentDate(date)}</TrackDate>
-            <TextCalendarContainer>
-              <Calendar />
-              <TextCalendar>
-                Чтобы просмотреть события, выберете нужный день в календаре
-              </TextCalendar>
-            </TextCalendarContainer>
-          </DateContainer>
+          <DiaryView date={date} data={DiaryViewMock}/>
         </EventContainer>
       </DiagnImg>
     </DiagHtml>

@@ -9,6 +9,9 @@ export const TextAreaContainer = styled.div`
 `
 export const TextAreaWrapper = styled.div`
     width: 75%;
+    @media (max-width:1000px) {
+        width: 100%; 
+    }
 `
 export const Container = styled.div`
     display: flex;

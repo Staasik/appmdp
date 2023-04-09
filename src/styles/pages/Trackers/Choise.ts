@@ -26,12 +26,21 @@ export const SelectBlockEmotion = styled.div`
     padding-bottom: 0px;
     align-items: center;
     justify-content: center;
+    @media (max-width:1000px) {
+        width: 60%;
+    }
 `
 export const SelectBlockNumber = styled(SelectBlockEmotion)`
     width: 10%;
+    @media (max-width:1000px) {
+        width: 20%;
+    }
 `
 export const SelectImg = styled(SelectBlockEmotion)`
     width: 5%;
+    @media (max-width:1000px) {
+        width: 7%;
+    }
 `
 export const ChoisesWrapper = styled.div`
     width: 100%;
@@ -47,6 +56,9 @@ export const ChoisesContainer = styled.div`
 `
 export const UserChoises = styled.div`
     width: 75%;
+    @media (max-width:1000px) {
+        width: 100%; 
+    }
 `
 export const BtnNextContainer = styled.div`
     display: flex;

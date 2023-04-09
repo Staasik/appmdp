@@ -240,6 +240,12 @@ export const DiagnTextProfCenter = styled.a`
     color: ${colors.BLACK};
     font-size:54px;
     font-weight: 800;
+    @media (max-width:1420px) {
+    font-size:45px;
+    }
+    @media (max-width:1050px) {
+    font-size:30px;
+    }
     @media (max-width:860px) {
     font-size:30px;
     text-align:center;

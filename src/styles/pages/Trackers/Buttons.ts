@@ -9,6 +9,9 @@ export const ButtonsContainer = styled.div`
 `
 export const Wrapper = styled.div`
     width: 75%;
+    @media (max-width:1000px) {
+        width: 100%;
+    }
 `
 export const Container = styled.div`
     display: flex;
@@ -18,6 +21,10 @@ export const Container = styled.div`
     justify-content: left;
     width: 100%;
     padding-bottom:40px;
+    @media (max-width:1000px) {
+        gap: 10px;
+        padding-bottom:20px;
+    }
 `
 export const BtnNextContainer = styled.div`
     display: flex;
@@ -26,6 +33,10 @@ export const BtnNextContainer = styled.div`
     align-items: end;
     justify-content: right;
     padding-bottom:40px;
+    @media (max-width:1000px) {
+        width: 100%;
+        padding-bottom:20px;
+    }
 `
 interface ButtonProps {
     $disabled: boolean
@@ -60,4 +71,7 @@ export const ButtonNext = styled.button<ButtonProps>`
     border-radius: 11px;
     font-weight: 400;
     font-size: 16px;
+    @media (max-width:1000px) {
+        width: 100%;
+    }
 `

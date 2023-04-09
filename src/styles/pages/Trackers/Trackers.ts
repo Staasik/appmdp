@@ -40,6 +40,9 @@ export const EventContainer = styled.div`
     width: 100%;
     gap: 20px;
     padding-bottom:40px;
+    @media (max-width:1000px) {
+        flex-wrap: wrap;
+    }
 `
 export const ComponentContainer = styled.div`
     display: flex;
@@ -52,16 +55,28 @@ export const StepContainer = styled(EventContainer)`
     align-items: center;
     justify-content: left;
     padding-bottom:0px;
+    @media (max-width:1000px) {
+        gap: 10px;
+        padding-bottom:20px;
+    }
 `
 export const DateContainer = styled(StepContainer)`
     width: 65%;
     justify-content: center;
     align-items: flex-start;
+    @media (max-width:1000px) {
+        width: 100%;
+        height:auto;
+    }
 `
 export const CalendarContainer = styled(EventContainer)`
     width: 35%;
     justify-content: right;
     height: 400px;
+    @media (max-width:1000px) {
+        width: 100%;
+        padding-bottom: 20px;
+    }
 `
 export const TrackDate = styled.div`
     background-color: ${colors.BLUE_LIGHT};
@@ -86,6 +101,7 @@ export const TextCalendar = styled.div`
     width: 100%;
     font-weight: 600;
     align-self:center;
+
 `
 export const TextCalendarContainer = styled.div`
     flex-wrap:wrap;
@@ -93,6 +109,9 @@ export const TextCalendarContainer = styled.div`
     text-align: center;
     justify-content: center;
     width: 50%;
+    @media (max-width:1000px) {
+        width: 80%;  
+    }
 `
 export const WelcomeText = styled.div`
     padding-bottom:20px;
@@ -103,10 +122,16 @@ export const WelcomeText = styled.div`
     font-size:40px;  
     font-weight: 600;
     align-self:flex-start;
+    @media (max-width:1000px) {
+        font-size:24px;  
+    }
 `
 export const DiaryText = styled(WelcomeText)`
-    padding-top:60px;
     font-size:28px;  
+    @media (max-width:1000px) {
+        padding-top:20px;
+        font-size:20px;  
+    }
 `
 
 export const TextDescription = styled(WelcomeText)`
@@ -121,5 +146,9 @@ interface StepTextProps {
 
 export const StepText = styled(TextDescription) <StepTextProps>`
     color: ${({ $color }: StepTextProps) => $color ? colors.BLACK : colors.GRAY};
+    @media (max-width:1000px) {
+        width: 30%;
+        padding-bottom:20px;
+    }
 `
 

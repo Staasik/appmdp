@@ -60,7 +60,7 @@ export const DiagnImg = styled.div`
     align-self:center;
     align-items:center;
     gap:50px;
-    @media (max-width:1000px) {
+    @media (max-width:1200px) {
         width: 90%;
         gap:20px;
     }
