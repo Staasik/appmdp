@@ -6,9 +6,12 @@ import { AuthResponse } from "codebase/models/response/AuthResponse";
 import AuthService from "codebase/services/AuthService";
 import CheckListsService from "codebase/services/CheckListsService";
 import DiagnosticsService from "codebase/services/DiagnosticsService";
+import TrackerService from "codebase/services/TrackersService";
 import UserService from "codebase/services/UserService";
 import { IAnswer } from "components/pages/Trackers/Choises";
 import { makeAutoObservable } from 'mobx';
+import { ButtonsMock } from "mockdata/MoсkTacker";
+import { targetsText } from "mockdata/MoсkTrackersSelect";
 import blockItemMock from "mockdata/UserProfileBlocks";
 
 enum AnswerTypeEnum {
@@ -22,10 +25,32 @@ type AnswerValue = number | string | Array<IAnswer>
 
 export const defaultOption: IAnswer = { value: null, label: 0 }
 
-interface ITrackerAnswer {
+interface IEmotions {
+    name: string;
+    score: number;
+}
+
+export interface IDiaryData {
+    title: string;
+    description: string;
+    eventsEmotions: IEmotions[];
+    diaryEmotions: IEmotions[];
+    done: string;
+    willDo: string;
+}
+
+export interface ITrackerAnswer {
     type: AnswerType,
     value?: AnswerValue | null
 }
+const defaultTarckerAnswers: Array<ITrackerAnswer> = [
+    { type: 'buttons', value: null},
+    { type: 'text', value: null },
+    { type: 'multiselect', value: [defaultOption] },
+    { type: 'multiselect', value: [defaultOption] },
+    { type: 'text', value: null },
+    { type: 'text', value: null }
+]
 
 export default class Store {
     user = {} as IUser
@@ -33,14 +58,8 @@ export default class Store {
     isLoading = false
     checkListBlocks = blockItemMock
     chatOpened = false
-    trackerAnswers: Array<ITrackerAnswer> = [
-        { type: 'buttons', value: null},
-        { type: 'text', value: null },
-        { type: 'multiselect', value: [defaultOption] },
-        { type: 'multiselect', value: [defaultOption] },
-        { type: 'text', value: null },
-        { type: 'text', value: null }
-    ]
+    trackerAnswers?: IDiaryData
+    tempTrackerAnswers: Array<ITrackerAnswer> = defaultTarckerAnswers
 
     constructor() {
         makeAutoObservable(this)
@@ -63,7 +82,7 @@ export default class Store {
     }
 
     addNewAnswers(index: number, answers: AnswerValue | null){
-        if(this) this.trackerAnswers[index].value = answers
+        if(this) this.tempTrackerAnswers[index].value = answers
     }
 
     async login(login: string, password: string) {
@@ -162,6 +181,52 @@ export default class Store {
             return undefined
         }
     }
+    parseTrackersData(data: ITrackerAnswer[]): IDiaryData{
+        let tempData: IDiaryData = {
+            title: (ButtonsMock[data[0].value as number]),
+            description: (data[1].value as string),
+            eventsEmotions: (data[2].value as Array<IAnswer>).map((
+                val
+            ) =>{
+                return {name: targetsText.find((v) => v.value === val.value)?.label, score: val.value} as IEmotions
+            }),
+            diaryEmotions: (data[3].value as Array<IAnswer>).map((
+                val
+            ) =>{
+                return {name: targetsText.find((v) => v.value === val.value)?.label, score: val.value} as IEmotions
+            }),
+            done: (data[4].value as string),
+            willDo: (data[5].value as string)
+        }
+        return tempData
+    }
+
+    async setTrackersData(date: Date){
+        try {
+            const response = await TrackerService.setTrackersData(date, this.tempTrackerAnswers)
+            console.log(response)
+            if(response.data === null) this.trackerAnswers = undefined
+            else this.trackerAnswers = this.parseTrackersData(response.data)
+            return response.data
+        } catch (error) {
+            console.log(error)
+            return undefined
+        }
+    }
+
+    async getTrackersData(date: Date){
+        try {
+            const response = await TrackerService.getTrackersData(date)
+            console.log(response)
+            if(response.data === null) this.trackerAnswers = undefined
+            else this.trackerAnswers = this.parseTrackersData(response.data)
+            return response.data
+        } catch (error) {
+            console.log(error)
+            return undefined
+        }
+    }
+
 
     async UploadFile(file: File) {
         try {

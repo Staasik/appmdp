@@ -10,7 +10,7 @@ import { router } from './routes/routes.js'
 dotenv.config()
 
 
-const PORT = process.env.PORT || 5000
+const SERVER_PORT = process.env.SERVER_PORT || 5000
 const app = express()
 
 app.use(express.json())
@@ -28,7 +28,7 @@ const server = http.createServer(app)
 
 const start = async() => {
     try {
-        server.listen(PORT, () => console.log(`Server started on PORT = ${PORT}`))
+        server.listen(SERVER_PORT, () => console.log(`Server started on PORT = ${SERVER_PORT}`))
     } catch (e) {
         console.log(e)
     }

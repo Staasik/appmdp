@@ -74,7 +74,7 @@ const UserProfile = () => {
                     setBlocks([...tempBlocks])
                 }
                 
-            }, (r) => console.log(r)
+            }, (error) => console.log(error)
             )
         }
     }, [userData])

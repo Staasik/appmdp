@@ -14,7 +14,7 @@ const Buttons = ({ decription, index }: IPlace) => {
   const { store } =  useContext(Context)
 
   const handleClick = (idx: number) => {
-    store.addNewAnswers(index, idx === store.trackerAnswers[index].value as number ? null : idx)
+    store.addNewAnswers(index, idx === store.tempTrackerAnswers[index].value as number ? null : idx)
   };
 
   return (
@@ -24,7 +24,7 @@ const Buttons = ({ decription, index }: IPlace) => {
         <Container>
           {
             ButtonsMock.map(
-              (data, idx) => <TrackButton key={idx} onClick={() => handleClick(idx)} $disabled={idx !== store.trackerAnswers[index].value as number}>{data}</TrackButton>
+              (data, idx) => <TrackButton key={idx} onClick={() => handleClick(idx)} $disabled={idx !== store.tempTrackerAnswers[index].value as number}>{data}</TrackButton>
             )
           }
         </Container>

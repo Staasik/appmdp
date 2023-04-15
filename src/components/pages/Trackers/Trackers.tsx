@@ -2,9 +2,8 @@ import DiaryView from "components/pages/Trackers/DiaryView";
 import { ReactComponent as Line } from "images/LineModal.svg";
 import { Context } from "index";
 import { observer } from "mobx-react-lite";
-import DiaryViewMock from "mockdata/DiaryViewText";
 import StepMock from "mockdata/MoсkTacker";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { DiagHtml, DiagnImg } from "styles/pages/Diagnostics/DiagnHeader";
 import { BtnNextContainer, ButtonNext } from "styles/pages/Trackers/Buttons";
 import {
@@ -24,14 +23,23 @@ const Trackers = () => {
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [date, setDate] = useState(new Date());
   const { store } = useContext(Context);
-  const { trackerAnswers } = store;
+  const { tempTrackerAnswers, trackerAnswers } = store;
 
   const handleClick = () => {
-    if (trackerAnswers[currentStep].value !== null) {
-      currentStep < 5 && setCurrentStep(currentStep + 1);
+    if (tempTrackerAnswers[currentStep].value !== null) {
+      if(currentStep < 5) {
+        setCurrentStep(currentStep + 1)
+      }
+      else{
+        store.setTrackersData(date)
+      }
     }
   };
 
+  useEffect(() => {
+    store.getTrackersData(date)
+  }, [date])
+  
 
   return (
     <DiagHtml>
@@ -54,9 +62,9 @@ const Trackers = () => {
           <BtnNextContainer>
             <ButtonNext
               $disabled={
-                trackerAnswers[currentStep].value === null ||
-                (trackerAnswers[currentStep].type === "multiselect" &&
-                  (trackerAnswers[currentStep].value as Array<IAnswer>).some(
+                tempTrackerAnswers[currentStep].value === null ||
+                (tempTrackerAnswers[currentStep].type === "multiselect" &&
+                  (tempTrackerAnswers[currentStep].value as Array<IAnswer>).some(
                     (obj) => obj.value === null
                   ))
               }
@@ -76,7 +84,7 @@ const Trackers = () => {
               value={date}
             />
           </CalendarContainer>
-          <DiaryView date={date} data={DiaryViewMock}/>
+          <DiaryView date={date} data={trackerAnswers} />
         </EventContainer>
       </DiagnImg>
     </DiagHtml>

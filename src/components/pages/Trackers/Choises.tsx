@@ -22,19 +22,19 @@ const Choises = ({ decription, index }: IPlace) => {
   const { store } = useContext(Context)
 
   const addEmotion = () => {
-    store.addNewAnswers(index,[...store.trackerAnswers[index].value as Array<IAnswer>, defaultOption]);
+    store.addNewAnswers(index,[...store.tempTrackerAnswers[index].value as Array<IAnswer>, defaultOption]);
   }
 
   const removeEmotion = (idx: number) => {
-    if ((store.trackerAnswers[index].value as Array<IAnswer>).length > 1) {
-      let tempAnswers = store.trackerAnswers[index].value as Array<IAnswer>;
+    if ((store.tempTrackerAnswers[index].value as Array<IAnswer>).length > 1) {
+      let tempAnswers = store.tempTrackerAnswers[index].value as Array<IAnswer>;
       tempAnswers.splice(idx, 1)
       store.addNewAnswers(index, tempAnswers);
     }
   }
 
   const onChange = (idx: number, answer: IAnswer) => {
-    let tempAnswers = (store.trackerAnswers[index].value as Array<IAnswer>);
+    let tempAnswers = (store.tempTrackerAnswers[index].value as Array<IAnswer>);
     tempAnswers[idx] = answer;
     store.addNewAnswers(index, tempAnswers)
   };
@@ -46,7 +46,7 @@ const Choises = ({ decription, index }: IPlace) => {
       <ChoisesWrapper>
         <ChoisesContainer>
           {
-            (store.trackerAnswers[index].value as Array<IAnswer>).map((value, index) => <Choise
+            (store.tempTrackerAnswers[index].value as Array<IAnswer>).map((value, index) => <Choise
               key={index}
               value={value}
               text={targetsText}

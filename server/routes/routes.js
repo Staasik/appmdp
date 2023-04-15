@@ -3,6 +3,7 @@ import multer from 'multer';
 import { userController } from "../controllers/user.controller.js";
 import { checkListsController } from "../controllers/checkLists.controller.js";
 import { diagnosticsController } from "../controllers/diagnostics.controller.js";
+import { trackersController } from "../controllers/trackers.controller.js";
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -28,3 +29,5 @@ router.post('/setCheckLists', checkListsController.setResults)
 router.get('/getCheckLists', checkListsController.getResults)
 router.post('/setBaseDiagnosticsData', diagnosticsController.setResults)
 router.post('/getBaseDiagnosticsData', diagnosticsController.getResults)
+router.post('/setTrackersData', trackersController.setData)
+router.post('/getTrackersData', trackersController.getData)

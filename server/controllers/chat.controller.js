@@ -6,7 +6,6 @@ import { tokenService } from "../services/token.service.js";
 class ChatController {
     async getMessages(req, res, next) {
         try {
-            console.log(req)
             res.set({
                 'Cache-Control': 'no-cache',
                 'Content-Type': 'text/event-stream',
