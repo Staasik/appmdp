@@ -33,10 +33,10 @@ export const Main = ({ onOpenChat }: Props) => {
                     <Route path="profile/diagnresult1" element={<UserResults diagnnumber={1} />} />
                     <Route path="profile/diagnresult2" element={<UserResults diagnnumber={2} />} />
                     <Route path="profile/diagnresult3" element={<UserResults diagnnumber={3} />} />
+                    <Route path="profile/trackers" element={<Trackers />} />
                 </>
             }
-            {/* <Route path="recommend" element={<Recommendations />} /> */}
-            <Route path="recommend" element={<Trackers />} />
+            <Route path="recommend" element={<Recommendations /> } />            
             <Route path="diagnostics/diagnostic1" element={<Diagnostic1 />} />
             <Route path="diagnostics/diagnostic2" element={<Diagnostic2 />} />
             <Route path="diagnostics/diagnostic3" element={<Diagnostic3 />} />

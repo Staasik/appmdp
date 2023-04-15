@@ -43,7 +43,7 @@ export interface ITrackerAnswer {
     type: AnswerType,
     value?: AnswerValue | null
 }
-const defaultTarckerAnswers: Array<ITrackerAnswer> = [
+const defaultTrackerAnswers: Array<ITrackerAnswer> = [
     { type: 'buttons', value: null},
     { type: 'text', value: null },
     { type: 'multiselect', value: [defaultOption] },
@@ -59,7 +59,7 @@ export default class Store {
     checkListBlocks = blockItemMock
     chatOpened = false
     trackerAnswers?: IDiaryData
-    tempTrackerAnswers: Array<ITrackerAnswer> = defaultTarckerAnswers
+    tempTrackerAnswers: Array<ITrackerAnswer> = defaultTrackerAnswers
 
     constructor() {
         makeAutoObservable(this)
@@ -218,8 +218,15 @@ export default class Store {
         try {
             const response = await TrackerService.getTrackersData(date)
             console.log(response)
-            if(response.data === null) this.trackerAnswers = undefined
-            else this.trackerAnswers = this.parseTrackersData(response.data)
+            if(response.data === null) {
+                this.trackerAnswers = undefined;
+                this.tempTrackerAnswers = defaultTrackerAnswers;
+            } 
+            else 
+            {
+                this.trackerAnswers = this.parseTrackersData(response.data);
+                this.tempTrackerAnswers = response.data;
+            }
             return response.data
         } catch (error) {
             console.log(error)

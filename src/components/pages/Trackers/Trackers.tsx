@@ -23,8 +23,8 @@ const Trackers = () => {
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [date, setDate] = useState(new Date());
   const { store } = useContext(Context);
-  const { tempTrackerAnswers, trackerAnswers } = store;
-
+  const { tempTrackerAnswers, trackerAnswers, user: userData } = store;
+  
   const handleClick = () => {
     if (tempTrackerAnswers[currentStep].value !== null) {
       if(currentStep < 5) {
@@ -37,14 +37,14 @@ const Trackers = () => {
   };
 
   useEffect(() => {
-    store.getTrackersData(date)
+    store.getTrackersData(date);
+    setCurrentStep(0);
   }, [date])
   
-
   return (
     <DiagHtml>
       <DiagnImg style={{ gap: "0px" }}>
-        <WelcomeText>Здравствуйте, </WelcomeText>
+        <WelcomeText>Здравствуйте, {userData.name}</WelcomeText>
         <TextDescription>
           В личном кабинете появились новые чек-листы для Вас
         </TextDescription>
@@ -52,7 +52,7 @@ const Trackers = () => {
         <DiaryText> Дневник Эмоций</DiaryText>
         <StepContainer>
           {StepMock.map((data, index) => (
-            <StepText key={index} $color={index <= currentStep}>
+            <StepText key={index} $color={index <= currentStep} onClick={() => { setCurrentStep(index)}}> 
               {data.stepName}
             </StepText>
           ))}

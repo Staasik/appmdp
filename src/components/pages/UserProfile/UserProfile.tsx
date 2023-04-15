@@ -6,11 +6,12 @@ import blockItemMock, { IblockItemMock } from 'mockdata/UserProfileBlocks';
 import diagnItemMock, { IdiagnItemMock } from 'mockdata/UserProfileDiagnItem';
 import { useEffect, useState } from 'react';
 import { DiagHtml } from 'styles/pages/Diagnostics/DiagnHeader';
-import { Button, ButtonBlock, ButtonWhite, DiagnCheckBlocks, ChecksResultsWrapper, DiagnosticTextBlack, ChecksResultsButton, ChecksResultsContainer, ChecksResultsContent, ChecksResultsPS, ChecksResultsImageContainer, ChecksResultsTitle, DiagnResult, DiagnResultItem, DiagnChecksResults, DiagnTextBlack, DiagnTextBlackBoldName, DiagnTextProfCenter, HomeTextBlock, Img, TextBlock } from 'styles/pages/UserProfile/UserProfile';
+import { Button, ButtonBlock, ExitButton, DiaryButton, DiagnCheckBlocks, ChecksResultsWrapper, DiagnosticTextBlack, ChecksResultsButton, ChecksResultsContainer, ChecksResultsContent, ChecksResultsPS, ChecksResultsImageContainer, ChecksResultsTitle, DiagnResult, DiagnResultItem, DiagnChecksResults, DiagnTextBlack, DiagnTextBlackBoldName, DiagnTextProfCenter, HomeTextBlock, Img, TextBlock } from 'styles/pages/UserProfile/UserProfile';
 import ChecksResultsImage from 'components/pages/UserProfile/ChecksResultsImage'
 import { Context } from 'index';
 import { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
+import { Link } from 'react-router-dom';
 
 interface IResultsData {
     title: string,
@@ -105,7 +106,8 @@ const UserProfile = () => {
                     <DiagnTextBlack>В личном кабинете появились новые чек-листы для вас</DiagnTextBlack>
                 </TextBlock>
                 <ButtonBlock>
-                    <ButtonWhite onClick={() => Logout()}>Выйти</ButtonWhite>
+                    <Link to="trackers" style={{ textDecoration: "none" }}><DiaryButton>Дневник эмоций</DiaryButton></Link>
+                    <ExitButton onClick={() => Logout()}>Выйти</ExitButton>
                 </ButtonBlock>
             </HomeTextBlock>
             <DiagnTextBlackBoldName>Результаты  диагностик:</DiagnTextBlackBoldName>

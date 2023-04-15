@@ -23,8 +23,9 @@ const DiaryView = ({ date, data }: Props) => {
   return (
     <DateContainer>
       <TrackDate>{parseDate(date)} {(data && ` - ${data.title}`)}</TrackDate>
+      {data ? <>
       <Container>
-        {data ? <>
+        
           <Description>
             <BoldFont>Описание: </BoldFont>{data.description}</Description>
           <Emotions>
@@ -53,15 +54,16 @@ const DiaryView = ({ date, data }: Props) => {
             <BoldFont>Что я выполню завтра, чтобы улучшить своё настроение и состояние:</BoldFont>
             <Text>{data.willDo}</Text>
           </WillDo>
+        </Container>
         </> :
-          <TextCalendarContainer>
+        
+      <TextCalendarContainer>
             <Calendar />
             <TextCalendar>
               Чтобы просмотреть события, выберете нужный день в календаре
             </TextCalendar>
-          </TextCalendarContainer>
+        </TextCalendarContainer>
         }
-      </Container>
     </DateContainer>
   );
 };

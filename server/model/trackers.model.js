@@ -9,7 +9,7 @@ export const trackersModel = (sequelize, DataTypes) => {
             allowNull: true,
         },
         data:{
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
         }
     }, {

@@ -8,6 +8,7 @@ class TrackersService {
         const userData = tokenService.validateAccessToken(accessToken);
         if(userData){
             const response = await db.models.trackersModel.create({date, userID: userData.id, data: JSON.stringify(reqData)})
+            console.log(response)
             return response
         }
         return null

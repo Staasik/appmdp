@@ -110,6 +110,7 @@ export const TextCalendarContainer = styled.div`
     justify-content: center;
     width: 50%;
     @media (max-width:1000px) {
+        padding-top: 40px;
         width: 80%;  
     }
 `

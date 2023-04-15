@@ -22,7 +22,7 @@ export const TextBlock = styled.div`
     display: flex;
     flex-direction: column;
     gap:20px;
-    width:70%;
+    width:60%;
     justify-content:center;
     align-items:flex-start;
     @media (max-width:1000px) { 
@@ -177,13 +177,14 @@ export const ChecksResultsImageContainer = styled.div`
 `
 export const ButtonBlock = styled.div`
     display: flex;
-    flex-direction: column;
-    width:20%;
+    gap: 20px;
+    width:30%;
     justify-content:center;
     align-items:center;
     @media (max-width:800px) {             
         width:100%;
-        gap:20px;    
+        flex-direction: column;
+        gap:0px;    
         align-items:center;
     }
 `
@@ -253,7 +254,7 @@ export const DiagnTextProf = styled.a`
     font-size:20px;
     }
 `
-export const ButtonWhite = styled.button`
+export const ExitButton = styled.button`
     cursor: pointer;
     display:flex;
     width: 200px;
@@ -272,6 +273,12 @@ export const ButtonWhite = styled.button`
         margin-top:20px; 
     }
 `
+export const DiaryButton = styled(ExitButton)`
+    background: ${colors.BLUE_LIGHT};
+    color:${colors.WHITE};
+    border: 1px solid ${colors.BLUE_LIGHT};
+`
+
 export const Button = styled.a`
     display:flex;
     width: 200px;
