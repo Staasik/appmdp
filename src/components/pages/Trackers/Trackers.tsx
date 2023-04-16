@@ -52,7 +52,11 @@ const Trackers = () => {
         <DiaryText> Дневник Эмоций</DiaryText>
         <StepContainer>
           {StepMock.map((data, index) => (
-            <StepText key={index} $color={index <= currentStep} onClick={() => { setCurrentStep(index)}}> 
+            <StepText key={index} $color={!(tempTrackerAnswers[currentStep].value === null ||
+                  (tempTrackerAnswers[currentStep].type === "multiselect" &&
+                    (tempTrackerAnswers[currentStep].value as Array<IAnswer>).some(
+                      (obj) => obj.value === null
+                    )))&& index === currentStep ? 2 : trackerAnswers ? 1  :  3 } onClick={() => { setCurrentStep(index)}}> 
               {data.stepName}
             </StepText>
           ))}

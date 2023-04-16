@@ -142,11 +142,11 @@ export const TextDescription = styled(WelcomeText)`
 `
 
 interface StepTextProps {
-    $color: boolean
+    $color: number
 }
 
 export const StepText = styled(TextDescription) <StepTextProps>`
-    color: ${({ $color }: StepTextProps) => $color ? colors.BLACK : colors.GRAY};
+    color: ${({ $color }: StepTextProps) => $color==1 ? colors.BLACK: $color==2 ? colors.BLUE_LIGHT : colors.GRAY};
     @media (max-width:1000px) {
         width: 30%;
         padding-bottom:20px;
