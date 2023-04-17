@@ -8,7 +8,7 @@ class TrackersController {
             const { date, data } = req.body
             const response = await trackersService.setData(req.headers.authorization, date, data)
             if(response === null) return res.json(null)
-            return res.json(JSON.parse(response.data))
+            return res.json(response)
         } catch (error) {
             next(error)
         }

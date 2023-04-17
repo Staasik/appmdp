@@ -15,12 +15,12 @@ interface IProps {
 }
 
 const Choise = ({ options, onChange, text, addEmotion, removeEmotion, value }: IProps) => {
-
+  
   return (
     <OneChoiseContainer>
       <SelectBlockEmotion>
         <Emotion>
-          <Select options={text} value={value.value ? text[value.value] : null} placeholder="Выберите эмоцию" onChange={(opt) => { opt != null && onChange({ value: opt.value, label: value.label }) }} />
+          <Select options={text} value={value.value !== null ? text[value.value] : null} placeholder="Выберите эмоцию" onChange={(opt) => { opt != null && onChange({ value: opt.value, label: value.label }) }} />
         </Emotion>
       </SelectBlockEmotion>
       <SelectBlockNumber>

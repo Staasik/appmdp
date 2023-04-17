@@ -8,7 +8,7 @@ import { checkListsModel } from './checklists.model.js'
 import { trackersModel } from './trackers.model.js'
 
 const sequelize = new Sequelize('Poise', 'defaultUser', '12345', {
-    host: "LAPTOP-8J2AIRNH",
+    host: "DESKTOP-OOOUVM1",
     dialect: 'mssql',
     dialectOptions: {
         options: {

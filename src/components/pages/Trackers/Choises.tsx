@@ -46,14 +46,14 @@ const Choises = ({ decription, index }: IPlace) => {
       <ChoisesWrapper>
         <ChoisesContainer>
           {
-            (store.tempTrackerAnswers[index].value as Array<IAnswer>).map((value, index) => <Choise
-              key={index}
+            (store.tempTrackerAnswers[index].value as Array<IAnswer>).map((value, idx) => <Choise
+              key={idx}
               value={value}
               text={targetsText}
               options={targets}
-              onChange={(answer) => onChange(index, answer)}
+              onChange={(answer) => onChange(idx, answer)}
               addEmotion={() => addEmotion()}
-              removeEmotion={() => removeEmotion(index)}
+              removeEmotion={() => removeEmotion(idx)}
             />
             )
           }
