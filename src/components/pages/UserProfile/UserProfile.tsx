@@ -106,7 +106,7 @@ const UserProfile = () => {
                     <DiagnTextBlack>В личном кабинете появились новые чек-листы для вас</DiagnTextBlack>
                 </TextBlock>
                 <ButtonBlock>
-                    <Link to="trackers" style={{ textDecoration: "none" }}><DiaryButton>Дневник эмоций</DiaryButton></Link>
+                    <DiaryButton to="trackers">Дневник эмоций</DiaryButton>
                     <ExitButton onClick={() => Logout()}>Выйти</ExitButton>
                 </ButtonBlock>
             </HomeTextBlock>

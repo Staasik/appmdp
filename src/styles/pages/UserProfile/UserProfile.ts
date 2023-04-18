@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { ReactComponent as UncheckedIcon } from "images/UserProfile/CheckNull.svg";
 import { ReactComponent as CheckedIcon } from "images/UserProfile/CheckYes.svg";
 import colors from 'utils/colors';
+import { Link } from "react-router-dom";
 
 export const HomeTextBlock = styled.div`
     display: flex;
@@ -254,29 +255,35 @@ export const DiagnTextProf = styled.a`
     font-size:20px;
     }
 `
-export const ExitButton = styled.button`
-    cursor: pointer;
-    display:flex;
-    width: 200px;
-    height: 50px;
-    background: ${colors.WHITE};
-    border: 1px solid ${colors.ORANGE_LIGHT};
-    border-radius: 8px; 
-    color:${colors.ORANGE_LIGHT};
-    justify-content:center;
-    align-items:center;
-    @media (max-width:600px) {
-        width: 90%;  
-        margin-top:20px; 
-    }
-    @media (max-width:1000px) {
-        margin-top:20px; 
-    }
+const ButtonStyle = `
+cursor: pointer;
+display:flex;
+width: 200px;
+height: 50px;
+background: ${colors.WHITE};
+border: 1px solid ${colors.ORANGE_LIGHT};
+border-radius: 8px; 
+color:${colors.ORANGE_LIGHT};
+justify-content:center;
+align-items:center;
+@media (max-width:600px) {
+    width: 90%;  
+    margin-top:20px; 
+}
+@media (max-width:1000px) {
+    margin-top:20px; 
+}
 `
-export const DiaryButton = styled(ExitButton)`
+
+export const ExitButton = styled.button`
+    ${ButtonStyle}
+`
+export const DiaryButton = styled(Link)`
+    ${ButtonStyle}
     background: ${colors.BLUE_LIGHT};
     color:${colors.WHITE};
     border: 1px solid ${colors.BLUE_LIGHT};
+    text-decoration: "none";
 `
 
 export const Button = styled.a`
