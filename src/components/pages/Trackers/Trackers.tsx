@@ -3,7 +3,7 @@ import { ReactComponent as Line } from "images/LineModal.svg";
 import { Context } from "index";
 import { observer } from "mobx-react-lite";
 import StepMock from "mockdata/MoсkTacker";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DiagHtml, DiagnImg } from "styles/pages/Diagnostics/DiagnHeader";
 import { BtnNextContainer, ButtonNext } from "styles/pages/Trackers/Buttons";
 import {
@@ -24,13 +24,13 @@ const Trackers = () => {
   const [date, setDate] = useState(new Date());
   const { store } = useContext(Context);
   const { tempTrackerAnswers, trackerAnswers, user: userData } = store;
-  
+
   const handleClick = () => {
     if (tempTrackerAnswers[currentStep].value !== null) {
-      if(currentStep < 5) {
+      if (currentStep < 5) {
         setCurrentStep(currentStep + 1)
       }
-      else{
+      else {
         store.setTrackersData(date)
       }
     }
@@ -40,7 +40,7 @@ const Trackers = () => {
     store.getTrackersData(date);
     setCurrentStep(0);
   }, [date])
-  
+
   return (
     <DiagHtml>
       <DiagnImg style={{ gap: "0px" }}>
@@ -52,11 +52,12 @@ const Trackers = () => {
         <DiaryText> Дневник Эмоций</DiaryText>
         <StepContainer>
           {StepMock.map((data, index) => (
-            <StepText key={index} $color={!(tempTrackerAnswers[currentStep].value === null ||
-                  (tempTrackerAnswers[currentStep].type === "multiselect" &&
-                    (tempTrackerAnswers[currentStep].value as Array<IAnswer>).some(
-                      (obj) => obj.value === null
-                    )))&& index === currentStep ? 2 : trackerAnswers ? 1  :  3 } onClick={() => { setCurrentStep(index)}}> 
+            <StepText key={index} $color={index === currentStep ? 2 :
+              (tempTrackerAnswers[index].value === null ||
+              (tempTrackerAnswers[index].type === "multiselect" &&
+                (tempTrackerAnswers[index].value as Array<IAnswer>).some(
+                  (obj) => obj.value === null
+                ))) ? 3 : 1} onClick={() => { setCurrentStep(index) }}>
               {data.stepName}
             </StepText>
           ))}

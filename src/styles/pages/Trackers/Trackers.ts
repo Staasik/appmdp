@@ -146,7 +146,7 @@ interface StepTextProps {
 }
 
 export const StepText = styled(TextDescription) <StepTextProps>`
-    color: ${({ $color }: StepTextProps) => $color==1 ? colors.BLACK: $color==2 ? colors.BLUE_LIGHT : colors.GRAY};
+    color: ${({ $color }: StepTextProps) => $color==2 ? colors.BLUE_LIGHT : $color==1 ? colors.BLACK : colors.GRAY};
     @media (max-width:1000px) {
         width: 30%;
         padding-bottom:20px;

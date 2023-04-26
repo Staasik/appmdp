@@ -283,7 +283,7 @@ export const DiaryButton = styled(Link)`
     background: ${colors.BLUE_LIGHT};
     color:${colors.WHITE};
     border: 1px solid ${colors.BLUE_LIGHT};
-    text-decoration: "none";
+    text-decoration: none;
 `
 
 export const Button = styled.a`
