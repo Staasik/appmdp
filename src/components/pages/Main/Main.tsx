@@ -2,6 +2,8 @@ import Diagnostic1 from 'components/pages/Diagnostics/Diagnostic1';
 import Diagnostic2 from 'components/pages/Diagnostics/Diagnostic2';
 import Diagnostic3 from 'components/pages/Diagnostics/Diagnostic3';
 import Diagnostics from 'components/pages/Diagnostics/Diagnostics';
+import ActiveDiagnostics from 'components/pages/Admin/ActiveDiagnostics';
+import NewDiagnostics from 'components/pages/Admin/NewDiagnostics';
 import HomePage from 'components/pages/MenuPages/HomePage';
 import Recommendations from 'components/pages/MenuPages/Recommendations';
 import Trackers from 'components/pages/Trackers/Trackers';
@@ -37,7 +39,9 @@ export const Main = ({ onOpenChat }: Props) => {
                 </>
             }
             <Route path="recommend" element={<Recommendations /> } />            
-            <Route path="diagnostics/diagnostic1" element={<Diagnostic1 />} />
+            <Route path="diagnostics/diagnostic1" element={<Diagnostic1 />} />            
+            <Route path="adminactivediagnostics" element={<ActiveDiagnostics />} />        
+            <Route path="adminnewagnostics" element={<NewDiagnostics />} />
             <Route path="diagnostics/diagnostic2" element={<Diagnostic2 />} />
             <Route path="diagnostics/diagnostic3" element={<Diagnostic3 />} />
         </Routes>

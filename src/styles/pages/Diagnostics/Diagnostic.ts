@@ -111,5 +111,21 @@ export const TextFive = styled.div`
     padding-left:5%;
     }
 `
-
+export const ButtonTest = styled.a`
+    text-decoration: none ;
+    display:flex;
+    width: 200px;
+    font-size: 16px;
+    height: 50px;
+    background: ${colors.ORANGE_LIGHT};
+    border-radius: 8px; 
+    border:0;
+    color:${colors.WHITE};
+    justify-content:center;
+    align-items:center;
+    @media (max-width:1000px) {
+        width: 100%;  
+        margin-top:20px; 
+    }
+`
 export default DiagnBlock
