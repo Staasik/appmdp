@@ -182,6 +182,9 @@ export const ButtonBlock = styled.div`
     width:30%;
     justify-content:center;
     align-items:center;
+    @media (max-width:1000px) { 
+        width: 100%;
+    }
     @media (max-width:800px) {             
         width:100%;
         flex-direction: column;
@@ -271,7 +274,7 @@ align-items:center;
     margin-top:20px; 
 }
 @media (max-width:1000px) {
-    margin-top:20px; 
+    margin-top:20px;  
 }
 `
 
