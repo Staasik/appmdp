@@ -60,6 +60,7 @@ export default class Store {
     chatOpened = false
     trackerAnswers?: IDiaryData
     tempTrackerAnswers: Array<ITrackerAnswer> = defaultTrackerAnswers
+    authError = false
 
     constructor() {
         makeAutoObservable(this)
@@ -93,6 +94,7 @@ export default class Store {
             this.setUser(response.data.user)
         } catch (error) {
             console.log(error)
+            this.authError = true;
         }
     }
 

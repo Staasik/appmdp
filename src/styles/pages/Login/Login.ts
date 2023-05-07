@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import image from "images/loginImg.png"; 
-import image600 from "images/loginImg_600.png"; 
+import image from "images/loginImg.png";
+import image600 from "images/loginImg_600.png";
 import { Link } from 'react-router-dom'
 import { ReactComponent as Show } from 'images/Show.svg'
 import colors from "utils/colors";
@@ -94,19 +94,23 @@ export const LoginInput = styled.input`
         margin-top:20px;
     }
 `
-export const PasswordInput = styled.input`
+interface PasswordInputProps {
+    $error: boolean
+}
+export const PasswordInput = styled.input<PasswordInputProps>`
     user-select: none;
     width: 100%;
     height: 100%;
     font-size: 14px;
     padding-left:4%;
     background-color: rgba(150, 150, 150, 0.1);
-    border:0;
+    border:${({ $error }: PasswordInputProps) => !$error ? 0 : '1px solid red'};
     border-radius: 8px;
     @media (max-width:800px) {
         padding-left:3%;
     }
 `
+
 export const PasswordWrapper = styled.div`
     position: relative; 
     height: 45px;

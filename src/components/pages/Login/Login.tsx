@@ -1,6 +1,7 @@
 import { MAIN_IP } from "App";
 import Cookies from 'codebase/Cookies';
 import { Context } from "index";
+import { observer } from "mobx-react-lite";
 import { useContext, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { LinkButton, LoginBlock, LoginButton, LoginContainer, LoginImage, LoginInput, LoginRegistr, LoginRegistrText, LoginText, LoginWrapper, PasswordInput, PasswordWrapper, ShowIcon } from 'styles/pages/Login/Login';
@@ -33,7 +34,7 @@ const Login = () => {
           <LoginRegistr>Войдите, чтобы продолжить</LoginRegistr>
           <LoginInput placeholder='Логин' value={login} onChange={(e) => setLogin(e.target.value.replace( /\s/g, ""))} />
           <PasswordWrapper>
-            <PasswordInput placeholder='Пароль' value={password} type={inputType} onChange={(e) => setPassword(e.target.value.replace( /\s/g, ""))} />
+            <PasswordInput $error={store.authError} placeholder='Пароль' value={password} type={inputType} onChange={(e) => setPassword(e.target.value.replace( /\s/g, ""))} />
             <ShowIcon onClick={() => setInputType(a => a.includes('password') ? 'text' : 'password')}/>
           </PasswordWrapper>
           <LoginButton onClick={() => onLogin()}>Войти</LoginButton>
@@ -44,4 +45,4 @@ const Login = () => {
   );
 }
 
-export default Login
+export default observer(Login)
