@@ -137,6 +137,16 @@ export const PasswordInput = styled.input<PasswordInputProps>`
         padding-left:3%;
     }
 `
+export const ErrorSms = styled.div`
+    width: 50%;
+    margin-left:10%;
+    font-size: 14px;  
+    color: red;
+    @media (max-width:800px) {
+        font-size: 12px; 
+        width: 78%;
+    }
+`
 export const PasswordWrapper = styled.div`
     position: relative; 
     height: 45px;

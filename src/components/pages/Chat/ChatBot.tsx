@@ -39,7 +39,7 @@ interface Props{
   onClose(): any
 }
 
-const RegistrationModal = ({onClose} : Props) => {
+const ChatBot = ({onClose} : Props) => {
   const [questions, setQuestions] = useState<IQuestions>({ buttons: ButtonsStart, questionNumber: 1 });
   const [allMessages, setAllMessages] = useState<IMessages[]>([FirstMessage]);
 
@@ -109,4 +109,4 @@ const RegistrationModal = ({onClose} : Props) => {
     );
   };
 
-  export default RegistrationModal
+  export default ChatBot

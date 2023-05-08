@@ -53,6 +53,17 @@ export const LoginRegistr = styled.div`
         font-size: 14px; 
     }
 `
+export const ErrorSms = styled.div`
+    width: 50%;
+    margin-left:10%;
+    font-size: 14px;  
+    color: red;
+    @media (max-width:800px) {
+        font-size: 12px; 
+        width: 78%;
+    }
+`
+
 export const LoginContainer = styled.div`
     display:flex;
     flex:1;
@@ -74,7 +85,11 @@ export const LoginImage = styled.div`
     background-position: center; 
     border-radius: 0px 19px 19px 0px;
 `
-export const LoginInput = styled.input`
+interface LoginInputProps {
+    $error: boolean
+}
+
+export const LoginInput = styled.input<LoginInputProps>`
     width: 50%;
     height: 45px;
     font-size: 14px;
@@ -82,7 +97,7 @@ export const LoginInput = styled.input`
     margin-top:40px;
     padding-left:2%;
     background-color: rgba(150, 150, 150, 0.1);
-    border:0;
+    border:${({ $error }: LoginInputProps) => !$error ? 0 : '1px solid red'};
     border-radius: 8px;
     @media (max-width:1200px) {
         width: 60%;
