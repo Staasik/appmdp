@@ -148,7 +148,7 @@ export const DiagnTextBlackBold = styled.a`
     font-weight : 600;
     height:40px;    
     font-size:30px;
-    @media (max-width:550px) {  
+    @media (max-width:800px) {  
         height:30px; 
         font-size:18px;   
     }
@@ -177,8 +177,8 @@ export const DiagnTextProfCenter = styled.a`
     font-weight:600;
     margin-top:20px;
     margin-bottom:20px;
-    @media (max-width:550px) {
-        font-size:20px;
+    @media (max-width:800px) {
+        font-size:30px;
         text-align:center;
         margin:0;
     }

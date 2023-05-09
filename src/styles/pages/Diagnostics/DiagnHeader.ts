@@ -75,6 +75,7 @@ export const DiagnTextDiagn = styled.div`
     align-self:flex-start;
     @media (max-width:700px) {
         padding-bottom:0px;
+        font-size:30px;  
     }
 `
 export const FooterItemsKGU = styled.div` 
@@ -111,7 +112,7 @@ export const ProfileName = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    color: colors.FORD_GRAY;
+    color: ${colors.FORD_GRAY};
     height: 100%;
 `
 export const DiagnText = styled.a`
