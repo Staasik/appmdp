@@ -104,7 +104,7 @@ export const TextFive = styled.div`
     color: ${colors.BLACK};
     margin-top:30px;
     width: 100%;
-    padding-left:3%;
+    padding-left:20px;
     font-size:26px;
     @media (max-width:600px) {
     font-size:20px;
