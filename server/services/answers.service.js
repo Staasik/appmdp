@@ -12,7 +12,7 @@ class AnswersService {
                     questionID
                 }
             })
-            const response = answers.map((v) => new AnswerDTO(v))
+            const response = answers ? answers.map((v) => new AnswerDTO(v)) : []
             return response
         }
         return null
@@ -21,7 +21,7 @@ class AnswersService {
     async createAnswer(accessToken, questionID, data) {
         const userData = tokenService.validateAccessToken(accessToken);
         if(userData && userData.role === 'admin'){
-            const answer = await db.models.answersModel.create({type: 'text', text:data.text, value: data.value, questionID})
+            const answer = await db.models.answersModel.create({text:data.text, value: data.value, questionID})
             const response = new AnswerDTO(answer)
             return response
         }

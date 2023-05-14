@@ -101,7 +101,7 @@ export const DiagnTextItem = styled.a`
         width:70%;
     }
 `
-export const ButtonPublish = styled.a`
+export const ButtonPublish = styled.button`
     margin-left:auto;
     text-decoration: none ;
     display:flex;
@@ -121,6 +121,7 @@ export const ButtonPublish = styled.a`
 `
 export const ButtonAdd = styled(ButtonPublish)`
     margin-left:0px;
+    cursor: pointer;
     background: ${colors.BLUE_LIGHT};
     @media (max-width:800px) {
         width: 90%;  

@@ -1,9 +1,5 @@
 export const answersModel = (sequelize, DataTypes) => {
     const Answers = sequelize.define('answers', {
-        type: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         text: {
             type: DataTypes.STRING,
             allowNull: false,

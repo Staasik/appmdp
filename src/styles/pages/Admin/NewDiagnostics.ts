@@ -94,7 +94,7 @@ export const QuestionText = styled(DiagnText)`
         font-size:20px;  
     }
 `
-export const QuestionBlock = styled.div`
+export const DescriptionBlock = styled.div`
     display: flex;
     width:100%; 
     justify-content:center;
@@ -105,6 +105,10 @@ export const QuestionBlock = styled.div`
         width:95%; 
     }
 `
+export const QuestionBlock = styled(DescriptionBlock)`
+    padding-bottom: 40px;
+`
+
 
 export const TextComponents = styled.textarea`
     margin-left:20px;

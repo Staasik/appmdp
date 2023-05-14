@@ -1,7 +1,12 @@
 import api from "codebase/http/index"
 import { AxiosResponse } from "axios"
 import { AuthResponse } from 'codebase/models/response/AuthResponse'
+import { IDiagnData, IDiagnItem, IQuestion } from "codebase/store/adminStore"
 
+interface IQuestionData{
+    type: 'oneAnswer' | 'someAnswers' | 'numbersList',
+    text: string
+}
 
 export default class DiagnosticsService {
     static async setBaseDiagnosticsData(diagnosticID: number, data: Array<number>): Promise<AxiosResponse<number[]>>{
@@ -10,5 +15,25 @@ export default class DiagnosticsService {
 
     static async getBaseDiagnosticsData(diagnosticID: number): Promise<AxiosResponse<number[]>>{
         return api.post<number[]>('/getBaseDiagnosticsData', { diagnosticID })
+    }
+
+    static async getDiagnosticsForAdmin(): Promise<AxiosResponse<IDiagnItem[]>>{
+        return api.get<IDiagnItem[]>('/getDiagnosticsForAdmin')
+    }
+
+    static async createDiagnostic(): Promise<AxiosResponse<IDiagnItem>>{
+        return api.get<IDiagnItem>('/createDiagnostic')
+    }
+
+    static async deleteDiagnostic(diagnosticID: number): Promise<AxiosResponse<IDiagnItem>>{
+        return api.post<IDiagnItem>('/deleteDiagnostic', { diagnosticID })
+    }
+
+    static async getDiagnosticData(diagnosticID: number): Promise<AxiosResponse<IDiagnData | null>>{
+        return api.post<IDiagnData | null>('/getDiagnosticData', { diagnosticID })
+    }
+
+    static async createQuestion(diagnosticID: number, question: IQuestionData): Promise<AxiosResponse<IQuestion>>{
+        return api.post<IQuestion>('/createQuestion', { diagnosticID, question })
     }
 }

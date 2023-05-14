@@ -14,8 +14,8 @@ class QuestionsController {
 
     async createQuestion(req, res, next) {
         try {
-            const { questionID, data } = req.body
-            const response = await questionsService.createQuestion(req.headers.authorization, questionID, data)
+            const { diagnosticID, data } = req.body
+            const response = await questionsService.createQuestion(req.headers.authorization, diagnosticID, data)
             return res.json(response)
         } catch (error) {
             next(error)

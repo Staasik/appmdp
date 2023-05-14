@@ -26,8 +26,7 @@ class DiagnosticsController {
 
     async getDiagnosticsForAdmin(req, res, next) {
         try {
-            const { diagnosticID } = req.body
-            const response = await diagnosticsService.getDiagnosticsForAdmin(req.headers.authorization, diagnosticID)
+            const response = await diagnosticsService.getDiagnosticsForAdmin(req.headers.authorization)
             return res.json(response)
         } catch (error) {
             next(error)
@@ -36,6 +35,7 @@ class DiagnosticsController {
 
     async createNewDiagnostic(req, res, next) {
         try {
+            console.log('ASDSADSADSA')
             const response = await diagnosticsService.createNewDiagnostic(req.headers.authorization)
             return res.json(response)
         } catch (error) {
@@ -45,7 +45,8 @@ class DiagnosticsController {
 
     async deleteDiagnostic(req, res, next) {
         try {
-            const response = await diagnosticsService.deleteDiagnostic(req.headers.authorization)
+            const { diagnosticID } = req.body
+            const response = await diagnosticsService.deleteDiagnostic(req.headers.authorization, diagnosticID)
             return res.json(response)
         } catch (error) {
             next(error)
@@ -56,6 +57,16 @@ class DiagnosticsController {
         try {
             const { diagnosticData } = req.body
             const response = await diagnosticsService.updateDiagnostic(req.headers.authorization, diagnosticData)
+            return res.json(response)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getDiagnosticData(req, res, next) {
+        try {
+            const { diagnosticID } = req.body
+            const response = await diagnosticsService.getDiagnosticData(req.headers.authorization, diagnosticID)
             return res.json(response)
         } catch (error) {
             next(error)

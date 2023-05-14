@@ -51,7 +51,7 @@ class DiagnosticsService {
             })
             const questions = await questionsService.getQuestions(accessToken, diagnosticID)
             const options = await diagnosticsOptionsService.getDiagnosticsOptions(accessToken, diagnosticID)
-            const response = {...diagnostic,questions,options}
+            const response = {...new DiagnosticDTO(diagnostic),questions,options}
             return response
         }
         return null
