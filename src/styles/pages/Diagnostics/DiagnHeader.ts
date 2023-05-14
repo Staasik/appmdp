@@ -73,8 +73,9 @@ export const DiagnTextDiagn = styled.div`
     font-size:40px;  
     font-weight: 600;
     align-self:flex-start;
-    @media (max-width:700px) {
-        padding-bottom:0px;
+    @media (max-width:1000px) {
+        font-size:30px; 
+        padding-bottom:0px; 
     }
 `
 export const FooterItemsKGU = styled.div` 
@@ -371,4 +372,5 @@ export const DiagnAllBlock = styled.div`
         flex-direction:column;
     }
 `
+
 export default DiagHtml;

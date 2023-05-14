@@ -3,7 +3,7 @@ import { ReactComponent as Start } from 'images/start.svg';
 import diagnMock, { IdiagnMock } from 'mockdata/diagnBlocksMock';
 import { useState } from 'react';
 import { DiagnAllBlock, DiagnBlockText, DiagnImage, DiagnImg, DiagnLink, DiagnRecBlock, DiagnRecBlockWrapper, DiagnRecButton, DiagnRecButtons, DiagnRecContent, DiagnRecPS, DiagnRecTitle, DiagnText, DiagnTextBlack, DiagnTextDiagn, DiagnTextProfD } from 'styles/pages/Diagnostics/DiagnHeader';
-import { DiagBody, DiagnBlockImg } from 'styles/pages/Diagnostics/Diagnostic';
+import { DiagBody, DiagnBlockImg, ButtonTest } from 'styles/pages/Diagnostics/Diagnostic';
 
 const RecButtonsMock = [
     {
@@ -55,6 +55,7 @@ const Diagnostics = () => {
                         </DiagnAllBlock>
                     )
                 }
+                <ButtonTest href="adminactivediagnostics">Пройти еще тесты</ButtonTest>
             </DiagnImg>
         </DiagBody>
     );

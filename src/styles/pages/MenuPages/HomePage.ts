@@ -174,6 +174,7 @@ export const TextBlockWhite = styled(TextBlock)`
     }
     width:70%;
     @media (max-width:600px) {
+        width:90%;
         height: 300px;
         gap:10px;
     }
