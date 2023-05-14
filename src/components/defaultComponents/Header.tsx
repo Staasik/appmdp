@@ -63,7 +63,7 @@ export const Header = ({ onOpenChat }: Props) => {
               </HeaderText>
             </DiagnLink>
             <DiagnLink href="/main/diagnostics">
-              <HeaderText $active={location.pathname.includes("diagnostics")}>
+              <HeaderText $active={location.pathname.includes("/main/diagnostics")}>
                 Диагностика
               </HeaderText>
             </DiagnLink>
@@ -72,6 +72,13 @@ export const Header = ({ onOpenChat }: Props) => {
                 Рекомендации
               </HeaderText>
             </DiagnLink>
+            { userData.role === 'admin' &&
+              <DiagnLink href="/main/editor/diagnostics">
+                <HeaderText $active={location.pathname.includes("/main/editor/diagnostics")}>
+                  Редактор
+                </HeaderText>
+              </DiagnLink>
+            }
           </DiagnMenu>
           <DiagnCP>
             <Chat

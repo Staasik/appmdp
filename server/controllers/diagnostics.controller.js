@@ -23,6 +23,45 @@ class DiagnosticsController {
             next(error)
         }
     }
+
+    async getDiagnosticsForAdmin(req, res, next) {
+        try {
+            const { diagnosticID } = req.body
+            const response = await diagnosticsService.getDiagnosticsForAdmin(req.headers.authorization, diagnosticID)
+            return res.json(response)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async createNewDiagnostic(req, res, next) {
+        try {
+            const response = await diagnosticsService.createNewDiagnostic(req.headers.authorization)
+            return res.json(response)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async deleteDiagnostic(req, res, next) {
+        try {
+            const response = await diagnosticsService.deleteDiagnostic(req.headers.authorization)
+            return res.json(response)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async updateDiagnostic(req, res, next) {
+        try {
+            const { diagnosticData } = req.body
+            const response = await diagnosticsService.updateDiagnostic(req.headers.authorization, diagnosticData)
+            return res.json(response)
+        } catch (error) {
+            next(error)
+        }
+    }
+
 }
 
 export const diagnosticsController = new DiagnosticsController();

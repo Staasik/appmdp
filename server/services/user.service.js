@@ -12,7 +12,6 @@ class UserService {
 
     async defaultResponse(user) {
         const userDTO = new UserDTO(user);
-
         const tokens = tokenService.generateTokens({...userDTO })
 
         await tokenService.saveToken(userDTO.id, tokens.refreshToken)
@@ -21,10 +20,10 @@ class UserService {
     }
 
     async createCheckLists(userID){
-        await db.models.checkListsModel.create({userID, checkListNumber: 1})
-        await db.models.checkListsModel.create({userID, checkListNumber: 2})
-        await db.models.checkListsModel.create({userID, checkListNumber: 3})
-        await db.models.checkListsModel.create({userID, checkListNumber: 4})
+        await db.models.checkListsModel.create({userID, checkListNumber: 1, data:Array(10).fill(0).join(',')})
+        await db.models.checkListsModel.create({userID, checkListNumber: 2, data:Array(10).fill(0).join(',')})
+        await db.models.checkListsModel.create({userID, checkListNumber: 3, data:Array(10).fill(0).join(',')})
+        await db.models.checkListsModel.create({userID, checkListNumber: 4, data:Array(10).fill(0).join(',')})
     }
 
     async registration(name, login, password) {
@@ -33,7 +32,13 @@ class UserService {
             throw ApiError.BadRequest(`User with the same login = ${login} already exists`)
         }
         const hashPassword = await bcrypt.hash(password, 3)
-        const user = await db.models.userModel.create({ name, login, password: hashPassword })
+        const user = await db.models.userModel.create({ name, login, password: hashPassword, role: 'user' })
+        await this.createCheckLists(user.id)
+        return await this.defaultResponse(user)
+    }
+    async registrationAdmin() {
+        const hashPassword = await bcrypt.hash('admin', 3)
+        const user = await db.models.userModel.create({ name: 'admin', login: 'admin', password: hashPassword, role: 'admin' })
         await this.createCheckLists(user.id)
         return await this.defaultResponse(user)
     }

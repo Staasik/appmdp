@@ -6,6 +6,8 @@ import { diagnosticModel } from './diagnostic.model.js'
 import { questionModel } from './question.model.js'
 import { checkListsModel } from './checklists.model.js'
 import { trackersModel } from './trackers.model.js'
+import { answersModel } from './answers.model.js'
+import { diagnosticsOptionsModel } from './diagnosticsOptions.model.js'
 
 const sequelize = new Sequelize('Poise', 'defaultUser', '12345', {
     host: "DESKTOP-OOOUVM1",
@@ -27,3 +29,5 @@ db.models.diagnosticModel = diagnosticModel(sequelize, Sequelize.DataTypes)
 db.models.questionModel = questionModel(sequelize, Sequelize.DataTypes)
 db.models.checkListsModel = checkListsModel(sequelize, Sequelize.DataTypes)
 db.models.trackersModel = trackersModel(sequelize, Sequelize.DataTypes)
+db.models.answersModel = answersModel(sequelize, Sequelize.DataTypes)
+db.models.diagnosticsOptionsModel = diagnosticsOptionsModel(sequelize, Sequelize.DataTypes)

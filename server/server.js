@@ -7,6 +7,7 @@ import http from 'http'
 import { errorMiddleware } from './middlewares/error.middleware.js'
 import { db } from './model/index.js'
 import { router } from './routes/routes.js'
+import { userService } from './services/user.service.js'
 dotenv.config()
 
 

@@ -11,6 +11,7 @@ import { useContext } from 'react';
 import { Context } from 'index';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
+import Editor from '../Admin/Editor';
 
 
 interface Props {
@@ -40,6 +41,7 @@ export const Main = ({ onOpenChat }: Props) => {
             <Route path="diagnostics/diagnostic1" element={<Diagnostic1 />} />
             <Route path="diagnostics/diagnostic2" element={<Diagnostic2 />} />
             <Route path="diagnostics/diagnostic3" element={<Diagnostic3 />} />
+            <Route path="editor/*" element={<Editor/>}/>
         </Routes>
     )
 }

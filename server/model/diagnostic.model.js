@@ -8,9 +8,17 @@ export const diagnosticModel = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        questionID:{
-            type: DataTypes.BIGINT,
+        description: {
+            type: DataTypes.STRING,
             allowNull: true,
+        },
+        answersDescription: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        published:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
         }
     }, {
         tableName: 'Diagnostics'
