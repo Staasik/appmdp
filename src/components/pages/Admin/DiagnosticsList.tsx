@@ -8,10 +8,11 @@ import {
   DiagnBlocks,
   DiagnBlockstItem,
   ImgBlockItem,
-  DiagnTextItem,ButtonPublish,ButtonAdd,
-} from "styles/pages/Admin/ActiveDiagnostics";
+  DiagnTextItem,ButtonAdd,
+} from "styles/pages/Admin/DiagnosticsList";
 import diagnMock from "mockdata/diagnBlocksMock";
 import DiagnosticItem from "./DiagnosticItem";
+import OneDiagnostic from "./OneDiagnostic";
 import { AdminContext } from "./Editor";
 
 
@@ -41,6 +42,7 @@ const DiagnosticsList = () => {
             <DiagnTextItem>{value.name}</DiagnTextItem>
           </DiagnBlockstItem>
         ))}
+        <OneDiagnostic/>
       </DiagnBlocks>
       <TextBlock>
         <DiagnText>Черновики:</DiagnText>

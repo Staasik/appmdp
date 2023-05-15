@@ -1,35 +1,6 @@
 import styled from "styled-components";
 import colors from "utils/colors";
-import Select from "react-select";
 
-export const SelectAdd = styled(Select)`
-    width: 30%;
-    @media (max-width:1000px) {
-        margin-top:20px;
-        width: 100%;
-    }
-`
-export const DiagHtml = styled.div`
-    width: 100%;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    align-self:center;
-`
-export const AddText = styled.a`
-    display:flex;       
-    color: ${colors.BLACK};
-    font-size:40px;
-    font-weight:600;
-    margin-top:20px;
-    margin-bottom:20px;
-    @media (max-width:1000px) {
-        font-size:30px;
-        margin:0;
-        align-self:flex-start;
-    }
-`
 export const TextBlock = styled.div`
     display: flex;
     width:75%; 
@@ -51,32 +22,7 @@ export const QuestionTextBlock = styled(TextBlock)`
         flex-direction:row;
     }
 `
-export const ButtonBack = styled.a`
-    margin-top:50px;
-    text-decoration: none ;
-    display:flex;
-    width: 200px;
-    font-size: 16px;
-    height: 50px;
-    background: ${colors.BLUE_LIGHT};
-    border-radius: 8px; 
-    border:0;
-    color:${colors.WHITE};
-    justify-content:center;
-    align-items:center;
-    justify-self:left;
-    @media (max-width:800px) {
-        width: 100%;  
-        margin-top:20px; 
-    }
-`
-export const ButtonSave = styled(ButtonBack)`
-    margin-top:0px;
-    margin-left:auto;
-    background: ${colors.WHITE};
-    border:1px solid ${colors.ORANGE_LIGHT};
-    color:${colors.ORANGE_LIGHT};
-`
+
 export const DiagnText = styled.a`
     color:${colors.BLACK};
     font-weight : 600;
@@ -108,7 +54,6 @@ export const DescriptionBlock = styled.div`
 export const QuestionBlock = styled(DescriptionBlock)`
     padding-bottom: 40px;
 `
-
 
 export const TextComponents = styled.textarea`
     margin-left:20px;

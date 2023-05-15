@@ -1,12 +1,9 @@
 import {
-    DiagnText,
     QuestionBlock,
     QuestionText,
     QuestionTextBlock,
-    SelectAdd,
-    TextBlock,
     TextComponents
-} from "styles/pages/Admin/NewDiagnostics";
+} from "styles/pages/Admin/QuestionItem";
 import colors from "utils/colors";
 import { ReactComponent as Trash } from 'images/Admin/TrashQuestion.svg';
 import { IQuestion } from "codebase/store/adminStore";
