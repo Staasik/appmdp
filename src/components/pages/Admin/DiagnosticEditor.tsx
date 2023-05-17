@@ -8,22 +8,20 @@ import {
   ButtonBack,
   ButtonSave,
   DiagnText,
-  QuestionText,
   TextComponents,
-  QuestionBlock,
   DescriptionBlock,
-  QuestionTextBlock,
-  SelectAdd,
-} from "styles/pages/Admin/NewDiagnostics";
-import { ReactComponent as Trash } from "images/Admin/TrashQwest.svg";
+  SelectAdd, ResultsBlock,ResultsText,ResultsButton,
+} from "styles/pages/Admin/DiagnosticEditor";
 import { targets } from "mockdata/MockAdminSelect";
-import colors from "utils/colors";
 import { useParams } from "react-router";
 import { AdminContext } from "./Editor";
 import QuestionItem from "./QuestionItem";
-import { ButtonAdd } from "styles/pages/Admin/ActiveDiagnostics";
+import { ButtonAdd } from "styles/pages/Admin/DiagnosticsList";
 import { IOptions } from "mockdata/MoсkTrackersSelect";
 import { IDiagnData } from "codebase/store/adminStore";
+import { ReactComponent as ResultImg } from 'images/Admin/ResultImg.svg';
+import { ReactComponent as ResultImg1000 } from 'images/Admin/ResultImg1000.svg';
+import { useMediaQuery } from "react-responsive";
 
 const Description = [
   {
@@ -40,14 +38,11 @@ const Description = [
   },
 ];
 
-const DescriptionEnum = [
-  'title',
-  'description',
-  'answersDescription'
-]
-
-
 const DiagnosticEditor = () => {
+  
+  const isDesktop = useMediaQuery({
+    query: "(max-width: 1000px)",
+  });
 
   const { id } = useParams()
 
@@ -84,6 +79,11 @@ const DiagnosticEditor = () => {
         </TextBlock>
         <TextComponents maxLength={200} placeholder={Description[2].placeholder} value={diagnosticData?.answersDescription} onChange={(e) => {adminStore.setAnswersDescription(e.target.value)}}/>
       </DescriptionBlock>
+      <ResultsBlock>
+        {isDesktop ? <ResultImg1000 style={{ width: "100%"}}/> : <ResultImg/>}
+        <ResultsText>Определите, как будет происходить обработка результатов:</ResultsText>
+        <ResultsButton href="../results">Обработка результата</ResultsButton>
+      </ResultsBlock>
       <TextBlock>
         <DiagnText>Сколько пунктов должно отображаться для ответа?</DiagnText>
       </TextBlock>

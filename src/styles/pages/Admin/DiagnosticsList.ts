@@ -39,7 +39,7 @@ export const DiagnText = styled.a`
     font-size:30px;
     @media (max-width:1000px) {  
         height:30px; 
-        font-size:18px;   
+        font-size:22px;   
     }
 `
 export const DiagnBlocks = styled.div`
@@ -105,7 +105,7 @@ export const ButtonPublish = styled.button`
     margin-left:auto;
     text-decoration: none ;
     display:flex;
-    width: 200px;
+    width: 250px;
     font-size: 16px;
     height: 50px;
     background: ${colors.ORANGE_LIGHT};
