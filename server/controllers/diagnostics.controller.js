@@ -72,7 +72,6 @@ class DiagnosticsController {
             next(error)
         }
     }
-
 }
 
 export const diagnosticsController = new DiagnosticsController();

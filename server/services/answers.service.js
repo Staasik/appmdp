@@ -6,9 +6,9 @@ class AnswersService {
 
     async getAnswers(accessToken, questionID) {
         const userData = tokenService.validateAccessToken(accessToken);
-        if(userData && userData.role === 'admin'){
+        if (userData && userData.role === 'admin') {
             const answers = await db.models.diagnosticModel.findAll({
-                where:{
+                where: {
                     questionID
                 }
             })
@@ -20,8 +20,8 @@ class AnswersService {
 
     async createAnswer(accessToken, questionID, data) {
         const userData = tokenService.validateAccessToken(accessToken);
-        if(userData && userData.role === 'admin'){
-            const answer = await db.models.answersModel.create({text:data.text, value: data.value, questionID})
+        if (userData && userData.role === 'admin') {
+            const answer = await db.models.answersModel.create({ text: data.text, value: data.value, questionID })
             const response = new AnswerDTO(answer)
             return response
         }
@@ -30,9 +30,9 @@ class AnswersService {
 
     async deleteAnswer(accessToken, id) {
         const userData = tokenService.validateAccessToken(accessToken);
-        if(userData && userData.role === 'admin'){
+        if (userData && userData.role === 'admin') {
             const response = await db.models.answersModel.destroy({
-                where:{
+                where: {
                     id
                 }
             })
@@ -41,24 +41,35 @@ class AnswersService {
         return null
     }
 
-    async deleteAnswersByID(questionID){
+    async deleteAnswersByID(questionID) {
         db.models.answersModel.destroy({
-            where:{
+            where: {
                 questionID
             }
         })
     }
 
-    async updateAnswers(answersData){
+    async upsertAnswers(answersData) {
         for (let aData of answersData) {
-            await db.models.answersModel.update({ 
-                text: aData.text,
-                value: aData.value
-            }, {
-                where: {
-                    id: aData.id
-                }
-            })
+            await db.models.answersModel
+                .findOne({ where: aData.id })
+                .then(function (obj) {
+                    if (obj) {
+                        return db.models.answersModel.update({
+                            text: aData.text,
+                            value: aData.value
+                        }, {
+                            where: {
+                                id: aData.id
+                            }
+                        })
+                    }
+
+                    return db.models.answersModel.create({
+                        text: aData.text,
+                        value: aData.value
+                    })
+                })
         }
     }
 

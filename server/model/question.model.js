@@ -1,3 +1,5 @@
+import { answersModel } from "./answers.model.js"
+
 export const questionModel = (sequelize, DataTypes) => {
     const Question = sequelize.define('question', {
         type: {
@@ -19,6 +21,5 @@ export const questionModel = (sequelize, DataTypes) => {
     }, {
         tableName: 'Questions'
     })
-
     return Question
 }

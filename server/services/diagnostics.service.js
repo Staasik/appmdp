@@ -91,8 +91,8 @@ class DiagnosticsService {
                     id: diagnosticData.id
                 }
             })
-            await questionsService.updateQuestions(diagnosticData.questions)
-            await diagnosticsOptionsService.updateDiagnosticsOptions(diagnosticData.options)
+            await questionsService.upsertQuestions(diagnosticData.questions)
+            await diagnosticsOptionsService.upsertDiagnosticsOptions(diagnosticData.options)
             return diagnostic
         }
         return null

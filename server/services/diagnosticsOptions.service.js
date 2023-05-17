@@ -50,16 +50,28 @@ class DiagnosticsOptionsService {
         })
     }
 
-    async updateDiagnosticsOptions(optionsData){
+    async upsertDiagnosticsOptions(optionsData){
         for (let oData of optionsData) {
-            await db.models.diagnosticsOptionsModel.update({ 
-                description: oData.description,
-                minValue: oData.minValue,
-                maxValue: oData.maxValue
-            }, {
-                where: {
-                    id: oData.id
+            await db.models.questionModel
+            .findOne({ where: oData.id })
+            .then(function (obj) {
+                if (obj) {
+                    return db.models.diagnosticsOptionsModel.update({ 
+                        description: oData.description,
+                        minValue: oData.minValue,
+                        maxValue: oData.maxValue
+                    }, {
+                        where: {
+                            id: oData.id
+                        }
+                    })
                 }
+                return db.models.diagnosticsOptionsModel.create({ 
+                    description: oData.description,
+                    minValue: oData.minValue,
+                    maxValue: oData.maxValue,
+                    diagnosticID: oData.diagnosticID
+                })
             })
         }
     }

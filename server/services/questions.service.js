@@ -74,16 +74,30 @@ class QuestionsService {
         return questions.map((v) => v.id)
     }
 
-    async updateQuestions(questionsData) {
+    async upsertQuestions(questionsData) {
         for (let qData of questionsData) {
-            await db.models.questionModel.update({ 
-                text: qData.text 
-            }, {
-                where: {
-                    id: qData.id
+            await db.models.questionModel
+            .findOne({ where: qData.id })
+            .then(function (obj) {
+                if (obj) {
+                    return db.models.questionModel.update({
+                        text: qData.text,
+                        type: qData.type,
+                        diagnosticID: qData.diagnosticID
+                    }, {
+                        where: {
+                            id: qData.id
+                        }
+                    })
                 }
+
+                return db.models.questionModel.create({
+                    text: qData.text,
+                    type: qData.type,
+                    diagnosticID: qData.diagnosticID
+                })
             })
-            await answersService.updateAnswers(qData.answers)
+            await answersService.upsertAnswers(qData.answers)
         }
     }
 
