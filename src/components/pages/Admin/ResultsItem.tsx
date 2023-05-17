@@ -9,44 +9,46 @@ import {
   TextBlock,
 } from "styles/pages/Admin/ResultsItem";
 import { ReactComponent as Trash } from "images/Admin/TrashQuestion.svg";
-import { IQuestion } from "codebase/store/adminStore";
+import { IOption, IQuestion } from "codebase/store/adminStore";
 import { useContext } from "react";
 import { AdminContext } from "./Editor";
 import { observer } from "mobx-react-lite";
 
 interface Props {
-  question: IQuestion;
-  index: number;
+  option: IOption
 }
 
-const ResultsItem = () => {
+const ResultsItem = ({option}:Props) => {
 
   const { adminStore } = useContext(AdminContext);
 
   return (
     <ResultsBlock>
       <ResultsTextBlock>
-        <ResultsText>Результат 1</ResultsText>
-        <Trash />
+        <ResultsText>Результат {option.tempid}</ResultsText>
+        <Trash onClick={() =>  adminStore.deleteOption(option.tempid)}/>
       </ResultsTextBlock>
       <ResultsItems style={{ marginTop: "0px" }}>
         <TextBlock>
           <TextComponents
             maxLength={200}
+            value={option.description}
             placeholder="Описание"
-            onChange={(e) => {}}
+            onChange={(e) => { adminStore.changeOptionsDiscription(e.target.value, option.tempid)}}
           />
         </TextBlock>
         <NumbersBlock>
           <TextComponentsNumber
-            maxLength={5}
+            type="number"
+            value={option.minValue}
             placeholder="Значение от"
-            onChange={(e) => {}}
+            onChange={(e) => {adminStore.changeOptionsValues(+e.target.value, option.tempid, 'min')}}
           />
           <TextComponentsNumber
-            maxLength={5}
+            type="number"
+            value={option.maxValue}
             placeholder="Значение до"
-            onChange={(e) => {}}
+            onChange={(e) => {adminStore.changeOptionsValues(+e.target.value, option.tempid, 'max')}}
           />
         </NumbersBlock>
       </ResultsItems>

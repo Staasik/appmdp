@@ -65,6 +65,7 @@ export const ButtonBack = styled.a`
     justify-content:center;
     align-items:center;
     justify-self:left;
+    cursor:pointer;
     @media (max-width:800px) {
         width: 100%;  
         margin-top:20px; 
@@ -168,6 +169,7 @@ export const ResultsButton = styled(ButtonBack)`
     margin-right:30px;
     background: ${colors.ORANGE_LIGHT};
     color:${colors.WHITE};
+    cursor:pointer;
     @media (max-width:1000px) {  
         width: 95%;
         margin-right:0px;

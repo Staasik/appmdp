@@ -17,7 +17,8 @@ export interface IAnswer{
 }
 
 export interface IQuestion{
-    id: number,
+    id: number | null,
+    tempid: number,
     text: string,
     diagnosticID: number,
     answers: IAnswer[],
@@ -25,10 +26,12 @@ export interface IQuestion{
 }
 
 export interface IOption{
+    id: number | null,
+    tempid: number,
     diagnosticID: number,
     description: string,
-    minValue: number,
-    maxValue: number
+    minValue?: number,
+    maxValue?: number
 }
 
 export interface IDiagnData extends IDiagnItem{
@@ -109,9 +112,10 @@ export default class AdminStore {
 
     addQuestion(){
         if(this.diagnosticData !== null){
-            const maxID = this.diagnosticData.questions.length !== 0 ? this.diagnosticData.questions[this.diagnosticData.questions.length-1].id : 1
+            const maxID = this.diagnosticData.questions.length !== 0 ? this.diagnosticData.questions[this.diagnosticData.questions.length-1].tempid : 0
             this.diagnosticData.questions.push({
-                id: maxID + 1,
+                id: null,
+                tempid: maxID + 1,
                 type: 'numbersList',
                 text: '', 
                 diagnosticID: this.diagnosticData.id, 
@@ -125,18 +129,52 @@ export default class AdminStore {
             })
         }
     }
-
+    
     deleteQuestion(id: number){
         if( this.diagnosticData !== null) {
-            this.diagnosticData.questions = this.diagnosticData?.questions.filter((question) => question.id !== id)
+            this.diagnosticData.questions = this.diagnosticData?.questions.filter((question) => question.tempid !== id)
         }
     }
 
     changeQuestionText(id: number, text: string){
         if( this.diagnosticData !== null) {
-            let question = this.diagnosticData.questions.find((v) => v.id === id)
+            let question = this.diagnosticData.questions.find((v) => v.tempid === id)
             if(question) question.text = text
         }
     }
 
+    addOption(){
+        if(this.diagnosticData !== null){
+            const maxID = this.diagnosticData.options.length !== 0 ? this.diagnosticData.options[this.diagnosticData.options.length-1].tempid : 0
+            this.diagnosticData.options.push({
+                id: null,
+                tempid: maxID + 1,
+                diagnosticID: this.diagnosticData.id,
+                description: ''
+            })
+        }
+    }
+
+    changeOptionsDiscription(text: string, id: number){
+        if( this.diagnosticData !== null) {
+            let option = this.diagnosticData.options.find((v) => v.tempid === id)
+            if(option) option.description = text
+        }
+    }
+
+    changeOptionsValues(value: number, id: number, type: 'min' | 'max'){
+        if( this.diagnosticData !== null) {
+            let option = this.diagnosticData.options.find((v) => v.tempid === id)
+            if(option) {
+                if(type === 'max') option.maxValue = value < 0 ? 0 : value
+                else option.minValue = value < 0 ? 0 : value
+            }
+        }
+    }
+
+    deleteOption(id: number){
+        if( this.diagnosticData !== null) {
+            this.diagnosticData.options = this.diagnosticData?.options.filter((option) => option.tempid !== id)
+        }
+    }
 }

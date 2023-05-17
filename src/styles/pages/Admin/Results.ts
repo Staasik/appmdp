@@ -39,6 +39,7 @@ export const ButtonBack = styled.a`
     justify-content:center;
     align-items:center;
     justify-self:left;
+    cursor:pointer;
     @media (max-width:800px) {
         width: 100%;  
         margin-top:20px; 

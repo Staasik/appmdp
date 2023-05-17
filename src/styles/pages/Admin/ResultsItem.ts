@@ -71,8 +71,7 @@ export const ResultsBlock = styled(DescriptionBlock)`
     padding-bottom: 0px;
 `
 
-export const TextComponents = styled.textarea`
-    width: 100%;
+const InputStyles = `
     height: 50px;
     border: 1px solid ${colors.GRAY};
     border-radius: 20px;
@@ -86,6 +85,12 @@ export const TextComponents = styled.textarea`
     justify-content: center;
     overflow: none;
 `
-export const TextComponentsNumber = styled(TextComponents)`
+
+export const TextComponents = styled.textarea`
+    width: 100%;
+    ${InputStyles}
+`
+export const TextComponentsNumber = styled.input`
     width: 50%;
+    ${InputStyles}
 `

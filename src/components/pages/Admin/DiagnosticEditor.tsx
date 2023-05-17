@@ -10,7 +10,7 @@ import {
   DiagnText,
   TextComponents,
   DescriptionBlock,
-  SelectAdd, ResultsBlock,ResultsText,ResultsButton,
+  SelectAdd, ResultsBlock, ResultsText, ResultsButton,
 } from "styles/pages/Admin/DiagnosticEditor";
 import { targets } from "mockdata/MockAdminSelect";
 import { useParams } from "react-router";
@@ -22,6 +22,7 @@ import { IDiagnData } from "codebase/store/adminStore";
 import { ReactComponent as ResultImg } from 'images/Admin/ResultImg.svg';
 import { ReactComponent as ResultImg1000 } from 'images/Admin/ResultImg1000.svg';
 import { useMediaQuery } from "react-responsive";
+import Results from "./Results";
 
 const Description = [
   {
@@ -39,7 +40,7 @@ const Description = [
 ];
 
 const DiagnosticEditor = () => {
-  
+
   const isDesktop = useMediaQuery({
     query: "(max-width: 1000px)",
   });
@@ -48,6 +49,7 @@ const DiagnosticEditor = () => {
 
   const { adminStore } = useContext(AdminContext)
   const { diagnosticData, answersOption } = adminStore
+  const [stage, setStage] = useState(true)
 
   useEffect(() => {
     id && adminStore.getDiagnosticData(+id)
@@ -55,34 +57,33 @@ const DiagnosticEditor = () => {
 
   const [option, setOption] = useState(answersOption)
 
-
-  return (
+  if(stage) return (
     <DiagHtml>
       <TextBlock>
         <ButtonBack href="../diagnostics">Назад</ButtonBack>
       </TextBlock>
       <TextBlock>
         <AddText>Добавление новой диагностики</AddText>
-        <ButtonSave onClick={() =>{ console.log(adminStore.diagnosticData as IDiagnData)}}>Сохранить</ButtonSave>
+        <ButtonSave onClick={() => { console.log(adminStore.diagnosticData as IDiagnData) }}>Сохранить</ButtonSave>
       </TextBlock>
       <DescriptionBlock>
         <TextBlock>
           <DiagnText>{Description[0].name}</DiagnText>
         </TextBlock>
-        <TextComponents maxLength={50} placeholder={Description[0].placeholder} value={diagnosticData?.title}  onChange={(e) => {adminStore.setTitle(e.target.value)}}/>
+        <TextComponents maxLength={50} placeholder={Description[0].placeholder} value={diagnosticData?.title} onChange={(e) => { adminStore.setTitle(e.target.value) }} />
         <TextBlock>
           <DiagnText>{Description[1].name}</DiagnText>
         </TextBlock>
-        <TextComponents maxLength={200} placeholder={Description[1].placeholder} value={diagnosticData?.description} onChange={(e) => {adminStore.setDescription(e.target.value)}}/>
+        <TextComponents maxLength={200} placeholder={Description[1].placeholder} value={diagnosticData?.description} onChange={(e) => { adminStore.setDescription(e.target.value) }} />
         <TextBlock>
           <DiagnText>{Description[2].name}</DiagnText>
         </TextBlock>
-        <TextComponents maxLength={200} placeholder={Description[2].placeholder} value={diagnosticData?.answersDescription} onChange={(e) => {adminStore.setAnswersDescription(e.target.value)}}/>
+        <TextComponents maxLength={200} placeholder={Description[2].placeholder} value={diagnosticData?.answersDescription} onChange={(e) => { adminStore.setAnswersDescription(e.target.value) }} />
       </DescriptionBlock>
       <ResultsBlock>
-        {isDesktop ? <ResultImg1000 style={{ width: "100%"}}/> : <ResultImg/>}
+        {isDesktop ? <ResultImg1000 style={{ width: "100%" }} /> : <ResultImg />}
         <ResultsText>Определите, как будет происходить обработка результатов:</ResultsText>
-        <ResultsButton href="../results">Обработка результата</ResultsButton>
+        <ResultsButton onClick={() => setStage(false)}>Обработка результата</ResultsButton>
       </ResultsBlock>
       <TextBlock>
         <DiagnText>Сколько пунктов должно отображаться для ответа?</DiagnText>
@@ -92,12 +93,13 @@ const DiagnosticEditor = () => {
       </TextBlock>
       {diagnosticData?.questions.map((question, idx) => {
         return (
-          <QuestionItem key={idx} question={question} index={idx} />
+          <QuestionItem key={idx} question={question}/>
         )
       })}
       <ButtonAdd onClick={() => { adminStore.addQuestion() }}>Добавить вопрос</ButtonAdd>
     </DiagHtml>
   );
+  else return <Results onClick={() => setStage(true)}/>
 };
 
 export default observer(DiagnosticEditor);

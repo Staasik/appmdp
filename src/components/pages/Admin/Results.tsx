@@ -10,20 +10,31 @@ import {
 import ResultsItem from "./ResultsItem";
 import { ButtonAdd } from "styles/pages/Admin/DiagnosticsList";
 import { ButtonSave } from "styles/pages/Admin/DiagnosticEditor";
+import { useParams } from "react-router-dom";
+import { AdminContext } from "./Editor";
 
-const Results = () => {
+interface Props {
+  onClick(): void
+}
+const Results = ({ onClick }: Props) => {
+  const { id } = useParams()
+
+  const { adminStore } = useContext(AdminContext)
+  const { diagnosticData } = adminStore
+
   return (
     <DiagHtml>
       <TextBlock>
-        <ButtonBack href="">Назад</ButtonBack>
+        <ButtonBack onClick={onClick}>Назад</ButtonBack>
       </TextBlock>
       <TextBlock>
         <AddText>Результаты</AddText>
-        <ButtonSave onClick={() => {}}>Сохранить</ButtonSave>
+        <ButtonSave onClick={() => { }}>Сохранить</ButtonSave>
       </TextBlock>
-      <ResultsItem />
-      <ResultsItem />
-      <ButtonAdd onClick={() => {}}>Добавить результат</ButtonAdd>
+      {
+        diagnosticData?.options.map((option, idx) => <ResultsItem key={idx} option={option}/>)
+      }
+      <ButtonAdd onClick={() => { adminStore.addOption() }}>Добавить результат</ButtonAdd>
     </DiagHtml>
   );
 };

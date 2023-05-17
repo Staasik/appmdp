@@ -19,6 +19,17 @@ interface Props {
 const DiagnosticItem = ({ data }: Props) => {
   const { adminStore } = useContext(AdminContext);
 
+  if (data.published) {
+    return (<DiagnBlockstItem>
+      <ImgBlockItem
+        src={require("images/Admin/NewDiagn.png")}
+      />
+      <DiagnTextItem>{data.title}</DiagnTextItem>
+      <ButtonPublish>Вернуть в черновики</ButtonPublish>
+    </DiagnBlockstItem>
+    )
+  }
+
   return (
     <DiagnBlockstItem>
       <ImgBlockItem src={require("images/Admin/NewDiagn.png")} />
@@ -26,9 +37,10 @@ const DiagnosticItem = ({ data }: Props) => {
       <ButtonPublish>Опубликовать</ButtonPublish>
       <SvgBlock>
         <a href={`diagnosticEditor/${data.id}`}><Pencil /></a>
-        <Trash onClick={() => {adminStore.deleteDiagnostic(data.id);}}/>
+        <Trash onClick={() => { adminStore.deleteDiagnostic(data.id); }} />
       </SvgBlock>
     </DiagnBlockstItem>
+
   );
 };
 

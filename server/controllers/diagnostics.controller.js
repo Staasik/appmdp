@@ -35,7 +35,6 @@ class DiagnosticsController {
 
     async createNewDiagnostic(req, res, next) {
         try {
-            console.log('ASDSADSADSA')
             const response = await diagnosticsService.createNewDiagnostic(req.headers.authorization)
             return res.json(response)
         } catch (error) {

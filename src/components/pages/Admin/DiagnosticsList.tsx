@@ -42,7 +42,6 @@ const DiagnosticsList = () => {
             <DiagnTextItem>{value.name}</DiagnTextItem>
           </DiagnBlockstItem>
         ))}
-        <OneDiagnostic/>
       </DiagnBlocks>
       <TextBlock>
         <DiagnText>Черновики:</DiagnText>
