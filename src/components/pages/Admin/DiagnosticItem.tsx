@@ -36,8 +36,8 @@ const DiagnosticItem = ({ data }: Props) => {
       <DiagnTextItem>{data.title}</DiagnTextItem>
       <ButtonPublish>Опубликовать</ButtonPublish>
       <SvgBlock>
-        <a href={`diagnosticEditor/${data.id}`}><Pencil /></a>
-        <Trash onClick={() => { adminStore.deleteDiagnostic(data.id); }} />
+        <a href={`diagnosticEditor/${data.id}`}><Pencil style={{ cursor: "pointer" }} /></a>
+        <Trash style={{ cursor: "pointer" }} onClick={() => { adminStore.deleteDiagnostic(data.id); }} />
       </SvgBlock>
     </DiagnBlockstItem>
 

@@ -26,7 +26,7 @@ const ResultsItem = ({option}:Props) => {
     <ResultsBlock>
       <ResultsTextBlock>
         <ResultsText>Результат {option.tempid}</ResultsText>
-        <Trash onClick={() =>  adminStore.deleteOption(option.tempid)}/>
+        <Trash style={{ cursor: "pointer" }} onClick={() =>  adminStore.deleteOption(option.tempid)}/>
       </ResultsTextBlock>
       <ResultsItems style={{ marginTop: "0px" }}>
         <TextBlock>

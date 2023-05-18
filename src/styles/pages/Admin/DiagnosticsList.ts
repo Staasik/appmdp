@@ -71,7 +71,6 @@ export const DiagnBlockstItem = styled.div`
     box-shadow: 0px 4px 11px 1px rgba(43, 43, 43, 0.05);
     border-radius: 12px;
     padding:10px;
-    cursor: pointer;
     padding:20px;
     @media (max-width:1000px) {  
         width:95%;

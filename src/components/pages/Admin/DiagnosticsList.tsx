@@ -12,7 +12,6 @@ import {
 } from "styles/pages/Admin/DiagnosticsList";
 import diagnMock from "mockdata/diagnBlocksMock";
 import DiagnosticItem from "./DiagnosticItem";
-import OneDiagnostic from "./OneDiagnostic";
 import { AdminContext } from "./Editor";
 
 

@@ -1,7 +1,8 @@
 import { ReactComponent as PSIcon } from 'images/PSIcon.svg';
 import { ReactComponent as Start } from 'images/start.svg';
+import { Context } from 'index';
 import diagnMock, { IdiagnMock } from 'mockdata/diagnBlocksMock';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { DiagnAllBlock, DiagnBlockText, DiagnImage, DiagnImg, DiagnLink, DiagnRecBlock, DiagnRecBlockWrapper, DiagnRecButton, DiagnRecButtons, DiagnRecContent, DiagnRecPS, DiagnRecTitle, DiagnText, DiagnTextBlack, DiagnTextDiagn, DiagnTextProfD } from 'styles/pages/Diagnostics/DiagnHeader';
 import { DiagBody, DiagnBlockImg, ButtonTest } from 'styles/pages/Diagnostics/Diagnostic';
 
@@ -20,8 +21,12 @@ const RecButtonsMock = [
     },
 ]
 
+
+
 const Diagnostics = () => {
 
+    const { store } = useContext(Context)
+    const { isAuth } = store
     const [blocks, setBlocks] = useState<IdiagnMock[]>(diagnMock)
 
     return (
@@ -55,7 +60,7 @@ const Diagnostics = () => {
                         </DiagnAllBlock>
                     )
                 }
-                <ButtonTest href="adminactivediagnostics">Пройти еще тесты</ButtonTest>
+                {isAuth && <ButtonTest href="adminactivediagnostics">Пройти еще тесты</ButtonTest>}
             </DiagnImg>
         </DiagBody>
     );
