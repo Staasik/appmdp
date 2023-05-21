@@ -23,7 +23,7 @@ interface Props {
 
 export const Header = ({ onOpenChat }: Props) => {
   const isDesktop = useMediaQuery({
-    query: "(max-width: 600px)",
+    query: "(max-width: 800px)",
   });
   let location = useLocation();
 
