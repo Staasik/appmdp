@@ -122,7 +122,7 @@ const Trackers = () => {
         <EventContainer>
           <CalendarContainer>
             <DatePickerCalendar
-              onChange={(value, e) => setDate(value as Date)}
+              onChange={(value, e) => { if((value as Date) <= new Date()) setDate(value as Date)}}
               value={date}
             />
           </CalendarContainer>
