@@ -11,7 +11,10 @@ export const DatePickerCalendar = styled(Calendar)`
     border-radius: 25px;
 
     .filledDate{
-        font-weight: 900;
+        background-color: #98FB98;
+        color: #006400;
+        font-weight: 600;
+        border-radius: 12px;
     }
     .react-calendar__month-view__days{
         height: 250px;
