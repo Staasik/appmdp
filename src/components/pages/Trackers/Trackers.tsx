@@ -15,9 +15,10 @@ import {
   StepContainer,
   StepText,
   TextDescription,
-  WelcomeText
+  WelcomeText,
 } from "styles/pages/Trackers/Trackers";
 import { IAnswer } from "./Choises";
+import { forEach } from "lodash";
 
 const Trackers = () => {
   const [currentStep, setCurrentStep] = useState<number>(0);
@@ -25,13 +26,31 @@ const Trackers = () => {
   const { store } = useContext(Context);
   const { tempTrackerAnswers, trackerAnswers, user: userData } = store;
 
+  const Disable = () => {
+    let i = 0;
+    tempTrackerAnswers.forEach((temp, index) => {
+      if (
+        temp.value === null ||
+        (temp.type === "multiselect" &&
+          (temp.value as Array<IAnswer>).some((obj) => obj.value === null))
+      ) {
+        i += 1;
+      }
+    });
+    if (i === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
   const handleClick = () => {
     if (tempTrackerAnswers[currentStep].value !== null) {
       if (currentStep < 5) {
-        setCurrentStep(currentStep + 1)
-      }
-      else {
-        store.setTrackersData(date)
+        setCurrentStep(currentStep + 1);
+      } else {
+        if (Disable()) {
+          store.setTrackersData(date);
+        }
       }
     }
   };
@@ -39,7 +58,7 @@ const Trackers = () => {
   useEffect(() => {
     store.getTrackersData(date);
     setCurrentStep(0);
-  }, [date])
+  }, [date]);
 
   return (
     <DiagHtml>
@@ -49,15 +68,27 @@ const Trackers = () => {
           В личном кабинете появились новые чек-листы для Вас
         </TextDescription>
         <Line style={{ width: "100%" }} />
-        <DiaryText> Дневник Эмоций</DiaryText>
+        <DiaryText>Дневник Эмоций</DiaryText>
         <StepContainer>
           {StepMock.map((data, index) => (
-            <StepText key={index} $color={index === currentStep ? 2 :
-              (tempTrackerAnswers[index].value === null ||
-              (tempTrackerAnswers[index].type === "multiselect" &&
-                (tempTrackerAnswers[index].value as Array<IAnswer>).some(
-                  (obj) => obj.value === null
-                ))) ? 3 : 1} onClick={() => { setCurrentStep(index) }}>
+            <StepText
+              key={index}
+              $color={
+                index === currentStep
+                  ? 2
+                  : tempTrackerAnswers[index].value === null ||
+                    (tempTrackerAnswers[index].type === "multiselect" &&
+                      (tempTrackerAnswers[index].value as Array<IAnswer>).some(
+                        (obj) => obj.value === null
+                      ))
+                  ? 3
+                  : 1
+              }
+              onClick={() => {
+                setCurrentStep(index);
+                Disable();
+              }}
+            >
               {data.stepName}
             </StepText>
           ))}
@@ -65,18 +96,24 @@ const Trackers = () => {
         <ComponentContainer>
           {StepMock[currentStep].component}
           <BtnNextContainer>
-            <ButtonNext
-              $disabled={
-                tempTrackerAnswers[currentStep].value === null ||
-                (tempTrackerAnswers[currentStep].type === "multiselect" &&
-                  (tempTrackerAnswers[currentStep].value as Array<IAnswer>).some(
-                    (obj) => obj.value === null
-                  ))
-              }
-              onClick={() => handleClick()}
-            >
-              {currentStep != 5 ? "Далее" : "Записать в дневник"}
-            </ButtonNext>
+            {currentStep === 5 ? (
+              <ButtonNext $disabled={!Disable()} onClick={() => handleClick()}>
+                Записать в дневник
+              </ButtonNext>
+            ) : (
+              <ButtonNext
+                $disabled={
+                  tempTrackerAnswers[currentStep].value === null ||
+                  (tempTrackerAnswers[currentStep].type === "multiselect" &&
+                    (
+                      tempTrackerAnswers[currentStep].value as Array<IAnswer>
+                    ).some((obj) => obj.value === null))
+                }
+                onClick={() => handleClick()}
+              >
+                Далее
+              </ButtonNext>
+            )}
           </BtnNextContainer>
         </ComponentContainer>
         <Line

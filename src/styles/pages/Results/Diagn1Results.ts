@@ -141,7 +141,7 @@ export const TextBlock = styled.div`
     display: flex;
     flex-direction: column;
     gap:20px;
-    height:300px;
+    height:auto;
     width:30%;
     justify-content:center;
     align-items:flex-start;
@@ -209,7 +209,7 @@ export const DiagnTextProfCenter = styled.a`
     font-size:36px;
     }
     @media (max-width:1350px) {
-    font-size:30px;
+    font-size:28px;
     }
     @media (max-width:800px) {
     font-size:20px;
@@ -221,14 +221,14 @@ export const Discription = styled.div`
     flex-direction:column;
     gap: 16px;
     width: 100%;
-    padding: 25px 50px;
+    margin: 25px 50px;
     align-items: center;
 `
 export const DiscTitle = styled.div`
     font-weight: 600;
     font-size: 24px;
     width: 70%;
-    @media (max-width:800px) {             
+    @media (max-width:1000px) {             
         width:90%;
     }
 `
@@ -236,7 +236,7 @@ export const DiscContent = styled.div`
     font-weight: 400;
     font-size: 18px;
     width: 70%;
-    @media (max-width:800px) {             
+    @media (max-width:1000px) {             
         width:90%;
     }
 `

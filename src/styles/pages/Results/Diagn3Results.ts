@@ -236,8 +236,7 @@ export const Discription = styled.div`
     display: flex;
     flex-direction:column;
     width: 100%;
-    margin-top: 20px;
-    padding: 25px 50px;
+    margin-top: 50px;
     align-items: center;
     gap: 30px;
 `

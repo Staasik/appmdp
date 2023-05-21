@@ -60,6 +60,7 @@ export default class Store {
     chatOpened = false
     trackerAnswers?: IDiaryData
     tempTrackerAnswers: Array<ITrackerAnswer> = defaultTrackerAnswers
+    authError = false
 
     constructor() {
         makeAutoObservable(this)
@@ -93,6 +94,7 @@ export default class Store {
             this.setUser(response.data.user)
         } catch (error) {
             console.log(error)
+            this.authError = true;
         }
     }
 
@@ -204,7 +206,6 @@ export default class Store {
     async setTrackersData(date: Date){
         try {
             const response = await TrackerService.setTrackersData(date, this.tempTrackerAnswers)
-            console.log(response)
             if(response.data === null) this.trackerAnswers = undefined
             else this.trackerAnswers = this.parseTrackersData(response.data)
             return response.data
@@ -217,7 +218,6 @@ export default class Store {
     async getTrackersData(date: Date){
         try {
             const response = await TrackerService.getTrackersData(date)
-            console.log(response)
             if(response.data === null) {
                 this.trackerAnswers = undefined;
                 this.tempTrackerAnswers = defaultTrackerAnswers;

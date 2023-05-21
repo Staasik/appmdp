@@ -65,7 +65,7 @@ export const BodySmsBot = styled.div`
     justify-content: center;
     align-items:flex-start;
     padding:10px;
-    background-color: ${colors.WHITE};
+    background-color: ${colors.ALICE_BLUE2};
     border-radius: 15px 15px 15px 0px;
     @media (max-width:800px) {
     font-size:14px;
