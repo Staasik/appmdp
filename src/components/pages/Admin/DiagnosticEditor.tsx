@@ -18,7 +18,7 @@ import { AdminContext } from "./Editor";
 import QuestionItem from "./QuestionItem";
 import { ButtonAdd } from "styles/pages/Admin/DiagnosticsList";
 import { IOptions } from "mockdata/MoсkTrackersSelect";
-import { IDiagnData } from "codebase/store/adminStore";
+import { IDiagnData, IOption } from "codebase/store/adminStore";
 import { ReactComponent as ResultImg } from 'images/Admin/ResultImg.svg';
 import { ReactComponent as ResultImg1000 } from 'images/Admin/ResultImg1000.svg';
 import { useMediaQuery } from "react-responsive";
@@ -55,16 +55,16 @@ const DiagnosticEditor = () => {
     id && adminStore.getDiagnosticData(+id)
   }, [])
 
-  const [option, setOption] = useState(answersOption)
+  const [option, setOption] = useState(2)
 
-  if(stage) return (
+  if (stage) return (
     <DiagHtml>
       <TextBlock>
         <ButtonBack href="../diagnostics">Назад</ButtonBack>
       </TextBlock>
       <TextBlock>
         <AddText>Добавление новой диагностики</AddText>
-        <ButtonSave onClick={() => { console.log(adminStore.diagnosticData as IDiagnData) }}>Сохранить</ButtonSave>
+        <ButtonSave onClick={() => { adminStore.saveDiagnosticData() }}>Сохранить</ButtonSave>
       </TextBlock>
       <DescriptionBlock>
         <TextBlock>
@@ -89,17 +89,17 @@ const DiagnosticEditor = () => {
         <DiagnText>Сколько пунктов должно отображаться для ответа?</DiagnText>
       </TextBlock>
       <TextBlock style={{ marginTop: "0px" }}>
-        <SelectAdd options={targets} placeholder="Выберете количество" value={option} onChange={(opt) => { adminStore.setAnswersOption(+(opt as IOptions).label) }} />
+        <SelectAdd options={targets} placeholder="Выберете количество" value={answersOption ? targets[answersOption] : undefined} onChange={(opt) => {adminStore.setAnswersOption((opt as IOptions).value) }} />
       </TextBlock>
       {diagnosticData?.questions.map((question, idx) => {
         return (
-          <QuestionItem key={idx} question={question}/>
+          <QuestionItem key={idx} question={question} />
         )
       })}
       <ButtonAdd onClick={() => { adminStore.addQuestion() }}>Добавить вопрос</ButtonAdd>
     </DiagHtml>
   );
-  else return <Results onClick={() => setStage(true)}/>
+  else return <Results onClick={() => setStage(true)} />
 };
 
 export default observer(DiagnosticEditor);

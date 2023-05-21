@@ -7,7 +7,7 @@ class AnswersService {
     async getAnswers(accessToken, questionID) {
         const userData = tokenService.validateAccessToken(accessToken);
         if (userData && userData.role === 'admin') {
-            const answers = await db.models.diagnosticModel.findAll({
+            const answers = await db.models.answersModel.findAll({
                 where: {
                     questionID
                 }
@@ -49,27 +49,22 @@ class AnswersService {
         })
     }
 
-    async upsertAnswers(answersData) {
-        for (let aData of answersData) {
-            await db.models.answersModel
-                .findOne({ where: aData.id })
-                .then(function (obj) {
-                    if (obj) {
-                        return db.models.answersModel.update({
-                            text: aData.text,
-                            value: aData.value
-                        }, {
-                            where: {
-                                id: aData.id
-                            }
-                        })
-                    }
+    async deleteAnswers(questionID){
+        await db.models.answersModel.destroy({
+            where: {
+                questionID
+            }
+        })
+    }
 
-                    return db.models.answersModel.create({
-                        text: aData.text,
-                        value: aData.value
-                    })
-                })
+    async upsertAnswers(answersData, questionID) {
+        await this.deleteAnswers(questionID)
+        for (let aData of answersData) {
+            return db.models.answersModel.create({
+                text: aData.text,
+                value: aData.value,
+                questionID: questionID
+            })
         }
     }
 

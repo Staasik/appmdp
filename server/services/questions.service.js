@@ -14,16 +14,18 @@ class QuestionsService {
                 }
             })
             let response = []
-            if(questions !== undefined){
+            if (questions !== undefined) {
                 questions = questions.map((v) => new QuestionDTO(v))
                 response = await Promise.all(questions.map(async (question) => {
                     return {
-                    type: question.type,
-                    text: question.text,
-                    answers: await answersService.getAnswers(accessToken, question.questionID)
+                        id: question.id,
+                        type: question.type,
+                        text: question.text,
+                        answers: await answersService.getAnswers(accessToken, question.id)
                     }
                 }));
             }
+            console.log(response)
             return response
         }
         return []
@@ -55,7 +57,7 @@ class QuestionsService {
 
     async deleteQuestionsByID(diagnosticID) {
         const questionsID = await this.getQuestionsIDByDiagnosticID(diagnosticID)
-        if( questionsID.length !== 0 ) { 
+        if (questionsID.length !== 0) {
             questionsID.foreach((id) => { answersService.deleteAnswersByID(id) })
         }
         db.models.questionModel.destroy({
@@ -74,30 +76,19 @@ class QuestionsService {
         return questions.map((v) => v.id)
     }
 
-    async upsertQuestions(questionsData) {
-        for (let qData of questionsData) {
-            await db.models.questionModel
-            .findOne({ where: qData.id })
-            .then(function (obj) {
-                if (obj) {
-                    return db.models.questionModel.update({
-                        text: qData.text,
-                        type: qData.type,
-                        diagnosticID: qData.diagnosticID
-                    }, {
-                        where: {
-                            id: qData.id
-                        }
-                    })
-                }
+    async deleteQuestions(diagnosticID) {
+        await db.models.questionModel.destroy({ where: { diagnosticID } })
+    }
 
-                return db.models.questionModel.create({
-                    text: qData.text,
-                    type: qData.type,
-                    diagnosticID: qData.diagnosticID
-                })
+    async upsertQuestions(questionsData, diagnosticID) {
+        this.deleteQuestions(diagnosticID)
+        for (let qData of questionsData) {
+            const question = await db.models.questionModel.create({
+                text: qData.text,
+                type: qData.type,
+                diagnosticID: diagnosticID
             })
-            await answersService.upsertAnswers(qData.answers)
+            await answersService.upsertAnswers(qData.answers, question.id)
         }
     }
 

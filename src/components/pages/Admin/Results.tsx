@@ -17,8 +17,7 @@ interface Props {
   onClick(): void
 }
 const Results = ({ onClick }: Props) => {
-  const { id } = useParams()
-
+  
   const { adminStore } = useContext(AdminContext)
   const { diagnosticData } = adminStore
 
@@ -29,7 +28,7 @@ const Results = ({ onClick }: Props) => {
       </TextBlock>
       <TextBlock>
         <AddText>Результаты</AddText>
-        <ButtonSave onClick={() => { }}>Сохранить</ButtonSave>
+        <ButtonSave onClick={() => { adminStore.saveDiagnosticData() }}>Сохранить</ButtonSave>
       </TextBlock>
       {
         diagnosticData?.options.map((option, idx) => <ResultsItem key={idx} option={option}/>)

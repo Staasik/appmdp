@@ -2,7 +2,7 @@ export class DiagnosticDTO {
     id
     title
     image
-    discription
+    description
     answersDescription
     published
 
@@ -10,7 +10,7 @@ export class DiagnosticDTO {
         this.id = model.id
         this.title = model.title
         this.image = model.image
-        this.discription = model.discription
+        this.description = model.description
         this.answersDescription = model.answersDescription
         this.published = model.published
     }

@@ -36,4 +36,12 @@ export default class DiagnosticsService {
     static async createQuestion(diagnosticID: number, question: IQuestionData): Promise<AxiosResponse<IQuestion>>{
         return api.post<IQuestion>('/createQuestion', { diagnosticID, question })
     }
+    
+    static async updateDiagnostic(data: IDiagnData): Promise<AxiosResponse<IDiagnData>>{
+        return api.post<IDiagnData>('/updateDiagnostic', { data })
+    }
+
+    static async publishDiagnostic(data: boolean, diagnosticID: number): Promise<AxiosResponse<IDiagnData>>{
+        return api.post<IDiagnData>('/publishDiagnostic', { data, diagnosticID })
+    }
 }

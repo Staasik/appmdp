@@ -12,7 +12,7 @@ class DiagnosticsController {
             next(error)
         }
     }
-    
+
     async getResults(req, res, next) {
         try {
             const { diagnosticID } = req.body
@@ -54,8 +54,8 @@ class DiagnosticsController {
 
     async updateDiagnostic(req, res, next) {
         try {
-            const { diagnosticData } = req.body
-            const response = await diagnosticsService.updateDiagnostic(req.headers.authorization, diagnosticData)
+            const { data } = req.body
+            const response = await diagnosticsService.updateDiagnostic(req.headers.authorization, data)
             return res.json(response)
         } catch (error) {
             next(error)
@@ -66,6 +66,16 @@ class DiagnosticsController {
         try {
             const { diagnosticID } = req.body
             const response = await diagnosticsService.getDiagnosticData(req.headers.authorization, diagnosticID)
+            return res.json(response)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async publishDiagnostic(req, res, next) {
+        try {
+            const { data, diagnosticID } = req.body
+            const response = await diagnosticsService.publishDiagnostic(req.headers.authorization, data, diagnosticID)
             return res.json(response)
         } catch (error) {
             next(error)

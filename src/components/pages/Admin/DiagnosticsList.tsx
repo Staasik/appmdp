@@ -8,11 +8,10 @@ import {
   DiagnBlocks,
   DiagnBlockstItem,
   ImgBlockItem,
-  DiagnTextItem,ButtonAdd,
+  DiagnTextItem, ButtonAdd,
 } from "styles/pages/Admin/DiagnosticsList";
 import diagnMock from "mockdata/diagnBlocksMock";
 import DiagnosticItem from "./DiagnosticItem";
-import OneDiagnostic from "./OneDiagnostic";
 import { AdminContext } from "./Editor";
 
 
@@ -20,12 +19,10 @@ const DiagnosticsList = () => {
 
   const { adminStore } = useContext(AdminContext)
 
-  const { diagnosticsList } = adminStore
-
   useEffect(() => {
     adminStore.getDiagnosticsList()
   }, [])
-  
+
 
   return (
     <DiagHtml>
@@ -42,18 +39,21 @@ const DiagnosticsList = () => {
             <DiagnTextItem>{value.name}</DiagnTextItem>
           </DiagnBlockstItem>
         ))}
+        {adminStore.getPublishedList().map((item, idx) => {
+          return (<DiagnosticItem key={idx} data={item} />)
+        })
+        }
       </DiagnBlocks>
       <TextBlock>
         <DiagnText>Черновики:</DiagnText>
       </TextBlock>
       <DiagnBlocks>
-        {diagnosticsList.length !== 0 && 
-          diagnosticsList.map((item, idx) =>{
-            return(<DiagnosticItem key={idx} data={item}/>)
-          })
+        {adminStore.getUnpublishedList().map((item, idx) => {
+          return (<DiagnosticItem key={idx} data={item} />)
+        })
         }
       </DiagnBlocks>
-      <ButtonAdd onClick={() => {adminStore.createDiagnostic()}}>Добавить</ButtonAdd>
+      <ButtonAdd onClick={() => { adminStore.createDiagnostic() }}>Добавить</ButtonAdd>
     </DiagHtml>
   );
 };
