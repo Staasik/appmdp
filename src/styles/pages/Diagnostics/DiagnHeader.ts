@@ -14,11 +14,14 @@ export const DiagHeader = styled.div`
     display:flex;
     flex-direction:row;
     width: 75%;
-    padding-top:30px;
-    padding-bottom:30px;
+    top:0;
+    position: sticky;
+    padding:30px 12.5%;
+    background-color: ${colors.WHITE};
     align-items:center;
     @media (max-width:800px) {
         width: 90%;
+        padding:30px 5%;
   }
 `
 export const DiagFooter = styled.div`

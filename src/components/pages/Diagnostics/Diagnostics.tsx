@@ -1,8 +1,9 @@
 import { ReactComponent as PSIcon } from 'images/PSIcon.svg';
 import { ReactComponent as Start } from 'images/start.svg';
 import { Context } from 'index';
+import { observer } from 'mobx-react-lite';
 import diagnMock, { IdiagnMock } from 'mockdata/diagnBlocksMock';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { DiagnAllBlock, DiagnBlockText, DiagnImage, DiagnImg, DiagnLink, DiagnRecBlock, DiagnRecBlockWrapper, DiagnRecButton, DiagnRecButtons, DiagnRecContent, DiagnRecPS, DiagnRecTitle, DiagnText, DiagnTextBlack, DiagnTextDiagn, DiagnTextProfD } from 'styles/pages/Diagnostics/DiagnHeader';
 import { DiagBody, DiagnBlockImg, ButtonTest } from 'styles/pages/Diagnostics/Diagnostic';
 
@@ -26,8 +27,13 @@ const RecButtonsMock = [
 const Diagnostics = () => {
 
     const { store } = useContext(Context)
-    const { isAuth } = store
+    const { isAuth, isPublishedTests } = store
     const [blocks, setBlocks] = useState<IdiagnMock[]>(diagnMock)
+
+    useEffect(() => {
+      store.isPublishedTest()
+    }, [])
+    
 
     return (
         <DiagBody>
@@ -60,10 +66,10 @@ const Diagnostics = () => {
                         </DiagnAllBlock>
                     )
                 }
-                {isAuth && <ButtonTest href="adminactivediagnostics">Пройти еще тесты</ButtonTest>}
+                {isAuth && isPublishedTests && <ButtonTest href="adminactivediagnostics">Пройти еще тесты</ButtonTest>}
             </DiagnImg>
         </DiagBody>
     );
 }
 
-export default Diagnostics
+export default observer(Diagnostics)

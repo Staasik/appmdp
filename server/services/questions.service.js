@@ -56,9 +56,9 @@ class QuestionsService {
     }
 
     async deleteQuestionsByID(diagnosticID) {
-        const questionsID = await this.getQuestionsIDByDiagnosticID(diagnosticID)
-        if (questionsID.length !== 0) {
-            questionsID.foreach((id) => { answersService.deleteAnswersByID(id) })
+        const questions = await this.getQuestionsIDByDiagnosticID(diagnosticID)
+        if (questions.length !== 0) {
+            questions.forEach((id) => { answersService.deleteAnswersByID(id) })
         }
         db.models.questionModel.destroy({
             where: {
@@ -88,7 +88,7 @@ class QuestionsService {
                 type: qData.type,
                 diagnosticID: diagnosticID
             })
-            await answersService.upsertAnswers(qData.answers, question.id)
+            await answersService.upsertAnswers(qData.answers, qData.id, question.id)
         }
     }
 

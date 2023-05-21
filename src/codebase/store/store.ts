@@ -61,6 +61,7 @@ export default class Store {
     trackerAnswers?: IDiaryData
     tempTrackerAnswers: Array<ITrackerAnswer> = defaultTrackerAnswers
     authError = false
+    isPublishedTests = false
 
     constructor() {
         makeAutoObservable(this)
@@ -241,6 +242,17 @@ export default class Store {
             return response.data.file
         } catch (error) {
             console.log(error)
+        }
+    }
+
+    async isPublishedTest(){
+        try {
+            const response = await DiagnosticsService.isPublishedTest()
+            this.isPublishedTests = response.data
+            return response.data
+        } catch (error) {
+            console.log(error)
+            return false
         }
     }
 }

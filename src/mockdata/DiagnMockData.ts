@@ -69,8 +69,5 @@ export const data: IDiagnData = {
         type: 'numbersList'
     }]
 }
-interface IData {
-    d : IDiagnData
-}
-export const data1 : IData[] = [{d:data},{d:data},{d:data}]
+export const data1 : IDiagnData[] = [data,data,data]
 export default data

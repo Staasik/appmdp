@@ -57,13 +57,13 @@ class AnswersService {
         })
     }
 
-    async upsertAnswers(answersData, questionID) {
+    async upsertAnswers(answersData, questionID, newQuestionID) {
         await this.deleteAnswers(questionID)
         for (let aData of answersData) {
             return db.models.answersModel.create({
                 text: aData.text,
                 value: aData.value,
-                questionID: questionID
+                questionID: newQuestionID
             })
         }
     }

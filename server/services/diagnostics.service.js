@@ -75,6 +75,7 @@ class DiagnosticsService {
                 }
             })
             questionsService.deleteQuestionsByID(diagnosticID)
+            diagnosticsOptionsService.deleteDiagnosticsOptionByID(diagnosticID)
             return diagnostic
         }
         return null
@@ -107,6 +108,19 @@ class DiagnosticsService {
                     id: diagnosticID
                 }
             })
+        }
+    }
+
+    async isPublishedTest(accessToken) {
+        const userData = tokenService.validateAccessToken(accessToken);
+        if (userData) {
+            const diagn = await db.models.diagnosticModel.findOne({
+                where: {
+                    published: true
+                }
+            })
+            if(diagn) return true 
+            else return false
         }
     }
 }

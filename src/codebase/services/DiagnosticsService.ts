@@ -44,4 +44,8 @@ export default class DiagnosticsService {
     static async publishDiagnostic(data: boolean, diagnosticID: number): Promise<AxiosResponse<IDiagnData>>{
         return api.post<IDiagnData>('/publishDiagnostic', { data, diagnosticID })
     }
+
+    static async isPublishedTest(): Promise<AxiosResponse<boolean>> {
+        return api.get<boolean>('/isPublishedTest')
+    }
 }

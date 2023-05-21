@@ -81,6 +81,15 @@ class DiagnosticsController {
             next(error)
         }
     }
+
+    async isPublishedTest(req, res, next) {
+        try {
+            const response = await diagnosticsService.isPublishedTest(req.headers.authorization)
+            return res.json(response)
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 export const diagnosticsController = new DiagnosticsController();

@@ -1,11 +1,10 @@
-import { ReactComponent as PSIcon } from 'images/PSIcon.svg';
 import { ReactComponent as Start } from 'images/start.svg';
 import { Context } from 'index';
+import { data, data1 } from 'mockdata/DiagnMockData';
 import diagnMock, { IdiagnMock } from 'mockdata/diagnBlocksMock';
 import { useContext, useState } from 'react';
-import { DiagnAllBlock, DiagnBlockText, DiagnImage, DiagnImg, DiagnLink, DiagnRecBlock, DiagnRecBlockWrapper, DiagnRecButton, DiagnRecButtons, DiagnRecContent, DiagnRecPS, DiagnRecTitle, DiagnText, DiagnTextBlack, DiagnTextDiagn, DiagnTextProfD } from 'styles/pages/Diagnostics/DiagnHeader';
-import { DiagBody, DiagnBlockImg, ButtonTest } from 'styles/pages/Diagnostics/Diagnostic';
-import {data, data1} from 'mockdata/DiagnMockData';
+import { DiagnAllBlock, DiagnBlockText, DiagnImage, DiagnImg, DiagnLink, DiagnTextBlack, DiagnTextDiagn, DiagnTextProfD } from 'styles/pages/Diagnostics/DiagnHeader';
+import { DiagBody, DiagnBlockImg } from 'styles/pages/Diagnostics/Diagnostic';
 
 const OtherDiagnostics = () => {
 
