@@ -13,7 +13,6 @@ export const DiagnBlockstItem = styled.div`
     box-shadow: 0px 4px 11px 1px rgba(43, 43, 43, 0.05);
     border-radius: 12px;
     padding:10px;
-    cursor: pointer;
     padding:20px;
     @media (max-width:1000px) {  
         width:95%;
@@ -25,6 +24,7 @@ export const DiagnBlockstItem = styled.div`
 `
 export const ImgBlockItem = styled.img`
     width:150px;
+    cursor: pointer;
     height:100px; 
     @media (max-width:600px) {  
         width:100%;
@@ -49,6 +49,7 @@ export const ButtonPublish = styled.button`
     display:flex;
     width: 250px;
     font-size: 16px;
+    cursor: pointer;
     height: 50px;
     background: ${colors.ORANGE_LIGHT};
     border-radius: 8px; 

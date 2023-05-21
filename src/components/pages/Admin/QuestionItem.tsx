@@ -23,7 +23,7 @@ const QuestionItem = ({ question } : Props) => {
         <QuestionBlock style={{ background: colors.ALICE_BLUE2 }}>
             <QuestionTextBlock>
                 <QuestionText>Вопрос {question.tempid}</QuestionText>
-                <Trash onClick={() =>  adminStore.deleteQuestion(question.tempid)}/>
+                <Trash style={{ cursor: "pointer" }} onClick={() =>  adminStore.deleteQuestion(question.tempid)}/>
             </QuestionTextBlock>
             <TextComponents
                 maxLength={200}

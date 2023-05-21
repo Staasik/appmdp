@@ -112,7 +112,7 @@ export const ProfileName = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    color: colors.FORD_GRAY;
+    color: ${colors.FORD_GRAY};
     height: 100%;
 `
 export const DiagnText = styled.a`
@@ -334,7 +334,8 @@ export const DiagnBlockImg = styled.div<DiagnBlockImgProps>`
     background-image:url(${({images}: DiagnBlockImgProps) => images[0]});
     background-repeat: no-repeat; 
     background-size: cover;
-    background-position: center; 
+    background-position: center;     
+    background-color:${colors.ALICE_BLUE2};
     @media (max-width:1200px) {
         background-color:${colors.ALICE_BLUE2};
         background-image:url();
