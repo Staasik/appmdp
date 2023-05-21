@@ -9,6 +9,10 @@ export const DatePickerCalendar = styled(Calendar)`
     box-shadow: 0px 4px 55px -3px rgba(43, 43, 43, 0.05);
     border: none;
     border-radius: 25px;
+
+    .filledDate{
+        font-weight: 900;
+    }
     .react-calendar__month-view__days{
         height: 250px;
     }
@@ -127,6 +131,7 @@ export const WelcomeText = styled.div`
         font-size:24px;  
     }
 `
+
 export const DiaryText = styled(WelcomeText)`
     font-size:28px;  
     @media (max-width:1000px) {

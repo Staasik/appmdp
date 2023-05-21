@@ -122,8 +122,10 @@ const Trackers = () => {
         <EventContainer>
           <CalendarContainer>
             <DatePickerCalendar
-              onChange={(value, e) => { if((value as Date) <= new Date()) setDate(value as Date)}}
+              onChange={(value, e) => setDate(value as Date)}
+              maxDate={new Date()}
               value={date}
+              tileClassName={({ date, view }) => view === 'month' && date.getDate() === 3 ? 'filledDate' : ''}
             />
           </CalendarContainer>
           <DiaryView date={date} data={trackerAnswers} />
