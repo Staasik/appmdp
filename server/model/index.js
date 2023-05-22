@@ -10,7 +10,7 @@ import { answersModel } from './answers.model.js'
 import { diagnosticsOptionsModel } from './diagnosticsOptions.model.js'
 
 const sequelize = new Sequelize('Poise', 'defaultUser', '12345', {
-    host: "DESKTOP-OOOUVM1",
+    host: "LAPTOP-8J2AIRNH",
     dialect: 'mssql',
     dialectOptions: {
         options: {

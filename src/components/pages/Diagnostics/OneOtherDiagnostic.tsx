@@ -6,7 +6,7 @@ import { Context } from 'index';
 import _ from 'lodash';
 import { observer } from 'mobx-react-lite';
 import { useContext, useState } from 'react';
-import { Button, DiagBody, DiagnBlock } from 'styles/pages/Diagnostics/Diagnostic';
+import { Button, DiagBody, DiagnBlock, ResultBlock, ResultText } from 'styles/pages/Diagnostics/Diagnostic';
 import DiagnHeader from './DiagnHeader';
 import data from 'mockdata/DiagnMockData';
 
@@ -63,6 +63,10 @@ const OneOtherDiagnostic = () => {
     else return (
         <DiagBody>
             <DiagnHeader title={data.title} regulations={data.description} condition={data.answersDescription} images={[]} index={1}/>
+            <ResultBlock>
+                <ResultText>Ваш результат:</ResultText>
+                <ResultText>Слегка удовлетворен жизнью</ResultText>
+            </ResultBlock>            
             <DiagnBlock>
                 {data.questions.map((value, index) => {
                     return (

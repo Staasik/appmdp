@@ -128,4 +128,41 @@ export const ButtonTest = styled.a`
         margin-top:20px; 
     }
 `
+export const ResultBlock = styled.div`
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    width: 70%;
+    background: ${colors.BLUE_LIGHT};
+    border-radius: 20px;
+    margin-top: 50px;
+    @media (max-width:1400px) {
+        width: 80%;  
+    }
+    @media (max-width:800px) {
+        flex-direction:column;
+        align-items:flex-start;
+    }
+    @media (max-width:600px) {
+        width: 85%;  
+    }
+`
+export const ResultText = styled.a`
+    text-decoration: none;
+    display:flex;
+    width: auto;
+    margin: 20px 50px 20px;
+    font-size: 24px;
+    height: 50px;
+    color:${colors.WHITE};
+    justify-content:center;
+    align-items:center;
+    @media (max-width:800px) {
+        margin: 5px 20px 20px 20px;
+        justify-content:flex-start;
+        font-size: 20px;
+    }
+`
+
 export default DiagnBlock
