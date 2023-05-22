@@ -6,7 +6,7 @@ class DiagnosticsOptionsService {
 
     async getDiagnosticsOptions(accessToken, diagnosticID) {
         const userData = tokenService.validateAccessToken(accessToken);
-        if (userData && userData.role === 'admin') {
+        if (userData) {
             const answers = await db.models.diagnosticsOptionsModel.findAll({
                 where: {
                     diagnosticID

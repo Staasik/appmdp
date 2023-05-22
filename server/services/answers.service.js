@@ -1,4 +1,4 @@
-import { AnswerDTO } from '../dtos/answer.dto.js';
+import { AnswerDTO, UserAnswerDTO } from '../dtos/answer.dto.js';
 import { db } from '../model/index.js'
 import { tokenService } from "./token.service.js"
 
@@ -6,13 +6,13 @@ class AnswersService {
 
     async getAnswers(accessToken, questionID) {
         const userData = tokenService.validateAccessToken(accessToken);
-        if (userData && userData.role === 'admin') {
+        if (userData) {
             const answers = await db.models.answersModel.findAll({
                 where: {
                     questionID
                 }
             })
-            const response = answers ? answers.map((v) => new AnswerDTO(v)) : []
+            const response = answers ? userData.role === 'admin' ? answers.map((v) => new AnswerDTO(v)) : answers.map((v) => new UserAnswerDTO(v)) : []
             return response
         }
         return null

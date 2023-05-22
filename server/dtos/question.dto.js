@@ -11,3 +11,15 @@ export class QuestionDTO {
         this.diagnosticID = model.diagnosticID
     }
 }
+
+export class UserQuestionDTO {
+    id
+    text
+    type
+
+    constructor(model) {
+        this.id = model.id
+        this.text = model.text
+        this.type = model.type
+    }
+}

@@ -11,3 +11,13 @@ export class AnswerDTO {
         this.questionID = model.questionID
     }
 }
+
+export class UserAnswerDTO {
+    id
+    text
+
+    constructor(model) {
+        this.id = model.id
+        this.text = model.text
+    }
+}

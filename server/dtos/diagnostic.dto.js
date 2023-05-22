@@ -15,3 +15,17 @@ export class DiagnosticDTO {
         this.published = model.published
     }
 }
+
+export class UserDiagnosticDTO {
+    id
+    title
+    image
+    description
+
+    constructor(model) {
+        this.id = model.id
+        this.title = model.title
+        this.image = model.image
+        this.description = model.description
+    }
+}

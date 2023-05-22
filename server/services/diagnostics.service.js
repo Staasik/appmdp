@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { db } from '../model/index.js'
 import { tokenService } from "./token.service.js"
-import { DiagnosticDTO } from '../dtos/diagnostic.dto.js';
+import { DiagnosticDTO, UserDiagnosticDTO } from '../dtos/diagnostic.dto.js';
 import { questionsService } from './questions.service.js';
 import { diagnosticsOptionsService } from './diagnosticsOptions.service.js';
 
@@ -41,17 +41,51 @@ class DiagnosticsService {
         return null
     }
 
+    async getDiagnosticsForUser(accessToken) {
+        const userData = tokenService.validateAccessToken(accessToken);
+        if (userData) {
+            const diagnostics = await db.models.diagnosticModel.findAll({
+                where: {
+                    published: true
+                }
+            })
+            const response = diagnostics.map((v) => new UserDiagnosticDTO(v))
+            return response
+        }
+        return null
+    }
+
+    async getDiagnosticResult(accessToken, diagnosticID, answers) {
+        const userData = tokenService.validateAccessToken(accessToken);
+        if (userData && answers) {
+            const answersValue = answers.reduce((acc, curr) => acc + curr.value, 0);
+            const options = await diagnosticsOptionsService.getDiagnosticsOptions(accessToken, diagnosticID)
+            if (options) {
+                const response = options.find((option) => option.minValue <= answersValue && option.maxValue >= answersValue)
+                return response
+            }
+            else return null
+        }
+        return null
+    }
+
     async getDiagnosticData(accessToken, diagnosticID) {
         const userData = tokenService.validateAccessToken(accessToken);
-        if (userData && userData.role === 'admin') {
+        if (userData) {
             const diagnostic = await db.models.diagnosticModel.findOne({
                 where: {
                     id: diagnosticID
                 }
             })
             const questions = await questionsService.getQuestions(accessToken, diagnosticID)
-            const options = await diagnosticsOptionsService.getDiagnosticsOptions(accessToken, diagnosticID)
-            const response = { ...new DiagnosticDTO(diagnostic), questions, options }
+            let response
+            if (userData.role === 'admin') {
+                const options = await diagnosticsOptionsService.getDiagnosticsOptions(accessToken, diagnosticID)
+                response = { ...new DiagnosticDTO(diagnostic), questions, options }
+            }
+            else {
+                response = { ...new DiagnosticDTO(diagnostic), questions }
+            }
             return response
         }
         return null
@@ -119,7 +153,7 @@ class DiagnosticsService {
                     published: true
                 }
             })
-            if(diagn) return true 
+            if (diagn) return true
             else return false
         }
     }

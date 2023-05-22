@@ -45,6 +45,18 @@ class TrackersService {
         }
         return null
     }
+
+    async getFilledDates(accessToken) {
+        const userData = tokenService.validateAccessToken(accessToken);
+        if(userData){
+            const response = await db.models.trackersModel.findAll({
+                where: {
+                    userID: userData.id
+                }
+            })
+            return response
+        }
+    }
 }
 
 export const trackersService = new TrackersService()

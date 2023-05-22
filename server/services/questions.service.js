@@ -7,7 +7,7 @@ class QuestionsService {
 
     async getQuestions(accessToken, diagnosticID) {
         const userData = tokenService.validateAccessToken(accessToken);
-        if (userData && userData.role === 'admin') {
+        if (userData) {
             let questions = await db.models.questionModel.findAll({
                 where: {
                     diagnosticID
@@ -25,7 +25,7 @@ class QuestionsService {
                     }
                 }));
             }
-            console.log(response)
+
             return response
         }
         return []

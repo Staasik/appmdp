@@ -33,6 +33,15 @@ class DiagnosticsController {
         }
     }
 
+    async getDiagnosticsForUser(req, res, next) {
+        try {
+            const response = await diagnosticsService.getDiagnosticsForUser(req.headers.authorization)
+            return res.json(response)
+        } catch (error) {
+            next(error)
+        }
+    }
+
     async createNewDiagnostic(req, res, next) {
         try {
             const response = await diagnosticsService.createNewDiagnostic(req.headers.authorization)
@@ -66,6 +75,26 @@ class DiagnosticsController {
         try {
             const { diagnosticID } = req.body
             const response = await diagnosticsService.getDiagnosticData(req.headers.authorization, diagnosticID)
+            return res.json(response)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getDiagnostic(req, res, next) {
+        try {
+            const { diagnosticID } = req.body
+            const response = await diagnosticsService.getDiagnosticData(req.headers.authorization, diagnosticID)
+            return res.json(response)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getDiagnosticResult(req, res, next) {
+        try {
+            const { diagnosticID, answers } = req.body
+            const response = await diagnosticsService.getDiagnosticResult(req.headers.authorization, diagnosticID, answers)
             return res.json(response)
         } catch (error) {
             next(error)
