@@ -11,4 +11,8 @@ export default class TrackerService {
     static async getTrackersData(date: Date): Promise<AxiosResponse<ITrackerAnswer[] | null>>{
         return api.post<ITrackerAnswer[] | null>('/getTrackersData', { date })
     }
+
+    static async getFilledDates(): Promise<AxiosResponse<string[] | null>>{
+        return api.get<string[] | null>('/getFilledDates')
+    }
 }

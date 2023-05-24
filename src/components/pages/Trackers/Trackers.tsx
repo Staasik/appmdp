@@ -18,13 +18,17 @@ import {
   WelcomeText,
 } from "styles/pages/Trackers/Trackers";
 import { IAnswer } from "./Choises";
-import { forEach } from "lodash";
 
 const Trackers = () => {
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [date, setDate] = useState(new Date());
   const { store } = useContext(Context);
   const { tempTrackerAnswers, trackerAnswers, user: userData } = store;
+  const [filledDates, setFilledDates] = useState<Date[] | null>()
+
+  function compareDates(date1: Date, date2: Date) {
+    return date1.toDateString() === date2.toDateString();
+  }
 
   const Disable = () => {
     let i = 0;
@@ -43,17 +47,34 @@ const Trackers = () => {
       return false;
     }
   };
+
+  const updateFilledDates = () =>{
+    store.getFilledDates().then((value) =>{
+      if(value){
+        const dates = value.map((date) => new Date(date))
+        setFilledDates(dates)
+      }
+    })
+  }
+
   const handleClick = () => {
     if (tempTrackerAnswers[currentStep].value !== null) {
       if (currentStep < 5) {
         setCurrentStep(currentStep + 1);
       } else {
         if (Disable()) {
-          store.setTrackersData(date);
+          store.setTrackersData(date).then(() =>{
+            updateFilledDates()
+          });
         }
       }
     }
   };
+
+  useEffect(() => {
+    updateFilledDates()
+  }, [])
+  
 
   useEffect(() => {
     store.getTrackersData(date);
@@ -125,7 +146,7 @@ const Trackers = () => {
               onChange={(value, e) => setDate(value as Date)}
               maxDate={new Date()}
               value={date}
-              tileClassName={({ date, view }) => view === 'month' && date.getDate() === 3 ? 'filledDate' : ''}
+              tileClassName={({ date, view }) => (view === 'month' && filledDates && filledDates.find(filledDate => compareDates(date, filledDate))) ? 'filledDate' : ''}
             />
           </CalendarContainer>
           <DiaryView date={date} data={trackerAnswers} />

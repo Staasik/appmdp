@@ -1,14 +1,15 @@
-import { MAIN_IP } from 'App';
 import { AnswersIntoResultDiagn1 } from 'codebase/DiagnResults';
 import Quest from 'components/defaultComponents/Quest';
 import Diagn1Results, { IDiagnResult } from 'components/pages/Results/Diagn1Results';
 import { Context } from 'index';
 import _ from 'lodash';
 import { observer } from 'mobx-react-lite';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { Button, DiagBody, DiagnBlock } from 'styles/pages/Diagnostics/Diagnostic';
-import DiagnHeader from './DiagnHeader';
+import DiagnHeader from '../DiagnHeader';
 import data from 'mockdata/DiagnMockData';
+import { useParams } from 'react-router-dom';
+import { IDiagnData } from 'codebase/store/adminStore';
 
 interface IAnswer {
     value: number,
@@ -22,8 +23,10 @@ const OneOtherDiagnostic = () => {
 
     const { store } = useContext(Context)
     const { user : userData, isAuth } = store
+    const { id } = useParams()
 
-    const [result, setResult] = useState<IDiagnResult[] | null>(null)
+    const [data, setData] = useState<IDiagnData | undefined>()
+    const [result, setResult] = useState<string | null>(null)
     const [answers, setAnswers] = useState<number[]>([])
     const [completeDisabled, setCompleteDisabled] = useState<boolean>(true)
 
@@ -31,17 +34,18 @@ const OneOtherDiagnostic = () => {
         let tempAnswers = answers
         tempAnswers[index] = answer.value
         setAnswers(tempAnswers)
-        if (tempAnswers.length == data.questions.length && !_.some(tempAnswers, (el) => el == undefined)) {
+        if (data && tempAnswers.length == data.questions.length && !_.some(tempAnswers, (el) => el == undefined)) {
             setCompleteDisabled(false)
         }
     }
 
     const onComplete = () => {
         if (!completeDisabled) {
-            if (isAuth) {
-                store.setBaseDiagnosticsData(1,answers)
+            if (isAuth && id) {
+                store.getDiagnosticResult(+id, answers).then((value) =>{
+                    value && setResult(value.description)
+                })
             }
-            setResult(AnswersIntoResultDiagn1(answers))
         }
     }
 
@@ -57,10 +61,20 @@ const OneOtherDiagnostic = () => {
         return options;
     }
 
+    useEffect(() => {
+        id ? store.getDiagnosticData(+id).then((value)=> {
+            value && setData(value)
+        }).catch(()=>{
+            window.location.href = '../custom'
+        })
+        : window.location.href = '../custom'
+    }, [])
+    
+
     if (result) return (
-        <Diagn1Results result={result} />
+        <div>{result}</div>
     )
-    else return (
+    else if(data) return (
         <DiagBody>
             <DiagnHeader title={data.title} regulations={data.description} condition={data.answersDescription} images={[]} index={1}/>
             <DiagnBlock>
@@ -73,6 +87,7 @@ const OneOtherDiagnostic = () => {
             <Button onClick={() => onComplete()} $completeDisabled={completeDisabled}>Завершить</Button>
         </DiagBody>
     );
+    return <></>
 }
 
 export default observer(OneOtherDiagnostic)

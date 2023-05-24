@@ -66,7 +66,7 @@ const Diagnostics = () => {
                         </DiagnAllBlock>
                     )
                 }
-                {isAuth && isPublishedTests && <ButtonTest href="adminactivediagnostics">Пройти еще тесты</ButtonTest>}
+                {isAuth && isPublishedTests && <ButtonTest href="diagnostics/custom">Пройти еще тесты</ButtonTest>}
             </DiagnImg>
         </DiagBody>
     );

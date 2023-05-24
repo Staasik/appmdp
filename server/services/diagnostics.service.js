@@ -58,11 +58,11 @@ class DiagnosticsService {
     async getDiagnosticResult(accessToken, diagnosticID, answers) {
         const userData = tokenService.validateAccessToken(accessToken);
         if (userData && answers) {
-            const answersValue = answers.reduce((acc, curr) => acc + curr.value, 0);
+            const answersValue = answers.reduce((acc, curr) => acc + curr, 0);
             const options = await diagnosticsOptionsService.getDiagnosticsOptions(accessToken, diagnosticID)
             if (options) {
                 const response = options.find((option) => option.minValue <= answersValue && option.maxValue >= answersValue)
-                return response
+                return {description: response.description}
             }
             else return null
         }

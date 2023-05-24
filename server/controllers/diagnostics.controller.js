@@ -93,8 +93,8 @@ class DiagnosticsController {
 
     async getDiagnosticResult(req, res, next) {
         try {
-            const { diagnosticID, answers } = req.body
-            const response = await diagnosticsService.getDiagnosticResult(req.headers.authorization, diagnosticID, answers)
+            const { id, answers } = req.body
+            const response = await diagnosticsService.getDiagnosticResult(req.headers.authorization, id, answers)
             return res.json(response)
         } catch (error) {
             next(error)

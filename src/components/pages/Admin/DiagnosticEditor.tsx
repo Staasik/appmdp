@@ -89,7 +89,7 @@ const DiagnosticEditor = () => {
         <DiagnText>Сколько пунктов должно отображаться для ответа?</DiagnText>
       </TextBlock>
       <TextBlock style={{ marginTop: "0px" }}>
-        <SelectAdd options={targets} placeholder="Выберете количество" value={answersOption ? targets[answersOption] : undefined} onChange={(opt) => {adminStore.setAnswersOption((opt as IOptions).value) }} />
+        <SelectAdd options={targets} placeholder="Выберете количество" value={answersOption ? targets[answersOption - 2] : undefined} onChange={(opt) => {adminStore.setAnswersOption(+(opt as IOptions).label) }} />
       </TextBlock>
       {diagnosticData?.questions.map((question, idx) => {
         return (

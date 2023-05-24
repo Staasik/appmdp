@@ -184,6 +184,37 @@ export default class Store {
             return undefined
         }
     }
+
+    async getDiagnosticsList(){
+        try {
+            const response = await DiagnosticsService.getDiagnosticsList()
+            return response.data
+        } catch (error) {
+            console.log(error)
+            return undefined
+        }
+    }
+
+    async getDiagnosticResult(id: number, answers: number[]){
+        try {
+            const response = await DiagnosticsService.getDiagnosticResult(id, answers)
+            return response.data
+        } catch (error) {
+            console.log(error)
+            return undefined
+        }
+    }
+
+    async getDiagnosticData(id: number){
+        try {
+            const response = await DiagnosticsService.getDiagnosticData(id)
+            return response.data
+        } catch (error) {
+            console.log(error)
+            return undefined
+        }
+    }
+
     parseTrackersData(data: ITrackerAnswer[]): IDiaryData{
         let tempData: IDiaryData = {
             title: (ButtonsMock[data[0].value as number]),
@@ -235,6 +266,15 @@ export default class Store {
         }
     }
 
+    async getFilledDates(){
+        try {
+            const response = await TrackerService.getFilledDates()
+            return response.data
+        } catch (error) {
+            console.log(error)
+            return null
+        }
+    }
 
     async UploadFile(file: File) {
         try {

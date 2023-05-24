@@ -115,6 +115,7 @@ export default class AdminStore {
         try {
             const response = await DiagnosticsService.getDiagnosticData(id)
             response.data?.questions.forEach((quesion, index) => quesion.tempid = index + 1)
+            response.data?.options.forEach((option, index) => option.tempid = index + 1)
             this.diagnosticData = response.data
             if (this.diagnosticData && this.diagnosticData.questions.length !== 0 && this.diagnosticData.questions[0].type === 'numbersList') {
                 this.answersOption = +this.diagnosticData.questions[0].answers[0].value

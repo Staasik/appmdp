@@ -1,23 +1,29 @@
+import { IDiagnItem } from 'codebase/store/adminStore';
 import { ReactComponent as Start } from 'images/start.svg';
 import { Context } from 'index';
-import { data, data1 } from 'mockdata/DiagnMockData';
-import diagnMock, { IdiagnMock } from 'mockdata/diagnBlocksMock';
-import { useContext, useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import { useContext, useState, useEffect } from 'react';
 import { DiagnAllBlock, DiagnBlockText, DiagnImage, DiagnImg, DiagnLink, DiagnTextBlack, DiagnTextDiagn, DiagnTextProfD } from 'styles/pages/Diagnostics/DiagnHeader';
 import { DiagBody, DiagnBlockImg } from 'styles/pages/Diagnostics/Diagnostic';
 
 const OtherDiagnostics = () => {
 
     const { store } = useContext(Context)
-    const { isAuth } = store
-    const [blocks, setBlocks] = useState<IdiagnMock[]>(diagnMock)
+    const [list, setList] = useState<IDiagnItem[]>([])
+
+    useEffect(() => {
+      store.getDiagnosticsList().then((data) =>{
+        data && setList(data)
+      })
+    }, [])
+    
 
     return (
         <DiagBody>
             <DiagnImg>
                 <DiagnTextDiagn>Другие тесты</DiagnTextDiagn>
                 {
-                    data1.map((value, index) =>
+                    list.map((data, index) =>
                         <DiagnAllBlock key={index}>
                             <DiagnBlockImg>
                                 <DiagnImage src={data.image} />
@@ -25,7 +31,7 @@ const OtherDiagnostics = () => {
                             <DiagnBlockText>
                                 <DiagnTextProfD>{data.title}</DiagnTextProfD>
                                 <DiagnTextBlack>{data.description}</DiagnTextBlack>
-                                <DiagnLink href="OneOtherDiagnostic"><Start /></DiagnLink>
+                                <DiagnLink href={`custom/${data.id}`}><Start /></DiagnLink>
                             </DiagnBlockText>
                         </DiagnAllBlock>
                     )
@@ -35,4 +41,4 @@ const OtherDiagnostics = () => {
     );
 }
 
-export default OtherDiagnostics
+export default observer(OtherDiagnostics)

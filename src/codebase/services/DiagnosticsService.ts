@@ -8,6 +8,10 @@ interface IQuestionData{
     text: string
 }
 
+interface IResult{
+    description: string
+}
+
 export default class DiagnosticsService {
     static async setBaseDiagnosticsData(diagnosticID: number, data: Array<number>): Promise<AxiosResponse<number[]>>{
         return api.post<number[]>('/setBaseDiagnosticsData', {diagnosticID, data})
@@ -19,6 +23,14 @@ export default class DiagnosticsService {
 
     static async getDiagnosticsForAdmin(): Promise<AxiosResponse<IDiagnItem[]>>{
         return api.get<IDiagnItem[]>('/getDiagnosticsForAdmin')
+    }
+
+    static async getDiagnosticsList(): Promise<AxiosResponse<IDiagnItem[]>>{
+        return api.get<IDiagnItem[]>('/getDiagnosticsList')
+    }
+    
+    static async getDiagnosticResult(id: number, answers: number[]): Promise<AxiosResponse<IResult | null>>{
+        return api.post<IResult | null>('/getDiagnosticResult', { id, answers })
     }
 
     static async createDiagnostic(): Promise<AxiosResponse<IDiagnItem>>{
