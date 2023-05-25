@@ -1,28 +1,25 @@
-import { AnswersIntoResultDiagn1 } from 'codebase/DiagnResults';
+import { IDiagnData } from 'codebase/store/adminStore';
 import Quest from 'components/defaultComponents/Quest';
-import Diagn1Results, { IDiagnResult } from 'components/pages/Results/Diagn1Results';
 import { Context } from 'index';
 import _ from 'lodash';
 import { observer } from 'mobx-react-lite';
-import { useContext, useState, useEffect } from 'react';
-import { Button, DiagBody, DiagnBlock } from 'styles/pages/Diagnostics/Diagnostic';
-import DiagnHeader from '../DiagnHeader';
-import data from 'mockdata/DiagnMockData';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { IDiagnData } from 'codebase/store/adminStore';
+import { Button, DiagBody, DiagnBlock, ResultBlock, ResultText } from 'styles/pages/Diagnostics/Diagnostic';
+import DiagnHeader from '../DiagnHeader';
 
 interface IAnswer {
     value: number,
     label: number
 }
 export interface IOptions {
-    value: number, 
+    value: number,
     label: string,
-} 
+}
 const OneOtherDiagnostic = () => {
 
     const { store } = useContext(Context)
-    const { user : userData, isAuth } = store
+    const { user: userData, isAuth } = store
     const { id } = useParams()
 
     const [data, setData] = useState<IDiagnData | undefined>()
@@ -42,7 +39,7 @@ const OneOtherDiagnostic = () => {
     const onComplete = () => {
         if (!completeDisabled) {
             if (isAuth && id) {
-                store.getDiagnosticResult(+id, answers).then((value) =>{
+                store.getDiagnosticResult(+id, answers).then((value) => {
                     value && setResult(value.description)
                 })
             }
@@ -50,33 +47,34 @@ const OneOtherDiagnostic = () => {
     }
 
     function generateOptionsArray(num: number): IOptions[] {
-        const options: IOptions[] = [];    
+        const options: IOptions[] = [];
         for (let i = 1; i <= num; i++) {
             const option: IOptions = {
                 value: i,
                 label: `${i}`
-            };    
+            };
             options.push(option);
-        }    
+        }
         return options;
     }
 
     useEffect(() => {
-        id ? store.getDiagnosticData(+id).then((value)=> {
+        id ? store.getDiagnosticData(+id).then((value) => {
             value && setData(value)
-        }).catch(()=>{
+        }).catch(() => {
             window.location.href = '../custom'
         })
-        : window.location.href = '../custom'
+            : window.location.href = '../custom'
     }, [])
-    
 
-    if (result) return (
-        <div>{result}</div>
-    )
-    else if(data) return (
+
+    if (data) return (
         <DiagBody>
-            <DiagnHeader title={data.title} regulations={data.description} condition={data.answersDescription} images={[]} index={1}/>
+            <DiagnHeader title={data.title} regulations={data.description} condition={data.answersDescription} images={[]} index={1} />
+            {result && <ResultBlock>
+                <ResultText>Ваш результат:</ResultText>
+                <ResultText>{result}</ResultText>
+            </ResultBlock>}
             <DiagnBlock>
                 {data.questions.map((value, index) => {
                     return (

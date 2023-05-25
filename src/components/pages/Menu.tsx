@@ -46,6 +46,7 @@ export const Menu = ({ onOpenChat }: Props) => {
       ? (document.location.href = "/main/profile")
       : (document.location.href = "/");
   };
+  const { user: userData } = store;
   return (
     <div>
       <StyledMenu open={open}>
@@ -58,6 +59,11 @@ export const Menu = ({ onOpenChat }: Props) => {
         <StyledLink to="/main/recommend" onClick={() => close()}>
           Рекомендации
         </StyledLink>
+        {userData.role === "admin" && (
+          <StyledLink to="/main/editor/diagnostics" onClick={() => close()}>
+            Редактор
+          </StyledLink>
+        )}
         <Icons>
           <Chat
             style={{
@@ -88,4 +94,4 @@ export const Menu = ({ onOpenChat }: Props) => {
   );
 };
 
-export default observer(Menu)
+export default observer(Menu);

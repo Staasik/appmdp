@@ -16,10 +16,11 @@ export const DiagHeader = styled.div`
     width: 75%;
     top:0;
     position: sticky;
+    z-index: 1;
     padding:30px 12.5%;
     background-color: ${colors.WHITE};
     align-items:center;
-    @media (max-width:800px) {
+    @media (max-width:1000px) {
         width: 90%;
         padding:30px 5%;
   }
@@ -182,9 +183,10 @@ export const DiagnCP = styled.div`
     justify-content:flex-end;
     align-items:center;
     gap:20px;
-    @media (max-width:600px) {
-        width: 50%;
+    @media (max-width:800px) {
+        width: 75%;
     }
+
 `
 export const DiagnIcon = styled.div`
     display:flex;
