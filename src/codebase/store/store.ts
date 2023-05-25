@@ -181,6 +181,7 @@ export default class Store {
             return response.data
         } catch (error) {
             console.log(error)
+            window.location.href = '../diagnostics/diagnostic' + diagnosticID
             return undefined
         }
     }

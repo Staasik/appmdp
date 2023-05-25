@@ -17,7 +17,7 @@ class DiagnosticsController {
         try {
             const { diagnosticID } = req.body
             const results = await diagnosticsService.getResults(req.headers.authorization, diagnosticID)
-            let response = results.dataValues.answers.split(',').map(Number)
+            let response = results.answers.split(',').map(Number)
             return res.json(response)
         } catch (error) {
             next(error)
