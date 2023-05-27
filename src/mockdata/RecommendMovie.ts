@@ -5,8 +5,8 @@ export interface IRecommendMovieMock {
 
 export const RecommendMovie: IRecommendMovieMock[] = [
     {
-        url: "https://www.youtube.com/watch?v=SKU0JzheoFw",
-        title: 'Расписание на послезавтра',},
+        url: "https://www.youtube.com/watch?v=aq1HEZThTvk",
+        title: 'Розыгрыш',},
         {
         url: "https://www.youtube.com/watch?v=TpTCCF9sEFA",
         title: 'Доживем до понедельника', },

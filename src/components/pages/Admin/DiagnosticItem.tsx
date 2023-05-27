@@ -22,7 +22,7 @@ const DiagnosticItem = ({ data }: Props) => {
   if (data.published) {
     return (<DiagnBlockstItem>
       <ImgBlockItem
-        src={require("images/Admin/NewDiagn.png")}
+        src={require("images/Admin/шаблон.jpg")}
       />
       <DiagnTextItem>{data.title}</DiagnTextItem>
       <ButtonPublish onClick={() => { adminStore.publishDiagnostic(false, data.id) }}>Вернуть в черновики</ButtonPublish>
@@ -32,7 +32,7 @@ const DiagnosticItem = ({ data }: Props) => {
 
   return (
     <DiagnBlockstItem>
-      <ImgBlockItem src={require("images/Admin/NewDiagn.png")} />
+      <ImgBlockItem src={require("images/Admin/шаблон.jpg")} />
       <DiagnTextItem>{data.title}</DiagnTextItem>
       <ButtonPublish onClick={() => { adminStore.publishDiagnostic(true, data.id) }}>Опубликовать</ButtonPublish>
       <SvgBlock>

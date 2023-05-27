@@ -16,8 +16,8 @@ const OtherDiagnostics = () => {
         data && setList(data)
       })
     }, [])
-    
 
+    
     return (
         <DiagBody>
             <DiagnImg>
@@ -26,7 +26,7 @@ const OtherDiagnostics = () => {
                     list.map((data, index) =>
                         <DiagnAllBlock key={index}>
                             <DiagnBlockImg>
-                                <DiagnImage src={data.image} />
+                                <DiagnImage src={require("images/Admin/шаблон.jpg")} />
                             </DiagnBlockImg>
                             <DiagnBlockText>
                                 <DiagnTextProfD>{data.title}</DiagnTextProfD>

@@ -70,7 +70,7 @@ const OneOtherDiagnostic = () => {
 
     if (data) return (
         <DiagBody>
-            <DiagnHeader title={data.title} regulations={data.description} condition={data.answersDescription} images={[]} index={1} />
+            <DiagnHeader title={data.title} regulations={data.description} condition={data.answersDescription} images={[require("images/Admin/newDiagnDesk.png"),require("images/Admin/newDiagnMob.png")]} index={1} />
             {result && <ResultBlock>
                 <ResultText>Ваш результат:</ResultText>
                 <ResultText>{result}</ResultText>
