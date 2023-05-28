@@ -83,7 +83,7 @@ export default class Store {
         this.chatOpened = bool
     }
 
-    addNewAnswers(index: number, answers: AnswerValue | null){
+    setTrackerAnswers(index: number, answers: AnswerValue | null){
         if(this) this.tempTrackerAnswers[index].value = answers
     }
 

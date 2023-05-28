@@ -14,7 +14,7 @@ const TextArea = ({ placetext, decription, index }: IPlace) => {
   const { store } = useContext(Context)
 
   const handleChange = (value: string) => {
-    store.addNewAnswers(index, value.length === 0 ? null : value)
+    store.setTrackerAnswers(index, value.length === 0 ? null : value)
   }
 
 

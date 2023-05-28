@@ -14,7 +14,7 @@ const Buttons = ({ decription, index }: IPlace) => {
   const { store } =  useContext(Context)
 
   const handleClick = (idx: number) => {
-    store.addNewAnswers(index, idx === store.tempTrackerAnswers[index].value as number ? null : idx)
+    store.setTrackerAnswers(index, idx === store.tempTrackerAnswers[index].value as number ? null : idx)
   };
 
   return (
