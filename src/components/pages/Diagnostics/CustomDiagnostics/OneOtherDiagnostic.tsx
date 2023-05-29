@@ -42,6 +42,10 @@ const OneOtherDiagnostic = () => {
                 store.getDiagnosticResult(+id, answers).then((value) => {
                     value && setResult(value.description)
                 })
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                })
             }
         }
     }

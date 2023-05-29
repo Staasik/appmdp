@@ -12,17 +12,18 @@ import { AdminContext } from "./Editor";
 import { observer } from "mobx-react-lite";
 
 interface Props{
-    question: IQuestion
+    question: IQuestion,
+    index: number
 }
 
-const QuestionItem = ({ question } : Props) => {
+const QuestionItem = ({ question, index } : Props) => {
 
     const { adminStore } = useContext(AdminContext)
 
     return (
         <QuestionBlock style={{ background: colors.ALICE_BLUE2 }}>
             <QuestionTextBlock>
-                <QuestionText>Вопрос {question.tempid}</QuestionText>
+                <QuestionText>Вопрос {index + 1}</QuestionText>
                 <Trash style={{ cursor: "pointer" }} onClick={() =>  adminStore.deleteQuestion(question.tempid)}/>
             </QuestionTextBlock>
             <TextComponents

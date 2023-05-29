@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-export const MAIN_IP = 'localhost'
+export const MAIN_IP = '178.57.42.147'
 export const API_URL = process.env.NODE_ENV == 'development' ? `http://localhost:5000/api` : `http://${MAIN_IP}:5000/api`
-export const UPLOADS_URL = process.env.NODE_ENV == 'development' ? 'http://localhost:5000/uploads' : `http://localhost/uploads`
+export const UPLOADS_URL = process.env.NODE_ENV == 'development' ? 'http://localhost:5000/uploads' : `http://${MAIN_IP}:5000/uploads`
 
 const api = axios.create({
     withCredentials: true,

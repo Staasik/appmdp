@@ -93,7 +93,7 @@ const DiagnosticEditor = () => {
       </TextBlock>
       {diagnosticData?.questions.map((question, idx) => {
         return (
-          <QuestionItem key={idx} question={question} />
+          <QuestionItem key={idx} index={idx} question={question} />
         )
       })}
       <ButtonAdd onClick={() => { adminStore.addQuestion() }}>Добавить вопрос</ButtonAdd>

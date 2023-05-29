@@ -3,6 +3,9 @@ import { IDiagnResult } from 'components/pages/Results/Diagn1Results';
 import DiagnResultsHeader from 'components/pages/Results/DiagnResultsHeader';
 import ResultBlock3 from 'components/pages/Results/ResultBlock3';
 import image from "images/Results/diag3result_600.png";
+import { Context } from 'index';
+import { observer } from 'mobx-react-lite';
+import { useContext } from 'react';
 import { DiagHtml } from 'styles/pages/Diagnostics/DiagnHeader';
 import { Button, DiscContent, Discription, DiscriptionContainer, DiscriptionContainerTitle, DiscTitle, HomeTextBlock, RecommendWrapper, ResultLine, ResultsBlock } from 'styles/pages/Results/Diagn3Results';
 
@@ -11,6 +14,9 @@ interface Props {
 }
 
 const Diagn3Results = ({ result }: Props) => {
+
+    const { store } = useContext(Context)
+    const { isAuth } = store
 
     const HeaderProps = {
         title: 'Результат оценки признаков эмоционального выгорания',
@@ -47,10 +53,10 @@ const Diagn3Results = ({ result }: Props) => {
                 <DiagnRecommends></DiagnRecommends>
             </RecommendWrapper>
             <HomeTextBlock>
-                <Button href="/main/profile" style={{ marginTop: "50px", alignSelf: "center" }}>Перейти в профиль</Button>
+                {isAuth && <Button href="/main/profile" style={{ marginTop: "50px", alignSelf: "center" }}>Перейти в профиль</Button>}
             </HomeTextBlock>
         </DiagHtml>
     );
 }
 
-export default Diagn3Results
+export default observer(Diagn3Results)

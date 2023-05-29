@@ -5,6 +5,9 @@ import image from "images/Results/diag1result.png";
 import imagedesk from "images/Results/diag1result_600.png";
 import { ReactComponent as Ellipse } from 'images/Results/Ellipse.svg';
 import { ReactComponent as Line } from 'images/Results/Line.svg';
+import { Context } from 'index';
+import { observer } from 'mobx-react-lite';
+import { useContext } from 'react';
 import { useMediaQuery } from "react-responsive";
 import { DiagHtml, DiagnTextProf } from 'styles/pages/Diagnostics/DiagnHeader';
 import { Button, DiagnTextBlack, DiagnTextBlackBold, DiscContent, Discription, DiscTitle, HomeTextBlock, RecommendWrapper, Result, ResultLine, ResultsBlock, ResultStaticItem } from 'styles/pages/Results/Diagn1Results';
@@ -19,6 +22,8 @@ interface Props {
 
 const Diagn1Results = ({ result }: Props) => {
 
+    const { store } = useContext(Context)
+    const { isAuth } = store
 
     const HeaderProps = {
         title: 'Результат диагностики профессиональное выгорание',
@@ -74,10 +79,10 @@ const Diagn1Results = ({ result }: Props) => {
                 <DiagnRecommends></DiagnRecommends>
             </RecommendWrapper>
             <HomeTextBlock>
-                <Button href="/main/profile" style={{ marginTop: "50px", alignSelf: "center" }}>Перейти в профиль</Button>
+                {isAuth && <Button href="/main/profile" style={{ marginTop: "50px", alignSelf: "center" }}>Перейти в профиль</Button>}
             </HomeTextBlock>
         </DiagHtml>
     );
 }
 
-export default Diagn1Results
+export default observer(Diagn1Results)

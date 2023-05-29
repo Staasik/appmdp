@@ -26,7 +26,7 @@ export const Footer = () => {
                 </FooterItems>
             </DiagFooterItems>
             <FooterItemsKGU>
-                <DiagnText>© 2022 Команда Костромского Государственного Университета. Все права защищены.</DiagnText>
+                <DiagnText>© {new Date().getFullYear()} Команда Костромского Государственного Университета. Все права защищены.</DiagnText>
             </FooterItemsKGU>
         </DiagFooter>
     )
