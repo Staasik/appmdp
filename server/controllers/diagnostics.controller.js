@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import { diagnosticsService } from '../services/diagnostics.service.js';
+import { ApiError } from '../exceptions/api.error.js';
 
 class DiagnosticsController {
 
@@ -74,8 +75,13 @@ class DiagnosticsController {
     async getDiagnosticData(req, res, next) {
         try {
             const { diagnosticID } = req.body
-            const response = await diagnosticsService.getDiagnosticData(req.headers.authorization, diagnosticID)
-            return res.json(response)
+            if(diagnosticID){
+                const response = await diagnosticsService.getDiagnosticData(req.headers.authorization, diagnosticID)
+                return res.json(response)
+            }
+
+            throw ApiError.BadRequest('Некорректный ID диагностики')
+
         } catch (error) {
             next(error)
         }

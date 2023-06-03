@@ -4,6 +4,7 @@ import { tokenService } from "./token.service.js"
 import { DiagnosticDTO, UserDiagnosticDTO } from '../dtos/diagnostic.dto.js';
 import { questionsService } from './questions.service.js';
 import { diagnosticsOptionsService } from './diagnosticsOptions.service.js';
+import { ApiError } from '../exceptions/api.error.js';
 
 class DiagnosticsService {
 
@@ -88,7 +89,8 @@ class DiagnosticsService {
             }
             return response
         }
-        return null
+        
+        throw ApiError.BadRequest('Пользователь не авторизован')
     }
 
     async createNewDiagnostic(accessToken) {

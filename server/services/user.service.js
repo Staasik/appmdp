@@ -19,6 +19,7 @@ class UserService {
         return {...tokens, user: userDTO }
     }
 
+    //TODO избавиться от костыля, заменить обновление чек-листов на upsert метод
     async createCheckLists(userID){
         await db.models.checkListsModel.create({userID, checkListNumber: 1, data:Array(10).fill(0).join(',')})
         await db.models.checkListsModel.create({userID, checkListNumber: 2, data:Array(10).fill(0).join(',')})
@@ -36,6 +37,7 @@ class UserService {
         await this.createCheckLists(user.id)
         return await this.defaultResponse(user)
     }
+
     async registrationAdmin() {
         const hashPassword = await bcrypt.hash('admin', 3)
         const user = await db.models.userModel.create({ name: 'admin', login: 'admin', password: hashPassword, role: 'admin' })
@@ -46,16 +48,17 @@ class UserService {
     async login(login, password) {
         const user = await db.models.userModel.findOne({ where: { login: login } })
         if (!user) {
-            throw ApiError.BadRequest(`User with the same login = ${login} not exists`)
+            throw ApiError.BadRequest(`Пользователь с таким логином = ${login} не существует`)
         }
 
         const isPasswordsEquals = await bcrypt.compare(password, user.password)
         if (!isPasswordsEquals) {
-            throw ApiError.BadRequest(`Incorrect password`)
+            throw ApiError.BadRequest(`Некорректный пароль`)
         }
 
         return await this.defaultResponse(user)
     }
+
     async logout(refreshToken) {
         const token = await tokenService.removeToken(refreshToken)
         return token

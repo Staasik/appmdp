@@ -1,11 +1,32 @@
 import _ from 'lodash';
 import { userService } from "../services/user.service.js";
+import { ApiError } from '../exceptions/api.error.js';
 
 class UserController {
+
+    checkInputs(name, login, password) {
+        if (name.length < 3 || name.length > 10) {
+            return "Имя должно быть от 3 до 10 символов";
+        }
+        if (login.length < 3 || login.length > 10) {
+            return "Логин должен быть от 3 до 10 символов";
+        }
+        if (password.length < 3 || password.length > 10) {
+            return "Пароль должен быть от 3 до 10 символов";
+        }
+        return null;
+    }
 
     async registration(req, res, next) {
         try {
             const { name, login, password } = req.body
+
+            const validationError = this.checkInputs(name, login, password)
+
+            if (validationError) {
+                throw ApiError.BadRequest(checkData)
+            }
+
             const userData = await userService.registration(name, login, password)
             res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true })
             return res.json(userData)
@@ -13,17 +34,23 @@ class UserController {
             next(error)
         }
     }
+
     async login(req, res, next) {
         try {
             const { login, password } = req.body
-            const userData = await userService.login(login, password)
-            res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true })
-            return res.json(userData)
+            if (login && password) {
+                const userData = await userService.login(login, password)
+                res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true })
+                return res.json(userData)
+            }
+
+            throw ApiError.BadRequest(`Некорректный логин или пароль`)
 
         } catch (error) {
             next(error)
         }
     }
+
     async logout(req, res, next) {
         try {
             const { refreshToken } = req.cookies
@@ -34,6 +61,7 @@ class UserController {
             next(error)
         }
     }
+
     async refresh(req, res, next) {
         try {
             const { refreshToken } = req.cookies
@@ -44,6 +72,7 @@ class UserController {
             next(error)
         }
     }
+
     async uploadFile(req, res, next) {
         try {
             const user = await userService.uploadFile(req.headers.authorization, req.file)
@@ -81,7 +110,7 @@ class UserController {
             next(error)
         }
     }
-    
+
     async getResults(req, res, next) {
         try {
             const { diagnosticID, answers } = req.body
