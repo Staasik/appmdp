@@ -1,5 +1,3 @@
-import { MAIN_IP } from "App";
-import Cookies from 'codebase/Cookies';
 import { Context } from "index";
 import { observer } from "mobx-react-lite";
 import { useContext, useState } from "react";
@@ -18,7 +16,7 @@ const Login = () => {
 
   const onLogin = () => {
     if (login && password) {
-      store.login(login,password)
+      store.login(login, password)
     }
   }
 
@@ -32,10 +30,10 @@ const Login = () => {
           </LoginRegistr>
           <LoginText>Мы скучали!</LoginText>
           <LoginRegistr>Войдите, чтобы продолжить</LoginRegistr>
-          <LoginInput $error={store.authError} placeholder='Логин' value={login} onChange={(e) => setLogin(e.target.value.replace( /\s/g, ""))} />
+          <LoginInput $error={store.authError} placeholder='Логин' value={login} onChange={(e) => setLogin(e.target.value.replace(/\s/g, ""))} />
           <PasswordWrapper>
-            <PasswordInput $error={store.authError} placeholder='Пароль' value={password} type={inputType} onChange={(e) => setPassword(e.target.value.replace( /\s/g, ""))} />
-            <ShowIcon onClick={() => setInputType(a => a.includes('password') ? 'text' : 'password')}/>
+            <PasswordInput $error={store.authError} placeholder='Пароль' value={password} type={inputType} onChange={(e) => setPassword(e.target.value.replace(/\s/g, ""))} />
+            <ShowIcon onClick={() => setInputType(a => a.includes('password') ? 'text' : 'password')} />
           </PasswordWrapper>
           {store.authError && <ErrorSms>Проверьте правильность написания логина и пароля</ErrorSms>}
           <LoginButton onClick={() => onLogin()}>Войти</LoginButton>

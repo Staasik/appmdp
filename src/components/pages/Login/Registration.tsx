@@ -1,4 +1,3 @@
-import { MAIN_IP } from "App";
 import { Context } from "index";
 import { observer } from "mobx-react-lite";
 import { useContext, useState } from "react";
@@ -35,7 +34,7 @@ const Registration = () => {
       repeatPassword: repeatPassword.length < 3,
       user: false
     }
-    setInputErrors({...newErrors})
+    setInputErrors({ ...newErrors })
     if (password !== repeatPassword) { setinputErrorsPassword(true) } else { setinputErrorsPassword(false) }
 
     if (name.replace(/\s/g, "") &&
@@ -47,7 +46,7 @@ const Registration = () => {
       store.registration(name, login, password).then((e: any) => {
         if (e.response.status === 400) {
           newErrors.user = true
-          setInputErrors({...newErrors})
+          setInputErrors({ ...newErrors })
         }
       })
     }

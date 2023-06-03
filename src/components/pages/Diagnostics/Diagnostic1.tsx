@@ -1,4 +1,3 @@
-import { MAIN_IP } from 'App';
 import { AnswersIntoResultDiagn1 } from 'codebase/DiagnResults';
 import Quest from 'components/defaultComponents/Quest';
 import Diagn1Results, { IDiagnResult } from 'components/pages/Results/Diagn1Results';
@@ -27,7 +26,7 @@ interface IAnswer {
 const Diagnostic1 = () => {
 
     const { store } = useContext(Context)
-    const { user : userData, isAuth } = store
+    const { user: userData, isAuth } = store
 
     const [result, setResult] = useState<IDiagnResult[] | null>(null)
     const [answers, setAnswers] = useState<number[]>([])
@@ -45,9 +44,12 @@ const Diagnostic1 = () => {
     const onComplete = () => {
         if (!completeDisabled) {
             if (isAuth) {
-                store.setBaseDiagnosticsData(1,answers)
+                store.setBaseDiagnosticsData(1, answers)
             }
             setResult(AnswersIntoResultDiagn1(answers))
+            window.scrollTo({
+                top: 0,
+            })
         }
     }
 
@@ -56,7 +58,7 @@ const Diagnostic1 = () => {
     )
     else return (
         <DiagBody>
-            <DiagnHeader {...mockdata} index={1}/>
+            <DiagnHeader {...mockdata} index={1} />
             <DiagnBlock>
                 {data.map((value, index) => {
                     return (

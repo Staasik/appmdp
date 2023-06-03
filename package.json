@@ -5,7 +5,9 @@
     "type": "module",
     "proxy": "http://localhost:5000",
     "dependencies": {
-        "@mui/material": "^5.5.1",
+        "@emotion/react": "^11.11.0",
+        "@emotion/styled": "^11.11.0",
+        "@mui/material": "^5.13.3",
         "@testing-library/jest-dom": "^5.16.2",
         "@testing-library/react": "^14.0.0",
         "@testing-library/user-event": "^13.5.0",

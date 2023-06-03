@@ -1,5 +1,4 @@
-import { MAIN_IP } from "App";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { API_URL } from "codebase/http";
 import { IUser } from "codebase/models/IUser";
 import { AuthResponse } from "codebase/models/response/AuthResponse";
@@ -44,7 +43,7 @@ export interface ITrackerAnswer {
     value?: AnswerValue | null
 }
 const defaultTrackerAnswers: Array<ITrackerAnswer> = [
-    { type: 'buttons', value: null},
+    { type: 'buttons', value: null },
     { type: 'text', value: null },
     { type: 'multiselect', value: [defaultOption] },
     { type: 'multiselect', value: [defaultOption] },
@@ -83,8 +82,8 @@ export default class Store {
         this.chatOpened = bool
     }
 
-    setTrackerAnswers(index: number, answers: AnswerValue | null){
-        if(this) this.tempTrackerAnswers[index].value = answers
+    setTrackerAnswers(index: number, answers: AnswerValue | null) {
+        if (this) this.tempTrackerAnswers[index].value = answers
     }
 
     async login(login: string, password: string) {
@@ -165,7 +164,7 @@ export default class Store {
         }
     }
 
-    async setBaseDiagnosticsData(diagnosticID: number, data: number[]){
+    async setBaseDiagnosticsData(diagnosticID: number, data: number[]) {
         try {
             const response = await DiagnosticsService.setBaseDiagnosticsData(diagnosticID, data)
             return response.data
@@ -175,7 +174,7 @@ export default class Store {
         }
     }
 
-    async getBaseDiagnosticsData(diagnosticID: number){
+    async getBaseDiagnosticsData(diagnosticID: number) {
         try {
             const response = await DiagnosticsService.getBaseDiagnosticsData(diagnosticID)
             return response.data
@@ -186,7 +185,7 @@ export default class Store {
         }
     }
 
-    async getDiagnosticsList(){
+    async getDiagnosticsList() {
         try {
             const response = await DiagnosticsService.getDiagnosticsList()
             return response.data
@@ -196,7 +195,7 @@ export default class Store {
         }
     }
 
-    async getDiagnosticResult(id: number, answers: number[]){
+    async getDiagnosticResult(id: number, answers: number[]) {
         try {
             const response = await DiagnosticsService.getDiagnosticResult(id, answers)
             return response.data
@@ -206,7 +205,7 @@ export default class Store {
         }
     }
 
-    async getDiagnosticData(id: number){
+    async getDiagnosticData(id: number) {
         try {
             const response = await DiagnosticsService.getDiagnosticData(id)
             return response.data
@@ -216,19 +215,19 @@ export default class Store {
         }
     }
 
-    parseTrackersData(data: ITrackerAnswer[]): IDiaryData{
+    parseTrackersData(data: ITrackerAnswer[]): IDiaryData {
         let tempData: IDiaryData = {
             title: (ButtonsMock[data[0].value as number]),
             description: (data[1].value as string),
             eventsEmotions: (data[2].value as Array<IAnswer>).map((
                 val
-            ) =>{
-                return {name: targetsText.find((v) => v.value === val.value)?.label, score: val.value} as IEmotions
+            ) => {
+                return { name: targetsText.find((v) => v.value === val.value)?.label, score: val.value } as IEmotions
             }),
             diaryEmotions: (data[3].value as Array<IAnswer>).map((
                 val
-            ) =>{
-                return {name: targetsText.find((v) => v.value === val.value)?.label, score: val.value} as IEmotions
+            ) => {
+                return { name: targetsText.find((v) => v.value === val.value)?.label, score: val.value } as IEmotions
             }),
             done: (data[4].value as string),
             willDo: (data[5].value as string)
@@ -236,10 +235,10 @@ export default class Store {
         return tempData
     }
 
-    async setTrackersData(date: Date){
+    async setTrackersData(date: Date) {
         try {
             const response = await TrackerService.setTrackersData(date, this.tempTrackerAnswers)
-            if(response.data === null) this.trackerAnswers = undefined
+            if (response.data === null) this.trackerAnswers = undefined
             else this.trackerAnswers = this.parseTrackersData(response.data)
             return response.data
         } catch (error) {
@@ -248,15 +247,14 @@ export default class Store {
         }
     }
 
-    async getTrackersData(date: Date){
+    async getTrackersData(date: Date) {
         try {
             const response = await TrackerService.getTrackersData(date)
-            if(response.data === null) {
+            if (response.data === null) {
                 this.trackerAnswers = undefined;
                 this.tempTrackerAnswers = defaultTrackerAnswers;
-            } 
-            else 
-            {
+            }
+            else {
                 this.trackerAnswers = this.parseTrackersData(response.data);
                 this.tempTrackerAnswers = response.data;
             }
@@ -267,7 +265,7 @@ export default class Store {
         }
     }
 
-    async getFilledDates(){
+    async getFilledDates() {
         try {
             const response = await TrackerService.getFilledDates()
             return response.data
@@ -286,7 +284,7 @@ export default class Store {
         }
     }
 
-    async isPublishedTest(){
+    async isPublishedTest() {
         try {
             const response = await DiagnosticsService.isPublishedTest()
             this.isPublishedTests = response.data

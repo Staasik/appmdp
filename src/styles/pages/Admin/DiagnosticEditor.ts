@@ -130,6 +130,9 @@ export const TextComponents = styled.textarea`
     @media (max-width:1000px) {  
         width: 85%;
     }
+    @media (max-width:600px) {  
+        width: 80%;
+    }
 `
 
 export const ResultsBlock = styled.div`

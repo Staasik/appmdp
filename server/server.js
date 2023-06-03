@@ -7,7 +7,6 @@ import http from 'http'
 import { errorMiddleware } from './middlewares/error.middleware.js'
 import { db } from './model/index.js'
 import { router } from './routes/routes.js'
-import { userService } from './services/user.service.js'
 dotenv.config()
 
 
@@ -27,7 +26,7 @@ app.use(errorMiddleware)
 
 const server = http.createServer(app)
 
-const start = async() => {
+const start = async () => {
     try {
         server.listen(SERVER_PORT, () => console.log(`Server started on PORT = ${SERVER_PORT}`))
     } catch (e) {
@@ -35,4 +34,4 @@ const start = async() => {
     }
 }
 
-(async() => { await db.sequelize.sync().then(() => start()) })()
+(async () => { await db.sequelize.sync().then(() => start()) })()

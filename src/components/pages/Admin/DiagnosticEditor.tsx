@@ -18,11 +18,12 @@ import { AdminContext } from "./Editor";
 import QuestionItem from "./QuestionItem";
 import { ButtonAdd } from "styles/pages/Admin/DiagnosticsList";
 import { IOptions } from "mockdata/MoсkTrackersSelect";
-import { IDiagnData, IOption } from "codebase/store/adminStore";
+import AdminStore, { IDiagnData, IOption } from "codebase/store/adminStore";
 import { ReactComponent as ResultImg } from 'images/Admin/ResultImg.svg';
 import { ReactComponent as ResultImg1000 } from 'images/Admin/ResultImg1000.svg';
 import { useMediaQuery } from "react-responsive";
 import Results from "./Results";
+import { Snackbar, Alert } from "@mui/material";
 
 const Description = [
   {
@@ -48,7 +49,7 @@ const DiagnosticEditor = () => {
   const { id } = useParams()
 
   const { adminStore } = useContext(AdminContext)
-  const { diagnosticData, answersOption } = adminStore
+  const { diagnosticData, answersOption, isSaved, isError } = adminStore
   const [stage, setStage] = useState(true)
 
   useEffect(() => {
@@ -59,6 +60,12 @@ const DiagnosticEditor = () => {
 
   if (stage) return (
     <DiagHtml>
+      <Snackbar anchorOrigin={{vertical: "bottom", horizontal: "center" }} open={isSaved} autoHideDuration={6000} onClose={() => adminStore.setIsSaved(false)}>
+        <Alert onClose={() => adminStore.setIsSaved(false)} severity="success">Сохранение прошло успешно!</Alert>
+      </Snackbar>
+      <Snackbar anchorOrigin={{vertical: "bottom", horizontal: "center" }} open={isError} autoHideDuration={6000} onClose={() => adminStore.setIsError(false)}>
+        <Alert onClose={() => adminStore.setIsError(false)} severity="error">При сохранении произошла ошибка!</Alert>
+      </Snackbar>
       <TextBlock>
         <ButtonBack href="../diagnostics">Назад</ButtonBack>
       </TextBlock>
@@ -89,7 +96,13 @@ const DiagnosticEditor = () => {
         <DiagnText>Сколько пунктов должно отображаться для ответа?</DiagnText>
       </TextBlock>
       <TextBlock style={{ marginTop: "0px" }}>
-        <SelectAdd options={targets} placeholder="Выберете количество" value={answersOption ? targets[answersOption - 2] : undefined} onChange={(opt) => {adminStore.setAnswersOption(+(opt as IOptions).label) }} />
+        <SelectAdd
+          isSearchable={false}
+          options={targets}
+          placeholder="Выберете количество"
+          value={answersOption ? targets[answersOption - 2] : undefined}
+          onChange={(opt) => { adminStore.setAnswersOption(+(opt as IOptions).label) }}
+        />
       </TextBlock>
       {diagnosticData?.questions.map((question, idx) => {
         return (

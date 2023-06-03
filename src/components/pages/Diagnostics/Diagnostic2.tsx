@@ -1,4 +1,3 @@
-import { MAIN_IP } from 'App';
 import { AnswersIntoResultDiagn2, IDiagnResult2 } from 'codebase/DiagnResults';
 import QuestImg from 'components/defaultComponents/QuestImg';
 import Diagn2Results from 'components/pages/Results/Diagn2Results';
@@ -21,9 +20,9 @@ const mockdata = {
 
 
 const Diagnostic2 = () => {
-    
+
     const { store } = useContext(Context)
-    const { user : userData, isAuth } = store
+    const { user: userData, isAuth } = store
 
     const [result, setResult] = useState<IDiagnResult2[] | null>(null)
     const [answers, setAnswers] = useState<number[]>([])
@@ -41,9 +40,12 @@ const Diagnostic2 = () => {
     const onComplete = () => {
         if (!completeDisabled) {
             if (isAuth) {
-                store.setBaseDiagnosticsData(2,answers)
+                store.setBaseDiagnosticsData(2, answers)
             }
             setResult(AnswersIntoResultDiagn2(answers))
+            window.scrollTo({
+                top: 0,
+            })
         }
     }
 
@@ -52,7 +54,7 @@ const Diagnostic2 = () => {
     )
     else return (
         <DiagBody>
-            <DiagnHeader {...mockdata} index={2}/>
+            <DiagnHeader {...mockdata} index={2} />
             <DiagnBlock>
                 {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((idx) => {
                     return (

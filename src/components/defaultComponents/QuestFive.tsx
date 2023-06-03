@@ -19,6 +19,7 @@ const QuestFive = ({ text, options, index, onChange }: IProps) => {
     <QuestNumFive index={index}>
       <DiagnTextBlackBold>{text}</DiagnTextBlackBold>
       <Select
+        isSearchable={ false }
         options={options}
         defaultValue={target}
         placeholder='Вариант ответа'

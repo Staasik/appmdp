@@ -43,9 +43,19 @@ export default class AdminStore {
     diagnosticsList: IDiagnItem[] = []
     diagnosticData: IDiagnData | null = null
     answersOption: number | undefined
+    isSaved: boolean = false
+    isError: boolean = false
 
     constructor() {
         makeAutoObservable(this)
+    }
+
+    setIsSaved(value: boolean){
+        this.isSaved = value;
+    }
+
+    setIsError(value: boolean){
+        this.isError = value;
     }
 
     getPublishedList(){
@@ -84,7 +94,6 @@ export default class AdminStore {
             this.diagnosticsList = response.data
             return response.data
         } catch (error) {
-            console.log(error)
             return undefined
         }
     }
@@ -95,7 +104,6 @@ export default class AdminStore {
             this.diagnosticsList.push(response.data)
             return response.data
         } catch (error) {
-            console.log(error)
             return undefined
         }
     }
@@ -106,7 +114,6 @@ export default class AdminStore {
             this.diagnosticsList = this.diagnosticsList.filter(obj => obj.id !== id)
             return response.data
         } catch (error) {
-            console.log(error)
             return undefined
         }
     }
@@ -122,7 +129,6 @@ export default class AdminStore {
             }
             return response.data
         } catch (error) {
-            console.log(error)
             window.location.href = '../diagnostics'
             return undefined
         }
@@ -132,11 +138,12 @@ export default class AdminStore {
         try {
             if (this.diagnosticData) {
                 const response = await DiagnosticsService.updateDiagnostic(this.diagnosticData)
+                this.isSaved = true;
                 return response.data
             }
             throw new Error('Error')
         } catch (error) {
-            console.log(error)
+            this.isError = true;
             return undefined
         }
     }
@@ -150,7 +157,6 @@ export default class AdminStore {
             }
             return response.data
         } catch (error) {
-            console.log(error)
             return undefined
         }
     }

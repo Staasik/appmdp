@@ -1,9 +1,16 @@
 import { ReactComponent as Checkbox } from 'images/Results/CheckboxCheck.svg'
 import { ReactComponent as Toogle } from 'images/Results/Toogle.svg'
 import { ReactComponent as Up } from 'images/Results/TrendingUp.svg'
+import { Context } from 'index'
+import { observer } from 'mobx-react-lite'
+import { useContext } from 'react'
 import { BlockContent, DiagnRecommendsBlock, DiagnRecommendsLinkBlock, DiagnRecommendsWrapper, ImageContainer, LinkBlockContent, LinkBlockHref, LinkBlockTitle } from 'styles/defaultComponents/DiagnRecommends'
 
 export const DiagnRecommends = () => {
+
+    const { store } = useContext(Context);
+    const { isAuth } = store;
+
     return (
         <DiagnRecommendsWrapper>
             <DiagnRecommendsBlock>
@@ -17,15 +24,15 @@ export const DiagnRecommends = () => {
                 </BlockContent>
                 <BlockContent>
                     <ImageContainer><Checkbox /></ImageContainer>
-                    <div>Ознакомится с ними вы можете в разделе <a href="/main/profile#checklists">чек-листы</a></div>
+                    <div>Ознакомится с ними вы можете в разделе <a href={isAuth ? "/main/profile#checklists" : "/login"}>чек-листы</a></div>
                 </BlockContent>
             </DiagnRecommendsBlock>
             <DiagnRecommendsLinkBlock>
                 <LinkBlockTitle>Дать правильную оценку вашему состоянию поможет профессионал</LinkBlockTitle>
                 <LinkBlockContent>При выборе подходящего психолога вам может помочь следующая информация.</LinkBlockContent>
-                <LinkBlockHref href='https://www.b17.ru/'>Узнать &ensp; &gt;</LinkBlockHref>
+                <LinkBlockHref href='https://www.b17.ru/' target="_blank">Узнать &ensp; &gt;</LinkBlockHref>
             </DiagnRecommendsLinkBlock>
         </DiagnRecommendsWrapper>
     )
 }
-export default DiagnRecommends
+export default observer(DiagnRecommends)

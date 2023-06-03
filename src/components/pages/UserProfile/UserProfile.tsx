@@ -1,17 +1,12 @@
-import { MAIN_IP } from 'App';
-import Cookies from 'codebase/Cookies';
 import CheckList from 'components/pages/UserProfile/CheckList';
-import _ from 'lodash';
+import ChecksResultsImage from 'components/pages/UserProfile/ChecksResultsImage';
+import { Context } from 'index';
+import { observer } from 'mobx-react-lite';
 import blockItemMock, { IblockItemMock } from 'mockdata/UserProfileBlocks';
 import diagnItemMock, { IdiagnItemMock } from 'mockdata/UserProfileDiagnItem';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { DiagHtml } from 'styles/pages/Diagnostics/DiagnHeader';
-import { Button, ButtonBlock, ExitButton, DiaryButton, DiagnCheckBlocks, ChecksResultsWrapper, DiagnosticTextBlack, ChecksResultsButton, ChecksResultsContainer, ChecksResultsContent, ChecksResultsPS, ChecksResultsImageContainer, ChecksResultsTitle, DiagnResult, DiagnResultItem, DiagnChecksResults, DiagnTextBlack, DiagnTextBlackBoldName, DiagnTextProfCenter, HomeTextBlock, Img, TextBlock } from 'styles/pages/UserProfile/UserProfile';
-import ChecksResultsImage from 'components/pages/UserProfile/ChecksResultsImage'
-import { Context } from 'index';
-import { useContext } from 'react';
-import { observer } from 'mobx-react-lite';
-import { Link } from 'react-router-dom';
+import { Button, ButtonBlock, ChecksResultsContainer, ChecksResultsContent, ChecksResultsImageContainer, ChecksResultsPS, ChecksResultsTitle, ChecksResultsWrapper, DiagnCheckBlocks, DiagnChecksResults, DiagnResult, DiagnResultItem, DiagnTextBlack, DiagnTextBlackBoldName, DiagnTextProfCenter, DiagnosticTextBlack, DiaryButton, ExitButton, HomeTextBlock, Img, TextBlock } from 'styles/pages/UserProfile/UserProfile';
 
 interface IResultsData {
     title: string,
@@ -74,7 +69,7 @@ const UserProfile = () => {
                     });
                     setBlocks([...tempBlocks])
                 }
-                
+
             }, (error) => console.log(error)
             )
         }

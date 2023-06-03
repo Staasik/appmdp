@@ -1,4 +1,3 @@
-import { MAIN_IP } from 'App';
 import { AnswersIntoResultDiagn1, AnswersIntoResultDiagn2, AnswersIntoResultDiagn3 } from 'codebase/DiagnResults';
 import Diagn1Results from 'components/pages/Results/Diagn1Results';
 import Diagn2Results from 'components/pages/Results/Diagn2Results';
@@ -15,7 +14,7 @@ export const UserResults = ({ diagnnumber }: Props) => {
     const [answers, setAnswers] = useState<number[] | null>(null)
 
     const { store } = useContext(Context)
-    const { user : userData, isAuth } = store
+    const { user: userData, isAuth } = store
 
     useEffect(() => {
         if (isAuth) {
