@@ -6,8 +6,6 @@ import { ApiError } from '../exceptions/api.error.js'
 import { db } from '../model/index.js'
 import { tokenService } from "./token.service.js"
 
-
-
 class UserService {
 
     async defaultResponse(user) {
@@ -30,7 +28,7 @@ class UserService {
     async registration(name, login, password) {
         const newUser = await db.models.userModel.findOne({ where: { login: login } })
         if (newUser) {
-            throw ApiError.BadRequest(`User with the same login = ${login} already exists`)
+            throw ApiError.BadRequest(`Пользователь с таким логином = ${login} уже существует`)
         }
         const hashPassword = await bcrypt.hash(password, 3)
         const user = await db.models.userModel.create({ name, login, password: hashPassword, role: 'user' })

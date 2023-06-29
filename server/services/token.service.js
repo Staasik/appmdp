@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken'
 import { db } from '../model/index.js'
 
 class TokenService {
+    // Генерирует токены по данным
     generateTokens(payload) {
         const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, { expiresIn: '30m' })
         const refreshToken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET, { expiresIn: '30d' })
@@ -11,6 +12,7 @@ class TokenService {
         }
     }
 
+    // Валидация сессионного токена 
     validateAccessToken(token) {
         try {
             const userData = jwt.verify(token, process.env.JWT_ACCESS_SECRET)
@@ -20,6 +22,7 @@ class TokenService {
         }
     }
 
+    // Валидация долгосрочного токена 
     validateRefreshToken(token) {
         try {
             const userData = jwt.verify(token, process.env.JWT_REFRESH_SECRET)
@@ -29,6 +32,7 @@ class TokenService {
         }
     }
 
+    // Сохраняет долгосрочный токен в БД
     async saveToken(userId, refreshToken) {
         const tokenData = await db.models.tokenModel.findOne({ where: { userID: userId } })
         if (tokenData) {
@@ -39,12 +43,14 @@ class TokenService {
         return token
     }
 
+    // Удаляет долгосрочнй токен из БД
     async removeToken(refreshToken) {
         const tokenData = await db.models.tokenModel.destroy({ where: { refreshToken: refreshToken } })
 
         return tokenData
     }
 
+    // Ищет долгосрочный токен в БД
     async findToken(refreshToken) {
         const tokenData = await db.models.tokenModel.findOne({ where: { refreshToken: refreshToken } })
         return tokenData

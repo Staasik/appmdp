@@ -4,24 +4,24 @@ import { ApiError } from '../exceptions/api.error.js';
 
 class UserController {
 
-    checkInputs(name, login, password) {
-        if (name.length < 3 || name.length > 10) {
-            return "Имя должно быть от 3 до 10 символов";
-        }
-        if (login.length < 3 || login.length > 10) {
-            return "Логин должен быть от 3 до 10 символов";
-        }
-        if (password.length < 3 || password.length > 10) {
-            return "Пароль должен быть от 3 до 10 символов";
-        }
-        return null;
-    }
-
     async registration(req, res, next) {
         try {
             const { name, login, password } = req.body
 
-            const validationError = this.checkInputs(name, login, password)
+            const checkInputs = (name, login, password)  => {
+                if (name.length < 3 || name.length > 10) {
+                    return "Имя должно быть от 3 до 10 символов";
+                }
+                if (login.length < 3 || login.length > 10) {
+                    return "Логин должен быть от 3 до 10 символов";
+                }
+                if (password.length < 3 || password.length > 10) {
+                    return "Пароль должен быть от 3 до 10 символов";
+                }
+                return null;
+            }
+
+            const validationError = checkInputs(name, login, password)
 
             if (validationError) {
                 throw ApiError.BadRequest(checkData)

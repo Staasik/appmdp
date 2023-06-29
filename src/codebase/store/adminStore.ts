@@ -31,7 +31,8 @@ export interface IOption {
     diagnosticID: number,
     description: string,
     minValue?: number,
-    maxValue?: number
+    maxValue?: number,
+    hasError?: boolean
 }
 
 export interface IDiagnData extends IDiagnItem {
@@ -45,24 +46,29 @@ export default class AdminStore {
     answersOption: number | undefined
     isSaved: boolean = false
     isError: boolean = false
+    optionsError: false | string = false
 
     constructor() {
         makeAutoObservable(this)
     }
 
-    setIsSaved(value: boolean){
+    setIsSaved(value: boolean) {
         this.isSaved = value;
     }
 
-    setIsError(value: boolean){
+    setIsError(value: boolean) {
         this.isError = value;
     }
 
-    getPublishedList(){
+    setOptionsError(value: false | string) {
+        this.optionsError = value;
+    }
+
+    getPublishedList() {
         return this.diagnosticsList.filter((d) => d.published)
     }
 
-    getUnpublishedList(){
+    getUnpublishedList() {
         return this.diagnosticsList.filter((d) => !d.published)
     }
 
@@ -70,6 +76,77 @@ export default class AdminStore {
         return this.answersOption
     }
 
+    mergeIntervals(intervals: number[][]) {
+        const sortedIntervals = intervals.sort((a, b) => a[0] - b[0])
+
+        let main: number[][] = []
+        sortedIntervals.forEach((int) => {
+            const length = main.length
+            if (length === 0) {
+                main[0] = int
+            }
+            else {
+                if (+main[length - 1][1] + 1 == int[0]) main[length - 1][1] = int[1]
+                else main.push(int)
+            }
+
+        })
+
+        return main
+    }
+
+    getIntervals(options: IOption[]) {
+        if (options.length === 0) return undefined
+
+        if (options.some((value) => value.maxValue === undefined || value.minValue === undefined)) return undefined
+
+        return options.map((value) => [value.minValue || 0, value.maxValue || 0])
+    }
+
+    checkIntervals(neededInterval: number[], options: IOption[]): { error: string | false, options: IOption[] } {
+        const intervals = this.getIntervals(options)
+
+        if (!intervals || intervals.length === 0) return { error: 'Нет результатов или есть не заполненные!', options }
+
+        const tempInt = this.mergeIntervals(intervals)
+
+        if (tempInt.length === 1) {
+            if (tempInt[0][0] <= neededInterval[0] && tempInt[0][1] == neededInterval[1]) return { error: false, options }
+            if (tempInt[0][1] > neededInterval[1]) return { error: 'Превышен максимальный результат!', options }
+            return { error: 'Не все результаты обработаны!', options }
+        }
+
+        for (let index = 1; index < tempInt.length; index++) {
+            const prevInt = tempInt[index-1];
+            const currInt = tempInt[index];
+            if(+prevInt[1] + 1 < +currInt[0]){
+                return { error: 'Не все результаты обработаны!', options }
+            }
+            
+        }
+
+        options.forEach((option) => {
+            if (tempInt.some((int) => int[0] === option.minValue)) {
+                option.hasError = true
+            }
+        })
+
+        return { error: 'Интервалы результатов пересекаются!', options }
+    }
+
+    checkOptions(){
+        if (!this.diagnosticData || this.diagnosticData.options.length === 0) throw new Error('Error')
+
+            const questions = this.diagnosticData.questions
+            const questionsLength = questions.length
+            const answerValue = questions[0].answers[0].value
+            const mainInterval = [questionsLength, questionsLength * answerValue]
+
+            const { error, options } = this.checkIntervals(mainInterval, this.diagnosticData.options)
+            this.diagnosticData.options = options
+            this.setOptionsError(error)
+            return !!error
+    }
 
     setAnswersOption(value: number) {
         this.answersOption = value
@@ -136,12 +213,13 @@ export default class AdminStore {
 
     async saveDiagnosticData() {
         try {
-            if (this.diagnosticData) {
-                const response = await DiagnosticsService.updateDiagnostic(this.diagnosticData)
-                this.isSaved = true;
-                return response.data
-            }
-            throw new Error('Error')
+            if (!this.diagnosticData || this.diagnosticData.options.length === 0) throw new Error('Error')
+
+            if(this.checkOptions()) return
+
+            const response = await DiagnosticsService.updateDiagnostic(this.diagnosticData)
+            this.isSaved = true;
+            return response.data
         } catch (error) {
             this.isError = true;
             return undefined
@@ -152,7 +230,7 @@ export default class AdminStore {
         try {
             const response = await DiagnosticsService.publishDiagnostic(data, diagnosticID)
             let diagn = this.diagnosticsList.find((v) => diagnosticID === v.id)
-            if(diagn) {
+            if (diagn) {
                 diagn.published = data
             }
             return response.data
